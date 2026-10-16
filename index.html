@@ -2,12 +2,34 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
 <title>Japan Trip Guide</title>
-<style>html, body { margin: 0; background: #FFF8EE; }</style>
+<style>
+html, body { margin: 0; background: #FFF8EE; }
+@media (prefers-color-scheme: dark) { html:not([data-theme="light"]) #jp26 { --bg: #1C1613; --surface: #28201C; --surface2: #221B17; --ink: #F4E8DA; --soft: #E2CDB8; --muted: #B29D8D; --line: #3B302A; --chip: #362B25; --accent: #F07261; --dark: #F4E8DA; --onDark: #2A211C; --hero1: #3B2A2B; --hero2: #5E3B34; --mapgrid: #3E3330; --maplbl: #8C7869; --day: #4A3229; color-scheme: dark; } html:not([data-theme="light"]), html:not([data-theme="light"]) body { background: #1C1613; } html:not([data-theme="light"]) #jp26 .hero-shirahama { background: linear-gradient(170deg, #3A2A30, #5B3A3A 60%, #6A4038);} html:not([data-theme="light"]) #jp26 .hero-kyoto { background: linear-gradient(170deg, #3B2A2B, #5E3934 60%, #6E3F35);} html:not([data-theme="light"]) #jp26 .hero-hikone { background: linear-gradient(170deg, #2F2E26, #4A3F30 60%, #5A4733);} html:not([data-theme="light"]) #jp26 .hero-wakayama { background: linear-gradient(170deg, #3A2E2A, #5A4234 60%, #684A38); border-color: #8A6A50; } }
+html[data-theme="dark"] #jp26 { --bg: #1C1613; --surface: #28201C; --surface2: #221B17; --ink: #F4E8DA; --soft: #E2CDB8; --muted: #B29D8D; --line: #3B302A; --chip: #362B25; --accent: #F07261; --dark: #F4E8DA; --onDark: #2A211C; --hero1: #3B2A2B; --hero2: #5E3B34; --mapgrid: #3E3330; --maplbl: #8C7869; --day: #4A3229; color-scheme: dark; } html[data-theme="dark"], html[data-theme="dark"] body { background: #1C1613; } html[data-theme="dark"] #jp26 .hero-shirahama { background: linear-gradient(170deg, #3A2A30, #5B3A3A 60%, #6A4038);} html[data-theme="dark"] #jp26 .hero-kyoto { background: linear-gradient(170deg, #3B2A2B, #5E3934 60%, #6E3F35);} html[data-theme="dark"] #jp26 .hero-hikone { background: linear-gradient(170deg, #2F2E26, #4A3F30 60%, #5A4733);} html[data-theme="dark"] #jp26 .hero-wakayama { background: linear-gradient(170deg, #3A2E2A, #5A4234 60%, #684A38); border-color: #8A6A50; }
+#jp26 .bar { position: sticky; top: 0; z-index: 20; }
+#jp26 .bar .wrap { gap: 12px; }
+#jp26 .themebtn { flex: none; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 99px; padding: 6px 12px;
+  font-family: var(--display); font-weight: 500; font-size: 14px; cursor: pointer; }
+#jp26 .themebtn:hover { border-color: var(--muted); }
+@media (max-width: 680px) { #jp26 .themebtn { font-size: 12.5px; padding: 5px 10px; } }
+#jp26 .basics .btn { background: var(--dark); border-color: var(--dark); color: var(--onDark); }
+@media (min-width: 1021px) { #jp26 .mapcol { max-height: calc(100vh - 100px); overflow: auto; scrollbar-width: thin; }
+  #jp26 .map { max-height: calc(100vh - 480px); min-height: 240px; } }
+#jp26 .gmap { margin-top: 12px; border-radius: 16px; overflow: hidden; border: 1.5px solid var(--line); background: var(--surface2); }
+#jp26 .gmap-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 9px 12px; font-size: 13.5px; font-weight: 800; flex-wrap: wrap; }
+#jp26 .gmap-sel { font-family: var(--display); font-weight: 600; font-size: 15px; }
+#jp26 .gmap-open, #jp26 .gmap-jump { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; font-weight: 800; font-size: 13px; }
+#jp26 .gmap iframe { display: block; width: 100%; height: 300px; border: 0; }
+#jp26 .gmap-jump { display: block; padding: 9px 12px; }
+#jp26 .map a.sel .mpin { stroke: var(--ink); stroke-width: 1.2; }
+</style>
 </head><body>
-<!-- Japan trip guide · VERSION 1.1 · Oct 16, 2026
-  Paste everything into a Squarespace Code Block (HTML mode). No JavaScript needed.
+<!-- Japan trip guide · VERSION 1.2 · Oct 16, 2026
+  GitHub Pages version (japan.zhunior.com), with dark mode and Google maps.
 Changes:
+  v1.2 (Oct 16, 2026): Moved to japan.zhunior.com (GitHub Pages). Dark mode with an Auto/Dark/Light switch. Google map in every tab: tap a pin or Show on map.
   v1.1 (Oct 16, 2026): New optional Wakayama stop tab (11 places from the Wakayama list plus Kishi, Awashima, Koyasan moved from Shirahama). Version numbers added.
   v1.0 (Oct 16, 2026): Shirahama list added (12 places, new Hot springs section). Pick-by-area panels replace the By area view to keep the file small.
 -->
@@ -244,6 +266,7 @@ Changes:
 #jp26 .bi { width: 15px; height: 15px; display: inline-block; background: currentColor; flex: none; }
 #jp26 .i-pin { -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 22s7-7.2 7-12.2A7 7 0 0 0 5 9.8C5 14.8 12 22 12 22z M12 7.2a2.6 2.6 0 1 0 0 5.2a2.6 2.6 0 1 0 0-5.2z' fill-rule='evenodd'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 22s7-7.2 7-12.2A7 7 0 0 0 5 9.8C5 14.8 12 22 12 22z M12 7.2a2.6 2.6 0 1 0 0 5.2a2.6 2.6 0 1 0 0-5.2z' fill-rule='evenodd'/%3E%3C/svg%3E") center / contain no-repeat; }
 #jp26 .i-cam { -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z'/%3E%3Ccircle cx='12' cy='13' r='3.4'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z'/%3E%3Ccircle cx='12' cy='13' r='3.4'/%3E%3C/svg%3E") center / contain no-repeat; }
+#jp26 .i-map { -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z M9 4v14 M15 6v14'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z M9 4v14 M15 6v14'/%3E%3C/svg%3E") center / contain no-repeat; }
 #jp26 .nextstop.opt { margin-top: 10px; border-style: dashed; }
 #jp26 .tab.opt { border: 1.5px dashed var(--muted); padding: 4.5px 12.5px; }
 #jp26 .tab.opt small { font-style: italic; }
@@ -779,7 +802,7 @@ Changes:
 <div id="jp26">
 <div class="bar"><div class="wrap">
   <a class="brand" href="#jp-city-osaka"><i></i>Japan<span>&nbsp;2026</span></a>
-  <div class="tabs" aria-label="Trip stops"><a class="tab" href="#jp-city-osaka" data-city="osaka"><b>Osaka</b><small>Nov 16-20</small></a><a class="tab opt" href="#jp-city-wakayama" data-city="wakayama"><b>Wakayama</b><small>Optional stop</small></a><a class="tab" href="#jp-city-shirahama" data-city="shirahama"><b>Shirahama</b><small>Nov 20-23</small></a><a class="tab" href="#jp-city-kyoto" data-city="kyoto"><b>Kyoto</b><small>Nov 23-27 · 29-Dec 2</small></a><a class="tab" href="#jp-city-hikone" data-city="hikone"><b>Hikone</b><small>Nov 27-29</small></a></div>
+  <div class="tabs" aria-label="Trip stops"><a class="tab" href="#jp-city-osaka" data-city="osaka"><b>Osaka</b><small>Nov 16-20</small></a><a class="tab opt" href="#jp-city-wakayama" data-city="wakayama"><b>Wakayama</b><small>Optional stop</small></a><a class="tab" href="#jp-city-shirahama" data-city="shirahama"><b>Shirahama</b><small>Nov 20-23</small></a><a class="tab" href="#jp-city-kyoto" data-city="kyoto"><b>Kyoto</b><small>Nov 23-27 · 29-Dec 2</small></a><a class="tab" href="#jp-city-hikone" data-city="hikone"><b>Hikone</b><small>Nov 27-29</small></a></div><button type="button" class="themebtn" hidden aria-label="Switch light or dark theme">Theme · Auto</button>
 </div></div>
 <div class="wrap">
   <div class="city" id="jp-city-osaka">
@@ -838,7 +861,8 @@ Changes:
     <div class="tags"><span class="tag must"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/></svg></span>Must-go</span></div>
     <p>The best curry ever. Kushikatsu Shinsekai is round the corner for a second round later.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/mSh6H6RMG7RDmiTG8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Go+Go+Curry+Tsutenkaku+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Go+Go+Curry+Tsutenkaku+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="1" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-2" data-n="2" data-cat="must" data-tags="Must-go" style="--c:#E2604A">
   <div class="num" aria-hidden="true">2</div>
@@ -848,7 +872,8 @@ Changes:
     <div class="tags"><span class="tag must"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/></svg></span>Must-go</span></div>
     <p>Amazing ramen. aoma and Notequal coffee are a couple of minutes away, so it pairs with a coffee stop.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/NhvNePS4b8ttajJi9" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=MENSTYLE+TANIMOTOKE+Honmachi+ramen" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=MENSTYLE+TANIMOTOKE+Honmachi+ramen" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="2" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="food" style="--c:#E8952F;--t:#FDF0DC">
@@ -866,7 +891,8 @@ Changes:
     
     <p>Small restaurant run by a husband and wife, mostly locals. Famous for its curry, which is really good and a bit spicy. There&#x27;s also a soup we haven&#x27;t tried. Very friendly, and last time came with a free coffee.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/Jb78hnzRPkMNrCUb8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=NICO+CAFE+Osaka+curry" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=NICO+CAFE+Osaka+curry" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="3" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-4" data-n="4" data-cat="food" data-tags="" style="--c:#E8952F">
   <div class="num" aria-hidden="true">4</div>
@@ -876,7 +902,8 @@ Changes:
     
     <p>American-style burgers in the fashion district. A classic burger, but ultra tasty. Good for when the mood strikes. Saturdays NYC is nearby.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/JrwxHjaBxJ9EccBL8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Craft+Burger+co.+Kitahorie" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Craft+Burger+co.+Kitahorie" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="4" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-5" data-n="5" data-cat="food" data-tags="Late night" style="--c:#E8952F">
   <div class="num" aria-hidden="true">5</div>
@@ -886,7 +913,8 @@ Changes:
     <div class="tags"><span class="tag">Late night</span></div>
     <p>Kushikatsu is Osaka&#x27;s deep-fried-everything-on-a-skewer specialty. Good for late-night snacks and drinks; Go Go Curry is round the corner.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/VtEc4GhdFGU9hUdx9" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kushikatsu+Shinsekai+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kushikatsu+Shinsekai+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="5" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-6" data-n="6" data-cat="food" data-tags="Quick bite" style="--c:#E8952F">
   <div class="num" aria-hidden="true">6</div>
@@ -896,7 +924,8 @@ Changes:
     <div class="tags"><span class="tag">Quick bite</span></div>
     <p>One of the oldest takoyaki shops in Osaka, featured on a Netflix show. Pretty tasty. Right next to Roji Cafe.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/Zspo5bN73neMdk7N9" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Takoyaki+Umaiya+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Takoyaki+Umaiya+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="6" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-7" data-n="7" data-cat="food" data-tags="Quick bite|Outdoors" style="--c:#E8952F">
   <div class="num" aria-hidden="true">7</div>
@@ -906,7 +935,8 @@ Changes:
     <div class="tags"><span class="tag">Quick bite</span><span class="tag">Outdoors</span></div>
     <p>Small takoyaki stall run by a friendly uncle. A quick bite if you&#x27;re in the area.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/PnMj9Jjo5gAx1RqG7" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Takocha+takoyaki+Umeda" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Takocha+takoyaki+Umeda" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="7" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-8" data-n="8" data-cat="food" data-tags="Quick bite" style="--c:#E8952F">
   <div class="num" aria-hidden="true">8</div>
@@ -916,7 +946,8 @@ Changes:
     <div class="tags"><span class="tag">Quick bite</span></div>
     <p>A hotel with tasty matcha ice cream in the lobby. Next door to Manmanki.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/Mz9ySLd1bpXPP1hc6" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=OYASUMI+ICE+HOTEL+Namba+matcha" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=OYASUMI+ICE+HOTEL+Namba+matcha" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="8" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-9" data-n="9" data-cat="food" data-tags="" style="--c:#E8952F">
   <div class="num" aria-hidden="true">9</div>
@@ -926,7 +957,8 @@ Changes:
     
     <p>Famous oden restaurant we haven&#x27;t tried yet, one to satisfy curiosity. It&#x27;s out of the way, so it&#x27;s easiest combined with a Shinsekai day.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/8SopKeSroLo64Nnd9" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Marukome+oden+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Marukome+oden+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="9" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-10" data-n="10" data-cat="food" data-tags="" style="--c:#E8952F">
   <div class="num" aria-hidden="true">10</div>
@@ -936,7 +968,8 @@ Changes:
     
     <p>Another famous oden restaurant. Not tried yet, but high on the list. Much closer than Marukome, so it&#x27;s the easier oden pick.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/hRHXdwzPzJUmRGfN9" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Hanakujira+honten+oden+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Hanakujira+honten+oden+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="10" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="coffee" style="--c:#9A6B4B;--t:#F4E9DF">
@@ -955,7 +988,8 @@ Changes:
     <div class="tags"><span class="tag must"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/></svg></span>Must-go</span></div>
     <p>Small and trendy. The best latte in Osaka.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/a6caNjRxmH4DXR44A" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=aoma+coffee+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=aoma+coffee+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="11" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-12" data-n="12" data-cat="coffee" data-tags="Low energy|Photo spot" style="--c:#9A6B4B">
   <div class="num" aria-hidden="true">12</div>
@@ -965,7 +999,8 @@ Changes:
     <div class="tags"><span class="tag">Low energy</span><span class="tag">Photo spot</span></div>
     <p>Absolutely amazing coffee shop hidden in an alley. No talking allowed, so it&#x27;s quiet and very old-style. Great for photos, and the owner allows them. Takoyaki Umaiya is next door.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/oquAxfsyoLKZoGQy5" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Roji+Cafe+Tenma+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Roji+Cafe+Tenma+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="12" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-13" data-n="13" data-cat="coffee" data-tags="" style="--c:#9A6B4B">
   <div class="num" aria-hidden="true">13</div>
@@ -975,7 +1010,8 @@ Changes:
     
     <p>Trendy and ultra popular with locals. A couple of minutes from aoma.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/5REqAHeuFbHpBB2NA" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Notequal+Coffee+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Notequal+Coffee+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="13" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-14" data-n="14" data-cat="coffee" data-tags="" style="--c:#9A6B4B">
   <div class="num" aria-hidden="true">14</div>
@@ -985,7 +1021,8 @@ Changes:
     
     <p>Australian-style coffee with a western breakfast. Highly recommended by foreign photographers for the food. A good breakfast pick.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/XkVRKpE85pUuTRae8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Melbourne+Coffee+Senba+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Melbourne+Coffee+Senba+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="14" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-15" data-n="15" data-cat="coffee" data-tags="Photo spot" style="--c:#9A6B4B">
   <div class="num" aria-hidden="true">15</div>
@@ -995,7 +1032,8 @@ Changes:
     <div class="tags"><span class="tag">Photo spot</span></div>
     <p>Coffee in a historic European-style building. Go for the vibes if you&#x27;re nearby.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/Fvj66Dr9hDiCtFwt9" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Mole+Hosoi+Coffees+Kitahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Mole+Hosoi+Coffees+Kitahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="15" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-16" data-n="16" data-cat="coffee" data-tags="Queue" style="--c:#9A6B4B">
   <div class="num" aria-hidden="true">16</div>
@@ -1005,7 +1043,8 @@ Changes:
     <div class="tags"><span class="tag">Queue</span></div>
     <p>Healthy-style brunch: tasty but small portions, and good coffee. Very popular with Japanese visitors, so expect a short queue.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/1YsWrF6HHS12GM6N7" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=SHIMATONERIKO+coffee+roaster+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=SHIMATONERIKO+coffee+roaster+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="16" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-17" data-n="17" data-cat="coffee" data-tags="" style="--c:#9A6B4B">
   <div class="num" aria-hidden="true">17</div>
@@ -1015,7 +1054,8 @@ Changes:
     
     <p>A clothing store with a coffee shop inside. Worth a look if you&#x27;re in the area; Craft Burger is nearby.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/Ea2XRYr1iyjBxmsu5" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Saturdays+NYC+Osaka+cafe" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Saturdays+NYC+Osaka+cafe" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="17" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="drinks" style="--c:#8A5AA6;--t:#F1E8F6">
@@ -1032,7 +1072,8 @@ Changes:
     <div class="tags"><span class="tag">Late night</span></div>
     <p>Tiny izakaya bar with friendly, loud staff. The food is normal, but the drinks and vibes are amazing. OYASUMI ICE is next door.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/5ox63xbe6cpLZXsg6" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Manmanki+Namba+izakaya" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Manmanki+Namba+izakaya" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="18" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-19" data-n="19" data-cat="drinks" data-tags="Late night|Low energy" style="--c:#8A5AA6">
   <div class="num" aria-hidden="true">19</div>
@@ -1042,7 +1083,8 @@ Changes:
     <div class="tags"><span class="tag">Late night</span><span class="tag">Low energy</span></div>
     <p>A quieter bar to chill with a late-night drink.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/vPcRWdro36thTdjF6" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Bar+Seven+Namba+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Bar+Seven+Namba+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="19" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-20" data-n="20" data-cat="drinks" data-tags="Low energy|Pricier" style="--c:#8A5AA6">
   <div class="num" aria-hidden="true">20</div>
@@ -1052,7 +1094,8 @@ Changes:
     <div class="tags"><span class="tag">Low energy</span><span class="tag">Pricier</span></div>
     <p>Small, chill wine bar, a bit fancier. Good for a casual quick drink on a lazy day.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/Z6AciSS3z4qhoNPv9" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Luv+Wine+Namba+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Luv+Wine+Namba+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="20" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="sights" style="--c:#4F9A6A;--t:#E3F2E7">
@@ -1070,7 +1113,8 @@ Changes:
     <div class="tags"><span class="tag">Late night</span><span class="tag">Outdoors</span></div>
     <p>The centre of Osaka&#x27;s nightlife and tourism. Worth going at least once. Very crowded and everything is overpriced, but a drink in a local bar while watching the night crowd is an experience.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/WaDFD5NCBPPYQLx7A" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Ebisubashi+Dotonbori+night" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Ebisubashi+Dotonbori+night" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="21" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-22" data-n="22" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">22</div>
@@ -1080,7 +1124,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A decent park and good photos of the castle; inside is a museum, open during the day. Not a must. Autumn leaves in the park typically peak mid-November to early December.</p>
     <div class="btns"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Osaka+Castle" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Osaka+Castle+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Osaka+Castle+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="22" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-23" data-n="23" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">23</div>
@@ -1090,7 +1135,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>The most famous temple in Osaka. Big and very photogenic. Worth going. Shinsekai and Go Go Curry are a short walk away.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/C1XpHUcgMBRRREwk8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Shitennoji+temple+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Shitennoji+temple+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="23" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-24" data-n="24" data-cat="sights" data-tags="Must-go|Outdoors|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">24</div>
@@ -1100,7 +1146,8 @@ Changes:
     <div class="tags"><span class="tag must"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/></svg></span>Must-go</span><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A torii gate overlooking all of Osaka. An amazing viewpoint and high on the wish list. Best saved for a clear day.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/g1hxcX8Ah5Q3S4nc9" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Shubodai+Ikeda+torii+view" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Shubodai+Ikeda+torii+view" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="24" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-osaka-p-25" data-n="25" data-cat="sights" data-tags="Low energy|Outdoors" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">25</div>
@@ -1110,7 +1157,8 @@ Changes:
     <div class="tags"><span class="tag">Low energy</span><span class="tag">Outdoors</span></div>
     <p>A nice shrine on a hill in the suburbs, with an old-style shopping street. Not a must, but a calm, chill spot if you&#x27;re out that way.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/dgJnc7e3JwWpEw2HA" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Ishikiri+Tsurugiya+Shrine" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Ishikiri+Tsurugiya+Shrine" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="25" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div></div>
       <details class="areas"><summary>Pick by area <span>places close together, to combine in one outing</span></summary><div class="arows"><div class="arow"><div class="aname">Kitahama / Dōjima<span>0.5-1 km</span></div><div class="achips"><a class="achip pc-coffee pt-5" data-pin="15" href="#jp-osaka-p-15" style="--c:#9A6B4B"><b>15</b>Mole &amp; Hosoi Coffees</a><a class="achip pc-food" data-pin="3" href="#jp-osaka-p-3" style="--c:#E8952F"><b>3</b>NICO CAFE</a></div></div><div class="arow"><div class="aname">Honmachi / Semba<span>1-1.5 km · walk</span></div><div class="achips"><a class="achip pc-food pt-0" data-pin="2" href="#jp-osaka-p-2" style="--c:#E2604A"><b>2</b>MENSTYLE TANIMOTOKE</a><a class="achip pc-coffee pt-0" data-pin="11" href="#jp-osaka-p-11" style="--c:#9A6B4B"><b>11</b>aoma coffee</a><a class="achip pc-coffee" data-pin="13" href="#jp-osaka-p-13" style="--c:#9A6B4B"><b>13</b>Notequal Coffee</a><a class="achip pc-coffee" data-pin="14" href="#jp-osaka-p-14" style="--c:#9A6B4B"><b>14</b>Melbourne Coffee Senba</a></div></div><div class="arow"><div class="aname">Osaka Castle<span>2 km</span></div><div class="achips"><a class="achip pc-sights pt-4 pt-5" data-pin="22" href="#jp-osaka-p-22" style="--c:#4F9A6A"><b>22</b>Osaka Castle</a></div></div><div class="arow"><div class="aname">Tenma / Umeda<span>2 km</span></div><div class="achips"><a class="achip pc-coffee pt-3 pt-5" data-pin="12" href="#jp-osaka-p-12" style="--c:#9A6B4B"><b>12</b>Roji Cafe</a><a class="achip pc-food pt-1" data-pin="6" href="#jp-osaka-p-6" style="--c:#E8952F"><b>6</b>Takoyaki Umaiya</a><a class="achip pc-food pt-1 pt-4" data-pin="7" href="#jp-osaka-p-7" style="--c:#E8952F"><b>7</b>Takocha</a></div></div><div class="arow"><div class="aname">Fukushima<span>2 km</span></div><div class="achips"><a class="achip pc-food" data-pin="10" href="#jp-osaka-p-10" style="--c:#E8952F"><b>10</b>Hanakujira honten</a></div></div><div class="arow"><div class="aname">Horie / Shinsaibashi<span>2 km</span></div><div class="achips"><a class="achip pc-food" data-pin="4" href="#jp-osaka-p-4" style="--c:#E8952F"><b>4</b>Craft Burger co.</a><a class="achip pc-coffee" data-pin="17" href="#jp-osaka-p-17" style="--c:#9A6B4B"><b>17</b>Saturdays NYC</a></div></div><div class="arow"><div class="aname">Namba / Dotonbori<span>2.5 km</span></div><div class="achips"><a class="achip pc-sights pt-2 pt-4" data-pin="21" href="#jp-osaka-p-21" style="--c:#4F9A6A"><b>21</b>Ebisu Bridge &amp; Dotonbori</a><a class="achip pc-drinks pt-2" data-pin="18" href="#jp-osaka-p-18" style="--c:#8A5AA6"><b>18</b>Manmanki</a><a class="achip pc-drinks pt-2 pt-3" data-pin="19" href="#jp-osaka-p-19" style="--c:#8A5AA6"><b>19</b>Bar Seven</a><a class="achip pc-drinks pt-3" data-pin="20" href="#jp-osaka-p-20" style="--c:#8A5AA6"><b>20</b>Luv Wine Namba</a><a class="achip pc-food pt-1" data-pin="8" href="#jp-osaka-p-8" style="--c:#E8952F"><b>8</b>OYASUMI ICE &amp; HOTEL</a></div></div><div class="arow"><div class="aname">Shinsekai / Tennōji<span>4-6 km</span></div><div class="achips"><a class="achip pc-sights pt-4 pt-5" data-pin="23" href="#jp-osaka-p-23" style="--c:#4F9A6A"><b>23</b>Shitennō-ji</a><a class="achip pc-food pt-0" data-pin="1" href="#jp-osaka-p-1" style="--c:#E2604A"><b>1</b>Go Go Curry Tsutenkaku</a><a class="achip pc-food pt-2" data-pin="5" href="#jp-osaka-p-5" style="--c:#E8952F"><b>5</b>Kushikatsu Shinsekai</a><a class="achip pc-coffee" data-pin="16" href="#jp-osaka-p-16" style="--c:#9A6B4B"><b>16</b>SHIMATONERIKO</a><a class="achip pc-food" data-pin="9" href="#jp-osaka-p-9" style="--c:#E8952F"><b>9</b>Marukome</a></div></div><div class="arow"><div class="aname">Half-day trips<span>13-17 km</span></div><div class="achips"><a class="achip pc-sights pt-0 pt-4 pt-5" data-pin="24" href="#jp-osaka-p-24" style="--c:#4F9A6A"><b>24</b>Shubodai</a><a class="achip pc-sights pt-3 pt-4" data-pin="25" href="#jp-osaka-p-25" style="--c:#4F9A6A"><b>25</b>Ishikiri Tsurugiya Jinja</a></div></div></div></details>
@@ -1120,7 +1168,10 @@ Changes:
     <div class="mapcol">
       <div class="mapbox"><input class="vh maptog" type="checkbox" id="osaka-maptog"><label class="maphead" for="osaka-maptog">Osaka at a glance <span>25 places</span></label>
         <div class="mapbody"><svg viewBox="0 0 100 150" class="map map-t" style="aspect-ratio:100/150" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="100" height="150" rx="6" class="mbg" fill="#FFFDF8" stroke="#EADCC8" stroke-width=".5"/><defs><pattern id="jpdots2" x="2.5" y="2.5" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r=".22" class="mgrid" fill="#E6D6C1"/></pattern></defs><rect x="2.5" y="2.5" width="95" height="145" fill="url(#jpdots2)"/><text x="31.3" y="13.1" text-anchor="end" class="area">UMEDA · TENMA</text><text x="60.1" y="40.5" text-anchor="start" class="area">KITAHAMA</text><text x="28.2" y="60.3" text-anchor="end" class="area">HONMACHI</text><text x="26.7" y="76.4" text-anchor="end" class="area">HORIE</text><text x="19.8" y="33.0" text-anchor="middle" class="area">FUKUSHIMA</text><text x="27.4" y="96.2" text-anchor="end" class="area">NAMBA</text><text x="39.9" y="121.6" text-anchor="end" class="area">SHINSEKAI</text><text x="70.2" y="135.8" text-anchor="start" class="area">TENNŌJI</text><text x="38.3" y="147.1" text-anchor="start" class="area">KISHINOSATO</text><text x="80.7" y="46.2" text-anchor="middle" class="area">CASTLE</text><line x1="48.75" y1="118.63" x2="48.06" y2="116.31" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="42.06" y1="63.72" x2="40.17" y2="65.21" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="34.13" y1="77.11" x2="33.11" y2="78.80" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="49.38" y1="120.70" x2="50.07" y2="123.02" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="56.23" y1="13.90" x2="57.54" y2="16.55" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="38.95" y1="89.38" x2="34.60" y2="90.34" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="43.62" y1="63.34" x2="43.80" y2="59.22" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="55.76" y1="12.96" x2="54.45" y2="10.31" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="45.49" y1="64.28" x2="47.36" y2="65.28" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="43.00" y1="69.94" x2="43.73" y2="71.39" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="36.62" y1="74.28" x2="36.73" y2="72.77" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="39.11" y1="87.87" x2="38.56" y2="84.72" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="42.69" y1="88.81" x2="43.25" y2="90.14" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="38.17" y1="91.83" x2="38.97" y2="95.74" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="41.91" y1="86.55" x2="45.43" y2="83.51" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><circle cx="48.75" cy="118.63" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="42.06" cy="63.72" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="38.48" cy="32.96" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="34.13" cy="77.11" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="49.38" cy="120.70" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="56.23" cy="13.90" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="40.20" cy="15.60" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="38.95" cy="89.38" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="34.13" cy="145.05" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="19.81" cy="38.43" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="43.62" cy="63.34" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="55.76" cy="12.96" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="45.49" cy="64.28" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="43.00" cy="69.94" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="42.69" cy="48.81" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="63.38" cy="132.59" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="36.62" cy="74.28" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="39.11" cy="87.87" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="42.69" cy="88.81" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="38.17" cy="91.83" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="41.91" cy="86.55" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="80.19" cy="52.20" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="65.56" cy="114.10" r=".8" class="manchor" fill="#3A2E2A"/><g><circle cx="50.62" cy="46.73" r="3.4" class="mhotel" fill="#3A2E2A"/><text x="50.62" y="47.98" text-anchor="middle" class="hotel">★</text><text x="55.02" y="47.83" class="hotellbl">hotel</text></g><a href="#jp-osaka-p-1" data-pin="1" class="pc-food pt-0"><circle cx="48.06" cy="116.31" r="3.0" class="mpin" fill="#E2604A" stroke="#fff" stroke-width=".6"/><text x="48.06" y="117.36" text-anchor="middle" class="pinnum">1</text></a><a href="#jp-osaka-p-2" data-pin="2" class="pc-food pt-0"><circle cx="40.17" cy="65.21" r="3.0" class="mpin" fill="#E2604A" stroke="#fff" stroke-width=".6"/><text x="40.17" y="66.26" text-anchor="middle" class="pinnum">2</text></a><a href="#jp-osaka-p-3" data-pin="3" class="pc-food"><circle cx="38.48" cy="32.96" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="38.48" y="34.01" text-anchor="middle" class="pinnum">3</text></a><a href="#jp-osaka-p-4" data-pin="4" class="pc-food"><circle cx="33.11" cy="78.80" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="33.11" y="79.85" text-anchor="middle" class="pinnum">4</text></a><a href="#jp-osaka-p-5" data-pin="5" class="pc-food pt-2"><circle cx="50.07" cy="123.02" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="50.07" y="124.07" text-anchor="middle" class="pinnum">5</text></a><a href="#jp-osaka-p-6" data-pin="6" class="pc-food pt-1"><circle cx="57.54" cy="16.55" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="57.54" y="17.60" text-anchor="middle" class="pinnum">6</text></a><a href="#jp-osaka-p-7" data-pin="7" class="pc-food pt-1 pt-4"><circle cx="40.20" cy="15.60" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="40.20" y="16.65" text-anchor="middle" class="pinnum">7</text></a><a href="#jp-osaka-p-8" data-pin="8" class="pc-food pt-1"><circle cx="34.60" cy="90.34" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="34.60" y="91.39" text-anchor="middle" class="pinnum">8</text></a><a href="#jp-osaka-p-9" data-pin="9" class="pc-food"><circle cx="34.13" cy="145.05" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="34.13" y="146.10" text-anchor="middle" class="pinnum">9</text></a><a href="#jp-osaka-p-10" data-pin="10" class="pc-food"><circle cx="19.81" cy="38.43" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="19.81" y="39.48" text-anchor="middle" class="pinnum">10</text></a><a href="#jp-osaka-p-11" data-pin="11" class="pc-coffee pt-0"><circle cx="43.80" cy="59.22" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="43.80" y="60.27" text-anchor="middle" class="pinnum">11</text></a><a href="#jp-osaka-p-12" data-pin="12" class="pc-coffee pt-3 pt-5"><circle cx="54.45" cy="10.31" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="54.45" y="11.36" text-anchor="middle" class="pinnum">12</text></a><a href="#jp-osaka-p-13" data-pin="13" class="pc-coffee"><circle cx="47.36" cy="65.28" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="47.36" y="66.33" text-anchor="middle" class="pinnum">13</text></a><a href="#jp-osaka-p-14" data-pin="14" class="pc-coffee"><circle cx="43.73" cy="71.39" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="43.73" y="72.44" text-anchor="middle" class="pinnum">14</text></a><a href="#jp-osaka-p-15" data-pin="15" class="pc-coffee pt-5"><circle cx="42.69" cy="48.81" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="42.69" y="49.86" text-anchor="middle" class="pinnum">15</text></a><a href="#jp-osaka-p-16" data-pin="16" class="pc-coffee"><circle cx="63.38" cy="132.59" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="63.38" y="133.64" text-anchor="middle" class="pinnum">16</text></a><a href="#jp-osaka-p-17" data-pin="17" class="pc-coffee"><circle cx="36.73" cy="72.77" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="36.73" y="73.82" text-anchor="middle" class="pinnum">17</text></a><a href="#jp-osaka-p-18" data-pin="18" class="pc-drinks pt-2"><circle cx="38.56" cy="84.72" r="3.0" class="mpin" fill="#8A5AA6" stroke="#fff" stroke-width=".6"/><text x="38.56" y="85.77" text-anchor="middle" class="pinnum">18</text></a><a href="#jp-osaka-p-19" data-pin="19" class="pc-drinks pt-2 pt-3"><circle cx="43.25" cy="90.14" r="3.0" class="mpin" fill="#8A5AA6" stroke="#fff" stroke-width=".6"/><text x="43.25" y="91.19" text-anchor="middle" class="pinnum">19</text></a><a href="#jp-osaka-p-20" data-pin="20" class="pc-drinks pt-3"><circle cx="38.97" cy="95.74" r="3.0" class="mpin" fill="#8A5AA6" stroke="#fff" stroke-width=".6"/><text x="38.97" y="96.79" text-anchor="middle" class="pinnum">20</text></a><a href="#jp-osaka-p-21" data-pin="21" class="pc-sights pt-2 pt-4"><circle cx="45.43" cy="83.51" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="45.43" y="84.56" text-anchor="middle" class="pinnum">21</text></a><a href="#jp-osaka-p-22" data-pin="22" class="pc-sights pt-4 pt-5"><circle cx="80.19" cy="52.20" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="80.19" y="53.25" text-anchor="middle" class="pinnum">22</text></a><a href="#jp-osaka-p-23" data-pin="23" class="pc-sights pt-4 pt-5"><circle cx="65.56" cy="114.10" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="65.56" y="115.15" text-anchor="middle" class="pinnum">23</text></a><a href="#jp-osaka-p-24" data-pin="24" class="pc-sights pt-0 pt-4 pt-5"><g transform="translate(92 27)"><circle r="3" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">24</text></g></a><text x="87.4" y="28.2" text-anchor="end" class="far">↑ Shubodai · 17 km north</text><a href="#jp-osaka-p-25" data-pin="25" class="pc-sights pt-3 pt-4"><g transform="translate(92 70)"><circle r="3" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">25</text></g></a><text x="87.4" y="71.2" text-anchor="end" class="far">Ishikiri · 13 km east →</text><g transform="translate(66 144)"><line x1="0" y1="0" x2="17" y2="0" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><line x1="0" y1="-1" x2="0" y2="1" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><line x1="17" y1="-1" x2="17" y2="1" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><text x="19" y="1" class="scale">1 km</text></g><text x="94" y="138" text-anchor="end" class="scale">N ↑</text></svg>
-        <p class="mapnote">Tap a pin to jump to that place. Distances are straight-line from the hotel (★).</p></div>
+        <p class="mapnote">Tap a pin to jump to that place. Distances are straight-line from the hotel (★).</p>
+        <div class="gmap" data-city="osaka" hidden><div class="gmap-head"><span class="gmap-sel"></span><a class="gmap-open" href="#" target="_blank" rel="noopener">Open in Google Maps</a></div>
+          <iframe title="Google map of Osaka" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <a class="gmap-jump" href="#" hidden>Go to this place's card ↓</a></div></div>
       </div>
     </div>
   </div>
@@ -1180,7 +1231,8 @@ Changes:
     
     <p>Ramen with a rich, creamy chicken broth, right by the station. Opens at 11:00.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=3540497299708346347" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E3%81%A8%E3%82%8A%E3%81%9D%E3%81%B0%E5%98%89%E4%BA%BA+%E5%92%8C%E6%AD%8C%E5%B1%B1" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E3%81%A8%E3%82%8A%E3%81%9D%E3%81%B0%E5%98%89%E4%BA%BA+%E5%92%8C%E6%AD%8C%E5%B1%B1" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="1" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-wakayama-p-2" data-n="2" data-cat="food" data-tags="" style="--c:#E8952F">
   <div class="num" aria-hidden="true">2</div>
@@ -1190,7 +1242,8 @@ Changes:
     
     <p>Eel over rice (unagi). Opens at 11:00.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=1221958384847454444" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E4%BA%8C%E4%B8%8E%E5%91%82+%E5%92%8C%E6%AD%8C%E5%B1%B1+%E3%81%86%E3%81%AA%E3%81%8E" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E4%BA%8C%E4%B8%8E%E5%91%82+%E5%92%8C%E6%AD%8C%E5%B1%B1+%E3%81%86%E3%81%AA%E3%81%8E" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="2" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-wakayama-p-3" data-n="3" data-cat="food" data-tags="" style="--c:#E8952F">
   <div class="num" aria-hidden="true">3</div>
@@ -1200,7 +1253,8 @@ Changes:
     
     <p>Tasty local wagyu BBQ (yakiniku), with deer meat on the menu too.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=11554976602232267605" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E3%82%AB%E3%83%AB%E3%83%93%E4%B8%80%E4%B8%81+%E5%92%8C%E6%AD%8C%E5%B1%B1%E5%BA%97" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E3%82%AB%E3%83%AB%E3%83%93%E4%B8%80%E4%B8%81+%E5%92%8C%E6%AD%8C%E5%B1%B1%E5%BA%97" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="3" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-wakayama-p-4" data-n="4" data-cat="food" data-tags="Late night" style="--c:#E8952F">
   <div class="num" aria-hidden="true">4</div>
@@ -1210,7 +1264,8 @@ Changes:
     <div class="tags"><span class="tag">Late night</span></div>
     <p>The tastiest yakitori on the list. Dinner from 17:00.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=7804657641492008548" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E7%84%BC%E9%B3%A5+%E3%81%8B%E3%81%84%E3%82%8D+%E5%92%8C%E6%AD%8C%E5%B1%B1" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E7%84%BC%E9%B3%A5+%E3%81%8B%E3%81%84%E3%82%8D+%E5%92%8C%E6%AD%8C%E5%B1%B1" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="4" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-wakayama-p-5" data-n="5" data-cat="food" data-tags="Late night" style="--c:#E8952F">
   <div class="num" aria-hidden="true">5</div>
@@ -1220,7 +1275,8 @@ Changes:
     <div class="tags"><span class="tag">Late night</span></div>
     <p>Another tasty yakitori spot. Opens at 18:00.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=2290438624177363043" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=BRIDGE+%E7%84%BC%E9%B3%A5+%E5%92%8C%E6%AD%8C%E5%B1%B1" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=BRIDGE+%E7%84%BC%E9%B3%A5+%E5%92%8C%E6%AD%8C%E5%B1%B1" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="5" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-wakayama-p-6" data-n="6" data-cat="food" data-tags="Late night" style="--c:#E8952F">
   <div class="num" aria-hidden="true">6</div>
@@ -1230,7 +1286,8 @@ Changes:
     <div class="tags"><span class="tag">Late night</span></div>
     <p>An interesting yakitori place (やき鳥 一代). Dinner from 17:00.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=1833223725525101210" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E3%82%84%E3%81%8D%E9%B3%A5+%E4%B8%80%E4%BB%A3+%E5%92%8C%E6%AD%8C%E5%B1%B1" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E3%82%84%E3%81%8D%E9%B3%A5+%E4%B8%80%E4%BB%A3+%E5%92%8C%E6%AD%8C%E5%B1%B1" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="6" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-wakayama-p-7" data-n="7" data-cat="food" data-tags="" style="--c:#E8952F">
   <div class="num" aria-hidden="true">7</div>
@@ -1240,7 +1297,8 @@ Changes:
     
     <p>A local ramen shop (まる万ラーメン) a few minutes from the castle.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=11560120881329501842" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E3%81%BE%E3%82%8B%E4%B8%87%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3+%E4%B9%9D%E7%95%AA%E4%B8%81" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E3%81%BE%E3%82%8B%E4%B8%87%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3+%E4%B9%9D%E7%95%AA%E4%B8%81" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="7" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-wakayama-p-8" data-n="8" data-cat="food" data-tags="" style="--c:#E8952F">
   <div class="num" aria-hidden="true">8</div>
@@ -1250,7 +1308,8 @@ Changes:
     
     <p>Seafood omakase for about 20 euros per person, by the sea in Saikazaki. Opens at 11:00. Pairs with Bandoko Garden next door.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=5911579447961568639" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E3%81%86%E3%81%BF%E3%81%BE%E3%81%A1%E9%A3%9F%E5%A0%82%E3%81%86%E3%82%89%E3%82%89+%E9%9B%91%E8%B3%80%E5%B4%8E" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E3%81%86%E3%81%BF%E3%81%BE%E3%81%A1%E9%A3%9F%E5%A0%82%E3%81%86%E3%82%89%E3%82%89+%E9%9B%91%E8%B3%80%E5%B4%8E" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="8" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="drinks" style="--c:#8A5AA6;--t:#F1E8F6">
@@ -1267,7 +1326,8 @@ Changes:
     <div class="tags"><span class="tag">Late night</span></div>
     <p>A tasty spot for food and drinks at night, with charcoal-grilled yakitori. Opens at 18:00. Called 焼鳥炭火笑酒屋 五縁 on the map.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=16494497776411410737" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E4%BA%94%E7%B8%81+%E5%92%8C%E6%AD%8C%E5%B1%B1%E5%BA%97" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E4%BA%94%E7%B8%81+%E5%92%8C%E6%AD%8C%E5%B1%B1%E5%BA%97" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="9" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="sights" style="--c:#4F9A6A;--t:#E3F2E7">
@@ -1285,7 +1345,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A garden on a headland next to the sea, for the view. Opens at 8:00. Lunch at Urara is next door.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=6190730922807149711" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E7%95%AA%E6%89%80%E5%BA%AD%E5%9C%92+%E5%92%8C%E6%AD%8C%E5%B1%B1" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E7%95%AA%E6%89%80%E5%BA%AD%E5%9C%92+%E5%92%8C%E6%AD%8C%E5%B1%B1" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="10" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-wakayama-p-11" data-n="11" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">11</div>
@@ -1295,7 +1356,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>The castle on its hill in the middle of the city, with a park around it.</p>
     <div class="btns"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Wakayama+Castle" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Wakayama+Castle" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Wakayama+Castle" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="11" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="trips" style="--c:#3E8FA8;--t:#E1F0F5">
@@ -1311,7 +1373,8 @@ Changes:
     <div class="tags"><span class="tag">Quick bite</span></div>
     <p>The little station famous for its cat stationmaster, at the end of the Kishigawa Line from Wakayama Station.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=17241543118648371379" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kishi+Station+cat+stationmaster" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kishi+Station+cat+stationmaster" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="12" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-wakayama-p-13" data-n="13" data-cat="trips" data-tags="Photo spot" style="--c:#3E8FA8">
   <div class="num" aria-hidden="true">13</div>
@@ -1321,7 +1384,8 @@ Changes:
     <div class="tags"><span class="tag">Photo spot</span></div>
     <p>A seaside shrine known for the thousands of dolls people leave there.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=15657838165788794839" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Awashima+Shrine+Kada+dolls" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Awashima+Shrine+Kada+dolls" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="13" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-wakayama-p-14" data-n="14" data-cat="trips" data-tags="Outdoors|Photo spot" style="--c:#3E8FA8">
   <div class="num" aria-hidden="true">14</div>
@@ -1331,7 +1395,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A mountain-top temple town and a centre of Shingon Buddhism, with the huge Okunoin cemetery and temple stays. A full day on its own.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=11714349864090713783" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Koyasan+Okunoin" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Koyasan+Okunoin" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="14" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div></div>
       <details class="areas"><summary>Pick by area <span>places close together, to combine in one outing</span></summary><div class="arows"><div class="arow"><div class="aname">By Wakayama Station<span>under 0.5 km</span></div><div class="achips"><a class="achip pc-food" data-pin="1" href="#jp-wakayama-p-1" style="--c:#E8952F"><b>1</b>Katto</a><a class="achip pc-drinks pt-2" data-pin="9" href="#jp-wakayama-p-9" style="--c:#8A5AA6"><b>9</b>Goen</a><a class="achip pc-food" data-pin="2" href="#jp-wakayama-p-2" style="--c:#E8952F"><b>2</b>Niyoro</a><a class="achip pc-food" data-pin="3" href="#jp-wakayama-p-3" style="--c:#E8952F"><b>3</b>Kalbi 1cho</a></div></div><div class="arow"><div class="aname">Castle &amp; city centre<span>1.4-2.2 km</span></div><div class="achips"><a class="achip pc-sights pt-4 pt-5" data-pin="11" href="#jp-wakayama-p-11" style="--c:#4F9A6A"><b>11</b>Wakayama Castle</a><a class="achip pc-food" data-pin="7" href="#jp-wakayama-p-7" style="--c:#E8952F"><b>7</b>Maruman Ramen</a><a class="achip pc-food pt-2" data-pin="5" href="#jp-wakayama-p-5" style="--c:#E8952F"><b>5</b>BRIDGE</a><a class="achip pc-food pt-2" data-pin="6" href="#jp-wakayama-p-6" style="--c:#E8952F"><b>6</b>Ichidai</a><a class="achip pc-food pt-2" data-pin="4" href="#jp-wakayama-p-4" style="--c:#E8952F"><b>4</b>Yakitori Kairo</a></div></div><div class="arow"><div class="aname">Saikazaki, by the sea<span>6.5 km</span></div><div class="achips"><a class="achip pc-food" data-pin="8" href="#jp-wakayama-p-8" style="--c:#E8952F"><b>8</b>Umimachi Shokudo Urara</a><a class="achip pc-sights pt-4 pt-5" data-pin="10" href="#jp-wakayama-p-10" style="--c:#4F9A6A"><b>10</b>Bandoko Garden</a></div></div><div class="arow"><div class="aname">Further out<span>11-36 km</span></div><div class="achips"><a class="achip pc-trips pt-1" data-pin="12" href="#jp-wakayama-p-12" style="--c:#3E8FA8"><b>12</b>Kishi Station</a><a class="achip pc-trips pt-5" data-pin="13" href="#jp-wakayama-p-13" style="--c:#3E8FA8"><b>13</b>Awashima Shrine</a><a class="achip pc-trips pt-4 pt-5" data-pin="14" href="#jp-wakayama-p-14" style="--c:#3E8FA8"><b>14</b>Koyasan</a></div></div></div></details>
@@ -1341,7 +1406,10 @@ Changes:
     <div class="mapcol">
       <div class="mapbox"><input class="vh maptog" type="checkbox" id="wakayama-maptog"><label class="maphead" for="wakayama-maptog">Wakayama at a glance <span>14 places</span></label>
         <div class="mapbody"><svg viewBox="0 0 100 112" class="map map-t" style="aspect-ratio:100/112" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="100" height="112" rx="6" class="mbg" fill="#FFFDF8" stroke="#EADCC8" stroke-width=".5"/><defs><pattern id="jpdots3" x="2.5" y="2.5" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r=".22" class="mgrid" fill="#E6D6C1"/></pattern></defs><rect x="2.5" y="2.5" width="95" height="107" fill="url(#jpdots3)"/><text x="29.4" y="101.4" text-anchor="start" class="area">SAIKAZAKI</text><text x="59.3" y="52.6" text-anchor="start" class="area">CASTLE</text><line x1="78.53" y1="43.90" x2="75.72" y2="47.82" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="76.23" y1="41.02" x2="73.09" y2="41.29" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="76.85" y1="40.30" x2="77.21" y2="35.65" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="57.46" y1="39.29" x2="58.37" y2="38.31" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="54.01" y1="51.60" x2="52.60" y2="52.55" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="55.19" y1="43.28" x2="53.53" y2="43.49" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="24.17" y1="102.77" x2="25.32" y2="102.92" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="79.68" y1="43.85" x2="82.66" y2="49.20" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="19.42" y1="102.14" x2="18.27" y2="101.99" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="56.31" y1="48.79" x2="58.47" y2="48.61" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><circle cx="78.53" cy="43.90" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="76.23" cy="41.02" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="76.85" cy="40.30" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="65.43" cy="33.23" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="57.46" cy="39.29" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="54.01" cy="51.60" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="55.19" cy="43.28" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="24.17" cy="102.77" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="79.68" cy="43.85" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="19.42" cy="102.14" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="56.31" cy="48.79" r=".8" class="manchor" fill="#3A2E2A"/><g><circle cx="80.58" cy="42.26" r="3.4" class="mhotel" fill="#3A2E2A"/><text x="80.58" y="43.51" text-anchor="middle" class="hotel">★</text><text x="84.98" y="43.36" class="hotellbl">station</text></g><a href="#jp-wakayama-p-1" data-pin="1" class="pc-food"><circle cx="75.72" cy="47.82" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="75.72" y="48.87" text-anchor="middle" class="pinnum">1</text></a><a href="#jp-wakayama-p-2" data-pin="2" class="pc-food"><circle cx="73.09" cy="41.29" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="73.09" y="42.34" text-anchor="middle" class="pinnum">2</text></a><a href="#jp-wakayama-p-3" data-pin="3" class="pc-food"><circle cx="77.21" cy="35.65" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="77.21" y="36.70" text-anchor="middle" class="pinnum">3</text></a><a href="#jp-wakayama-p-4" data-pin="4" class="pc-food pt-2"><circle cx="65.43" cy="33.23" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="65.43" y="34.28" text-anchor="middle" class="pinnum">4</text></a><a href="#jp-wakayama-p-5" data-pin="5" class="pc-food pt-2"><circle cx="58.37" cy="38.31" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="58.37" y="39.36" text-anchor="middle" class="pinnum">5</text></a><a href="#jp-wakayama-p-6" data-pin="6" class="pc-food pt-2"><circle cx="52.60" cy="52.55" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="52.60" y="53.60" text-anchor="middle" class="pinnum">6</text></a><a href="#jp-wakayama-p-7" data-pin="7" class="pc-food"><circle cx="53.53" cy="43.49" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="53.53" y="44.54" text-anchor="middle" class="pinnum">7</text></a><a href="#jp-wakayama-p-8" data-pin="8" class="pc-food"><circle cx="25.32" cy="102.92" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="25.32" y="103.97" text-anchor="middle" class="pinnum">8</text></a><a href="#jp-wakayama-p-9" data-pin="9" class="pc-drinks pt-2"><circle cx="82.66" cy="49.20" r="3.0" class="mpin" fill="#8A5AA6" stroke="#fff" stroke-width=".6"/><text x="82.66" y="50.25" text-anchor="middle" class="pinnum">9</text></a><a href="#jp-wakayama-p-10" data-pin="10" class="pc-sights pt-4 pt-5"><circle cx="18.27" cy="101.99" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="18.27" y="103.04" text-anchor="middle" class="pinnum">10</text></a><a href="#jp-wakayama-p-11" data-pin="11" class="pc-sights pt-4 pt-5"><circle cx="58.47" cy="48.61" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="58.47" y="49.66" text-anchor="middle" class="pinnum">11</text></a><a href="#jp-wakayama-p-13" data-pin="13" class="pc-trips pt-5"><g transform="translate(8 8)"><circle r="3" class="mpin" fill="#3E8FA8" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">13</text></g></a><text x="12.6" y="9.2" text-anchor="start" class="far">↖ Awashima 12 km</text><a href="#jp-wakayama-p-12" data-pin="12" class="pc-trips pt-1"><g transform="translate(92 8)"><circle r="3" class="mpin" fill="#3E8FA8" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">12</text></g></a><text x="87.4" y="9.2" text-anchor="end" class="far">Kishi 11 km →</text><a href="#jp-wakayama-p-14" data-pin="14" class="pc-trips pt-4 pt-5"><g transform="translate(92 16)"><circle r="3" class="mpin" fill="#3E8FA8" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">14</text></g></a><text x="87.4" y="17.2" text-anchor="end" class="far">Koyasan 36 km →</text><g transform="translate(70 106)"><line x1="0" y1="0" x2="13" y2="0" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><line x1="0" y1="-1" x2="0" y2="1" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><line x1="13" y1="-1" x2="13" y2="1" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><text x="15" y="1" class="scale">1 km</text></g><text x="94" y="100" text-anchor="end" class="scale">N ↑</text></svg>
-        <p class="mapnote">Tap a pin to jump to that place. Distances are straight-line from JR Wakayama Station (★).</p></div>
+        <p class="mapnote">Tap a pin to jump to that place. Distances are straight-line from JR Wakayama Station (★).</p>
+        <div class="gmap" data-city="wakayama" hidden><div class="gmap-head"><span class="gmap-sel"></span><a class="gmap-open" href="#" target="_blank" rel="noopener">Open in Google Maps</a></div>
+          <iframe title="Google map of Wakayama" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <a class="gmap-jump" href="#" hidden>Go to this place's card ↓</a></div></div>
       </div>
     </div>
   </div>
@@ -1398,7 +1466,8 @@ Changes:
     <div class="tags"><span class="tag must"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/></svg></span>Must-go</span></div>
     <p>Must go. Tasty ramen, and the big shrimp ramen is the one we want. Their signature bowl is a sea bream tantanmen. Inside the Key Terrace Hotel Seamore. Lunch 11:00-15:00, dinner 17:00-22:00.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=10240352576288176698" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Dakishimetai+ramen+Shirahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Dakishimetai+ramen+Shirahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="1" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-shirahama-p-2" data-n="2" data-cat="must" data-tags="Must-go" style="--c:#E2604A">
   <div class="num" aria-hidden="true">2</div>
@@ -1408,7 +1477,8 @@ Changes:
     <div class="tags"><span class="tag must"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/></svg></span>Must-go</span></div>
     <p>Must go for Japanese BBQ (yakiniku). Opens for dinner from 16:30. Called 南紀白浜 焼肉萬 on the map.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=4356415629714341682" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E5%8D%97%E7%B4%80%E7%99%BD%E6%B5%9C+%E7%84%BC%E8%82%89%E8%90%AC" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E5%8D%97%E7%B4%80%E7%99%BD%E6%B5%9C+%E7%84%BC%E8%82%89%E8%90%AC" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="2" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-shirahama-p-3" data-n="3" data-cat="must" data-tags="Must-go|Quick bite" style="--c:#E2604A">
   <div class="num" aria-hidden="true">3</div>
@@ -1418,7 +1488,8 @@ Changes:
     <div class="tags"><span class="tag must"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/></svg></span>Must-go</span><span class="tag">Quick bite</span></div>
     <p>Must go. The whole tuna cutting show is usually around 11:00, but the time can shift, so check the board. Fresh tuna, seafood and wagyu, with BBQ seats where you can grill what you buy. Go in the morning and take food home too. A short taxi ride from the guesthouse.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=7938307802199390379" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Toretore+Market+tuna+cutting" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Toretore+Market+tuna+cutting" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="3" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="food" style="--c:#E8952F;--t:#FDF0DC">
@@ -1438,7 +1509,8 @@ Changes:
     
     <p>A highly rated local cafe. Not tried yet. A few minutes&#x27; walk from the guesthouse, so an easy breakfast or lunch.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/cVsnAEcKvUkGaXHL8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Tsumugi+Cafe+Shirahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Tsumugi+Cafe+Shirahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="4" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-shirahama-p-5" data-n="5" data-cat="food" data-tags="" style="--c:#E8952F">
   <div class="num" aria-hidden="true">5</div>
@@ -1448,7 +1520,8 @@ Changes:
     
     <p>An interesting sushi restaurant we haven&#x27;t tried yet. One to check out for dinner.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/1zX18KPgxKSMuwFJ8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Miyuki+Sushi+Shirahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Miyuki+Sushi+Shirahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="5" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-shirahama-p-6" data-n="6" data-cat="food" data-tags="Book ahead|Photo spot" style="--c:#E8952F">
   <div class="num" aria-hidden="true">6</div>
@@ -1458,7 +1531,8 @@ Changes:
     <div class="tags"><span class="tag">Book ahead</span><span class="tag">Photo spot</span></div>
     <p>Omakase or set meals with an amazing sunset and sea view. Needs a reservation. In the same hotel building as Dakishimetai.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=10848447305798194294" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Ikesu+Warouda+Sushi+Yata+Shirahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Ikesu+Warouda+Sushi+Yata+Shirahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="6" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-shirahama-p-7" data-n="7" data-cat="food" data-tags="Quick bite" style="--c:#E8952F">
   <div class="num" aria-hidden="true">7</div>
@@ -1468,7 +1542,8 @@ Changes:
     <div class="tags"><span class="tag">Quick bite</span></div>
     <p>Cheap sashimi where the locals go, inside Fisherman&#x27;s Wharf Shirahama.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=15270952934666379931" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Ban-ya+Fisherman%27s+Wharf+Shirahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Ban-ya+Fisherman%27s+Wharf+Shirahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="7" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-shirahama-p-8" data-n="8" data-cat="food" data-tags="" style="--c:#E8952F">
   <div class="num" aria-hidden="true">8</div>
@@ -1478,7 +1553,8 @@ Changes:
     
     <p>Charcoal-grilled skewers. Dinner from 17:30. Called 炭火ダイニング 颯 on the map.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=14075486803131133320" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E7%82%AD%E7%81%AB%E3%83%80%E3%82%A4%E3%83%8B%E3%83%B3%E3%82%B0+%E9%A2%AF+%E7%99%BD%E6%B5%9C" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E7%82%AD%E7%81%AB%E3%83%80%E3%82%A4%E3%83%8B%E3%83%B3%E3%82%B0+%E9%A2%AF+%E7%99%BD%E6%B5%9C" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="8" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="coffee" style="--c:#9A6B4B;--t:#F4E9DF">
@@ -1497,7 +1573,8 @@ Changes:
     <div class="tags"><span class="tag must"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/></svg></span>Must-go</span></div>
     <p>Must go for a coffee brunch: breakfast and specialty coffee from 8:00. Virtual Market, a clothing shop, is in the same row. Called 豆の湯 on the map.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=3195587893017237390" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E8%B1%86%E3%81%AE%E6%B9%AF+%E7%99%BD%E6%B5%9C+cafe" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E8%B1%86%E3%81%AE%E6%B9%AF+%E7%99%BD%E6%B5%9C+cafe" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="9" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="drinks" style="--c:#8A5AA6;--t:#F1E8F6">
@@ -1514,7 +1591,8 @@ Changes:
     <div class="tags"><span class="tag">Late night</span></div>
     <p>A small izakaya for dinner with drinks, with grilled seafood at the counter. Opens at 16:00.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=7785594314647488227" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E5%A4%A7%E8%A1%86%E9%85%92%E5%A0%B4+%E9%95%B7%E4%B9%85+%E7%99%BD%E6%B5%9C" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E5%A4%A7%E8%A1%86%E9%85%92%E5%A0%B4+%E9%95%B7%E4%B9%85+%E7%99%BD%E6%B5%9C" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="10" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="onsen" style="--c:#6C7FC4;--t:#E8ECF8">
@@ -1529,7 +1607,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A historic public hot spring right on the rocks, open to the sea. One we really want to try. Open 8:00-17:00, closed Wednesdays, which doesn&#x27;t clash with our dates.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=17602803442712138027" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Sakinoyu+Shirahama+onsen" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Sakinoyu+Shirahama+onsen" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="11" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-shirahama-p-12" data-n="12" data-cat="onsen" data-tags="Low energy" style="--c:#6C7FC4">
   <div class="num" aria-hidden="true">12</div>
@@ -1539,7 +1618,8 @@ Changes:
     <div class="tags"><span class="tag">Low energy</span></div>
     <p>Our pick for a day-visit hot spring, in a seaside hotel. Check the day-visitor hours before going.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=3390272157845678808" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Hamachidori+no+yu+Kaishu+bath" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Hamachidori+no+yu+Kaishu+bath" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="12" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="sights" style="--c:#4F9A6A;--t:#E3F2E7">
@@ -1557,7 +1637,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A famous scenic spot. Wide, flat rock runs down to the sea, with big ocean views. The name means 1,000 tatami mats, after its size.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/X7obhxQpo7ApiCdNA" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Senjojiki+Shirahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Senjojiki+Shirahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="13" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-shirahama-p-14" data-n="14" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">14</div>
@@ -1567,7 +1648,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>The quieter rock shelf next to Senjojiki, a short walk from the guesthouse. Called 裏千畳敷 on the map.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=12856806204964319956" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E8%A3%8F%E5%8D%83%E7%95%B3%E6%95%B7+%E7%99%BD%E6%B5%9C" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E8%A3%8F%E5%8D%83%E7%95%B3%E6%95%B7+%E7%99%BD%E6%B5%9C" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="14" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-shirahama-p-15" data-n="15" data-cat="sights" data-tags="" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">15</div>
@@ -1577,7 +1659,8 @@ Changes:
     
     <p>A local shrine in town, saved without a note. A quick stop if we&#x27;re passing.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=11663528559639994824" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kumano+Sansho+Shrine+Shirahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kumano+Sansho+Shrine+Shirahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="15" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="trips" style="--c:#3E8FA8;--t:#E1F0F5">
@@ -1593,7 +1676,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>The best-known route of the Kumano Kodo pilgrimage trails, through forested mountains. A short section makes a good half-day hike from Shirahama.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=8946960721844952529" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kumano+Kodo+Nakahechi" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kumano+Kodo+Nakahechi" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="16" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div></div>
       <details class="areas"><summary>Pick by area <span>places close together, to combine in one outing</span></summary><div class="arows"><div class="arow"><div class="aname">By the guesthouse · Senjojiki<span>under 1 km</span></div><div class="achips"><a class="achip pc-food" data-pin="4" href="#jp-shirahama-p-4" style="--c:#E8952F"><b>4</b>Tsumugi Cafe</a><a class="achip pc-sights pt-4 pt-5" data-pin="14" href="#jp-shirahama-p-14" style="--c:#4F9A6A"><b>14</b>Ura-Senjojiki</a><a class="achip pc-sights pt-4 pt-5" data-pin="13" href="#jp-shirahama-p-13" style="--c:#4F9A6A"><b>13</b>Senjojiki Rock Plateau</a><a class="achip pc-onsen pt-3" data-pin="12" href="#jp-shirahama-p-12" style="--c:#6C7FC4"><b>12</b>Hamachidori-no-yu Kaishu</a></div></div><div class="arow"><div class="aname">Saki-no-yu &amp; the harbour<span>1-1.3 km</span></div><div class="achips"><a class="achip pc-food pt-0" data-pin="1" href="#jp-shirahama-p-1" style="--c:#E2604A"><b>1</b>Dakishimetai</a><a class="achip pc-food pt-5" data-pin="6" href="#jp-shirahama-p-6" style="--c:#E8952F"><b>6</b>Ikesu Warouda / Sushi Yata</a><a class="achip pc-food" data-pin="5" href="#jp-shirahama-p-5" style="--c:#E8952F"><b>5</b>Miyuki Sushi</a><a class="achip pc-onsen pt-4 pt-5" data-pin="11" href="#jp-shirahama-p-11" style="--c:#6C7FC4"><b>11</b>Saki-no-Yu</a><a class="achip pc-food pt-1" data-pin="7" href="#jp-shirahama-p-7" style="--c:#E8952F"><b>7</b>Ban-ya</a></div></div><div class="arow"><div class="aname">Shirahama town<span>1.5-2.3 km</span></div><div class="achips"><a class="achip pc-drinks pt-2" data-pin="10" href="#jp-shirahama-p-10" style="--c:#8A5AA6"><b>10</b>Popular Bar Chokyu</a><a class="achip pc-coffee pt-0" data-pin="9" href="#jp-shirahama-p-9" style="--c:#9A6B4B"><b>9</b>Mame no Yu</a><a class="achip pc-food pt-0" data-pin="2" href="#jp-shirahama-p-2" style="--c:#E2604A"><b>2</b>Yakiniku Man</a><a class="achip pc-sights" data-pin="15" href="#jp-shirahama-p-15" style="--c:#4F9A6A"><b>15</b>Kumano Sansho Shrine</a><a class="achip pc-food" data-pin="8" href="#jp-shirahama-p-8" style="--c:#E8952F"><b>8</b>Sumibi Dining Hayate</a></div></div><div class="arow"><div class="aname">Toretore Market<span>4 km</span></div><div class="achips"><a class="achip pc-food pt-0 pt-1" data-pin="3" href="#jp-shirahama-p-3" style="--c:#E2604A"><b>3</b>Toretore Market</a></div></div><div class="arow"><div class="aname">Day trip · Kumano Kodo<span>21 km</span></div><div class="achips"><a class="achip pc-trips pt-4 pt-5" data-pin="16" href="#jp-shirahama-p-16" style="--c:#3E8FA8"><b>16</b>Kumano Kodo Nakahechi</a></div></div></div></details>
@@ -1603,7 +1687,10 @@ Changes:
     <div class="mapcol">
       <div class="mapbox"><input class="vh maptog" type="checkbox" id="shirahama-maptog"><label class="maphead" for="shirahama-maptog">Shirahama at a glance <span>16 places</span></label>
         <div class="mapbody"><svg viewBox="0 0 100 118" class="map map-t" style="aspect-ratio:100/118" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="100" height="118" rx="6" class="mbg" fill="#FFFDF8" stroke="#EADCC8" stroke-width=".5"/><defs><pattern id="jpdots4" x="2.5" y="2.5" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r=".22" class="mgrid" fill="#E6D6C1"/></pattern></defs><rect x="2.5" y="2.5" width="95" height="113" fill="url(#jpdots4)"/><text x="3.2" y="111.1" text-anchor="start" class="area">PACIFIC OCEAN</text><line x1="40.73" y1="73.24" x2="39.70" y2="75.52" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="40.67" y1="70.15" x2="42.58" y2="69.13" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="81.17" y1="39.15" x2="82.16" y2="38.94" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="39.38" y1="64.60" x2="38.50" y2="63.35" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><circle cx="40.73" cy="73.24" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="75.89" cy="40.30" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="32.56" cy="96.75" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="49.72" cy="71.17" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="40.67" cy="70.15" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="53.25" cy="64.16" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="81.17" cy="39.15" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="68.90" cy="43.10" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="62.19" cy="54.40" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="39.38" cy="64.60" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="31.06" cy="78.91" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="18.83" cy="87.71" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="21.64" cy="94.33" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="56.53" cy="33.34" r=".8" class="manchor" fill="#3A2E2A"/><g><circle cx="38.92" cy="104.66" r="3.4" class="mhotel" fill="#3A2E2A"/><text x="38.92" y="105.91" text-anchor="middle" class="hotel">★</text><text x="43.32" y="105.76" class="hotellbl">hotel</text></g><a href="#jp-shirahama-p-1" data-pin="1" class="pc-food pt-0"><circle cx="39.70" cy="75.52" r="3.0" class="mpin" fill="#E2604A" stroke="#fff" stroke-width=".6"/><text x="39.70" y="76.57" text-anchor="middle" class="pinnum">1</text></a><a href="#jp-shirahama-p-2" data-pin="2" class="pc-food pt-0"><circle cx="75.19" cy="40.37" r="3.0" class="mpin" fill="#E2604A" stroke="#fff" stroke-width=".6"/><text x="75.19" y="41.42" text-anchor="middle" class="pinnum">2</text></a><a href="#jp-shirahama-p-4" data-pin="4" class="pc-food"><circle cx="32.56" cy="96.75" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="32.56" y="97.80" text-anchor="middle" class="pinnum">4</text></a><a href="#jp-shirahama-p-5" data-pin="5" class="pc-food"><circle cx="49.72" cy="71.17" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="49.72" y="72.22" text-anchor="middle" class="pinnum">5</text></a><a href="#jp-shirahama-p-6" data-pin="6" class="pc-food pt-5"><circle cx="42.58" cy="69.13" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="42.58" y="70.18" text-anchor="middle" class="pinnum">6</text></a><a href="#jp-shirahama-p-7" data-pin="7" class="pc-food pt-1"><circle cx="53.25" cy="64.16" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="53.25" y="65.21" text-anchor="middle" class="pinnum">7</text></a><a href="#jp-shirahama-p-8" data-pin="8" class="pc-food"><circle cx="82.16" cy="38.94" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="82.16" y="39.99" text-anchor="middle" class="pinnum">8</text></a><a href="#jp-shirahama-p-9" data-pin="9" class="pc-coffee pt-0"><circle cx="68.61" cy="43.23" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="68.61" y="44.28" text-anchor="middle" class="pinnum">9</text></a><a href="#jp-shirahama-p-10" data-pin="10" class="pc-drinks pt-2"><circle cx="62.19" cy="54.40" r="3.0" class="mpin" fill="#8A5AA6" stroke="#fff" stroke-width=".6"/><text x="62.19" y="55.45" text-anchor="middle" class="pinnum">10</text></a><a href="#jp-shirahama-p-11" data-pin="11" class="pc-onsen pt-4 pt-5"><circle cx="38.50" cy="63.35" r="3.0" class="mpin" fill="#6C7FC4" stroke="#fff" stroke-width=".6"/><text x="38.50" y="64.40" text-anchor="middle" class="pinnum">11</text></a><a href="#jp-shirahama-p-12" data-pin="12" class="pc-onsen pt-3"><circle cx="31.06" cy="78.91" r="3.0" class="mpin" fill="#6C7FC4" stroke="#fff" stroke-width=".6"/><text x="31.06" y="79.96" text-anchor="middle" class="pinnum">12</text></a><a href="#jp-shirahama-p-13" data-pin="13" class="pc-sights pt-4 pt-5"><circle cx="18.83" cy="87.71" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="18.83" y="88.76" text-anchor="middle" class="pinnum">13</text></a><a href="#jp-shirahama-p-14" data-pin="14" class="pc-sights pt-4 pt-5"><circle cx="21.64" cy="94.33" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="21.64" y="95.38" text-anchor="middle" class="pinnum">14</text></a><a href="#jp-shirahama-p-15" data-pin="15" class="pc-sights"><circle cx="56.53" cy="33.34" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="56.53" y="34.39" text-anchor="middle" class="pinnum">15</text></a><a href="#jp-shirahama-p-16" data-pin="16" class="pc-trips pt-4 pt-5"><g transform="translate(92 8)"><circle r="3" class="mpin" fill="#3E8FA8" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">16</text></g></a><text x="87.4" y="9.2" text-anchor="end" class="far">Kumano Kodo 21 km →</text><a href="#jp-shirahama-p-3" data-pin="3" class="pc-food pt-0 pt-1"><g transform="translate(92 16)"><circle r="3" class="mpin" fill="#E2604A" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">3</text></g></a><text x="87.4" y="17.2" text-anchor="end" class="far">Toretore 4 km →</text><g transform="translate(66 112)"><line x1="0" y1="0" x2="17" y2="0" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><line x1="0" y1="-1" x2="0" y2="1" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><line x1="17" y1="-1" x2="17" y2="1" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><text x="19" y="1" class="scale">500 m</text></g><text x="94" y="106" text-anchor="end" class="scale">N ↑</text></svg>
-        <p class="mapnote">Tap a pin to jump to that place. Distances are straight-line from the hotel (★).</p></div>
+        <p class="mapnote">Tap a pin to jump to that place. Distances are straight-line from the hotel (★).</p>
+        <div class="gmap" data-city="shirahama" hidden><div class="gmap-head"><span class="gmap-sel"></span><a class="gmap-open" href="#" target="_blank" rel="noopener">Open in Google Maps</a></div>
+          <iframe title="Google map of Shirahama" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <a class="gmap-jump" href="#" hidden>Go to this place's card ↓</a></div></div>
       </div>
     </div>
   </div>
@@ -1663,7 +1750,8 @@ Changes:
     <div class="tags"><span class="tag must"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/></svg></span>Must-go</span><span class="tag">Queue</span></div>
     <p>Amazing ramen with an amazing chicken broth. We&#x27;ve been before and it&#x27;s a must-visit. There&#x27;s always a queue.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/MTMqmLb44jYt3tQr7" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Ramen+Mugyu+Kyoto+chicken" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Ramen+Mugyu+Kyoto+chicken" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="1" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-2" data-n="2" data-cat="must" data-tags="Must-go|Book ahead|Late night" style="--c:#E2604A">
   <div class="num" aria-hidden="true">2</div>
@@ -1673,7 +1761,8 @@ Changes:
     <div class="tags"><span class="tag must"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/></svg></span>Must-go</span><span class="tag">Book ahead</span><span class="tag">Late night</span></div>
     <p>A very famous izakaya. We couldn&#x27;t get in last time, so it&#x27;s a must-visit this trip. Needs a reservation.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/t3BPCqP94pLCnFpY8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Rokkaku+Ace+Kyoto+izakaya" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Rokkaku+Ace+Kyoto+izakaya" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="2" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="food" style="--c:#E8952F;--t:#FDF0DC">
@@ -1691,7 +1780,8 @@ Changes:
     
     <p>Unagi (grilled eel over rice). We&#x27;ve been before. Really tasty and pretty old school.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/d1dSvUQgKdxh59pw8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kyogoku+Kaneyo+unagi+Kyoto" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kyogoku+Kaneyo+unagi+Kyoto" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="3" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-4" data-n="4" data-cat="food" data-tags="Low energy" style="--c:#E8952F">
   <div class="num" aria-hidden="true">4</div>
@@ -1701,7 +1791,8 @@ Changes:
     <div class="tags"><span class="tag">Low energy</span></div>
     <p>Japanese-style western food. A good pick for something chill to eat when we&#x27;re tired.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/JHsjYDhMVoTa2JYR8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kitchen+Gon+Rokkaku+Kyoto" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kitchen+Gon+Rokkaku+Kyoto" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="4" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-5" data-n="5" data-cat="food" data-tags="Book ahead" style="--c:#E8952F">
   <div class="num" aria-hidden="true">5</div>
@@ -1711,7 +1802,8 @@ Changes:
     <div class="tags"><span class="tag">Book ahead</span></div>
     <p>Super famous local speciality: gyukatsu, a breaded and fried beef cutlet. Most likely needs a reservation.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/pxXWHSLYfdYrQe2C8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Gyukatsu+Kyoto+Katsugyu" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Gyukatsu+Kyoto+Katsugyu" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="5" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-6" data-n="6" data-cat="food" data-tags="Pricier|Low energy" style="--c:#E8952F">
   <div class="num" aria-hidden="true">6</div>
@@ -1721,7 +1813,8 @@ Changes:
     <div class="tags"><span class="tag">Pricier</span><span class="tag">Low energy</span></div>
     <p>A famous nabe hotpot place. Expensive, but worth it on a cold day for a long, relaxing meal.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/KH59QUEssErBdUuRA" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kyo+Motsunabe+Kamehachi" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kyo+Motsunabe+Kamehachi" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="6" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-7" data-n="7" data-cat="food" data-tags="Pricier|Queue" style="--c:#E8952F">
   <div class="num" aria-hidden="true">7</div>
@@ -1731,7 +1824,8 @@ Changes:
     <div class="tags"><span class="tag">Pricier</span><span class="tag">Queue</span></div>
     <p>Ultra famous tempura restaurant. Very expensive and probably packed.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/Qphf8UeRnZ5U9pX67" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kyoto+Tempura+Ten+no+Meshi+Gion" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kyoto+Tempura+Ten+no+Meshi+Gion" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="7" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-8" data-n="8" data-cat="food" data-tags="Book ahead" style="--c:#E8952F">
   <div class="num" aria-hidden="true">8</div>
@@ -1741,7 +1835,8 @@ Changes:
     <div class="tags"><span class="tag">Book ahead</span></div>
     <p>Charcoal-grilled hamburg steak with fresh rice, a very popular spot. Seats go through paid online registration on TableCheck, so sort it out in advance. Closed Wednesdays.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=5604413755966420161" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Hikiniku+to+Come+Kyoto" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Hikiniku+to+Come+Kyoto" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="8" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-9" data-n="9" data-cat="food" data-tags="" style="--c:#E8952F">
   <div class="num" aria-hidden="true">9</div>
@@ -1751,7 +1846,8 @@ Changes:
     
     <p>Ramen built around smoked pork. A good second ramen pick after Mugyu.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=13196192196322562881" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kunton+Akutagawa+ramen+Kyoto" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kunton+Akutagawa+ramen+Kyoto" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="9" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-10" data-n="10" data-cat="food" data-tags="Quick bite" style="--c:#E8952F">
   <div class="num" aria-hidden="true">10</div>
@@ -1761,7 +1857,8 @@ Changes:
     <div class="tags"><span class="tag">Quick bite</span></div>
     <p>Kyoto&#x27;s long covered food market. Graze from stall to stall. Go earlier in the day, as many stalls close by early evening.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=13159134450370243740" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Nishiki+Market+Kyoto" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Nishiki+Market+Kyoto" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="10" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="sweets" style="--c:#D2648E;--t:#FBE5EE">
@@ -1777,7 +1874,8 @@ Changes:
     <div class="tags"><span class="tag">Quick bite</span></div>
     <p>A famous western-style cake shop. Ramen Mugyu is around the corner.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/3CBqHFL6P8rh8Zab6" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Second+House+Cake+Works+Kyoto" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Second+House+Cake+Works+Kyoto" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="11" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-12" data-n="12" data-cat="sweets" data-tags="Quick bite" style="--c:#D2648E">
   <div class="num" aria-hidden="true">12</div>
@@ -1787,7 +1885,8 @@ Changes:
     <div class="tags"><span class="tag">Quick bite</span></div>
     <p>A pretty famous dessert place, Japanese style.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/4L5zU4MjY3mS6PuR8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Micasadeco+Cafe+Kyoto+pancakes" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Micasadeco+Cafe+Kyoto+pancakes" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="12" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-13" data-n="13" data-cat="sweets" data-tags="Quick bite|Low energy" style="--c:#D2648E">
   <div class="num" aria-hidden="true">13</div>
@@ -1797,7 +1896,8 @@ Changes:
     <div class="tags"><span class="tag">Quick bite</span><span class="tag">Low energy</span></div>
     <p>A matcha sweets cafe. Yasaka Shrine is a short walk away.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/qP44cdyMzwYrJ8hZA" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Itoh+Kyuemon+Gion+Shijo+matcha" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Itoh+Kyuemon+Gion+Shijo+matcha" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="13" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-14" data-n="14" data-cat="sweets" data-tags="Low energy" style="--c:#D2648E">
   <div class="num" aria-hidden="true">14</div>
@@ -1807,7 +1907,8 @@ Changes:
     <div class="tags"><span class="tag">Low energy</span></div>
     <p>A popular cafe with walls of books. A calm place to sit for a while.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=9811042860654385097" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Cafe+Bibliotic+Hello+Kyoto" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Cafe+Bibliotic+Hello+Kyoto" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="14" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="sights" style="--c:#4F9A6A;--t:#E3F2E7">
@@ -1825,7 +1926,8 @@ Changes:
     <div class="tags"><span class="tag must"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/></svg></span>Must-go</span><span class="tag">Photo spot</span></div>
     <p>The Golden Pavilion. We couldn&#x27;t make it last time, so it&#x27;s a must-visit this trip.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/C7yMTuzNasRxVTK87" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kinkakuji+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kinkakuji+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="15" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-16" data-n="16" data-cat="sights" data-tags="Late night|Photo spot|Outdoors" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">16</div>
@@ -1835,7 +1937,8 @@ Changes:
     <div class="tags"><span class="tag">Late night</span><span class="tag">Photo spot</span><span class="tag">Outdoors</span></div>
     <p>Right in the city. We&#x27;ve been here at night before and it&#x27;s lit up, so it&#x27;s great for night photos.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/r2T89NW5XDg5C6Gn6" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Yasaka+Shrine+night" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Yasaka+Shrine+night" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="16" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-17" data-n="17" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">17</div>
@@ -1845,7 +1948,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A huge Buddhist temple. Should be good for autumn leaves photos.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/42GvsGz7u1fjYyRs8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Nanzenji+autumn+leaves" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Nanzenji+autumn+leaves" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="17" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-18" data-n="18" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">18</div>
@@ -1855,7 +1959,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A small, cute temple we saw in a travel video. Nice in the fall. It only opens on weekends and holidays in November, which on our dates means Mon Nov 23 (a public holiday) or Sun Nov 29.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/98J73Gu88dbsEw5i9" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Anrakuji+Shishigatani+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Anrakuji+Shishigatani+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="18" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-19" data-n="19" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">19</div>
@@ -1865,7 +1970,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A large, old temple. Should also be great for autumn photos.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/J86VZzDy6UqLb7Jm8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Tofukuji+autumn+leaves" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Tofukuji+autumn+leaves" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="19" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-20" data-n="20" data-cat="sights" data-tags="Photo spot|Book ahead" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">20</div>
@@ -1875,7 +1981,8 @@ Changes:
     <div class="tags"><span class="tag">Photo spot</span><span class="tag">Book ahead</span></div>
     <p>An art gallery we saw in a travel video, super nice for photos. It was closed on our last trip. In the second half of November it&#x27;s reservation only, with timed tickets bought online.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/BxhAA4TK4mPumWgk7" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Arashiyama+Yusai-tei+gallery" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Arashiyama+Yusai-tei+gallery" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="20" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-21" data-n="21" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">21</div>
@@ -1885,7 +1992,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A temple in Arashiyama. Should be good for autumn leaves photos, and pairs with Yusai-Tei.</p>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/Zs3ALEwkemQo9Ury8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Jojakkoji+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Jojakkoji+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="21" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-22" data-n="22" data-cat="sights" data-tags="Photo spot|Late night" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">22</div>
@@ -1895,7 +2003,8 @@ Changes:
     <div class="tags"><span class="tag">Photo spot</span><span class="tag">Late night</span></div>
     <p>The temple with the famous wooden stage over the hillside. In 2026 it opens in the evening from Nov 21 to 30 for the autumn light-up, which overlaps both of our Kyoto stays.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=7111013964196361402" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kiyomizudera+autumn+illumination" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kiyomizudera+autumn+illumination" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="22" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-23" data-n="23" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">23</div>
@@ -1905,7 +2014,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>The Silver Pavilion and its garden. The Philosopher&#x27;s Path starts here and runs south past Anraku-ji towards Nanzen-ji, so they make a good walk together.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=2705196751698570185" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Ginkakuji+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Ginkakuji+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="23" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-24" data-n="24" data-cat="sights" data-tags="Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">24</div>
@@ -1915,7 +2025,8 @@ Changes:
     <div class="tags"><span class="tag">Photo spot</span></div>
     <p>A downtown temple famous for its old fire-protecting ginkgo tree, which turns bright yellow in late autumn.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=2201652011559631590" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Honnoji+ginkgo+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Honnoji+ginkgo+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="24" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-25" data-n="25" data-cat="sights" data-tags="Low energy" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">25</div>
@@ -1925,7 +2036,8 @@ Changes:
     <div class="tags"><span class="tag">Low energy</span></div>
     <p>A small, quiet temple said to sit at the entrance to the underworld. Close to Yasaka Shrine and Kiyomizu-dera.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=5165877923149119340" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Rokudo+Chinnoji+temple" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Rokudo+Chinnoji+temple" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="25" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-26" data-n="26" data-cat="sights" data-tags="Book ahead|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">26</div>
@@ -1935,7 +2047,8 @@ Changes:
     <div class="tags"><span class="tag">Book ahead</span><span class="tag">Photo spot</span></div>
     <p>The moss temple, with a garden of over a hundred kinds of moss. Visits are by advance reservation only, and you need to arrive at your booked time.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=12604676872959930581" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Saihoji+moss+temple" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Saihoji+moss+temple" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="26" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-27" data-n="27" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">27</div>
@@ -1945,7 +2058,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A small temple up the hillside above the river in Arashiyama, with views over the valley. Pairs with Jōjakkō-ji and Yusai-Tei.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=14257992469760671362" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Daihikaku+Senkoji+Arashiyama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Daihikaku+Senkoji+Arashiyama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="27" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-28" data-n="28" data-cat="sights" data-tags="Outdoors" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">28</div>
@@ -1955,7 +2069,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span></div>
     <p>A hilltop park with free-roaming wild monkeys and a view over Kyoto. Expect an uphill walk to get there.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=1960354123061081266" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Arashiyama+Monkey+Park+Iwatayama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Arashiyama+Monkey+Park+Iwatayama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="28" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-29" data-n="29" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">29</div>
@@ -1965,7 +2080,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>The mountain on Kyoto&#x27;s northeast edge, home to the Enryaku-ji temple complex, with big views. Pairs with Former Chikurin-in at its foot.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=16309124816119328751" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Mount+Hiei+Enryakuji+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Mount+Hiei+Enryakuji+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="29" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-30" data-n="30" data-cat="sights" data-tags="Outdoors|Low energy" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">30</div>
@@ -1975,7 +2091,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Low energy</span></div>
     <p>A garden at the foot of Mount Hiei in Sakamoto. Easy to combine with Mount Hiei.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=13309011099031202891" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Former+Chikurinin+Sakamoto+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Former+Chikurinin+Sakamoto+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="30" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-31" data-n="31" data-cat="sights" data-tags="Low energy|Outdoors" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">31</div>
@@ -1985,7 +2102,8 @@ Changes:
     <div class="tags"><span class="tag">Low energy</span><span class="tag">Outdoors</span></div>
     <p>A hot spring in the mountain village of Kurama. A relaxing half-day out of the city.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=6234670849390713272" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kurama+Onsen+outdoor+bath" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kurama+Onsen+outdoor+bath" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="31" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-32" data-n="32" data-cat="sights" data-tags="Late night" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">32</div>
@@ -1995,7 +2113,8 @@ Changes:
     <div class="tags"><span class="tag">Late night</span></div>
     <p>The observation deck across from Kyoto Station, good for a city view at night.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=17017157882742292436" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kyoto+Tower+night+view" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kyoto+Tower+night+view" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="32" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-33" data-n="33" data-cat="sights" data-tags="Late night|Book ahead" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">33</div>
@@ -2005,7 +2124,8 @@ Changes:
     <div class="tags"><span class="tag">Late night</span><span class="tag">Book ahead</span></div>
     <p>A long-running, very highly rated show with no dialogue, mixing mime, dance and magic. Book tickets ahead.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=590976552152252111" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=GEAR+non-verbal+theatre+Kyoto" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=GEAR+non-verbal+theatre+Kyoto" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="33" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-kyoto-p-34" data-n="34" data-cat="sights" data-tags="" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">34</div>
@@ -2015,7 +2135,8 @@ Changes:
     
     <p>A camera shop, handy for gear or a browse.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=9608848783477973023" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Naniwa+Camera+Kyoto" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Naniwa+Camera+Kyoto" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="34" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div></div>
       <details class="areas"><summary>Pick by area <span>places close together, to combine in one outing</span></summary><div class="arows"><div class="arow"><div class="aname">Downtown · Shijo / Teramachi<span>1-2 km / 4-5 km</span></div><div class="achips"><a class="achip pc-food pt-0" data-pin="1" href="#jp-kyoto-p-1" style="--c:#E2604A"><b>1</b>Ramen Mugyu Vol. 2</a><a class="achip pc-sweets pt-1" data-pin="11" href="#jp-kyoto-p-11" style="--c:#D2648E"><b>11</b>Second House Cake Works</a><a class="achip pc-food pt-3" data-pin="4" href="#jp-kyoto-p-4" style="--c:#E8952F"><b>4</b>Kitchen Gon Rokkaku</a><a class="achip pc-food pt-0 pt-2" data-pin="2" href="#jp-kyoto-p-2" style="--c:#E2604A"><b>2</b>Rokkaku Ace</a><a class="achip pc-food pt-1" data-pin="10" href="#jp-kyoto-p-10" style="--c:#E8952F"><b>10</b>Nishiki Market</a><a class="achip pc-sights" data-pin="34" href="#jp-kyoto-p-34" style="--c:#4F9A6A"><b>34</b>Naniwa Camera</a><a class="achip pc-food" data-pin="9" href="#jp-kyoto-p-9" style="--c:#E8952F"><b>9</b>Kunton Akutagawa</a><a class="achip pc-sweets pt-1" data-pin="12" href="#jp-kyoto-p-12" style="--c:#D2648E"><b>12</b>Micasadeco &amp; Cafe</a><a class="achip pc-food" data-pin="5" href="#jp-kyoto-p-5" style="--c:#E8952F"><b>5</b>Gyukatsu Kyoto Katsugyu</a><a class="achip pc-sights pt-2" data-pin="33" href="#jp-kyoto-p-33" style="--c:#4F9A6A"><b>33</b>GEAR non-verbal theatre</a><a class="achip pc-food" data-pin="3" href="#jp-kyoto-p-3" style="--c:#E8952F"><b>3</b>Kyogoku Kaneyo</a><a class="achip pc-sights pt-5" data-pin="24" href="#jp-kyoto-p-24" style="--c:#4F9A6A"><b>24</b>Honnō-ji</a><a class="achip pc-food pt-3" data-pin="6" href="#jp-kyoto-p-6" style="--c:#E8952F"><b>6</b>Kyo-Motsunabe Kamehachi</a><a class="achip pc-sweets pt-3" data-pin="14" href="#jp-kyoto-p-14" style="--c:#D2648E"><b>14</b>Cafe Bibliotic Hello!</a></div></div><div class="arow"><div class="aname">Gion &amp; Higashiyama<span>2-3 km / 4 km</span></div><div class="achips"><a class="achip pc-sweets pt-1 pt-3" data-pin="13" href="#jp-kyoto-p-13" style="--c:#D2648E"><b>13</b>Itoh Kyuemon Sabo</a><a class="achip pc-food" data-pin="7" href="#jp-kyoto-p-7" style="--c:#E8952F"><b>7</b>Ten no Meshi Gion</a><a class="achip pc-food" data-pin="8" href="#jp-kyoto-p-8" style="--c:#E8952F"><b>8</b>Hikiniku to Come</a><a class="achip pc-sights pt-2 pt-5 pt-4" data-pin="16" href="#jp-kyoto-p-16" style="--c:#4F9A6A"><b>16</b>Yasaka Shrine</a><a class="achip pc-sights pt-3" data-pin="25" href="#jp-kyoto-p-25" style="--c:#4F9A6A"><b>25</b>Rokudō Chinnō-ji</a><a class="achip pc-sights pt-5 pt-2" data-pin="22" href="#jp-kyoto-p-22" style="--c:#4F9A6A"><b>22</b>Kiyomizu-dera</a></div></div><div class="arow"><div class="aname">Kyoto Station &amp; south<span>1-3 km / 2-3 km</span></div><div class="achips"><a class="achip pc-sights pt-2" data-pin="32" href="#jp-kyoto-p-32" style="--c:#4F9A6A"><b>32</b>Kyoto Tower</a><a class="achip pc-sights pt-4 pt-5" data-pin="19" href="#jp-kyoto-p-19" style="--c:#4F9A6A"><b>19</b>Tōfuku-ji</a></div></div><div class="arow"><div class="aname">East · Philosopher&#x27;s Path<span>4-5 km / 6-7 km</span></div><div class="achips"><a class="achip pc-sights pt-4 pt-5" data-pin="17" href="#jp-kyoto-p-17" style="--c:#4F9A6A"><b>17</b>Nanzen-ji</a><a class="achip pc-sights pt-4 pt-5" data-pin="18" href="#jp-kyoto-p-18" style="--c:#4F9A6A"><b>18</b>Anraku-ji</a><a class="achip pc-sights pt-4 pt-5" data-pin="23" href="#jp-kyoto-p-23" style="--c:#4F9A6A"><b>23</b>Ginkaku-ji</a></div></div><div class="arow"><div class="aname">Northwest<span>5 km / 8 km</span></div><div class="achips"><a class="achip pc-sights pt-0 pt-5" data-pin="15" href="#jp-kyoto-p-15" style="--c:#4F9A6A"><b>15</b>Kinkaku-ji</a></div></div><div class="arow"><div class="aname">West · Arashiyama &amp; Matsuo<span>6-8 km / 7-9 km</span></div><div class="achips"><a class="achip pc-sights pt-5" data-pin="26" href="#jp-kyoto-p-26" style="--c:#4F9A6A"><b>26</b>Saihō-ji (Kokedera)</a><a class="achip pc-sights pt-4" data-pin="28" href="#jp-kyoto-p-28" style="--c:#4F9A6A"><b>28</b>Arashiyama Monkey Park</a><a class="achip pc-sights pt-5" data-pin="20" href="#jp-kyoto-p-20" style="--c:#4F9A6A"><b>20</b>Arashiyama Yusai-Tei</a><a class="achip pc-sights pt-4 pt-5" data-pin="21" href="#jp-kyoto-p-21" style="--c:#4F9A6A"><b>21</b>Jōjakkō-ji</a><a class="achip pc-sights pt-4 pt-5" data-pin="27" href="#jp-kyoto-p-27" style="--c:#4F9A6A"><b>27</b>Daihikaku Senkō-ji</a></div></div><div class="arow"><div class="aname">Out of town · Hiei, Sakamoto, Kurama<span>10-14 km / 12-16 km</span></div><div class="achips"><a class="achip pc-sights pt-4 pt-5" data-pin="29" href="#jp-kyoto-p-29" style="--c:#4F9A6A"><b>29</b>Mount Hiei</a><a class="achip pc-sights pt-4 pt-3" data-pin="30" href="#jp-kyoto-p-30" style="--c:#4F9A6A"><b>30</b>Former Chikurin-in</a><a class="achip pc-sights pt-3 pt-4" data-pin="31" href="#jp-kyoto-p-31" style="--c:#4F9A6A"><b>31</b>Kurama Onsen</a></div></div></div></details>
@@ -2025,7 +2146,10 @@ Changes:
     <div class="mapcol">
       <div class="mapbox"><input class="vh maptog" type="checkbox" id="kyoto-maptog"><label class="maphead" for="kyoto-maptog">Kyoto at a glance <span>34 places</span></label>
         <div class="mapbody"><svg viewBox="0 0 100 130" class="map map-t" style="aspect-ratio:100/130" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="100" height="130" rx="6" class="mbg" fill="#FFFDF8" stroke="#EADCC8" stroke-width=".5"/><defs><pattern id="jpdots5" x="2.5" y="2.5" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r=".22" class="mgrid" fill="#E6D6C1"/></pattern></defs><rect x="2.5" y="2.5" width="95" height="125" fill="url(#jpdots5)"/><polyline points="49.0,128.7 44.9,92.9 45.6,82.9 48.5,68.7 49.0,60.4 50.1,45.4 49.3,26.3" class="mriver" fill="none" stroke="#A9D3E0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><text x="31.2" y="52.4" text-anchor="middle" class="area">DOWNTOWN</text><text x="59.9" y="75.1" text-anchor="start" class="area">GION</text><text x="31.0" y="102.0" text-anchor="middle" class="area">KYOTO STN</text><text x="68.2" y="50.4" text-anchor="end" class="area">OKAZAKI</text><text x="49.7" y="91.2" text-anchor="start" class="area">KAMO RIVER</text><line x1="32.99" y1="64.50" x2="26.19" y2="63.69" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="37.88" y1="63.02" x2="33.04" y2="54.84" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="43.47" y1="62.76" x2="50.26" y2="59.47" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="36.39" y1="63.36" x2="32.67" y2="61.48" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="42.06" y1="66.40" x2="43.42" y2="69.30" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="47.34" y1="63.29" x2="49.68" y2="66.38" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="52.45" y1="68.36" x2="55.25" y2="70.69" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="52.56" y1="66.91" x2="56.06" y2="63.68" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="41.76" y1="64.74" x2="44.12" y2="62.45" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="39.02" y1="67.07" x2="36.98" y2="72.17" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="33.91" y1="64.69" x2="31.41" y2="68.24" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="40.41" y1="65.60" x2="37.98" y2="65.38" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="50.62" y1="69.28" x2="49.06" y2="73.43" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="38.34" y1="52.59" x2="39.02" y2="51.10" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="57.97" y1="69.31" x2="61.67" y2="68.15" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="43.95" y1="58.25" x2="45.00" y2="54.96" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="41.48" y1="61.25" x2="38.94" y2="58.34" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="41.07" y1="68.90" x2="42.55" y2="76.13" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><circle cx="32.99" cy="64.50" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="37.88" cy="63.02" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="43.47" cy="62.76" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="36.39" cy="63.36" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="42.06" cy="66.40" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="47.34" cy="63.29" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="52.45" cy="68.36" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="52.56" cy="66.91" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="41.76" cy="64.74" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="39.02" cy="67.07" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="33.91" cy="64.69" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="40.41" cy="65.60" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="50.62" cy="69.28" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="38.34" cy="52.59" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="57.97" cy="69.31" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="79.76" cy="56.39" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="82.70" cy="39.41" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="51.42" cy="115.32" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="66.38" cy="84.22" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="84.84" cy="30.44" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="43.95" cy="58.25" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="53.66" cy="78.23" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="31.64" cy="96.21" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="41.48" cy="61.25" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="41.07" cy="68.90" r=".8" class="manchor" fill="#3A2E2A"/><g><circle cx="24.46" cy="79.26" r="3.4" class="mhotel" fill="#3A2E2A"/><text x="24.46" y="80.51" text-anchor="middle" class="hotel">★</text><text x="28.86" y="80.36" class="hotellbl">hotel 1</text></g><g><circle cx="15.16" cy="119.56" r="3.4" class="mhotel" fill="#3A2E2A"/><text x="15.16" y="120.81" text-anchor="middle" class="hotel">★</text><text x="19.56" y="120.66" class="hotellbl">hotel 2</text></g><a href="#jp-kyoto-p-1" data-pin="1" class="pc-food pt-0"><circle cx="26.19" cy="63.69" r="3.0" class="mpin" fill="#E2604A" stroke="#fff" stroke-width=".6"/><text x="26.19" y="64.74" text-anchor="middle" class="pinnum">1</text></a><a href="#jp-kyoto-p-2" data-pin="2" class="pc-food pt-0 pt-2"><circle cx="33.04" cy="54.84" r="3.0" class="mpin" fill="#E2604A" stroke="#fff" stroke-width=".6"/><text x="33.04" y="55.89" text-anchor="middle" class="pinnum">2</text></a><a href="#jp-kyoto-p-3" data-pin="3" class="pc-food"><circle cx="50.26" cy="59.47" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="50.26" y="60.52" text-anchor="middle" class="pinnum">3</text></a><a href="#jp-kyoto-p-4" data-pin="4" class="pc-food pt-3"><circle cx="32.67" cy="61.48" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="32.67" y="62.53" text-anchor="middle" class="pinnum">4</text></a><a href="#jp-kyoto-p-5" data-pin="5" class="pc-food"><circle cx="43.42" cy="69.30" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="43.42" y="70.35" text-anchor="middle" class="pinnum">5</text></a><a href="#jp-kyoto-p-6" data-pin="6" class="pc-food pt-3"><circle cx="49.68" cy="66.38" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="49.68" y="67.43" text-anchor="middle" class="pinnum">6</text></a><a href="#jp-kyoto-p-7" data-pin="7" class="pc-food"><circle cx="55.25" cy="70.69" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="55.25" y="71.74" text-anchor="middle" class="pinnum">7</text></a><a href="#jp-kyoto-p-8" data-pin="8" class="pc-food"><circle cx="56.06" cy="63.68" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="56.06" y="64.73" text-anchor="middle" class="pinnum">8</text></a><a href="#jp-kyoto-p-9" data-pin="9" class="pc-food"><circle cx="44.12" cy="62.45" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="44.12" y="63.50" text-anchor="middle" class="pinnum">9</text></a><a href="#jp-kyoto-p-10" data-pin="10" class="pc-food pt-1"><circle cx="36.98" cy="72.17" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="36.98" y="73.22" text-anchor="middle" class="pinnum">10</text></a><a href="#jp-kyoto-p-11" data-pin="11" class="pc-sweets pt-1"><circle cx="31.41" cy="68.24" r="3.0" class="mpin" fill="#D2648E" stroke="#fff" stroke-width=".6"/><text x="31.41" y="69.29" text-anchor="middle" class="pinnum">11</text></a><a href="#jp-kyoto-p-12" data-pin="12" class="pc-sweets pt-1"><circle cx="37.98" cy="65.38" r="3.0" class="mpin" fill="#D2648E" stroke="#fff" stroke-width=".6"/><text x="37.98" y="66.43" text-anchor="middle" class="pinnum">12</text></a><a href="#jp-kyoto-p-13" data-pin="13" class="pc-sweets pt-1 pt-3"><circle cx="49.06" cy="73.43" r="3.0" class="mpin" fill="#D2648E" stroke="#fff" stroke-width=".6"/><text x="49.06" y="74.48" text-anchor="middle" class="pinnum">13</text></a><a href="#jp-kyoto-p-14" data-pin="14" class="pc-sweets pt-3"><circle cx="39.02" cy="51.10" r="3.0" class="mpin" fill="#D2648E" stroke="#fff" stroke-width=".6"/><text x="39.02" y="52.15" text-anchor="middle" class="pinnum">14</text></a><a href="#jp-kyoto-p-16" data-pin="16" class="pc-sights pt-2 pt-5 pt-4"><circle cx="61.67" cy="68.15" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="61.67" y="69.20" text-anchor="middle" class="pinnum">16</text></a><a href="#jp-kyoto-p-17" data-pin="17" class="pc-sights pt-4 pt-5"><circle cx="79.76" cy="56.39" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="79.76" y="57.44" text-anchor="middle" class="pinnum">17</text></a><a href="#jp-kyoto-p-18" data-pin="18" class="pc-sights pt-4 pt-5"><circle cx="82.70" cy="39.41" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="82.70" y="40.46" text-anchor="middle" class="pinnum">18</text></a><a href="#jp-kyoto-p-19" data-pin="19" class="pc-sights pt-4 pt-5"><circle cx="51.42" cy="115.32" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="51.42" y="116.37" text-anchor="middle" class="pinnum">19</text></a><a href="#jp-kyoto-p-22" data-pin="22" class="pc-sights pt-5 pt-2"><circle cx="66.38" cy="84.22" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="66.38" y="85.27" text-anchor="middle" class="pinnum">22</text></a><a href="#jp-kyoto-p-23" data-pin="23" class="pc-sights pt-4 pt-5"><circle cx="84.84" cy="30.44" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="84.84" y="31.49" text-anchor="middle" class="pinnum">23</text></a><a href="#jp-kyoto-p-24" data-pin="24" class="pc-sights pt-5"><circle cx="45.00" cy="54.96" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="45.00" y="56.01" text-anchor="middle" class="pinnum">24</text></a><a href="#jp-kyoto-p-25" data-pin="25" class="pc-sights pt-3"><circle cx="54.01" cy="78.60" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="54.01" y="79.65" text-anchor="middle" class="pinnum">25</text></a><a href="#jp-kyoto-p-32" data-pin="32" class="pc-sights pt-2"><circle cx="31.64" cy="96.21" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="31.64" y="97.26" text-anchor="middle" class="pinnum">32</text></a><a href="#jp-kyoto-p-33" data-pin="33" class="pc-sights pt-2"><circle cx="38.94" cy="58.34" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="38.94" y="59.39" text-anchor="middle" class="pinnum">33</text></a><a href="#jp-kyoto-p-34" data-pin="34" class="pc-sights"><circle cx="42.55" cy="76.13" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="42.55" y="77.18" text-anchor="middle" class="pinnum">34</text></a><a href="#jp-kyoto-p-15" data-pin="15" class="pc-sights pt-0 pt-5"><g transform="translate(8 8)"><circle r="3" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">15</text></g></a><text x="12.6" y="9.2" text-anchor="start" class="far">Kinkaku-ji ↖ 5 km</text><a href="#jp-kyoto-p-21" data-pin="21" class="pc-sights pt-4 pt-5"><g transform="translate(8 16)"><circle r="3" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">21</text></g></a><a href="#jp-kyoto-p-20" data-pin="20" class="pc-sights pt-5"><g transform="translate(15 16)"><circle r="3" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">20</text></g></a><a href="#jp-kyoto-p-27" data-pin="27" class="pc-sights pt-4 pt-5"><g transform="translate(22 16)"><circle r="3" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">27</text></g></a><a href="#jp-kyoto-p-28" data-pin="28" class="pc-sights pt-4"><g transform="translate(29 16)"><circle r="3" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">28</text></g></a><text x="33.6" y="17.2" text-anchor="start" class="far">← Arashiyama</text><a href="#jp-kyoto-p-26" data-pin="26" class="pc-sights pt-5"><g transform="translate(8 24)"><circle r="3" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">26</text></g></a><text x="12.6" y="25.2" text-anchor="start" class="far">← Saihō-ji 6 km</text><a href="#jp-kyoto-p-31" data-pin="31" class="pc-sights pt-3 pt-4"><g transform="translate(92 8)"><circle r="3" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">31</text></g></a><text x="87.4" y="9.2" text-anchor="end" class="far">Kurama 14 km ↑</text><a href="#jp-kyoto-p-30" data-pin="30" class="pc-sights pt-4 pt-3"><g transform="translate(92 16)"><circle r="3" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">30</text></g></a><a href="#jp-kyoto-p-29" data-pin="29" class="pc-sights pt-4 pt-5"><g transform="translate(85 16)"><circle r="3" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">29</text></g></a><text x="80.4" y="17.2" text-anchor="end" class="far">Hiei ↗</text><g transform="translate(68 124)"><line x1="0" y1="0" x2="15" y2="0" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><line x1="0" y1="-1" x2="0" y2="1" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><line x1="15" y1="-1" x2="15" y2="1" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><text x="17" y="1" class="scale">1 km</text></g><text x="94" y="118" text-anchor="end" class="scale">N ↑</text></svg>
-        <p class="mapnote">Tap a pin to jump to that place. Distances are straight-line from hotel 1 / hotel 2 (★).</p></div>
+        <p class="mapnote">Tap a pin to jump to that place. Distances are straight-line from hotel 1 / hotel 2 (★).</p>
+        <div class="gmap" data-city="kyoto" hidden><div class="gmap-head"><span class="gmap-sel"></span><a class="gmap-open" href="#" target="_blank" rel="noopener">Open in Google Maps</a></div>
+          <iframe title="Google map of Kyoto" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <a class="gmap-jump" href="#" hidden>Go to this place's card ↓</a></div></div>
       </div>
     </div>
   </div>
@@ -2087,7 +2211,8 @@ Changes:
     <div class="tags"><span class="tag">Low energy</span></div>
     <p>A coffee shop in Omihachiman (仁之助コーヒー). A good break while exploring the town.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=1420078449805569034" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E4%BB%81%E4%B9%8B%E5%8A%A9%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC+%E8%BF%91%E6%B1%9F%E5%85%AB%E5%B9%A1" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E4%BB%81%E4%B9%8B%E5%8A%A9%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC+%E8%BF%91%E6%B1%9F%E5%85%AB%E5%B9%A1" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="1" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="sights" style="--c:#4F9A6A;--t:#E3F2E7">
@@ -2105,7 +2230,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>One of the few castles in Japan with its original keep still standing, and a National Treasure. Genkyu-en garden sits right below it. Walkable from the hotel.</p>
     <div class="btns"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Hikone+Castle" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Hikone+Castle+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Hikone+Castle+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="2" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-hikone-p-3" data-n="3" data-cat="sights" data-tags="Low energy" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">3</div>
@@ -2115,7 +2241,8 @@ Changes:
     <div class="tags"><span class="tag">Low energy</span></div>
     <p>A small shrine in Maibara, the nearest place on the list. An easy short outing.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=2770015437704597159" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Yutani+Shrine+Maibara" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Yutani+Shrine+Maibara" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="3" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-hikone-p-4" data-n="4" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">4</div>
@@ -2125,7 +2252,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A small sacred island in Lake Biwa with a shrine and temple. Boats leave from Hikone Port in season, which runs to early December. The trip takes about 2.5 hours in total, with around 75 minutes on the island. Check the day&#x27;s sailings before going.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=2901414486857167280" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Chikubushima+Lake+Biwa" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Chikubushima+Lake+Biwa" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="4" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-hikone-p-5" data-n="5" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">5</div>
@@ -2135,7 +2263,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A temple garden known for autumn leaves. It normally opens only on weekends, but in past years it has opened daily for a few weeks in autumn, with an evening light-up. Check this year&#x27;s dates.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=1454445400296920734" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kyorinbo+autumn+leaves" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kyorinbo+autumn+leaves" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="5" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-hikone-p-6" data-n="6" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">6</div>
@@ -2145,7 +2274,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>An old merchant town with canals and traditional streets. Jinnosuke Coffee is here too.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=8511313074295460791" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Omihachiman+canal" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Omihachiman+canal" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="6" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-hikone-p-7" data-n="7" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">7</div>
@@ -2155,7 +2285,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>The shrine with a red torii standing in Lake Biwa. It&#x27;s on the far side of the lake, so plan it as its own outing.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=13664484576260554187" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Shirahige+Shrine+torii+lake" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Shirahige+Shrine+torii+lake" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="7" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-hikone-p-8" data-n="8" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">8</div>
@@ -2165,7 +2296,8 @@ Changes:
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A temple in the hills north of Lake Biwa, known for autumn leaves along mossy stone steps.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=2366704082444976644" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Keisokuji+autumn+leaves" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Keisokuji+autumn+leaves" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="8" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card" id="jp-hikone-p-9" data-n="9" data-cat="sights" data-tags="Low energy|Photo spot" style="--c:#4F9A6A">
   <div class="num" aria-hidden="true">9</div>
@@ -2175,7 +2307,8 @@ Changes:
     <div class="tags"><span class="tag">Low energy</span><span class="tag">Photo spot</span></div>
     <p>A quiet country station by Lake Yogo, a small lake north of Lake Biwa.</p>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=1657791961354483095" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
-    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Lake+Yogo" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a></div>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Lake+Yogo" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="9" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div></div>
       <details class="areas"><summary>Pick by area <span>places close together, to combine in one outing</span></summary><div class="arows"><div class="arow"><div class="aname">Hikone &amp; Maibara<span>1-5 km</span></div><div class="achips"><a class="achip pc-sights pt-4 pt-5" data-pin="2" href="#jp-hikone-p-2" style="--c:#4F9A6A"><b>2</b>Hikone Castle</a><a class="achip pc-sights pt-3" data-pin="3" href="#jp-hikone-p-3" style="--c:#4F9A6A"><b>3</b>Yutani Shrine</a></div></div><div class="arow"><div class="aname">South · Omihachiman &amp; Azuchi<span>17-22 km</span></div><div class="achips"><a class="achip pc-sights pt-4 pt-5" data-pin="5" href="#jp-hikone-p-5" style="--c:#4F9A6A"><b>5</b>Kyorinbo</a><a class="achip pc-sights pt-4 pt-5" data-pin="6" href="#jp-hikone-p-6" style="--c:#4F9A6A"><b>6</b>Omihachiman</a><a class="achip pc-coffee pt-3" data-pin="1" href="#jp-hikone-p-1" style="--c:#9A6B4B"><b>1</b>Jinnosuke Coffee</a></div></div><div class="arow"><div class="aname">On &amp; across the lake<span>20-23 km</span></div><div class="achips"><a class="achip pc-sights pt-4 pt-5" data-pin="4" href="#jp-hikone-p-4" style="--c:#4F9A6A"><b>4</b>Chikubu Island</a><a class="achip pc-sights pt-4 pt-5" data-pin="7" href="#jp-hikone-p-7" style="--c:#4F9A6A"><b>7</b>Shirahige Shrine</a></div></div><div class="arow"><div class="aname">North · Nagahama<span>26-30 km</span></div><div class="achips"><a class="achip pc-sights pt-4 pt-5" data-pin="8" href="#jp-hikone-p-8" style="--c:#4F9A6A"><b>8</b>Keisokuji</a><a class="achip pc-sights pt-3 pt-5" data-pin="9" href="#jp-hikone-p-9" style="--c:#4F9A6A"><b>9</b>Yogo Station</a></div></div></div></details>
@@ -2185,7 +2318,10 @@ Changes:
     <div class="mapcol">
       <div class="mapbox"><input class="vh maptog" type="checkbox" id="hikone-maptog"><label class="maphead" for="hikone-maptog">Hikone at a glance <span>9 places</span></label>
         <div class="mapbody"><svg viewBox="0 0 100 120" class="map map-t" style="aspect-ratio:100/120" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="100" height="120" rx="6" class="mbg" fill="#FFFDF8" stroke="#EADCC8" stroke-width=".5"/><defs><pattern id="jpdots6" x="2.5" y="2.5" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r=".22" class="mgrid" fill="#E6D6C1"/></pattern></defs><rect x="2.5" y="2.5" width="95" height="115" fill="url(#jpdots6)"/><text x="39.4" y="69.6" text-anchor="middle" class="area">LAKE BIWA</text><text x="73.4" y="49.8" text-anchor="start" class="area">NAGAHAMA</text><line x1="37.06" y1="108.87" x2="35.94" y2="107.34" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="69.74" y1="75.39" x2="65.01" y2="73.59" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="38.98" y1="111.51" x2="40.09" y2="113.04" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><circle cx="37.06" cy="108.87" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="69.74" cy="75.39" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="78.41" cy="66.48" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="48.11" cy="39.52" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="52.17" cy="108.95" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="38.98" cy="111.51" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="21.59" cy="75.83" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="70.94" cy="19.28" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="59.30" cy="12.49" r=".8" class="manchor" fill="#3A2E2A"/><g><circle cx="71.79" cy="76.18" r="3.4" class="mhotel" fill="#3A2E2A"/><text x="71.79" y="77.43" text-anchor="middle" class="hotel">★</text><text x="76.19" y="77.28" class="hotellbl">hotel</text></g><a href="#jp-hikone-p-1" data-pin="1" class="pc-coffee pt-3"><circle cx="35.94" cy="107.34" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="35.94" y="108.39" text-anchor="middle" class="pinnum">1</text></a><a href="#jp-hikone-p-2" data-pin="2" class="pc-sights pt-4 pt-5"><circle cx="65.01" cy="73.59" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="65.01" y="74.64" text-anchor="middle" class="pinnum">2</text></a><a href="#jp-hikone-p-3" data-pin="3" class="pc-sights pt-3"><circle cx="78.41" cy="66.48" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="78.41" y="67.53" text-anchor="middle" class="pinnum">3</text></a><a href="#jp-hikone-p-4" data-pin="4" class="pc-sights pt-4 pt-5"><circle cx="48.11" cy="39.52" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="48.11" y="40.57" text-anchor="middle" class="pinnum">4</text></a><a href="#jp-hikone-p-5" data-pin="5" class="pc-sights pt-4 pt-5"><circle cx="52.17" cy="108.95" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="52.17" y="110.00" text-anchor="middle" class="pinnum">5</text></a><a href="#jp-hikone-p-6" data-pin="6" class="pc-sights pt-4 pt-5"><circle cx="40.09" cy="113.04" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="40.09" y="114.09" text-anchor="middle" class="pinnum">6</text></a><a href="#jp-hikone-p-7" data-pin="7" class="pc-sights pt-4 pt-5"><circle cx="21.59" cy="75.83" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="21.59" y="76.88" text-anchor="middle" class="pinnum">7</text></a><a href="#jp-hikone-p-8" data-pin="8" class="pc-sights pt-4 pt-5"><circle cx="70.94" cy="19.28" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="70.94" y="20.33" text-anchor="middle" class="pinnum">8</text></a><a href="#jp-hikone-p-9" data-pin="9" class="pc-sights pt-3 pt-5"><circle cx="59.30" cy="12.49" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="59.30" y="13.54" text-anchor="middle" class="pinnum">9</text></a><g transform="translate(61 114)"><line x1="0" y1="0" x2="22" y2="0" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><line x1="0" y1="-1" x2="0" y2="1" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><line x1="22" y1="-1" x2="22" y2="1" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><text x="24" y="1" class="scale">10 km</text></g><text x="94" y="108" text-anchor="end" class="scale">N ↑</text></svg>
-        <p class="mapnote">Tap a pin to jump to that place. Distances are straight-line from the hotel (★).</p></div>
+        <p class="mapnote">Tap a pin to jump to that place. Distances are straight-line from the hotel (★).</p>
+        <div class="gmap" data-city="hikone" hidden><div class="gmap-head"><span class="gmap-sel"></span><a class="gmap-open" href="#" target="_blank" rel="noopener">Open in Google Maps</a></div>
+          <iframe title="Google map of Hikone" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <a class="gmap-jump" href="#" hidden>Go to this place's card ↓</a></div></div>
       </div>
     </div>
   </div>
@@ -2197,7 +2333,56 @@ Changes:
     <p>Options for the rest of the trip are on the way.</p>
     <div class="latgrid"></div>
   </div>
-  <div class="foot">Japan trip guide · Version 1.1 · updated Oct 16, 2026</div>
+  <div class="foot">Japan trip guide · Version 1.2 · updated Oct 16, 2026</div>
 </div></div>
 
+<script>
+(() => {
+  const D = {"osaka": {"hotels": [{"name": "Best Western Plus Hotel Fino Osaka Kitahama", "lat": 34.6902, "lon": 135.5069, "url": "https://www.google.com/maps/search/?api=1&query=Best+Western+Plus+Hotel+Fino+Osaka+Kitahama"}], "places": {"1": {"name": "Go Go Curry Tsutenkaku", "lat": 34.6521, "lon": 135.5057, "url": "https://maps.app.goo.gl/mSh6H6RMG7RDmiTG8"}, "2": {"name": "MENSTYLE TANIMOTOKE", "lat": 34.6812, "lon": 135.5014, "url": "https://maps.app.goo.gl/NhvNePS4b8ttajJi9"}, "3": {"name": "NICO CAFE", "lat": 34.6975, "lon": 135.4991, "url": "https://maps.app.goo.gl/Jb78hnzRPkMNrCUb8"}, "4": {"name": "Craft Burger co.", "lat": 34.6741, "lon": 135.4963, "url": "https://maps.app.goo.gl/JrwxHjaBxJ9EccBL8"}, "5": {"name": "Kushikatsu Shinsekai", "lat": 34.651, "lon": 135.5061, "url": "https://maps.app.goo.gl/VtEc4GhdFGU9hUdx9"}, "6": {"name": "Takoyaki Umaiya", "lat": 34.7076, "lon": 135.5105, "url": "https://maps.app.goo.gl/Zspo5bN73neMdk7N9"}, "7": {"name": "Takocha", "lat": 34.7067, "lon": 135.5002, "url": "https://maps.app.goo.gl/PnMj9Jjo5gAx1RqG7"}, "8": {"name": "OYASUMI ICE & HOTEL", "lat": 34.6676, "lon": 135.4994, "url": "https://maps.app.goo.gl/Mz9ySLd1bpXPP1hc6"}, "9": {"name": "Marukome", "lat": 34.6381, "lon": 135.4963, "url": "https://maps.app.goo.gl/8SopKeSroLo64Nnd9"}, "10": {"name": "Hanakujira honten", "lat": 34.6946, "lon": 135.4871, "url": "https://maps.app.goo.gl/hRHXdwzPzJUmRGfN9"}, "11": {"name": "aoma coffee", "lat": 34.6814, "lon": 135.5024, "url": "https://maps.app.goo.gl/a6caNjRxmH4DXR44A"}, "12": {"name": "Roji Cafe", "lat": 34.7081, "lon": 135.5102, "url": "https://maps.app.goo.gl/oquAxfsyoLKZoGQy5"}, "13": {"name": "Notequal Coffee", "lat": 34.6809, "lon": 135.5036, "url": "https://maps.app.goo.gl/5REqAHeuFbHpBB2NA"}, "14": {"name": "Melbourne Coffee Senba", "lat": 34.6779, "lon": 135.502, "url": "https://maps.app.goo.gl/XkVRKpE85pUuTRae8"}, "15": {"name": "Mole & Hosoi Coffees", "lat": 34.6891, "lon": 135.5018, "url": "https://maps.app.goo.gl/Fvj66Dr9hDiCtFwt9"}, "16": {"name": "SHIMATONERIKO", "lat": 34.6447, "lon": 135.5151, "url": "https://maps.app.goo.gl/1YsWrF6HHS12GM6N7"}, "17": {"name": "Saturdays NYC", "lat": 34.6756, "lon": 135.4979, "url": "https://maps.app.goo.gl/Ea2XRYr1iyjBxmsu5"}, "18": {"name": "Manmanki", "lat": 34.6684, "lon": 135.4995, "url": "https://maps.app.goo.gl/5ox63xbe6cpLZXsg6"}, "19": {"name": "Bar Seven", "lat": 34.6679, "lon": 135.5018, "url": "https://maps.app.goo.gl/vPcRWdro36thTdjF6"}, "20": {"name": "Luv Wine Namba", "lat": 34.6663, "lon": 135.4989, "url": "https://maps.app.goo.gl/Z6AciSS3z4qhoNPv9"}, "21": {"name": "Ebisu Bridge & Dotonbori", "lat": 34.6691, "lon": 135.5013, "url": "https://maps.app.goo.gl/WaDFD5NCBPPYQLx7A"}, "22": {"name": "Osaka Castle", "lat": 34.6873, "lon": 135.5259, "url": "https://www.google.com/maps/search/?api=1&query=Osaka+Castle"}, "23": {"name": "Shitennō-ji", "lat": 34.6545, "lon": 135.5165, "url": "https://maps.app.goo.gl/C1XpHUcgMBRRREwk8"}, "24": {"name": "Shubodai", "lat": 34.8318, "lon": 135.4272, "url": "https://maps.app.goo.gl/g1hxcX8Ah5Q3S4nc9"}, "25": {"name": "Ishikiri Tsurugiya Jinja", "lat": 34.6823, "lon": 135.6463, "url": "https://maps.app.goo.gl/dgJnc7e3JwWpEw2HA"}}}, "wakayama": {"hotels": [{"name": "JR Wakayama Station", "lat": 34.2321803, "lon": 135.1917916, "url": "https://www.google.com/maps/search/?api=1&query=JR+Wakayama+Station"}], "places": {"1": {"name": "Katto", "lat": 34.231044499999996, "lon": 135.1900757, "url": "https://maps.google.com/?cid=3540497299708346347"}, "2": {"name": "Niyoro", "lat": 34.2330401, "lon": 135.1881569, "url": "https://maps.google.com/?cid=1221958384847454444"}, "3": {"name": "Kalbi 1cho", "lat": 34.2335338, "lon": 135.1886719, "url": "https://maps.google.com/?cid=11554976602232267605"}, "4": {"name": "Yakitori Kairo", "lat": 34.2384353, "lon": 135.1791332, "url": "https://maps.google.com/?cid=7804657641492008548"}, "5": {"name": "BRIDGE", "lat": 34.2342381, "lon": 135.1724671, "url": "https://maps.google.com/?cid=2290438624177363043"}, "6": {"name": "Ichidai", "lat": 34.225703599999996, "lon": 135.169587, "url": "https://maps.google.com/?cid=1833223725525101210"}, "7": {"name": "Maruman Ramen", "lat": 34.2314699, "lon": 135.17057269999998, "url": "https://maps.google.com/?cid=11560120881329501842"}, "8": {"name": "Umimachi Shokudo Urara", "lat": 34.1902445, "lon": 135.144645, "url": "https://maps.google.com/?cid=5911579447961568639"}, "9": {"name": "Goen", "lat": 34.231074899999996, "lon": 135.1910408, "url": "https://maps.google.com/?cid=16494497776411410737"}, "10": {"name": "Bandoko Garden", "lat": 34.1906797, "lon": 135.14067989999998, "url": "https://maps.google.com/?cid=6190730922807149711"}, "11": {"name": "Wakayama Castle", "lat": 34.2276558, "lon": 135.1715109, "url": "https://www.google.com/maps/search/?api=1&query=Wakayama+Castle"}, "12": {"name": "Kishi Station", "lat": 34.2093, "lon": 135.3121, "url": "https://maps.google.com/?cid=17241543118648371379"}, "13": {"name": "Awashima Shrine", "lat": 34.2737, "lon": 135.0664, "url": "https://maps.google.com/?cid=15657838165788794839"}, "14": {"name": "Koyasan", "lat": 34.2132, "lon": 135.5863, "url": "https://maps.google.com/?cid=11714349864090713783"}}}, "shirahama": {"hotels": [{"name": "Dormitory Sandanya Guesthouse", "lat": 33.6662113, "lon": 135.3368365, "url": "https://maps.app.goo.gl/6sgeUW4YiEcYHqxr9"}], "places": {"1": {"name": "Dakishimetai", "lat": 33.674535999999996, "lon": 135.33741179999998, "url": "https://maps.google.com/?cid=10240352576288176698"}, "2": {"name": "Yakiniku Man", "lat": 33.6832646, "lon": 135.3485744, "url": "https://maps.google.com/?cid=4356415629714341682"}, "3": {"name": "Toretore Market", "lat": 33.6813502, "lon": 135.3752515, "url": "https://maps.google.com/?cid=7938307802199390379"}, "4": {"name": "Tsumugi Cafe", "lat": 33.668306, "lon": 135.334818, "url": "https://maps.app.goo.gl/cVsnAEcKvUkGaXHL8"}, "5": {"name": "Miyuki Sushi", "lat": 33.6750843, "lon": 135.3402668, "url": "https://maps.app.goo.gl/1zX18KPgxKSMuwFJ8"}, "6": {"name": "Ikesu Warouda / Sushi Yata", "lat": 33.675353099999995, "lon": 135.3373919, "url": "https://maps.google.com/?cid=10848447305798194294"}, "7": {"name": "Ban-ya", "lat": 33.676940699999996, "lon": 135.3413859, "url": "https://maps.google.com/?cid=15270952934666379931"}, "8": {"name": "Sumibi Dining Hayate", "lat": 33.6835692, "lon": 135.3502521, "url": "https://maps.google.com/?cid=14075486803131133320"}, "9": {"name": "Mame no Yu", "lat": 33.6825212, "lon": 135.3463572, "url": "https://maps.google.com/?cid=3195587893017237390"}, "10": {"name": "Popular Bar Chokyu", "lat": 33.6795273, "lon": 135.34422469999998, "url": "https://maps.google.com/?cid=7785594314647488227"}, "11": {"name": "Saki-no-Yu", "lat": 33.676823999999996, "lon": 135.3369842, "url": "https://maps.google.com/?cid=17602803442712138027"}, "12": {"name": "Hamachidori-no-yu Kaishu", "lat": 33.673034, "lon": 135.334343, "url": "https://maps.google.com/?cid=3390272157845678808"}, "13": {"name": "Senjojiki Rock Plateau", "lat": 33.6707012, "lon": 135.3304584, "url": "https://maps.app.goo.gl/X7obhxQpo7ApiCdNA"}, "14": {"name": "Ura-Senjojiki", "lat": 33.6689484, "lon": 135.33135099999998, "url": "https://maps.google.com/?cid=12856806204964319956"}, "15": {"name": "Kumano Sansho Shrine", "lat": 33.6851069, "lon": 135.34242949999998, "url": "https://maps.google.com/?cid=11663528559639994824"}, "16": {"name": "Kumano Kodo Nakahechi", "lat": 33.7836, "lon": 135.5166, "url": "https://maps.google.com/?cid=8946960721844952529"}}}, "kyoto": {"hotels": [{"name": "Hotel ZIZI Horikawa Gojo", "lat": 34.9976817, "lon": 135.7540521, "url": "https://maps.app.goo.gl/jgtEtLKyQvY8QCyL6"}, {"name": "Kyoto Plaza Hotel Kintetsu Jujo", "lat": 34.9734786, "lon": 135.7472537, "url": "https://maps.app.goo.gl/QCL8hgja5Wy7ZZxy6"}], "places": {"1": {"name": "Ramen Mugyu Vol. 2", "lat": 35.006548, "lon": 135.7602896, "url": "https://maps.app.goo.gl/MTMqmLb44jYt3tQr7"}, "2": {"name": "Rokkaku Ace", "lat": 35.0074364, "lon": 135.7638627, "url": "https://maps.app.goo.gl/t3BPCqP94pLCnFpY8"}, "3": {"name": "Kyogoku Kaneyo", "lat": 35.007592, "lon": 135.767949, "url": "https://maps.app.goo.gl/d1dSvUQgKdxh59pw8"}, "4": {"name": "Kitchen Gon Rokkaku", "lat": 35.0072273, "lon": 135.7627796, "url": "https://maps.app.goo.gl/JHsjYDhMVoTa2JYR8"}, "5": {"name": "Gyukatsu Kyoto Katsugyu", "lat": 35.005403, "lon": 135.7669232, "url": "https://maps.app.goo.gl/pxXWHSLYfdYrQe2C8"}, "6": {"name": "Kyo-Motsunabe Kamehachi", "lat": 35.0072749, "lon": 135.7707854, "url": "https://maps.app.goo.gl/KH59QUEssErBdUuRA"}, "7": {"name": "Ten no Meshi Gion", "lat": 35.0042282, "lon": 135.7745187, "url": "https://maps.app.goo.gl/Qphf8UeRnZ5U9pX67"}, "8": {"name": "Hikiniku to Come", "lat": 35.0051, "lon": 135.7746, "url": "https://maps.google.com/?cid=5604413755966420161"}, "9": {"name": "Kunton Akutagawa", "lat": 35.0064, "lon": 135.7667, "url": "https://maps.google.com/?cid=13196192196322562881"}, "10": {"name": "Nishiki Market", "lat": 35.005, "lon": 135.7647, "url": "https://maps.google.com/?cid=13159134450370243740"}, "11": {"name": "Second House Cake Works", "lat": 35.0064319, "lon": 135.7609654, "url": "https://maps.app.goo.gl/3CBqHFL6P8rh8Zab6"}, "12": {"name": "Micasadeco & Cafe", "lat": 35.0058856, "lon": 135.7657151, "url": "https://maps.app.goo.gl/4L5zU4MjY3mS6PuR8"}, "13": {"name": "Itoh Kyuemon Sabo", "lat": 35.0036759, "lon": 135.7731794, "url": "https://maps.app.goo.gl/qP44cdyMzwYrJ8hZA"}, "14": {"name": "Cafe Bibliotic Hello!", "lat": 35.0137, "lon": 135.7642, "url": "https://maps.google.com/?cid=9811042860654385097"}, "15": {"name": "Kinkaku-ji", "lat": 35.03937, "lon": 135.7292431, "url": "https://maps.app.goo.gl/C7yMTuzNasRxVTK87"}, "16": {"name": "Yasaka Shrine", "lat": 35.0036559, "lon": 135.7785534, "url": "https://maps.app.goo.gl/r2T89NW5XDg5C6Gn6"}, "17": {"name": "Nanzen-ji", "lat": 35.0114138, "lon": 135.7944841, "url": "https://maps.app.goo.gl/42GvsGz7u1fjYyRs8"}, "18": {"name": "Anraku-ji", "lat": 35.0216167, "lon": 135.7966367, "url": "https://maps.app.goo.gl/98J73Gu88dbsEw5i9"}, "19": {"name": "Tōfuku-ji", "lat": 34.976025, "lon": 135.7737627, "url": "https://maps.app.goo.gl/J86VZzDy6UqLb7Jm8"}, "20": {"name": "Arashiyama Yusai-Tei", "lat": 35.0141337, "lon": 135.6709556, "url": "https://maps.app.goo.gl/BxhAA4TK4mPumWgk7"}, "21": {"name": "Jōjakkō-ji", "lat": 35.0198102, "lon": 135.6686405, "url": "https://maps.app.goo.gl/Zs3ALEwkemQo9Ury8"}, "22": {"name": "Kiyomizu-dera", "lat": 34.9947, "lon": 135.7847, "url": "https://maps.google.com/?cid=7111013964196361402"}, "23": {"name": "Ginkaku-ji", "lat": 35.027, "lon": 135.7982, "url": "https://maps.google.com/?cid=2705196751698570185"}, "24": {"name": "Honnō-ji", "lat": 35.0103, "lon": 135.7683, "url": "https://maps.google.com/?cid=2201652011559631590"}, "25": {"name": "Rokudō Chinnō-ji", "lat": 34.9983, "lon": 135.7754, "url": "https://maps.google.com/?cid=5165877923149119340"}, "26": {"name": "Saihō-ji (Kokedera)", "lat": 34.9922, "lon": 135.6837, "url": "https://maps.google.com/?cid=12604676872959930581"}, "27": {"name": "Daihikaku Senkō-ji", "lat": 35.0158, "lon": 135.6656, "url": "https://maps.google.com/?cid=14257992469760671362"}, "28": {"name": "Arashiyama Monkey Park", "lat": 35.0114, "lon": 135.6766, "url": "https://maps.google.com/?cid=1960354123061081266"}, "29": {"name": "Mount Hiei", "lat": 35.0622, "lon": 135.8315, "url": "https://maps.google.com/?cid=16309124816119328751"}, "30": {"name": "Former Chikurin-in", "lat": 35.0716, "lon": 135.8658, "url": "https://maps.google.com/?cid=13309011099031202891"}, "31": {"name": "Kurama Onsen", "lat": 35.1192, "lon": 135.7766, "url": "https://maps.google.com/?cid=6234670849390713272"}, "32": {"name": "Kyoto Tower", "lat": 34.9875, "lon": 135.7593, "url": "https://maps.google.com/?cid=17017157882742292436"}, "33": {"name": "GEAR non-verbal theatre", "lat": 35.0085, "lon": 135.7665, "url": "https://maps.google.com/?cid=590976552152252111"}, "34": {"name": "Naniwa Camera", "lat": 35.0039, "lon": 135.7662, "url": "https://maps.google.com/?cid=9608848783477973023"}}}, "hikone": {"hotels": [{"name": "Hotel Sunroute Hikone", "lat": 35.2730945, "lon": 136.262185, "url": "https://maps.app.goo.gl/9NpEg9hq8h4yYqeu7"}], "places": {"1": {"name": "Jinnosuke Coffee", "lat": 35.1392, "lon": 136.0884, "url": "https://maps.google.com/?cid=1420078449805569034"}, "2": {"name": "Hikone Castle", "lat": 35.2763, "lon": 136.2519, "url": "https://www.google.com/maps/search/?api=1&query=Hikone+Castle"}, "3": {"name": "Yutani Shrine", "lat": 35.3128, "lon": 136.2953, "url": "https://maps.google.com/?cid=2770015437704597159"}, "4": {"name": "Chikubu Island", "lat": 35.4232, "lon": 136.1437, "url": "https://maps.google.com/?cid=2901414486857167280"}, "5": {"name": "Kyorinbo", "lat": 35.1389, "lon": 136.164, "url": "https://maps.google.com/?cid=1454445400296920734"}, "6": {"name": "Omihachiman", "lat": 35.1284, "lon": 136.098, "url": "https://maps.google.com/?cid=8511313074295460791"}, "7": {"name": "Shirahige Shrine", "lat": 35.2745, "lon": 136.011, "url": "https://maps.google.com/?cid=13664484576260554187"}, "8": {"name": "Keisokuji", "lat": 35.5061, "lon": 136.2579, "url": "https://maps.google.com/?cid=2366704082444976644"}, "9": {"name": "Yogo Station", "lat": 35.5339, "lon": 136.1997, "url": "https://maps.google.com/?cid=1657791961354483095"}}}};
+  const root = document.getElementById("jp26"); if (!root) return;
+  const html = document.documentElement;
+  // theme: auto (follows the phone) / dark / light
+  const KEY = "jpguide-theme";
+  const get = () => { try { return localStorage.getItem(KEY) || "auto"; } catch (e) { return "auto"; } };
+  const set = v => { try { localStorage.setItem(KEY, v); } catch (e) {} };
+  const btn = root.querySelector(".themebtn");
+  const LABEL = { auto: "Theme · Auto", dark: "Theme · Dark", light: "Theme · Light" };
+  const apply = v => { if (v === "auto") html.removeAttribute("data-theme"); else html.setAttribute("data-theme", v); if (btn) btn.textContent = LABEL[v]; };
+  apply(get());
+  if (btn) { btn.hidden = false; btn.addEventListener("click", () => { const order = ["auto", "dark", "light"]; const v = order[(order.indexOf(get()) + 1) % 3]; set(v); apply(v); }); }
+  root.querySelectorAll(".onmap, .gmap").forEach(el => el.hidden = false);
+  root.querySelectorAll(".mapnote").forEach(el => el.textContent = "Tap a pin to see it on the Google map below. Distances are straight-line from the starred point.");
+  const src = (lat, lon, z) => `https://maps.google.com/maps?q=${lat},${lon}&z=${z}&hl=en&output=embed`;
+  function show(city, n, scroll) {
+    const box = root.querySelector(`.gmap[data-city="${city}"]`); if (!box) return;
+    const d = D[city]; const p = n ? d.places[n] : d.hotels[0]; if (!p) return;
+    box.querySelector("iframe").src = src(p.lat, p.lon, n ? 16 : 14);
+    box.querySelector(".gmap-sel").textContent = n ? `${n} · ${p.name}` : `★ ${p.name}`;
+    box.querySelector(".gmap-open").href = p.url;
+    const j = box.querySelector(".gmap-jump");
+    if (n) { j.hidden = false; j.href = `#jp-${city}-p-${n}`; } else j.hidden = true;
+    root.querySelectorAll(`#jp-city-${city} .map a[data-pin]`).forEach(a => a.classList.toggle("sel", a.dataset.pin === String(n)));
+    if (scroll) {
+      const tog = root.querySelector(`#${city}-maptog`); if (tog && !tog.checked && matchMedia("(max-width: 1020px)").matches) tog.checked = true;
+      const smooth = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+      box.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "center" });
+    }
+  }
+  function visibleCity() {
+    const h = decodeURIComponent(location.hash || "");
+    let m = h.match(/^#jp-city-([a-z]+)$/) || h.match(/^#jp-([a-z]+)-p-\d+$/);
+    if (m && D[m[1]]) return m[1];
+    const c = root.querySelector(".city"); return c ? c.id.replace("jp-city-", "") : null;
+  }
+  function lazy() { const c = visibleCity(); if (!c) return; const f = root.querySelector(`.gmap[data-city="${c}"] iframe`); if (f && !f.getAttribute("src")) show(c, null, false); }
+  root.addEventListener("click", e => {
+    const pin = e.target.closest(".map a[data-pin]");
+    if (pin) { e.preventDefault(); const c = pin.closest(".city").id.replace("jp-city-", ""); show(c, pin.dataset.pin, false); return; }
+    const b = e.target.closest(".onmap");
+    if (b) { const c = b.closest(".city").id.replace("jp-city-", ""); show(c, b.dataset.onmap, true); }
+  });
+  window.addEventListener("hashchange", () => setTimeout(lazy, 50));
+  lazy(); window.addEventListener("load", lazy);
+})();
+</script>
 </body></html>
