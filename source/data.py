@@ -91,7 +91,7 @@ P = [
   "The centre of Osaka's nightlife and tourism. Worth going at least once. Very crowded and everything is overpriced, but a drink in a local bar while watching the night crowd is an experience.",
   "https://maps.app.goo.gl/WaDFD5NCBPPYQLx7A","Ebisubashi Dotonbori night",34.6691,135.5013),
  ("sights","Osaka Castle","Osaka Castle Park","1.8 km",["Outdoors","Photo spot"],
-  "A decent park and good photos of the castle; inside is a museum, open during the day. Not a must. Autumn leaves in the park typically peak mid-November to early December.",
+  "A decent park and good photos of the castle; inside is a museum, open during the day. Not a must.",
   "https://www.google.com/maps/search/?api=1&query=Osaka+Castle","Osaka Castle autumn",34.6873,135.5259),
  ("sights","Shitennō-ji","Tennōji","4.1 km",["Outdoors","Photo spot"],
   "The most famous temple in Osaka. Big and very photogenic. Worth going. Shinsekai and Go Go Curry are a short walk away.",
@@ -124,6 +124,7 @@ TAGS = [
  ("Low energy", "sit down and chill"),
  ("Outdoors", "better on a dry day"),
  ("Photo spot", "bring the camera"),
+ ("Autumn leaves", "has a leaves forecast"),
  ("Queue", "expect a short wait"),
  ("Pricier", "a bit more expensive"),
 ]
@@ -321,7 +322,7 @@ KY_RAW += [
   "A popular cafe with walls of books. A calm place to sit for a while.",
   "https://maps.google.com/?cid=9811042860654385097", "Cafe Bibliotic Hello Kyoto", 35.0137, 135.7642, ""),
  ("sights", "Kiyomizu-dera", "Higashiyama", ["Photo spot", "Late night"],
-  "The temple with the famous wooden stage over the hillside. In 2026 it opens in the evening from Nov 21 to 30 for the autumn light-up, which overlaps both of our Kyoto stays.",
+  "The temple with the famous wooden stage over the hillside. It usually opens in the evening in autumn for a light-up (in 2025 it ran Nov 22-Dec 7). The 2026 dates are not announced yet.",
   "https://maps.google.com/?cid=7111013964196361402", "Kiyomizudera autumn illumination", 34.9947, 135.7847, ""),
  ("sights", "Ginkaku-ji", "Sakyo, east Kyoto", ["Outdoors", "Photo spot"],
   "The Silver Pavilion and its garden. The Philosopher's Path starts here and runs south past Anraku-ji towards Nanzen-ji, so they make a good walk together.",
@@ -530,8 +531,29 @@ HIKONE = dict(
              outliers=[]),
 )
 
-CITIES = [OSAKA, WAKAYAMA, SHIRAHAMA, KYOTO, HIKONE]
+NR_START = {"name": "Kintetsu Nara Station", "lat": 34.6842485, "lon": 135.8275275,
+            "maps": "https://www.google.com/maps/search/?api=1&query=Kintetsu+Nara+Station"}
+
+NARA = dict(
+    key="nara", name="Nara", jp="奈良", stop=0, optional=True, dates="Day trip", tabdates="Optional day trip", nights="optional",
+    sub="a day trip from<br>Osaka or Kyoto", art="nara",
+    hotel=NR_START, hotel_name="Kintetsu Nara Station", hotel_note="the closest station to Nara Park",
+    hotel_box_title="Starting point", hotel_label="station", pill="Maybe · a day trip", maybe_label="Maybe a day trip",
+    kicker="Optional day trip · from Osaka or Kyoto",
+    day1=("How to fit it in", "Not decided yet. Nara is about 40 minutes from Osaka-Namba, or 35-45 minutes from Kyoto Station, on the Kintetsu line to Kintetsu Nara Station. For autumn leaves, earlier is better, see the forecast below."),
+    planner="Options", places=[], areas=[], leads={}, icons={},
+    soon="No list yet. Places will be added here once we have one.",
+    map=dict(k=15.0, W=100.0, H=70.0, scale_km=0.5, scale_lbl="500 m", ycenter_shift=0,
+             labels=[("NARA PARK →", 34.6880, 135.8380, "start")], outliers=[]),
+)
+
+CITIES = [OSAKA, WAKAYAMA, SHIRAHAMA, KYOTO, NARA, HIKONE]
 CATS = {k: CATS[k] for k in ["must", "food", "sweets", "coffee", "drinks", "onsen", "sights", "trips"]}
 for _c in CITIES:   # number places in the order their sections appear
     _c["places"] = sorted(_c["places"], key=lambda p: list(CATS).index(p[0]))
+import leaves as _lv   # cards with a leaves forecast also get the "Autumn leaves" filter tag
+for _c in CITIES:
+    _m = _lv.CARDS.get(_c["key"], {})
+    assert all(any(p[1] == n for p in _c["places"]) for n in _m), f"leaves.CARDS names a missing card in {_c['key']}"
+    _c["places"] = [p[:4] + ((p[4] + ["Autumn leaves"]) if p[1] in _m else p[4],) + p[5:] for p in _c["places"]]
 LATER = []

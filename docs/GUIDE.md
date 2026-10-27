@@ -19,6 +19,7 @@ It's a single web page, made for phones and for the two people travelling, of *o
 - **Pick by area**: a fold-out panel grouping places that are close together
 - **a drawn map**: our own SVG map with numbered pins in category colours. Places far away are pinned at the edge with their distance.
 - **an embedded Google map**: it follows the pin or card you tap
+- an **autumn leaves forecast** in every tab: a timeline of forecast spots with our days shaded, and a leaves line on matching cards
 - a "Next stop" link at the bottom
 
 It also has dark mode (it follows the phone, with an Auto / Dark / Light switch), and it's hidden from search engines.
@@ -34,6 +35,7 @@ CLAUDE.md               working rules for Claude when this repo is attached to a
 docs/GUIDE.md           this document
 source/
   data.py               ALL the content: categories, stops, hotels, places, areas, map settings
+  leaves.py             the autumn leaves forecast: spots, dates, our stay days, verdicts, sources
   common.py             icons, header illustrations, the map drawing (build_map), small helpers
   styles.py             the base stylesheet (design tokens, layout, components), scoped under #jp26
   build_site.py         builds index.html. Version number and changelog live here.
@@ -84,7 +86,7 @@ Each place is a tuple:
 ```
 
 - **distance_text** is calculated, not typed. Each stop has a helper (`dist`, `kdist`, `wdist`, `hdist`) that measures the straight-line distance from the hotel and adds "· walk" under about 1.2 km. Kyoto shows two distances ("from hotel 1 / from hotel 2").
-- **tags** are free text, but six of them act as mood filters: `Must-go`, `Quick bite`, `Late night`, `Low energy`, `Outdoors`, `Photo spot`. The others just display: `Book ahead`, `Queue`, `Pricier`.
+- **tags** are free text, but seven of them act as mood filters: `Must-go`, `Quick bite`, `Late night`, `Low energy`, `Outdoors`, `Photo spot`, `Autumn leaves`. Don't type `Autumn leaves` by hand: it is added automatically to every card listed in `leaves.CARDS`, and it shows as a filter chip but not as a tag on the card. The others just display: `Book ahead`, `Queue`, `Pricier`.
 - **maps_url** can be a short link the user sent, a `maps.google.com/?cid=...` link from a Google list, or a search link.
 - **photo_search_query** becomes a Google Images search link. We never copy photos from Google Maps, Instagram or restaurant sites.
 - Each stop's raw list (`P`, `SH_RAW`, `KY_RAW`, `WK_RAW`, `HK_RAW`) is turned into finished places, and at the end every stop's places are sorted into category order.
@@ -107,9 +109,22 @@ Required fields:
 | `leads`, `icons`, `titles` | per-category lead sentence, icon override, title override |
 | `map` | drawn-map settings (below) |
 
-Optional fields: `tabdates` (text under the tab name), `hotel2` with `hotel2_name`, `hotel2_note`, `hotel2_dates` and `hotel2_nights` (a second hotel, as in Kyoto), `optional=True` (dashed "maybe" styling, as in Wakayama), `kicker`, `pill`, `hotel_box_title`, `hotel_label` (the map's ★ label), and `next_back` (where the "Next stop" link points, e.g. Hikone back to Kyoto).
+Optional fields: `tabdates` (text under the tab name), `hotel2` with `hotel2_name`, `hotel2_note`, `hotel2_dates` and `hotel2_nights` (a second hotel, as in Kyoto), `optional=True` (dashed "maybe" styling, as in Wakayama and Nara), `maybe_label` (the wording of the dashed link from the stop before, default "Maybe on the way"), `soon` (the note shown when a stop has few or no places), `kicker`, `pill`, `hotel_box_title`, `hotel_label` (the map's ★ label), and `next_back` (where the "Next stop" link points, e.g. Hikone back to Kyoto).
 
 Filters switch on automatically once a stop has 8 or more places (`FILTER_MIN` in `build_site.py`).
+
+**A placeholder stop** (like Nara) can have `places=[]` and `areas=[]`. The tab, header, starting point, leaves forecast, drawn map (just the ★) and Google map all still work, and the planner shows the `soon` note. Don't put an empty stop last in `CITIES`: the phone test opens place 1 of the last tab.
+
+### Autumn leaves forecast (`source/leaves.py`)
+- `SPOTS[stop]`: forecast spots in display order, as (name, peak from "M/D", leaves start to fall "M/D").
+- `CARDS[stop]`: links a card (by its name in data.py) to a spot: (spot name, `False`) when the forecast is for that exact place, or (spot name, "Eikandō, on the same hillside") for an estimate from a nearby spot. The build stops if a name doesn't match a card.
+- `STAYS[stop]`: our days there, as (label, first day, last day). They are shaded on the timeline, and each card gets a badge per stay: "at peak", "peak from Nov 20", "peak, falling from Dec 2", "still colouring" or "leaves falling". These are worked out from the dates by `status()`.
+- `VERDICT[stop]`: one or two plain sentences at the top of the panel. Rewrite them when the dates change.
+- `CHECKED`, `SOURCES`, and the chart's range (`START`, `END`).
+
+The timeline is plain HTML and CSS, so it works without JavaScript: a bar per spot from the start of peak to the start of falling (solid if it's on our list, striped if it's only nearby), the stay days as shaded bands, a legend, the dates written under each name, and a tooltip on hover or tap. Bar colours were checked with the dataviz palette validator: `#D9483B` on light, `#E8604E` on dark.
+
+**To refresh the forecast:** open the Weathernews spot pages (weathernews.jp/koyo/area/kinki/ lists them by prefecture). Each says 見頃予想 "見頃 X月Y日頃〜" (peak from) and "落葉はじめ" (leaves start to fall). Update `SPOTS`, `CHECKED` and the verdicts, then cross-check against official sources: the JMA average dates (data.jma.go.jp/sakura/data/phn_014.html) and Kyoto City's reports (from late October). Light-up dates (Kiyomizu-dera, Genkyū-en) are announced by the temples, usually in October or November.
 
 ### Map settings (`map=dict(...)`)
 - `k`: map units per km (the scale). `W` and `H`: canvas size (100 wide). `ycenter_shift`: moves the content down to leave room at the top.
@@ -145,8 +160,9 @@ This gives every place with the note the user wrote, its coordinates and distanc
 1. Add the hotel (or starting point) and the place list, following an existing stop. The newest pattern is in `HK_RAW` / `HIKONE`.
 2. Add the stop to `CITIES` in travel order. Tabs, "Next stop" links and the per-stop CSS are all generated from that list.
 3. Add a header illustration to `ART` in `common.py`. These are small hand-written SVGs on a 200×170 canvas, using `INK` outlines and warm flat colours. Add a matching gradient for `.hero-<key>` in `build_site.py`, in both the light CSS and the dark `HEROES` list.
-4. Add any new local-script characters (the `jp` name, new category labels) to `JP_CHARS` in `build_site.py`. The Japanese font is downloaded as a subset containing only those characters.
-5. Build, test, and check the map screenshot.
+4. Add the stop's forecast to `leaves.py` (`SPOTS`, `STAYS`, `VERDICT`, and `CARDS` if any of its places have a forecast).
+5. Add any new local-script characters (the `jp` name, new category labels) to `JP_CHARS` in `build_site.py`. The Japanese font is downloaded as a subset containing only those characters.
+6. Build, test, and check the map screenshot.
 
 ## 7. Growing it into other trips and countries
 
@@ -192,6 +208,7 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 - **Filters** are hidden radio buttons (category) and checkboxes (mood) styled as chips. CSS `:has()` hides the cards that don't match. The count is a CSS counter. Empty sections and the "nothing matches" message come from generated rules (`minimal_failing` in `build_site.py`). None of this needs JavaScript, which is why the same markup also worked inside Squarespace.
 - **Pin dimming:** pins and area chips carry classes for their category (`pc-*`) and tags (`pt-*`), and filtered-out ones fade.
 - **Google map:** a keyless embed (`maps.google.com/maps?q=lat,lon&z=..&output=embed`). It shows one place at a time. The script loads each tab's map when the tab opens, and moves it when you tap a pin or "Show on map". Without JavaScript, pins jump to the card instead.
+- **Leaves timeline:** bars and bands are positioned with percentages of the date range. The tooltip is CSS (`:hover` and `:focus`), and each row can be focused with the keyboard.
 - **The drawn map** is generated SVG. The dot grid is an SVG pattern, which keeps the file small.
 
 ## 10. Hosting and domain
@@ -221,6 +238,7 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 
 - **Osaka guide:** first an editable doc, then a designed PDF.
 - **Web version:** first a hosted page, then the Squarespace Code Block. That meant no JavaScript on the Personal plan and about 300,000 characters at most, so filters were rebuilt in pure CSS and the file was slimmed down.
-- **Stops added:** Shirahama, Kyoto (two hotels), Hikone, and an optional Wakayama stop. Places came from messages and from shared Google Maps lists.
+- **Stops added:** Shirahama, Kyoto (two hotels), Hikone, an optional Wakayama stop, and an optional Nara day trip (placeholder). Places came from messages and from shared Google Maps lists.
 - **v1.2:** moved to GitHub Pages on japan.zhunior.com, with dark mode and embedded Google maps.
 - **v1.2.1:** stronger search-engine hiding. The source and these docs were added to the repo.
+- **v1.3:** autumn leaves forecast in every tab, leaves lines and an Autumn leaves filter, the Nara placeholder tab, and the Kiyomizu-dera light-up dates corrected.

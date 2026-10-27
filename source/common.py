@@ -144,7 +144,37 @@ WAKAYAMA_ART = f'''<svg viewBox="0 0 200 170" class="coverart">
   </g>
 </svg>'''
 
-ART = {"osaka": COVER_ART, "wakayama": WAKAYAMA_ART, "kyoto": KYOTO_ART, "hikone": HIKONE_ART, "shirahama": f'''<svg viewBox="0 0 200 170" class="coverart" style="overflow:visible">
+NARA_ART = f'''<svg viewBox="0 0 200 170" class="coverart">
+  <circle cx="46" cy="50" r="22" fill="#F7B267"/>
+  <circle cx="46" cy="50" r="22" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="2 7" opacity=".7"/>
+  <path d="M120 36 q8 -10 18 -4 q6 -8 16 -2 q10 0 8 8 H120Z" fill="#fff" opacity=".9"/>
+  <g fill="#E39A7A" opacity=".55">
+    <rect x="163" y="40" width="4" height="10"/>
+    <path d="M150 54 H180 L174 49 H156Z"/><rect x="157" y="54" width="16" height="7"/>
+    <path d="M147 66 H183 L176 61 H154Z"/><rect x="156" y="66" width="18" height="8"/>
+    <path d="M144 79 H186 L178 74 H152Z"/><rect x="155" y="79" width="20" height="9"/>
+    <path d="M141 93 H189 L180 88 H150Z"/><rect x="154" y="93" width="22" height="18"/>
+  </g>
+  <path d="M0 118 Q50 98 100 112 Q150 94 200 108 V170 H0Z" fill="#EFA27F"/>
+  <path d="M0 144 Q60 124 120 140 Q160 130 200 138 V170 H0Z" fill="#E1866A"/>
+  <ellipse cx="112" cy="146" rx="44" ry="5" fill="{INK}" opacity=".18"/>
+  <g stroke="{INK}" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M90 112 L88 145 M100 115 L100 146 M126 115 L128 146 M138 110 L142 144" stroke-width="4.6"/>
+    <path d="M90 112 L88 145 M100 115 L100 146 M126 115 L128 146 M138 110 L142 144" stroke="#C98A56" stroke-width="1.4"/>
+    <path d="M84 100 L72 72 Q80 64 90 70 L102 96Z" fill="#C98A56"/>
+    <ellipse cx="114" cy="104" rx="34" ry="16" fill="#C98A56"/>
+    <path d="M146 96 q8 -4 6 6 q-3 3 -7 0Z" fill="#FFF3E0"/>
+    <path d="M78 58 L76 42 L70 36 M76 42 L84 34 M77 50 L70 47" fill="none" stroke-width="2.2"/>
+    <path d="M86 58 L90 44 L86 36 M90 44 L98 40" fill="none" stroke-width="2.2"/>
+    <ellipse cx="88" cy="64" rx="7" ry="3.6" transform="rotate(-28 88 64)" fill="#C98A56"/>
+    <path d="M66 64 Q78 58 86 66 Q86 76 76 78 L62 78 Q56 76 58 71Z" fill="#C98A56"/>
+  </g>
+  <circle cx="73" cy="68" r="1.8" fill="{INK}"/><circle cx="58.5" cy="73.5" r="2" fill="{INK}"/>
+  <g fill="#FFF3E0"><circle cx="104" cy="97" r="2.2"/><circle cx="116" cy="94" r="2.2"/><circle cx="128" cy="98" r="2.2"/><circle cx="111" cy="104" r="2"/><circle cx="123" cy="106" r="1.8"/></g>
+  {_leaf(30, 104, 1.1, -20, "#E2604A")}{_leaf(176, 126, 1.0, 20, "#E9A23B")}{_leaf(40, 150, .8, 30, "#D9483B")}{_leaf(150, 156, .7, -25, "#E9A23B")}
+</svg>'''
+
+ART = {"osaka": COVER_ART, "wakayama": WAKAYAMA_ART, "nara": NARA_ART, "kyoto": KYOTO_ART, "hikone": HIKONE_ART, "shirahama": f'''<svg viewBox="0 0 200 170" class="coverart" style="overflow:visible">
   <circle cx="58" cy="70" r="26" fill="#F7B267"/>
   <circle cx="58" cy="70" r="26" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="2 7" opacity=".7"/>
   <path d="M120 40 q8 -10 18 -4 q6 -8 16 -2 q10 0 8 8 H120Z" fill="#fff" opacity=".9"/>

@@ -6,6 +6,7 @@
 Checks, on a desktop and a phone-sized window:
   * every stop's tab opens its own section and only that one
   * filters work without JavaScript (category and mood chips change the card count)
+  * every stop shows the autumn leaves forecast, and the Autumn leaves filter matches the cards with a forecast line
   * nothing spills sideways on a phone (no horizontal scroll)
   * dark mode applies, the theme switch cycles, and the Google map loads and follows pins / "Show on map"
   * no script errors
@@ -54,6 +55,14 @@ with sync_playwright() as pw:
             cat.click(); pg.wait_for_timeout(200)
             n = visible_cards(pg, k)
             check(0 < n < len(c["places"]), f"{k}: category filter narrows the list ({n} shown)")
+            pg.click(f"#jp-city-{k} .clr"); pg.wait_for_timeout(200)
+        check(pg.query_selector(f"#jp-city-{k} .leaves .lvrow") is not None, f"{k}: autumn leaves forecast is shown")
+        leaf = pg.query_selector(f"#jp-city-{k} label[for='{k}-jm-6']")   # the "Autumn leaves" mood chip
+        if leaf:
+            leaf.click(); pg.wait_for_timeout(200)
+            n = visible_cards(pg, k)
+            want = pg.evaluate(f"document.querySelectorAll('#jp-city-{k} .jp-bytype .card .lvcard').length")
+            check(n == want > 0, f"{k}: Autumn leaves filter shows the {want} cards with a forecast ({n} shown)")
             pg.click(f"#jp-city-{k} .clr"); pg.wait_for_timeout(200)
     print("With JavaScript, dark mode, desktop:")
     errors = []

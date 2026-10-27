@@ -12,9 +12,11 @@ How the page works (details in docs/GUIDE.md):
   * The GitHub version adds a small script for dark mode, the theme switch and the embedded Google map.
 """
 import os, re, sys, itertools, urllib.parse
+from datetime import timedelta
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import CATS, CITIES, LATER, TAGS, ICONS, ART, PIN, CAM, HEART, build_map, esc, tag_html, photos
 import styles  # base stylesheet, scoped under #jp26
+import leaves as LV  # autumn leaves forecast (source/leaves.py)
 
 R = "#jp26"
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -22,10 +24,12 @@ REPO = os.path.dirname(HERE)
 OUTDIR = os.path.join(HERE, "out")
 os.makedirs(OUTDIR, exist_ok=True)
 EXT = 'target="_blank" rel="noopener"'
-MOODS = ["Must-go", "Quick bite", "Late night", "Low energy", "Outdoors", "Photo spot"]
+MOODS = ["Must-go", "Quick bite", "Late night", "Low energy", "Outdoors", "Photo spot", "Autumn leaves"]
 CATKEYS = ["food", "sweets", "coffee", "drinks", "onsen", "sights", "trips"]
 FILTER_MIN = 8  # show filters only when a city has this many places
-JP_CHARS = "大阪絶対ごはん甘味珈琲乾杯温泉名所日帰り白浜京都彦根和歌山"
+JP_CHARS = "大阪絶対ごはん甘味珈琲乾杯温泉名所日帰り白浜京都彦根和歌山奈良紅葉"
+_LEAF_D = "M0 -10 L2.4 -4 L8.5 -6 L5 -1 L10 2 L4 2.6 L5 8 L0 4.4 L-5 8 L-4 2.6 L-10 2 L-5 -1 L-8.5 -6 L-2.4 -4Z M-0.9 4 h1.8 v7 h-1.8z"
+LEAF_URI = "data:image/svg+xml," + urllib.parse.quote(f"<svg xmlns='http://www.w3.org/2000/svg' viewBox='-11 -11 22 23'><path d='{_LEAF_D}'/></svg>", safe="/:=' ")
 
 
 def card_cat(p): return "food" if p[0] == "must" else p[0]
@@ -35,18 +39,99 @@ def matches(p, c, M): return (c == "all" or card_cat(p) == c) and all(m in p[4] 
 def card(city, i, p, view):
     cat, name, area, km, tags, desc, maps, pq = p[:8]
     c = CATS[cat]
-    tags_h = "".join(tag_html(t) for t in tags)
+    tags_h = "".join(tag_html(t) for t in tags if t != "Autumn leaves")
     return f'''<article class="card" id="jp-{city['key']}-{view}-{i}" data-n="{i}" data-cat="{cat}" data-tags="{esc('|'.join(tags))}" style="--c:{c['color']}">
   <div class="num" aria-hidden="true">{i}</div>
   <div class="cbody">
     <h3>{esc(name)}</h3>
     <div class="meta"><span class="catlbl">{c['title']} · </span>{esc(area)} <span class="dot">•</span> {esc(km)}</div>
-    {f'<div class="tags">{tags_h}</div>' if tags else ''}
+    {f'<div class="tags">{tags_h}</div>' if tags_h else ''}
     <p>{esc(desc)}</p>
+    {leaves_line(city, name)}
     <div class="btns"><a class="btn" href="{esc(maps)}" {EXT}><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="{esc(photos(pq))}" {EXT}><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="{i}" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></article>'''
+
+
+# ---------- autumn leaves forecast ----------
+LV_START, LV_END = LV.day(LV.START), LV.day(LV.END)
+LV_DAYS = (LV_END - LV_START).days + 1
+
+
+def lv_pct(d):
+    return max(0.0, min(100.0, (d - LV_START).days / LV_DAYS * 100))
+
+
+def lv_spot(k, name):
+    return next((LV.day(p), LV.day(f)) for n, p, f in LV.SPOTS[k] if n == name)
+
+
+def lv_stays(k):
+    return [(lbl, LV.day(a), LV.day(b)) for lbl, a, b in LV.STAYS[k]]
+
+
+def leaves_line(city, name):
+    """The forecast line on a card, with how it looks during each stay."""
+    k = city["key"]
+    m = LV.CARDS.get(k, {}).get(name)
+    if not m: return ""
+    spot, est = m
+    peak, fall = lv_spot(k, spot)
+    about = "about " if est else ""
+    head = f"Leaves, estimate from {est}" if est else "Leaves forecast"
+    badges = "".join(f'<span class="lvb {cls}">{esc(lbl)} · {esc(txt)}</span>'
+                     for lbl, a, b in lv_stays(k) for cls, txt in [LV.status(peak, fall, a, b)])
+    return (f'<div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">{esc(head)}: peak from {about}{LV.fmt(peak)}, '
+            f'falling from {about}{LV.fmt(fall)}.</span> {badges}</div></div>')
+
+
+def leaves_panel(city):
+    """Per-stop panel: verdict, then a timeline with one bar per forecast spot and the stay days shaded."""
+    k = city["key"]
+    if k not in LV.SPOTS: return ""
+    stays = lv_stays(k)
+    cards = LV.CARDS.get(k, {})
+    one = timedelta(days=1)
+    grid = "".join(f'<i class="lvgrid" style="left:{lv_pct(LV.day(t)):.2f}%"></i>' for t in ("11/10", "11/20", "11/30", "12/10"))
+    bands = "".join(f'<i class="lvband" style="left:{lv_pct(a):.2f}%;width:{lv_pct(b + one) - lv_pct(a):.2f}%"></i>' for _, a, b in stays)
+    blabels = "".join(f'<span class="lvbl" style="left:{(lv_pct(a) + lv_pct(b + one)) / 2:.2f}%;top:{0 if i % 2 == 0 else 14}px">{esc(lbl)}</span>'
+                      for i, (lbl, a, b) in enumerate(stays))
+    ticks = "".join(f'<span style="left:{lv_pct(LV.day(t)):.2f}%">{lbl}</span>'
+                    for t, lbl in (("11/10", "Nov 10"), ("11/20", "Nov 20"), ("11/30", "Nov 30"), ("12/10", "Dec 10")))
+    rows = []
+    for name, p, f in LV.SPOTS[k]:
+        peak, fall = LV.day(p), LV.day(f)
+        exact = [c for c, (sp, est) in cards.items() if sp == name and not est]
+        ests = [c for c, (sp, est) in cards.items() if sp == name and est]
+        link = []
+        if exact: link.append("on our list" if exact == [name] else "our list: " + ", ".join(exact))
+        if ests: link.append("estimate for " + ", ".join(ests))
+        sub = f'{LV.fmt_range(peak, fall)} · {"; ".join(link) if link else "not on our list"}'
+        tip = (f"{name}: peak from {LV.fmt(peak)}, leaves start to fall from {LV.fmt(fall)}. "
+               + " ".join(f"{lbl}: {LV.status(peak, fall, a, b)[1]}." for lbl, a, b in stays))
+        rows.append(f'<div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>{esc(name)}</b><small>{esc(sub)}</small></div>'
+                    f'<div class="lvtrack"><i class="lvbar{"" if (exact or ests) else " off"}" style="left:{lv_pct(peak):.2f}%;width:{lv_pct(fall) - lv_pct(peak):.2f}%"></i>'
+                    f'<span class="lvtip">{esc(tip)}</span></div></div>')
+    off_lg = '<span><i class="sw sw-off"></i>Peak colour (nearby, not on our list)</span>' if any(' off"' in r for r in rows) else ""
+    stay_txt = " · ".join(f"{lbl}: {LV.fmt_range(a, b)}" for lbl, a, b in stays)
+    if k in LV.STAY_TITLE: stay_txt = f"{LV.STAY_TITLE[k]} {stay_txt}"
+    on_lg = '<span><i class="sw sw-bar"></i>Peak colour (on our list)</span>' if any('lvbar"' in r for r in rows) else ""
+    srcs = " · ".join(f'<a href="{esc(u)}" {EXT}>{esc(t)}</a>' for t, u in LV.SOURCES)
+    return f'''<section class="leaves" id="jp-{k}-leaves">
+    <div class="lvtxt"><div class="lvjp">紅葉</div><h2>Autumn leaves forecast</h2>
+      <p class="lvverdict">{esc(LV.VERDICT[k])}</p>
+      <p class="lvnote">Each bar runs from the forecast start of peak colour to the day the leaves start to fall. There's still colour for a while after that.
+        Forecast checked {LV.CHECKED}. This autumn looks warm and a bit late, so dates can still move by a week.</p>
+      <p class="lvsrc">Sources: {srcs}</p></div>
+    <div class="lvwrap"><div class="lvchart">
+      <div class="lvbands" aria-hidden="true">{grid}{bands}</div>
+      <div class="lvhead" aria-hidden="true"><span></span><div class="lvtrack">{blabels}</div></div>
+      <div class="lvrows" role="list" aria-label="Forecast by spot">{"".join(rows)}</div>
+      <div class="lvaxis" aria-hidden="true"><span></span><div class="lvtrack">{ticks}</div></div></div>
+      <div class="lvlegend">{on_lg}{off_lg}
+        <span><i class="sw sw-stay"></i>{esc(stay_txt)}</span></div></div>
+  </section>'''
 
 
 def by_type(city):
@@ -143,7 +228,7 @@ def city_panel(city, nxt):
                   f'<input type="reset" form="{pid("f")}" class="linkbtn clr" value="Clear filters"></div>')
         empty = '<div class="empty">Nothing matches all of those at once. Untick one, or tap <b>Clear filters</b>.</div>'
     else:
-        controls = f'<div class="controls"><div class="ctrlhead"><h2>{city["planner"]}<span>{n} so far</span></h2></div><p class="soonnote">More places are on the way as research continues.</p></div>'
+        controls = f'<div class="controls"><div class="ctrlhead"><h2>{city["planner"]}<span>{n} so far</span></h2></div><p class="soonnote">{city.get("soon") or "More places are on the way as research continues."}</p></div>'
         status = empty = ""
 
     num_ = {i + 1: p for i, p in enumerate(P)}
@@ -174,7 +259,7 @@ def city_panel(city, nxt):
     elif nxt and nxt.get("optional"):
         after = CITIES[CITIES.index(nxt) + 1]
         nxt_h = (f'<a class="nextstop" href="#jp-city-{after["key"]}">Next stop: <b>{after["name"]}</b> <span>{after["dates"]} →</span></a>'
-                 f'<a class="nextstop opt" href="#jp-city-{nxt["key"]}">Maybe on the way: <b>{nxt["name"]}</b> <span>optional stop →</span></a>')
+                 f'<a class="nextstop opt" href="#jp-city-{nxt["key"]}">{nxt.get("maybe_label", "Maybe on the way")}: <b>{nxt["name"]}</b> <span>{nxt.get("tabdates", "optional stop").lower()} →</span></a>')
     elif nxt:
         nxt_h = f'<a class="nextstop" href="#jp-city-{nxt["key"]}">Next stop: <b>{nxt["name"]}</b> <span>{nxt["dates"]} →</span></a>'
     else:
@@ -196,6 +281,7 @@ def city_panel(city, nxt):
     {hotel_boxes}
     {day1 or '<div class="box dark"><h3>Still researching</h3><p>Only a few places so far. More food and sights will be added before the trip.</p></div>'}
   </section>
+  {leaves_panel(city)}
   <div class="planner">
     <div class="maincol">
       {controls}
@@ -205,9 +291,9 @@ def city_panel(city, nxt):
       {empty}
     </div>
     <aside class="mapcol">
-      <div class="mapbox"><input class="vh maptog" type="checkbox" id="{pid("maptog")}"><label class="maphead" for="{pid("maptog")}">{city["name"]} at a glance <span>{n} places</span></label>
+      <div class="mapbox"><input class="vh maptog" type="checkbox" id="{pid("maptog")}"><label class="maphead" for="{pid("maptog")}">{city["name"]} at a glance <span>{f"{n} places" if n else "no places yet"}</span></label>
         <div class="mapbody">{map_t}{map_a}
-        <p class="mapnote">Tap a pin to jump to that place. Distances are straight-line from {"hotel 1 / hotel 2" if city.get("hotel2") else ("JR Wakayama Station" if city.get("optional") else "the hotel")} (★).</p>
+        <p class="mapnote">Tap a pin to jump to that place. Distances are straight-line from {"hotel 1 / hotel 2" if city.get("hotel2") else (city["hotel_name"] if city.get("optional") else "the hotel")} (★).</p>
         <div class="gmap" data-city="{k}" hidden><div class="gmap-head"><span class="gmap-sel"></span><a class="gmap-open" href="#" {EXT}>Open in Google Maps</a></div>
           <iframe title="Google map of {esc(city["name"])}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           <a class="gmap-jump" href="#" hidden>Go to this place's card ↓</a></div></div>
@@ -251,9 +337,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.2.1"
-VDATE = "Oct 16, 2026"
+VERSION = "1.3"
+VDATE = "Oct 27, 2026"
 CHANGELOG = [
+    ("1.3", "Oct 27, 2026", "Autumn leaves forecast in every tab, a leaves line on matching cards and an Autumn leaves filter. New optional Nara day trip tab (placeholder). Kiyomizu-dera light-up dates corrected: 2026 not announced yet."),
     ("1.2.1", "Oct 16, 2026", "Stronger instructions telling search engines not to list, cache or preview the page."),
     ("1.2", "Oct 16, 2026", "Moved to japan.zhunior.com (GitHub Pages). Dark mode with an Auto/Dark/Light switch. Google map in every tab: tap a pin or Show on map."),
     ("1.1", "Oct 16, 2026", "New optional Wakayama stop tab (11 places from the Wakayama list plus Kishi, Awashima, Koyasan moved from Shirahama). Version numbers added."),
@@ -374,6 +461,54 @@ def build():
   {R} .maptog:checked ~ .mapbody {{ display: block; }}
 }}
 @media (max-width: 680px) {{ {R} .basics.two {{ grid-template-columns: minmax(0, 1fr); }} {R} .maphead span {{ display: none; }} }}
+/* ---- autumn leaves forecast ---- */
+{R} {{ --leaf: #D9483B; --leaftint: #FBE1DA; --stay: rgba(247, 178, 103, .26); }}
+{R} .i-leaf {{ -webkit-mask: url("{LEAF_URI}") center / contain no-repeat; mask: url("{LEAF_URI}") center / contain no-repeat; }}
+{R} .leaves {{ margin-top: 14px; background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--r); padding: 20px 22px;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.75fr); gap: 16px 30px; scroll-margin-top: 110px; }}
+{R} .lvjp {{ font-family: var(--jpf); font-weight: 900; font-size: 13px; color: var(--leaf); letter-spacing: .1em; }}
+{R} .leaves h2 {{ font-size: 22px; margin-top: 2px; }}
+{R} .lvverdict {{ margin: 8px 0 0; font-size: 15.5px; font-weight: 700; color: var(--ink); }}
+{R} .lvnote, {R} .lvsrc {{ margin: 10px 0 0; font-size: 13px; color: var(--muted); }}
+{R} .lvsrc a {{ color: var(--soft); text-decoration: underline; text-underline-offset: 2px; }}
+{R} .lvchart {{ --lw: 190px; position: relative; }}
+{R} .lvhead, {R} .lvrow, {R} .lvaxis {{ display: grid; grid-template-columns: var(--lw) minmax(0, 1fr); gap: 12px; }}
+{R} .lvtrack {{ position: relative; }}
+{R} .lvbands {{ position: absolute; top: 0; bottom: 0; left: calc(var(--lw) + 12px); right: 0; pointer-events: none; }}
+{R} .lvgrid {{ position: absolute; top: 30px; bottom: 18px; width: 0; border-left: 1px dashed var(--line); }}
+{R} .lvband {{ position: absolute; top: 0; bottom: 18px; background: var(--stay); border-radius: 6px; }}
+{R} .lvhead {{ height: 30px; }}
+{R} .lvbl {{ position: absolute; transform: translateX(-50%); font-size: 11.5px; font-weight: 800; color: var(--soft); white-space: nowrap; line-height: 14px; }}
+{R} .lvrow {{ position: relative; padding: 5px 0; border-radius: 8px; outline: none; }}
+{R} .lvrow:hover, {R} .lvrow:focus-visible {{ background: color-mix(in srgb, var(--chip) 60%, transparent); }}
+{R} .lvrow:focus-visible {{ box-shadow: 0 0 0 2px var(--sun); }}
+{R} .lvname {{ min-width: 0; padding-left: 4px; }}
+{R} .lvname b {{ display: block; font-size: 13.5px; line-height: 1.2; color: var(--ink); }}
+{R} .lvname small {{ display: block; font-size: 11.5px; font-weight: 700; color: var(--muted); line-height: 1.25; margin-top: 1px; }}
+{R} .lvbar {{ position: absolute; top: 50%; height: 10px; margin-top: -5px; border-radius: 4px; background: var(--leaf); min-width: 4px; }}
+{R} .lvbar.off, {R} .sw-off {{ background: repeating-linear-gradient(135deg, var(--leaf) 0 3px, color-mix(in srgb, var(--leaf) 30%, transparent) 3px 6px); }}
+{R} .lvtip {{ display: none; position: absolute; right: 0; bottom: calc(50% + 10px); z-index: 3; width: max-content; max-width: min(280px, 100%);
+  background: var(--dark); color: var(--onDark); font-size: 12.5px; font-weight: 700; line-height: 1.35; padding: 7px 10px; border-radius: 10px; box-shadow: 0 4px 14px rgba(0,0,0,.18); }}
+{R} .lvrow:hover .lvtip, {R} .lvrow:focus .lvtip {{ display: block; }}
+{R} .lvaxis {{ height: 18px; }}
+{R} .lvaxis .lvtrack span {{ position: absolute; top: 3px; transform: translateX(-50%); font-size: 11px; font-weight: 700; color: var(--muted); white-space: nowrap; }}
+{R} .lvlegend {{ display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 10px; font-size: 12.5px; font-weight: 700; color: var(--soft); }}
+{R} .lvlegend span {{ display: inline-flex; align-items: center; gap: 6px; }}
+{R} .sw {{ display: inline-block; width: 18px; height: 10px; border-radius: 4px; flex: none; }}
+{R} .sw-bar {{ background: var(--leaf); }}
+{R} .sw-stay {{ background: var(--stay); height: 14px; border-radius: 3px; }}
+{R} .lvcard {{ display: flex; gap: 7px; align-items: flex-start; margin: 8px 0 0; font-size: 13.5px; color: var(--soft); }}
+{R} .lvcard .bi {{ color: var(--leaf); margin-top: 2px; }}
+{R} .lvt {{ font-weight: 700; }}
+{R} .lvb {{ display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 800; padding: 1px 8px; border-radius: 99px; margin: 4px 4px 0 0;
+  background: var(--chip); color: var(--soft); white-space: nowrap; }}
+{R} .lvb.peak {{ background: var(--leaftint); color: var(--ink); }}
+{R} .lvb.peak::before {{ content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--leaf); }}
+{R} .lvb.late {{ background: transparent; border: 1px dashed var(--muted); padding: 0 7px; }}
+@media (max-width: 860px) {{ {R} .leaves {{ grid-template-columns: minmax(0, 1fr); }} }}
+@media (max-width: 680px) {{ {R} .leaves {{ padding: 16px 14px; }} {R} .lvchart {{ --lw: 118px; }} {R} .lvhead, {R} .lvrow, {R} .lvaxis {{ gap: 8px; }}
+  {R} .lvbands {{ left: calc(var(--lw) + 8px); }} {R} .lvname b {{ font-size: 12.5px; }} {R} .lvname small {{ font-size: 11px; }} {R} .lvaxis .lvtrack span {{ font-size: 10.5px; }} }}
+{R} .hero-nara {{ background: linear-gradient(170deg, #FFF0DE, #F9D3B6 60%, #F3BC9C); border: 2px dashed #E0B892; }}
 {chr(10).join(city_switch)}
 {chr(10).join(city_css)}
 '''
@@ -406,11 +541,12 @@ Changes:
         }
     DARK = ("--bg: #1C1613; --surface: #28201C; --surface2: #221B17; --ink: #F4E8DA; --soft: #E2CDB8; --muted: #B29D8D; "
             "--line: #3B302A; --chip: #362B25; --accent: #F07261; --dark: #F4E8DA; --onDark: #2A211C; --hero1: #3B2A2B; --hero2: #5E3B34; "
-            "--mapgrid: #3E3330; --maplbl: #8C7869; --day: #4A3229; color-scheme: dark;")
+            "--mapgrid: #3E3330; --maplbl: #8C7869; --day: #4A3229; --leaf: #E8604E; --leaftint: #4A2A24; --stay: rgba(247, 178, 103, .13); color-scheme: dark;")
     HEROES = (".hero-shirahama {{ background: linear-gradient(170deg, #3A2A30, #5B3A3A 60%, #6A4038); }} "
               ".hero-kyoto {{ background: linear-gradient(170deg, #3B2A2B, #5E3934 60%, #6E3F35); }} "
               ".hero-hikone {{ background: linear-gradient(170deg, #2F2E26, #4A3F30 60%, #5A4733); }} "
-              ".hero-wakayama {{ background: linear-gradient(170deg, #3A2E2A, #5A4234 60%, #684A38); border-color: #8A6A50; }}").replace("{{", "{").replace("}}", "}")
+              ".hero-wakayama {{ background: linear-gradient(170deg, #3A2E2A, #5A4234 60%, #684A38); border-color: #8A6A50; }} "
+              ".hero-nara {{ background: linear-gradient(170deg, #3A2B2C, #5A3D36 60%, #6A4539); border-color: #8A6A50; }}").replace("{{", "{").replace("}}", "}")
     def dark_block(pre):
         heroes = " ".join(f"{pre} #jp26 {h.strip()}" for h in HEROES.split("} ") if h.strip())
         heroes = heroes.replace("#jp26 .hero", "#jp26 .hero").replace(")", ")").rstrip("}") + "}"

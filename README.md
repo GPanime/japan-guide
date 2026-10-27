@@ -1,6 +1,6 @@
 # Japan trip guide
 
-A travel guide for November 2026: Osaka, an optional Wakayama stop, Shirahama, Kyoto and Hikone. It's a page of options to pick from each day by mood, energy and weather, rather than a schedule.
+A travel guide for November 2026: Osaka, an optional Wakayama stop, Shirahama, Kyoto, an optional Nara day trip and Hikone, with an autumn leaves forecast for each stop. It's a page of options to pick from each day by mood, energy and weather, rather than a schedule.
 
 - **Live:** https://japan.zhunior.com (GitHub Pages, hidden from search engines)
 - **How it's built, how to update it, and how to extend it to other trips:** [docs/GUIDE.md](docs/GUIDE.md)
