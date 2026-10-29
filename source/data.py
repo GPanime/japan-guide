@@ -556,7 +556,10 @@ for _c in CITIES:
     _m = _lv.CARDS.get(_c["key"], {})
     assert all(any(p[1] == n for p in _c["places"]) for n in _m), f"leaves.CARDS names a missing card in {_c['key']}"
     _c["places"] = [p[:4] + ((p[4] + ["Autumn leaves"]) if p[1] in _m else p[4],) + p[5:] for p in _c["places"]]
-# Our own photos (never copied from anywhere): {stop: {card name: slug}}. Files: photos/<stop>/<slug>-800.webp and -1600.webp,
-# made with source/add_photo.py, which also strips location and other metadata.
-PHOTOS = {}   # e.g. {"osaka": {"aoma coffee": "aoma-coffee"}}
+# Card photos, only ones the user sends: {stop: {card name: slug or (slug, source label, source link)}}.
+# Files: photos/<stop>/<slug>-800.webp and -1600.webp, made with source/add_photo.py (also strips location and other metadata).
+# A photo that isn't ours always carries its source, shown as a link on the card and in the enlarged view.
+PHOTOS = {
+    "osaka": {"aoma coffee": ("aoma-coffee", "Photo: YouTube video", "https://www.youtube.com/watch?v=RGqhSRTqsr8")},
+}
 LATER = []

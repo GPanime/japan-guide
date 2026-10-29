@@ -38,29 +38,38 @@ def matches(p, c, M): return (c == "all" or card_cat(p) == c) and all(m in p[4] 
 
 
 def photo_of(city, name):
-    slug = PHOTOS.get(city["key"], {}).get(name)
-    if not slug: return None
+    """(file base, source label, source link) for a card's photo, or None. Our own photos have no source."""
+    v = PHOTOS.get(city["key"], {}).get(name)
+    if not v: return None
+    slug, label, url = (v, None, None) if isinstance(v, str) else v
     base = f"photos/{city['key']}/{slug}"
     for w in (800, 1600):
         assert os.path.exists(os.path.join(REPO, f"{base}-{w}.webp")), f"missing photo {base}-{w}.webp (run source/add_photo.py)"
-    return base
+    return base, label, url
+
+
+def photo_src(label, url, cls):
+    return f'<a class="{cls}" href="{esc(url)}" {EXT}>{esc(label)} ↗</a>' if url else ""
 
 
 def photo_box(city, i, p):
     """The enlarged photo: a full-screen view opened by the card's photo link (:target, no JavaScript). Tap to close."""
-    base = photo_of(city, p[1])
-    if not base: return ""
-    k = city["key"]
-    return (f'<a class="phbox" id="jp-{k}-ph-{i}" href="#jp-{k}-p-{i}" aria-label="Close photo"><img src="{base}-1600.webp" alt="{esc(p[1])}" loading="lazy">'
-            f'<span>{esc(p[1])} · our photo · tap to close</span></a>')
+    ph = photo_of(city, p[1])
+    if not ph: return ""
+    base, label, url = ph
+    k = city["key"]; back = f"#jp-{k}-p-{i}"
+    src = f" · {photo_src(label, url, 'phsrc')}" if url else ""
+    return (f'<div class="phbox" id="jp-{k}-ph-{i}"><a class="phclose" href="{back}" aria-label="Close photo"></a>'
+            f'<img src="{base}-1600.webp" alt="{esc(p[1])}" loading="lazy">'
+            f'<p>{esc(p[1])}{src} · <a href="{back}">Close</a></p></div>')
 
 
 def card(city, i, p, view):
     cat, name, area, km, tags, desc, maps, pq = p[:8]
     c = CATS[cat]
     ph = photo_of(city, name)
-    ph_h = (f'<a class="ph" href="#jp-{city["key"]}-ph-{i}"><img src="{ph}-800.webp" alt="{esc(name)}, our photo" loading="lazy">'
-            f'<span>Our photo</span></a>') if ph else ""
+    ph_h = (f'<div class="ph"><a href="#jp-{city["key"]}-ph-{i}" aria-label="Enlarge photo of {esc(name)}"><img src="{ph[0]}-800.webp" alt="{esc(name)}" loading="lazy"></a>'
+            f'{photo_src(ph[1], ph[2], "phsrc")}</div>') if ph else ""
     tags_h = "".join(tag_html(t) for t in tags if t != "Autumn leaves")
     return f'''<article class="card{' hasph' if ph else ''}" id="jp-{city['key']}-{view}-{i}" data-n="{i}" data-cat="{cat}" data-tags="{esc('|'.join(tags))}" style="--c:{c['color']}">
   {ph_h}<div class="num" aria-hidden="true">{i}</div>
@@ -360,9 +369,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.3"
-VDATE = "Oct 27, 2026"
+VERSION = "1.4"
+VDATE = "Oct 29, 2026"
 CHANGELOG = [
+    ("1.4", "Oct 29, 2026", "Photos on cards: tap to enlarge, with a link to the source. First one on aoma coffee."),
     ("1.3", "Oct 27, 2026", "Autumn leaves forecast in every tab, a leaves line on matching cards and an Autumn leaves filter. New optional Nara day trip tab (placeholder). Kiyomizu-dera light-up dates corrected: 2026 not announced yet."),
     ("1.2.1", "Oct 16, 2026", "Stronger instructions telling search engines not to list, cache or preview the page."),
     ("1.2", "Oct 16, 2026", "Moved to japan.zhunior.com (GitHub Pages). Dark mode with an Auto/Dark/Light switch. Google map in every tab: tap a pin or Show on map."),
@@ -534,12 +544,16 @@ def build():
 /* ---- our photos ---- */
 {R} .card.hasph {{ flex-wrap: wrap; }}
 {R} .card .ph {{ flex: 1 0 100%; display: block; position: relative; margin: -16px -16px 2px -14px; border-radius: calc(var(--r) - 2px) calc(var(--r) - 2px) 0 0; overflow: hidden; background: var(--chip); }}
+{R} .card .ph > a {{ display: block; cursor: zoom-in; }}
 {R} .card .ph img {{ display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }}
-{R} .card .ph span {{ position: absolute; left: 10px; bottom: 9px; font-size: 11.5px; font-weight: 800; color: #fff; background: rgba(30, 22, 18, .62); padding: 2px 9px; border-radius: 99px; }}
-{R} .phbox {{ display: none; position: fixed; inset: 0; z-index: 50; background: rgba(20, 15, 12, .9); align-items: center; justify-content: center; flex-direction: column; gap: 10px; padding: 16px; cursor: zoom-out; }}
+{R} .card .phsrc {{ position: absolute; left: 10px; bottom: 9px; font-size: 11.5px; font-weight: 800; color: #fff; background: rgba(30, 22, 18, .66); padding: 2px 9px; border-radius: 99px; text-decoration: none; }}
+{R} .card .phsrc:hover {{ text-decoration: underline; }}
+{R} .phbox {{ display: none; position: fixed; inset: 0; z-index: 50; background: rgba(20, 15, 12, .9); align-items: center; justify-content: center; flex-direction: column; gap: 10px; padding: 16px; }}
 {R} .phbox:target {{ display: flex; }}
-{R} .phbox img {{ max-width: 100%; max-height: calc(100vh - 70px); border-radius: 12px; }}
-{R} .phbox span {{ color: #F4E8DA; font-size: 13.5px; font-weight: 700; }}
+{R} .phclose {{ position: absolute; inset: 0; cursor: zoom-out; }}
+{R} .phbox img {{ position: relative; max-width: 100%; max-height: calc(100vh - 70px); border-radius: 12px; pointer-events: none; }}
+{R} .phbox p {{ position: relative; margin: 0; color: #F4E8DA; font-size: 13.5px; font-weight: 700; text-align: center; }}
+{R} .phbox p a {{ color: #F4E8DA; text-decoration: underline; text-underline-offset: 3px; }}
 {R} .hero-nara {{ background: linear-gradient(170deg, #FFF0DE, #F9D3B6 60%, #F3BC9C); border: 2px dashed #E0B892; }}
 {chr(10).join(city_switch)}
 {chr(10).join(city_css)}

@@ -6,6 +6,7 @@
 Checks, on a desktop and a phone-sized window:
   * every stop's tab opens its own section and only that one
   * filters work without JavaScript (category and mood chips change the card count)
+  * card photos open full screen and close again
   * every stop shows the autumn leaves forecast, and the Autumn leaves filter matches the cards with a forecast line
   * nothing spills sideways on a phone (no horizontal scroll)
   * dark mode applies, the theme switch cycles, and the Google map loads and follows pins / "Show on map"
@@ -64,6 +65,17 @@ with sync_playwright() as pw:
             want = pg.evaluate(f"document.querySelectorAll('#jp-city-{k} .jp-bytype .card .lvcard').length")
             check(n == want > 0, f"{k}: Autumn leaves filter shows the {want} cards with a forecast ({n} shown)")
             pg.click(f"#jp-city-{k} .clr"); pg.wait_for_timeout(200)
+    ph = pg.query_selector(".card.hasph")
+    if ph:   # a card photo opens full screen and closes again, without JavaScript, keeping its tab open
+        k = ph.evaluate("e => e.closest('.city').id.replace('jp-city-', '')")
+        pg.goto(URL + f"#jp-city-{k}"); pg.wait_for_timeout(300)
+        pg.click(".card.hasph .ph > a"); pg.wait_for_timeout(300)
+        box = pg.query_selector(".phbox:target")
+        ok = box is not None and box.evaluate("b => { const i = b.querySelector('img'); return i.complete && i.naturalWidth > 0; }")
+        check(ok and shown(pg) == [k], f"{k}: card photo opens full screen and the image loads")
+        if box:
+            pg.click(".phbox:target .phclose", position={"x": 5, "y": 5}); pg.wait_for_timeout(300)
+            check(pg.query_selector(".phbox:target") is None and shown(pg) == [k], f"{k}: tapping closes the photo")
     print("With JavaScript, dark mode, desktop:")
     errors = []
     pg = b.new_page(viewport={"width": 1280, "height": 900}, color_scheme="dark")
