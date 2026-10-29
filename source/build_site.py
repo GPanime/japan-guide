@@ -14,6 +14,7 @@ How the page works (details in docs/GUIDE.md):
 import os, re, sys, itertools, urllib.parse
 from datetime import timedelta
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from data import PHOTOS
 from common import CATS, CITIES, LATER, TAGS, ICONS, ART, PIN, CAM, HEART, build_map, esc, tag_html, photos
 import styles  # base stylesheet, scoped under #jp26
 import leaves as LV  # autumn leaves forecast (source/leaves.py)
@@ -36,12 +37,33 @@ def card_cat(p): return "food" if p[0] == "must" else p[0]
 def matches(p, c, M): return (c == "all" or card_cat(p) == c) and all(m in p[4] for m in M)
 
 
+def photo_of(city, name):
+    slug = PHOTOS.get(city["key"], {}).get(name)
+    if not slug: return None
+    base = f"photos/{city['key']}/{slug}"
+    for w in (800, 1600):
+        assert os.path.exists(os.path.join(REPO, f"{base}-{w}.webp")), f"missing photo {base}-{w}.webp (run source/add_photo.py)"
+    return base
+
+
+def photo_box(city, i, p):
+    """The enlarged photo: a full-screen view opened by the card's photo link (:target, no JavaScript). Tap to close."""
+    base = photo_of(city, p[1])
+    if not base: return ""
+    k = city["key"]
+    return (f'<a class="phbox" id="jp-{k}-ph-{i}" href="#jp-{k}-p-{i}" aria-label="Close photo"><img src="{base}-1600.webp" alt="{esc(p[1])}" loading="lazy">'
+            f'<span>{esc(p[1])} · our photo · tap to close</span></a>')
+
+
 def card(city, i, p, view):
     cat, name, area, km, tags, desc, maps, pq = p[:8]
     c = CATS[cat]
+    ph = photo_of(city, name)
+    ph_h = (f'<a class="ph" href="#jp-{city["key"]}-ph-{i}"><img src="{ph}-800.webp" alt="{esc(name)}, our photo" loading="lazy">'
+            f'<span>Our photo</span></a>') if ph else ""
     tags_h = "".join(tag_html(t) for t in tags if t != "Autumn leaves")
-    return f'''<article class="card" id="jp-{city['key']}-{view}-{i}" data-n="{i}" data-cat="{cat}" data-tags="{esc('|'.join(tags))}" style="--c:{c['color']}">
-  <div class="num" aria-hidden="true">{i}</div>
+    return f'''<article class="card{' hasph' if ph else ''}" id="jp-{city['key']}-{view}-{i}" data-n="{i}" data-cat="{cat}" data-tags="{esc('|'.join(tags))}" style="--c:{c['color']}">
+  {ph_h}<div class="num" aria-hidden="true">{i}</div>
   <div class="cbody">
     <h3>{esc(name)}</h3>
     <div class="meta"><span class="catlbl">{c['title']} · </span>{esc(area)} <span class="dot">•</span> {esc(km)}</div>
@@ -301,6 +323,7 @@ def city_panel(city, nxt):
     </aside>
   </div>
   {nxt_h}
+  {"".join(photo_box(city, i + 1, p) for i, p in enumerate(P))}
 </div>'''
 
     # ----- per-city CSS -----
@@ -508,6 +531,15 @@ def build():
 @media (max-width: 860px) {{ {R} .leaves {{ grid-template-columns: minmax(0, 1fr); }} }}
 @media (max-width: 680px) {{ {R} .leaves {{ padding: 16px 14px; }} {R} .lvchart {{ --lw: 118px; }} {R} .lvhead, {R} .lvrow, {R} .lvaxis {{ gap: 8px; }}
   {R} .lvbands {{ left: calc(var(--lw) + 8px); }} {R} .lvname b {{ font-size: 12.5px; }} {R} .lvname small {{ font-size: 11px; }} {R} .lvaxis .lvtrack span {{ font-size: 10.5px; }} }}
+/* ---- our photos ---- */
+{R} .card.hasph {{ flex-wrap: wrap; }}
+{R} .card .ph {{ flex: 1 0 100%; display: block; position: relative; margin: -16px -16px 2px -14px; border-radius: calc(var(--r) - 2px) calc(var(--r) - 2px) 0 0; overflow: hidden; background: var(--chip); }}
+{R} .card .ph img {{ display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }}
+{R} .card .ph span {{ position: absolute; left: 10px; bottom: 9px; font-size: 11.5px; font-weight: 800; color: #fff; background: rgba(30, 22, 18, .62); padding: 2px 9px; border-radius: 99px; }}
+{R} .phbox {{ display: none; position: fixed; inset: 0; z-index: 50; background: rgba(20, 15, 12, .9); align-items: center; justify-content: center; flex-direction: column; gap: 10px; padding: 16px; cursor: zoom-out; }}
+{R} .phbox:target {{ display: flex; }}
+{R} .phbox img {{ max-width: 100%; max-height: calc(100vh - 70px); border-radius: 12px; }}
+{R} .phbox span {{ color: #F4E8DA; font-size: 13.5px; font-weight: 700; }}
 {R} .hero-nara {{ background: linear-gradient(170deg, #FFF0DE, #F9D3B6 60%, #F3BC9C); border: 2px dashed #E0B892; }}
 {chr(10).join(city_switch)}
 {chr(10).join(city_css)}
@@ -607,7 +639,7 @@ html, body {{ margin: 0; background: #FFF8EE; }}
   }
   function visibleCity() {
     const h = decodeURIComponent(location.hash || "");
-    let m = h.match(/^#jp-city-([a-z]+)$/) || h.match(/^#jp-([a-z]+)-p-[0-9]+$/);
+    let m = h.match(/^#jp-city-([a-z]+)$/) || h.match(/^#jp-([a-z]+)-(p|ph)-[0-9]+$/);
     if (m && D[m[1]]) return m[1];
     const c = root.querySelector(".city"); return c ? c.id.replace("jp-city-", "") : null;
   }
