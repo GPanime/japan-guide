@@ -34,9 +34,10 @@ html[data-theme="dark"] #jp26 { --bg: #1C1613; --surface: #28201C; --surface2: #
 #jp26 .map a.sel .mpin { stroke: var(--ink); stroke-width: 1.2; }
 </style>
 </head><body>
-<!-- Japan trip guide · VERSION 1.6 · Nov 1, 2026
+<!-- Japan trip guide · VERSION 1.6.1 · Nov 1, 2026
   GitHub Pages version (japan.zhunior.com), with dark mode and Google maps.
 Changes:
+  v1.6.1 (Nov 1, 2026): Shiga photos: one simple credit pointing to the two videos, instead of a link per photo.
   v1.6 (Nov 1, 2026): Hikone tab renamed Shiga, with the full Shiga list (20 new places) and a photo on every place from the list. Links to the two videos that inspired it.
   v1.5.1 (Nov 1, 2026): Site icon (a red torii) for browser tabs and phone home screens.
   v1.5 (Nov 1, 2026): Osaka: 34 places added from the shared Osaka list (sushi, oden, yakiniku, sukiyaki, bars, breakfast spots, a museum garden, a viewpoint) and a new Shopping section.
@@ -3141,7 +3142,7 @@ Changes:
    <circle cx="27" cy="24" r="1.3" fill="#5E9E6E"/><circle cx="37" cy="26" r="1.3" fill="#5E9E6E"/><circle cx="47" cy="30" r="1.3" fill="#5E9E6E"/></svg></div>
     <div><div class="jp">ごはん</div><h2>More food</h2><p class="lead">Sukiyaki, soba, and oden and udon up north.</p></div></div>
   <div class="grid"><div class="card hasph" id="jp-shiga-p-1" data-n="1" data-cat="food" data-tags="" style="--c:#E8952F">
-  <div class="ph"><a href="#jp-shiga-ph-1" aria-label="Enlarge photo of Nishimura"><img src="photos/shiga/nishimura-800.webp" alt="Nishimura" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener">Photo: spring video ↗</a></div><div class="num" aria-hidden="true">1</div>
+  <div class="ph"><a href="#jp-shiga-ph-1" aria-label="Enlarge photo of Nishimura"><img src="photos/shiga/nishimura-800.webp" alt="Nishimura" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">1</div>
   <div class="cbody">
     <h3>Nishimura</h3>
     <div class="meta"><span class="catlbl">More food · </span>Higashiōmi, south <span class="dot">•</span> 19 km</div>
@@ -3153,7 +3154,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="1" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-2" data-n="2" data-cat="food" data-tags="" style="--c:#E8952F">
-  <div class="ph"><a href="#jp-shiga-ph-2" aria-label="Enlarge photo of Ikkyu soba"><img src="photos/shiga/ikkyu-soba-800.webp" alt="Ikkyu soba" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: one of the videos ↓</a></div><div class="num" aria-hidden="true">2</div>
+  <div class="ph"><a href="#jp-shiga-ph-2" aria-label="Enlarge photo of Ikkyu soba"><img src="photos/shiga/ikkyu-soba-800.webp" alt="Ikkyu soba" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">2</div>
   <div class="cbody">
     <h3>Ikkyu soba</h3>
     <div class="meta"><span class="catlbl">More food · </span>Takatsuki, north <span class="dot">•</span> 22 km</div>
@@ -3165,7 +3166,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="2" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-3" data-n="3" data-cat="food" data-tags="" style="--c:#E8952F">
-  <div class="ph"><a href="#jp-shiga-ph-3" aria-label="Enlarge photo of Fukudaya"><img src="photos/shiga/fukudaya-800.webp" alt="Fukudaya" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a></div><div class="num" aria-hidden="true">3</div>
+  <div class="ph"><a href="#jp-shiga-ph-3" aria-label="Enlarge photo of Fukudaya"><img src="photos/shiga/fukudaya-800.webp" alt="Fukudaya" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">3</div>
   <div class="cbody">
     <h3>Fukudaya</h3>
     <div class="meta"><span class="catlbl">More food · </span>Kinomoto <span class="dot">•</span> 26 km</div>
@@ -3177,7 +3178,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="3" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-4" data-n="4" data-cat="food" data-tags="" style="--c:#E8952F">
-  <div class="ph"><a href="#jp-shiga-ph-4" aria-label="Enlarge photo of Michikusa"><img src="photos/shiga/michikusa-800.webp" alt="Michikusa" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a></div><div class="num" aria-hidden="true">4</div>
+  <div class="ph"><a href="#jp-shiga-ph-4" aria-label="Enlarge photo of Michikusa"><img src="photos/shiga/michikusa-800.webp" alt="Michikusa" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">4</div>
   <div class="cbody">
     <h3>Michikusa</h3>
     <div class="meta"><span class="catlbl">More food · </span>Kinomoto <span class="dot">•</span> 26 km</div>
@@ -3195,7 +3196,7 @@ Changes:
    <circle cx="40" cy="19" r="1.8" fill="#fff" opacity=".8"/></svg></div>
     <div><div class="jp">甘味</div><h2>Sweets</h2><p class="lead">A bakery with a huge garden, sweet potato sweets and a shop by the shrine.</p></div></div>
   <div class="grid"><div class="card hasph" id="jp-shiga-p-5" data-n="5" data-cat="sweets" data-tags="Quick bite" style="--c:#D2648E">
-  <div class="ph"><a href="#jp-shiga-ph-5" aria-label="Enlarge photo of Imohei Nagahama"><img src="photos/shiga/imohei-800.webp" alt="Imohei Nagahama" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: one of the videos ↓</a></div><div class="num" aria-hidden="true">5</div>
+  <div class="ph"><a href="#jp-shiga-ph-5" aria-label="Enlarge photo of Imohei Nagahama"><img src="photos/shiga/imohei-800.webp" alt="Imohei Nagahama" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">5</div>
   <div class="cbody">
     <h3>Imohei Nagahama</h3>
     <div class="meta"><span class="catlbl">Sweets · </span>Nagahama <span class="dot">•</span> 12 km</div>
@@ -3207,7 +3208,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="5" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-6" data-n="6" data-cat="sweets" data-tags="Must-go|Outdoors|Photo spot" style="--c:#D2648E">
-  <div class="ph"><a href="#jp-shiga-ph-6" aria-label="Enlarge photo of La Collina Ōmi-Hachiman"><img src="photos/shiga/la-collina-800.webp" alt="La Collina Ōmi-Hachiman" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener">Photo: spring video ↗</a></div><div class="num" aria-hidden="true">6</div>
+  <div class="ph"><a href="#jp-shiga-ph-6" aria-label="Enlarge photo of La Collina Ōmi-Hachiman"><img src="photos/shiga/la-collina-800.webp" alt="La Collina Ōmi-Hachiman" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">6</div>
   <div class="cbody">
     <h3>La Collina Ōmi-Hachiman</h3>
     <div class="meta"><span class="catlbl">Sweets · </span>Omihachiman <span class="dot">•</span> 21 km</div>
@@ -3219,7 +3220,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="6" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-7" data-n="7" data-cat="sweets" data-tags="Quick bite" style="--c:#D2648E">
-  <div class="ph"><a href="#jp-shiga-ph-7" aria-label="Enlarge photo of Taneya Himure-no-ya"><img src="photos/shiga/taneya-800.webp" alt="Taneya Himure-no-ya" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener">Photo: spring video ↗</a></div><div class="num" aria-hidden="true">7</div>
+  <div class="ph"><a href="#jp-shiga-ph-7" aria-label="Enlarge photo of Taneya Himure-no-ya"><img src="photos/shiga/taneya-800.webp" alt="Taneya Himure-no-ya" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">7</div>
   <div class="cbody">
     <h3>Taneya Himure-no-ya</h3>
     <div class="meta"><span class="catlbl">Sweets · </span>Omihachiman <span class="dot">•</span> 21 km</div>
@@ -3240,7 +3241,7 @@ Changes:
    <path d="M30 27 c-3 -4 -8 0 0 6 c8 -6 3 -10 0 -6Z" fill="#F7E7D8"/></svg></div>
     <div><div class="jp">珈琲</div><h2>Coffee</h2><p class="lead">A coffee shop with a dog.</p></div></div>
   <div class="grid"><div class="card hasph" id="jp-shiga-p-8" data-n="8" data-cat="coffee" data-tags="Low energy" style="--c:#9A6B4B">
-  <div class="ph"><a href="#jp-shiga-ph-8" aria-label="Enlarge photo of Jinnosuke Coffee"><img src="photos/shiga/jinnosuke-coffee-800.webp" alt="Jinnosuke Coffee" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener">Photo: spring video ↗</a></div><div class="num" aria-hidden="true">8</div>
+  <div class="ph"><a href="#jp-shiga-ph-8" aria-label="Enlarge photo of Jinnosuke Coffee"><img src="photos/shiga/jinnosuke-coffee-800.webp" alt="Jinnosuke Coffee" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">8</div>
   <div class="cbody">
     <h3>Jinnosuke Coffee</h3>
     <div class="meta"><span class="catlbl">Coffee · </span>Omihachiman <span class="dot">•</span> 22 km</div>
@@ -3260,7 +3261,7 @@ Changes:
    <rect x="29" y="17" width="6" height="9" fill="#F6E3C6" stroke="#3A2E2A" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
     <div><div class="jp">名所</div><h2>Sights & outings</h2><p class="lead">The castle, a temple garden, a lake island, a canal town, and temples and shrines with autumn leaves up north.</p></div></div>
   <div class="grid"><div class="card hasph" id="jp-shiga-p-9" data-n="9" data-cat="sights" data-tags="Outdoors|Photo spot|Autumn leaves" style="--c:#4F9A6A">
-  <div class="ph"><a href="#jp-shiga-ph-9" aria-label="Enlarge photo of Hikone Castle"><img src="photos/shiga/hikone-castle-800.webp" alt="Hikone Castle" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener">Photo: spring video ↗</a></div><div class="num" aria-hidden="true">9</div>
+  <div class="ph"><a href="#jp-shiga-ph-9" aria-label="Enlarge photo of Hikone Castle"><img src="photos/shiga/hikone-castle-800.webp" alt="Hikone Castle" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">9</div>
   <div class="cbody">
     <h3>Hikone Castle</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Hikone, walkable <span class="dot">•</span> 1 km</div>
@@ -3272,7 +3273,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="9" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-10" data-n="10" data-cat="sights" data-tags="Must-go|Photo spot" style="--c:#4F9A6A">
-  <div class="ph"><a href="#jp-shiga-ph-10" aria-label="Enlarge photo of Seiganji"><img src="photos/shiga/seiganji-1-800.webp" alt="Seiganji" loading="lazy"></a><span class="phn">1 / 2</span><a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a></div><div class="num" aria-hidden="true">10</div>
+  <div class="ph"><a href="#jp-shiga-ph-10" aria-label="Enlarge photo of Seiganji"><img src="photos/shiga/seiganji-1-800.webp" alt="Seiganji" loading="lazy"></a><span class="phn">1 / 2</span><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">10</div>
   <div class="cbody">
     <h3>Seiganji</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Maibara, next to Hikone <span class="dot">•</span> 6 km</div>
@@ -3284,7 +3285,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="10" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-11" data-n="11" data-cat="sights" data-tags="Low energy" style="--c:#4F9A6A">
-  <div class="ph"><a href="#jp-shiga-ph-11" aria-label="Enlarge photo of Yutani Shrine"><img src="photos/shiga/yutani-shrine-800.webp" alt="Yutani Shrine" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a></div><div class="num" aria-hidden="true">11</div>
+  <div class="ph"><a href="#jp-shiga-ph-11" aria-label="Enlarge photo of Yutani Shrine"><img src="photos/shiga/yutani-shrine-800.webp" alt="Yutani Shrine" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">11</div>
   <div class="cbody">
     <h3>Yutani Shrine</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Maibara, next to Hikone <span class="dot">•</span> 5 km</div>
@@ -3296,7 +3297,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="11" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-12" data-n="12" data-cat="sights" data-tags="Must-go|Outdoors|Photo spot" style="--c:#4F9A6A">
-  <div class="ph"><a href="#jp-shiga-ph-12" aria-label="Enlarge photo of Chikubu Island"><img src="photos/shiga/chikubu-island-800.webp" alt="Chikubu Island" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener">Photo: spring video ↗</a></div><div class="num" aria-hidden="true">12</div>
+  <div class="ph"><a href="#jp-shiga-ph-12" aria-label="Enlarge photo of Chikubu Island"><img src="photos/shiga/chikubu-island-800.webp" alt="Chikubu Island" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">12</div>
   <div class="cbody">
     <h3>Chikubu Island</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Lake Biwa <span class="dot">•</span> 20 km</div>
@@ -3308,7 +3309,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="12" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-13" data-n="13" data-cat="sights" data-tags="Photo spot" style="--c:#4F9A6A">
-  <div class="ph"><a href="#jp-shiga-ph-13" aria-label="Enlarge photo of Himure Hachimangu"><img src="photos/shiga/himure-hachimangu-800.webp" alt="Himure Hachimangu" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener">Photo: spring video ↗</a></div><div class="num" aria-hidden="true">13</div>
+  <div class="ph"><a href="#jp-shiga-ph-13" aria-label="Enlarge photo of Himure Hachimangu"><img src="photos/shiga/himure-hachimangu-800.webp" alt="Himure Hachimangu" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">13</div>
   <div class="cbody">
     <h3>Himure Hachimangu</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Omihachiman <span class="dot">•</span> 21 km</div>
@@ -3320,7 +3321,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="13" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-14" data-n="14" data-cat="sights" data-tags="Photo spot" style="--c:#4F9A6A">
-  <div class="ph"><a href="#jp-shiga-ph-14" aria-label="Enlarge photo of Hachimanyama Ropeway"><img src="photos/shiga/hachimanyama-ropeway-800.webp" alt="Hachimanyama Ropeway" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener">Photo: spring video ↗</a></div><div class="num" aria-hidden="true">14</div>
+  <div class="ph"><a href="#jp-shiga-ph-14" aria-label="Enlarge photo of Hachimanyama Ropeway"><img src="photos/shiga/hachimanyama-ropeway-800.webp" alt="Hachimanyama Ropeway" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">14</div>
   <div class="cbody">
     <h3>Hachimanyama Ropeway</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Omihachiman <span class="dot">•</span> 22 km</div>
@@ -3332,7 +3333,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="14" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-15" data-n="15" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
-  <div class="ph"><a href="#jp-shiga-ph-15" aria-label="Enlarge photo of Hachiman-bori Moat"><img src="photos/shiga/hachiman-bori-800.webp" alt="Hachiman-bori Moat" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener">Photo: spring video ↗</a></div><div class="num" aria-hidden="true">15</div>
+  <div class="ph"><a href="#jp-shiga-ph-15" aria-label="Enlarge photo of Hachiman-bori Moat"><img src="photos/shiga/hachiman-bori-800.webp" alt="Hachiman-bori Moat" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">15</div>
   <div class="cbody">
     <h3>Hachiman-bori Moat</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Omihachiman <span class="dot">•</span> 22 km</div>
@@ -3344,7 +3345,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="15" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-16" data-n="16" data-cat="sights" data-tags="Photo spot" style="--c:#4F9A6A">
-  <div class="ph"><a href="#jp-shiga-ph-16" aria-label="Enlarge photo of Dougan-ji Kannon-dō"><img src="photos/shiga/dougan-ji-800.webp" alt="Dougan-ji Kannon-dō" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a></div><div class="num" aria-hidden="true">16</div>
+  <div class="ph"><a href="#jp-shiga-ph-16" aria-label="Enlarge photo of Dougan-ji Kannon-dō"><img src="photos/shiga/dougan-ji-800.webp" alt="Dougan-ji Kannon-dō" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">16</div>
   <div class="cbody">
     <h3>Dougan-ji Kannon-dō</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Takatsuki, north <span class="dot">•</span> 23 km</div>
@@ -3356,7 +3357,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="16" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-17" data-n="17" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
-  <div class="ph"><a href="#jp-shiga-ph-17" aria-label="Enlarge photo of Nogami Keyaki tree"><img src="photos/shiga/nogami-keyaki-800.webp" alt="Nogami Keyaki tree" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a></div><div class="num" aria-hidden="true">17</div>
+  <div class="ph"><a href="#jp-shiga-ph-17" aria-label="Enlarge photo of Nogami Keyaki tree"><img src="photos/shiga/nogami-keyaki-800.webp" alt="Nogami Keyaki tree" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">17</div>
   <div class="cbody">
     <h3>Nogami Keyaki tree</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Takatsuki, north <span class="dot">•</span> 23 km</div>
@@ -3368,7 +3369,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="17" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-18" data-n="18" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
-  <div class="ph"><a href="#jp-shiga-ph-18" aria-label="Enlarge photo of Amagawa-no-mikoto Shrine"><img src="photos/shiga/amagawa-shrine-800.webp" alt="Amagawa-no-mikoto Shrine" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a></div><div class="num" aria-hidden="true">18</div>
+  <div class="ph"><a href="#jp-shiga-ph-18" aria-label="Enlarge photo of Amagawa-no-mikoto Shrine"><img src="photos/shiga/amagawa-shrine-800.webp" alt="Amagawa-no-mikoto Shrine" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">18</div>
   <div class="cbody">
     <h3>Amagawa-no-mikoto Shrine</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Takatsuki, north <span class="dot">•</span> 24 km</div>
@@ -3380,7 +3381,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="18" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-19" data-n="19" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
-  <div class="ph"><a href="#jp-shiga-ph-19" aria-label="Enlarge photo of Lake view near Hiroya no Oishi"><img src="photos/shiga/hiroya-lake-view-800.webp" alt="Lake view near Hiroya no Oishi" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a></div><div class="num" aria-hidden="true">19</div>
+  <div class="ph"><a href="#jp-shiga-ph-19" aria-label="Enlarge photo of Lake view near Hiroya no Oishi"><img src="photos/shiga/hiroya-lake-view-800.webp" alt="Lake view near Hiroya no Oishi" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">19</div>
   <div class="cbody">
     <h3>Lake view near Hiroya no Oishi</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Nagahama, north <span class="dot">•</span> 26 km</div>
@@ -3392,7 +3393,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="19" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-20" data-n="20" data-cat="sights" data-tags="Outdoors|Low energy" style="--c:#4F9A6A">
-  <div class="ph"><a href="#jp-shiga-ph-20" aria-label="Enlarge photo of Kamisaki Shrine"><img src="photos/shiga/kamisaki-shrine-800.webp" alt="Kamisaki Shrine" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a></div><div class="num" aria-hidden="true">20</div>
+  <div class="ph"><a href="#jp-shiga-ph-20" aria-label="Enlarge photo of Kamisaki Shrine"><img src="photos/shiga/kamisaki-shrine-800.webp" alt="Kamisaki Shrine" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">20</div>
   <div class="cbody">
     <h3>Kamisaki Shrine</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Kinomoto area <span class="dot">•</span> 25 km</div>
@@ -3404,7 +3405,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="20" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-21" data-n="21" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
-  <div class="ph"><a href="#jp-shiga-ph-21" aria-label="Enlarge photo of Shakudoji"><img src="photos/shiga/shakudoji-800.webp" alt="Shakudoji" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a></div><div class="num" aria-hidden="true">21</div>
+  <div class="ph"><a href="#jp-shiga-ph-21" aria-label="Enlarge photo of Shakudoji"><img src="photos/shiga/shakudoji-800.webp" alt="Shakudoji" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">21</div>
   <div class="cbody">
     <h3>Shakudoji</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Kinomoto area <span class="dot">•</span> 26 km</div>
@@ -3416,7 +3417,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="21" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-22" data-n="22" data-cat="sights" data-tags="Must-go|Outdoors|Photo spot" style="--c:#4F9A6A">
-  <div class="ph"><a href="#jp-shiga-ph-22" aria-label="Enlarge photo of Keisokuji"><img src="photos/shiga/keisokuji-800.webp" alt="Keisokuji" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a></div><div class="num" aria-hidden="true">22</div>
+  <div class="ph"><a href="#jp-shiga-ph-22" aria-label="Enlarge photo of Keisokuji"><img src="photos/shiga/keisokuji-800.webp" alt="Keisokuji" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">22</div>
   <div class="cbody">
     <h3>Keisokuji</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Kinomoto area <span class="dot">•</span> 26 km</div>
@@ -3428,7 +3429,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="22" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-23" data-n="23" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
-  <div class="ph"><a href="#jp-shiga-ph-23" aria-label="Enlarge photo of Yoshirou Shrine"><img src="photos/shiga/yoshirou-shrine-800.webp" alt="Yoshirou Shrine" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a></div><div class="num" aria-hidden="true">23</div>
+  <div class="ph"><a href="#jp-shiga-ph-23" aria-label="Enlarge photo of Yoshirou Shrine"><img src="photos/shiga/yoshirou-shrine-800.webp" alt="Yoshirou Shrine" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">23</div>
   <div class="cbody">
     <h3>Yoshirou Shrine</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Kinomoto area <span class="dot">•</span> 26 km</div>
@@ -3440,7 +3441,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="23" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-24" data-n="24" data-cat="sights" data-tags="Photo spot" style="--c:#4F9A6A">
-  <div class="ph"><a href="#jp-shiga-ph-24" aria-label="Enlarge photo of Kinomoto Jizo-in"><img src="photos/shiga/kinomoto-jizo-in-800.webp" alt="Kinomoto Jizo-in" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a></div><div class="num" aria-hidden="true">24</div>
+  <div class="ph"><a href="#jp-shiga-ph-24" aria-label="Enlarge photo of Kinomoto Jizo-in"><img src="photos/shiga/kinomoto-jizo-in-800.webp" alt="Kinomoto Jizo-in" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">24</div>
   <div class="cbody">
     <h3>Kinomoto Jizo-in</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Kinomoto <span class="dot">•</span> 26 km</div>
@@ -3452,7 +3453,7 @@ Changes:
     <button type="button" class="btn ghost onmap" data-onmap="24" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
 <div class="card hasph" id="jp-shiga-p-25" data-n="25" data-cat="sights" data-tags="Low energy|Photo spot" style="--c:#4F9A6A">
-  <div class="ph"><a href="#jp-shiga-ph-25" aria-label="Enlarge photo of Kohoku Library"><img src="photos/shiga/kohoku-library-800.webp" alt="Kohoku Library" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a></div><div class="num" aria-hidden="true">25</div>
+  <div class="ph"><a href="#jp-shiga-ph-25" aria-label="Enlarge photo of Kohoku Library"><img src="photos/shiga/kohoku-library-800.webp" alt="Kohoku Library" loading="lazy"></a><a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a></div><div class="num" aria-hidden="true">25</div>
   <div class="cbody">
     <h3>Kohoku Library</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Kinomoto <span class="dot">•</span> 26 km</div>
@@ -3527,7 +3528,7 @@ Changes:
     </div>
   </div>
   <a class="nextstop" href="#jp-city-kyoto">Next stop: <b>Kyoto, again</b> <span>Nov 29-Dec 2 →</span></a>
-  <div class="phbox" id="jp-shiga-ph-1"><a class="phclose" href="#jp-shiga-p-1" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/nishimura-1600.webp" alt="Nishimura" loading="lazy"></div><p>Nishimura · <a class="phsrc" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener">Photo: spring video ↗</a> · <a href="#jp-shiga-p-1">Close</a></p></div><div class="phbox" id="jp-shiga-ph-2"><a class="phclose" href="#jp-shiga-p-2" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/ikkyu-soba-1600.webp" alt="Ikkyu soba" loading="lazy"></div><p>Ikkyu soba · <a class="phsrc" href="#jp-shiga-videos">Photo: one of the videos ↓</a> · <a href="#jp-shiga-p-2">Close</a></p></div><div class="phbox" id="jp-shiga-ph-3"><a class="phclose" href="#jp-shiga-p-3" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/fukudaya-1600.webp" alt="Fukudaya" loading="lazy"></div><p>Fukudaya · <a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a> · <a href="#jp-shiga-p-3">Close</a></p></div><div class="phbox" id="jp-shiga-ph-4"><a class="phclose" href="#jp-shiga-p-4" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/michikusa-1600.webp" alt="Michikusa" loading="lazy"></div><p>Michikusa · <a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a> · <a href="#jp-shiga-p-4">Close</a></p></div><div class="phbox" id="jp-shiga-ph-5"><a class="phclose" href="#jp-shiga-p-5" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/imohei-1600.webp" alt="Imohei Nagahama" loading="lazy"></div><p>Imohei Nagahama · <a class="phsrc" href="#jp-shiga-videos">Photo: one of the videos ↓</a> · <a href="#jp-shiga-p-5">Close</a></p></div><div class="phbox" id="jp-shiga-ph-6"><a class="phclose" href="#jp-shiga-p-6" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/la-collina-1600.webp" alt="La Collina Ōmi-Hachiman" loading="lazy"></div><p>La Collina Ōmi-Hachiman · <a class="phsrc" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener">Photo: spring video ↗</a> · <a href="#jp-shiga-p-6">Close</a></p></div><div class="phbox" id="jp-shiga-ph-7"><a class="phclose" href="#jp-shiga-p-7" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/taneya-1600.webp" alt="Taneya Himure-no-ya" loading="lazy"></div><p>Taneya Himure-no-ya · <a class="phsrc" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener">Photo: spring video ↗</a> · <a href="#jp-shiga-p-7">Close</a></p></div><div class="phbox" id="jp-shiga-ph-8"><a class="phclose" href="#jp-shiga-p-8" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/jinnosuke-coffee-1600.webp" alt="Jinnosuke Coffee" loading="lazy"></div><p>Jinnosuke Coffee · <a class="phsrc" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener">Photo: spring video ↗</a> · <a href="#jp-shiga-p-8">Close</a></p></div><div class="phbox" id="jp-shiga-ph-9"><a class="phclose" href="#jp-shiga-p-9" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/hikone-castle-1600.webp" alt="Hikone Castle" loading="lazy"></div><p>Hikone Castle · <a class="phsrc" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener">Photo: spring video ↗</a> · <a href="#jp-shiga-p-9">Close</a></p></div><div class="phbox multi" id="jp-shiga-ph-10"><a class="phclose" href="#jp-shiga-p-10" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/seiganji-1-1600.webp" alt="Seiganji, photo 1 of 2" loading="lazy"><img src="photos/shiga/seiganji-2-1600.webp" alt="Seiganji, photo 2 of 2" loading="lazy"></div><p>Seiganji · 2 photos · <a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a> · <a href="#jp-shiga-p-10">Close</a></p></div><div class="phbox" id="jp-shiga-ph-11"><a class="phclose" href="#jp-shiga-p-11" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/yutani-shrine-1600.webp" alt="Yutani Shrine" loading="lazy"></div><p>Yutani Shrine · <a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a> · <a href="#jp-shiga-p-11">Close</a></p></div><div class="phbox" id="jp-shiga-ph-12"><a class="phclose" href="#jp-shiga-p-12" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/chikubu-island-1600.webp" alt="Chikubu Island" loading="lazy"></div><p>Chikubu Island · <a class="phsrc" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener">Photo: spring video ↗</a> · <a href="#jp-shiga-p-12">Close</a></p></div><div class="phbox" id="jp-shiga-ph-13"><a class="phclose" href="#jp-shiga-p-13" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/himure-hachimangu-1600.webp" alt="Himure Hachimangu" loading="lazy"></div><p>Himure Hachimangu · <a class="phsrc" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener">Photo: spring video ↗</a> · <a href="#jp-shiga-p-13">Close</a></p></div><div class="phbox" id="jp-shiga-ph-14"><a class="phclose" href="#jp-shiga-p-14" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/hachimanyama-ropeway-1600.webp" alt="Hachimanyama Ropeway" loading="lazy"></div><p>Hachimanyama Ropeway · <a class="phsrc" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener">Photo: spring video ↗</a> · <a href="#jp-shiga-p-14">Close</a></p></div><div class="phbox" id="jp-shiga-ph-15"><a class="phclose" href="#jp-shiga-p-15" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/hachiman-bori-1600.webp" alt="Hachiman-bori Moat" loading="lazy"></div><p>Hachiman-bori Moat · <a class="phsrc" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener">Photo: spring video ↗</a> · <a href="#jp-shiga-p-15">Close</a></p></div><div class="phbox" id="jp-shiga-ph-16"><a class="phclose" href="#jp-shiga-p-16" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/dougan-ji-1600.webp" alt="Dougan-ji Kannon-dō" loading="lazy"></div><p>Dougan-ji Kannon-dō · <a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a> · <a href="#jp-shiga-p-16">Close</a></p></div><div class="phbox" id="jp-shiga-ph-17"><a class="phclose" href="#jp-shiga-p-17" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/nogami-keyaki-1600.webp" alt="Nogami Keyaki tree" loading="lazy"></div><p>Nogami Keyaki tree · <a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a> · <a href="#jp-shiga-p-17">Close</a></p></div><div class="phbox" id="jp-shiga-ph-18"><a class="phclose" href="#jp-shiga-p-18" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/amagawa-shrine-1600.webp" alt="Amagawa-no-mikoto Shrine" loading="lazy"></div><p>Amagawa-no-mikoto Shrine · <a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a> · <a href="#jp-shiga-p-18">Close</a></p></div><div class="phbox" id="jp-shiga-ph-19"><a class="phclose" href="#jp-shiga-p-19" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/hiroya-lake-view-1600.webp" alt="Lake view near Hiroya no Oishi" loading="lazy"></div><p>Lake view near Hiroya no Oishi · <a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a> · <a href="#jp-shiga-p-19">Close</a></p></div><div class="phbox" id="jp-shiga-ph-20"><a class="phclose" href="#jp-shiga-p-20" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/kamisaki-shrine-1600.webp" alt="Kamisaki Shrine" loading="lazy"></div><p>Kamisaki Shrine · <a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a> · <a href="#jp-shiga-p-20">Close</a></p></div><div class="phbox" id="jp-shiga-ph-21"><a class="phclose" href="#jp-shiga-p-21" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/shakudoji-1600.webp" alt="Shakudoji" loading="lazy"></div><p>Shakudoji · <a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a> · <a href="#jp-shiga-p-21">Close</a></p></div><div class="phbox" id="jp-shiga-ph-22"><a class="phclose" href="#jp-shiga-p-22" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/keisokuji-1600.webp" alt="Keisokuji" loading="lazy"></div><p>Keisokuji · <a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a> · <a href="#jp-shiga-p-22">Close</a></p></div><div class="phbox" id="jp-shiga-ph-23"><a class="phclose" href="#jp-shiga-p-23" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/yoshirou-shrine-1600.webp" alt="Yoshirou Shrine" loading="lazy"></div><p>Yoshirou Shrine · <a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a> · <a href="#jp-shiga-p-23">Close</a></p></div><div class="phbox" id="jp-shiga-ph-24"><a class="phclose" href="#jp-shiga-p-24" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/kinomoto-jizo-in-1600.webp" alt="Kinomoto Jizo-in" loading="lazy"></div><p>Kinomoto Jizo-in · <a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a> · <a href="#jp-shiga-p-24">Close</a></p></div><div class="phbox" id="jp-shiga-ph-25"><a class="phclose" href="#jp-shiga-p-25" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/kohoku-library-1600.webp" alt="Kohoku Library" loading="lazy"></div><p>Kohoku Library · <a class="phsrc" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener">Photo: autumn video ↗</a> · <a href="#jp-shiga-p-25">Close</a></p></div>
+  <div class="phbox" id="jp-shiga-ph-1"><a class="phclose" href="#jp-shiga-p-1" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/nishimura-1600.webp" alt="Nishimura" loading="lazy"></div><p>Nishimura · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-1">Close</a></p></div><div class="phbox" id="jp-shiga-ph-2"><a class="phclose" href="#jp-shiga-p-2" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/ikkyu-soba-1600.webp" alt="Ikkyu soba" loading="lazy"></div><p>Ikkyu soba · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-2">Close</a></p></div><div class="phbox" id="jp-shiga-ph-3"><a class="phclose" href="#jp-shiga-p-3" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/fukudaya-1600.webp" alt="Fukudaya" loading="lazy"></div><p>Fukudaya · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-3">Close</a></p></div><div class="phbox" id="jp-shiga-ph-4"><a class="phclose" href="#jp-shiga-p-4" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/michikusa-1600.webp" alt="Michikusa" loading="lazy"></div><p>Michikusa · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-4">Close</a></p></div><div class="phbox" id="jp-shiga-ph-5"><a class="phclose" href="#jp-shiga-p-5" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/imohei-1600.webp" alt="Imohei Nagahama" loading="lazy"></div><p>Imohei Nagahama · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-5">Close</a></p></div><div class="phbox" id="jp-shiga-ph-6"><a class="phclose" href="#jp-shiga-p-6" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/la-collina-1600.webp" alt="La Collina Ōmi-Hachiman" loading="lazy"></div><p>La Collina Ōmi-Hachiman · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-6">Close</a></p></div><div class="phbox" id="jp-shiga-ph-7"><a class="phclose" href="#jp-shiga-p-7" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/taneya-1600.webp" alt="Taneya Himure-no-ya" loading="lazy"></div><p>Taneya Himure-no-ya · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-7">Close</a></p></div><div class="phbox" id="jp-shiga-ph-8"><a class="phclose" href="#jp-shiga-p-8" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/jinnosuke-coffee-1600.webp" alt="Jinnosuke Coffee" loading="lazy"></div><p>Jinnosuke Coffee · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-8">Close</a></p></div><div class="phbox" id="jp-shiga-ph-9"><a class="phclose" href="#jp-shiga-p-9" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/hikone-castle-1600.webp" alt="Hikone Castle" loading="lazy"></div><p>Hikone Castle · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-9">Close</a></p></div><div class="phbox multi" id="jp-shiga-ph-10"><a class="phclose" href="#jp-shiga-p-10" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/seiganji-1-1600.webp" alt="Seiganji, photo 1 of 2" loading="lazy"><img src="photos/shiga/seiganji-2-1600.webp" alt="Seiganji, photo 2 of 2" loading="lazy"></div><p>Seiganji · 2 photos · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-10">Close</a></p></div><div class="phbox" id="jp-shiga-ph-11"><a class="phclose" href="#jp-shiga-p-11" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/yutani-shrine-1600.webp" alt="Yutani Shrine" loading="lazy"></div><p>Yutani Shrine · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-11">Close</a></p></div><div class="phbox" id="jp-shiga-ph-12"><a class="phclose" href="#jp-shiga-p-12" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/chikubu-island-1600.webp" alt="Chikubu Island" loading="lazy"></div><p>Chikubu Island · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-12">Close</a></p></div><div class="phbox" id="jp-shiga-ph-13"><a class="phclose" href="#jp-shiga-p-13" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/himure-hachimangu-1600.webp" alt="Himure Hachimangu" loading="lazy"></div><p>Himure Hachimangu · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-13">Close</a></p></div><div class="phbox" id="jp-shiga-ph-14"><a class="phclose" href="#jp-shiga-p-14" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/hachimanyama-ropeway-1600.webp" alt="Hachimanyama Ropeway" loading="lazy"></div><p>Hachimanyama Ropeway · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-14">Close</a></p></div><div class="phbox" id="jp-shiga-ph-15"><a class="phclose" href="#jp-shiga-p-15" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/hachiman-bori-1600.webp" alt="Hachiman-bori Moat" loading="lazy"></div><p>Hachiman-bori Moat · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-15">Close</a></p></div><div class="phbox" id="jp-shiga-ph-16"><a class="phclose" href="#jp-shiga-p-16" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/dougan-ji-1600.webp" alt="Dougan-ji Kannon-dō" loading="lazy"></div><p>Dougan-ji Kannon-dō · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-16">Close</a></p></div><div class="phbox" id="jp-shiga-ph-17"><a class="phclose" href="#jp-shiga-p-17" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/nogami-keyaki-1600.webp" alt="Nogami Keyaki tree" loading="lazy"></div><p>Nogami Keyaki tree · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-17">Close</a></p></div><div class="phbox" id="jp-shiga-ph-18"><a class="phclose" href="#jp-shiga-p-18" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/amagawa-shrine-1600.webp" alt="Amagawa-no-mikoto Shrine" loading="lazy"></div><p>Amagawa-no-mikoto Shrine · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-18">Close</a></p></div><div class="phbox" id="jp-shiga-ph-19"><a class="phclose" href="#jp-shiga-p-19" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/hiroya-lake-view-1600.webp" alt="Lake view near Hiroya no Oishi" loading="lazy"></div><p>Lake view near Hiroya no Oishi · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-19">Close</a></p></div><div class="phbox" id="jp-shiga-ph-20"><a class="phclose" href="#jp-shiga-p-20" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/kamisaki-shrine-1600.webp" alt="Kamisaki Shrine" loading="lazy"></div><p>Kamisaki Shrine · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-20">Close</a></p></div><div class="phbox" id="jp-shiga-ph-21"><a class="phclose" href="#jp-shiga-p-21" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/shakudoji-1600.webp" alt="Shakudoji" loading="lazy"></div><p>Shakudoji · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-21">Close</a></p></div><div class="phbox" id="jp-shiga-ph-22"><a class="phclose" href="#jp-shiga-p-22" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/keisokuji-1600.webp" alt="Keisokuji" loading="lazy"></div><p>Keisokuji · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-22">Close</a></p></div><div class="phbox" id="jp-shiga-ph-23"><a class="phclose" href="#jp-shiga-p-23" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/yoshirou-shrine-1600.webp" alt="Yoshirou Shrine" loading="lazy"></div><p>Yoshirou Shrine · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-23">Close</a></p></div><div class="phbox" id="jp-shiga-ph-24"><a class="phclose" href="#jp-shiga-p-24" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/kinomoto-jizo-in-1600.webp" alt="Kinomoto Jizo-in" loading="lazy"></div><p>Kinomoto Jizo-in · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-24">Close</a></p></div><div class="phbox" id="jp-shiga-ph-25"><a class="phclose" href="#jp-shiga-p-25" aria-label="Close photo"></a><div class="phstrip"><img src="photos/shiga/kohoku-library-1600.webp" alt="Kohoku Library" loading="lazy"></div><p>Kohoku Library · <a class="phsrc" href="#jp-shiga-videos">Photo: from the videos ↓</a> · <a href="#jp-shiga-p-25">Close</a></p></div>
 </div>
   
   <div class="later-old" hidden>
@@ -3535,7 +3536,7 @@ Changes:
     <p>Options for the rest of the trip are on the way.</p>
     <div class="latgrid"></div>
   </div>
-  <div class="foot">Japan trip guide · Version 1.6 · updated Nov 1, 2026</div>
+  <div class="foot">Japan trip guide · Version 1.6.1 · updated Nov 1, 2026</div>
 </div></div>
 
 <script>

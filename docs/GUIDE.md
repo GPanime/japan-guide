@@ -124,7 +124,7 @@ Filters switch on automatically once a stop has 8 or more places (`FILTER_MIN` i
 ### Card photos (`PHOTOS` in data.py, `photos/`)
 Only photos the user sends. Never pick or copy photos from elsewhere yourself.
 1. `python3 source/add_photo.py <image file> <stop key> <slug>` writes `photos/<stop>/<slug>-800.webp` (card) and `-1600.webp` (enlarged), and removes all metadata, including the GPS location that phone photos carry.
-2. Add the card to `PHOTOS`: `"Card name": "slug"` for the user's own photo, or `"Card name": ("slug", "Photo: YouTube video", "<link>")` for anything else. A photo that isn't theirs always shows its source as a link, on the card and in the enlarged view. The link can also point inside the page, like `"#jp-shiga-videos"` (the videos box), when it's not clear which of a stop's videos a frame came from. For several photos of one place, give a list of slugs: the card shows the first with a "1 / 2" badge, and the enlarged view shows them side by side (swipe on a phone).
+2. Add the card to `PHOTOS`: `"Card name": "slug"` for the user's own photo, or `"Card name": ("slug", "Photo: YouTube video", "<link>")` for anything else. A photo that isn't theirs always shows its source as a link, on the card and in the enlarged view. The link can also point inside the page, like `"#jp-shiga-videos"`: all Shiga photos are frames from the two videos in that tab's videos box, so they share one credit, "Photo: from the videos", which jumps to that box. For several photos of one place, give a list of slugs: the card shows the first with a "1 / 2" badge, and the enlarged view shows them side by side (swipe on a phone).
 3. Build and test. The build stops if a listed photo file is missing, and the test opens and closes the enlarged view.
 
 The photo sits at the top of the card. Tapping it opens a full-screen view (`.phbox`, shown with `:target`, so no JavaScript), and tapping anywhere closes it. Each photo is about 20-50 KB per size; the GitHub Pages limit is 1 GB for the whole site.
@@ -259,4 +259,5 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 - **v1.4:** photos on cards, with a tap-to-enlarge view and a source link.
 - **v1.5:** 34 Osaka places from the shared Osaka list, and a Shopping section.
 - **v1.5.1:** site icon.
-- **v1.6:** Hikone tab renamed Shiga, with the full Shiga list, a photo on every place from it (frames from two YouTube videos, credited), multi-photo cards and an inspiration videos box.
+- **v1.6:** Hikone tab renamed Shiga, with the full Shiga list, a photo on every place from it (frames from two YouTube videos), multi-photo cards and an inspiration videos box.
+- **v1.6.1:** one shared credit for the Shiga photos, pointing to the videos box.
