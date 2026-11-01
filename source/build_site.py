@@ -393,9 +393,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.6.1"
+VERSION = "1.7"
 VDATE = "Nov 1, 2026"
 CHANGELOG = [
+    ("1.7", "Nov 1, 2026", "Kyoto: Uji added (10 places with photos from the Uji video, linked in a new videos box) and Uji spots in the leaves forecast."),
     ("1.6.1", "Nov 1, 2026", "Shiga photos: one simple credit pointing to the two videos, instead of a link per photo."),
     ("1.6", "Nov 1, 2026", "Hikone tab renamed Shiga, with the full Shiga list (20 new places) and a photo on every place from the list. Links to the two videos that inspired it."),
     ("1.5.1", "Nov 1, 2026", "Site icon (a red torii) for browser tabs and phone home screens."),

@@ -489,6 +489,38 @@ KY_RAW += [
   "A camera shop, handy for gear or a browse.",
   "https://maps.google.com/?cid=9608848783477973023", "Naniwa Camera Kyoto", 35.0039, 135.7662, ""),
 ]
+KY_RAW += [   # Uji, from the "Kyoto - Phil" Google Maps list (v1.7); photos are frames from the Uji video in the videos box
+ ("sights", "Kōshō-ji", "Uji", ["Outdoors", "Photo spot"],
+  "Next to other temples, with really nice colours. A short walk from it is a great spot to see the Uji River. Open 10:00-16:00.",
+  "https://maps.google.com/?cid=78672279002019378", "Koshoji Uji autumn", 34.89003, 135.81369, ""),
+ ("sights", "Ujikami Shrine", "Uji", ["Outdoors", "Photo spot"],
+  "A very short walk from Uji Shrine, with very beautiful fall foliage.",
+  "https://maps.google.com/?cid=1252017123913850719", "Ujigami Shrine autumn", 34.89194, 135.81131, ""),
+ ("sights", "Uji Shrine", "Uji", ["Photo spot"],
+  "Next to Ujikami Shrine, saved without a note.",
+  "https://maps.google.com/?cid=16462391380325981972", "Uji Shrine torii", 34.89109, 135.81072, ""),
+ ("sights", "Uji Bridge", "Uji", ["Outdoors", "Photo spot"],
+  "The old bridge over the Uji River, saved without a note.",
+  "https://maps.google.com/?cid=3945141567712202124", "Uji Bridge", 34.89295, 135.80624, ""),
+ ("sights", "Keihan Uji Station", "Uji", ["Photo spot"],
+  "A station with really nice architecture.",
+  "https://maps.google.com/?cid=85353625785447038", "Keihan Uji Station architecture", 34.89424, 135.80658, ""),
+ ("sights", "Momiji-dani trail", "Uji, up the river", ["Outdoors", "Photo spot"],
+  "A hiking trail to see the autumn leaves with no tourists. Very peaceful and empty. Called もみじ谷 on the map.",
+  "https://maps.google.com/?cid=8004895267741624539", "宇治 もみじ谷", 34.88174, 135.81640, ""),
+ ("sights", "Hakusan Shrine", "Uji, up the river", ["Outdoors"],
+  "A small shrine next to a hiking trail.",
+  "https://maps.google.com/?cid=18053320687596312194", "白山神社 宇治", 34.87711, 135.81293, ""),
+ ("sights", "Amagase Bridge", "Uji, up the river", ["Outdoors", "Photo spot"],
+  "A nice bridge, with a walkway back to Uji Station.",
+  "https://maps.google.com/?cid=4037505517073721296", "Amagase Bridge Uji", 34.88167, 135.82106, ""),
+ ("coffee", "matcha roastery", "Uji", ["Quick bite"],
+  "A very tasty matcha coffee shop. Open 10:00-17:30.",
+  "https://maps.google.com/?cid=16349022509551395951", "matcha roastery Uji", 34.89008, 135.80421, ""),
+ ("food", "Ramen Tanaka Kyu Shoten", "Uji", [],
+  "A place that serves matcha ramen. Closes at 17:30.",
+  "https://maps.google.com/?cid=7061983568755731367", "Ramen Tanaka Uji matcha ramen", 34.89138, 135.80642, ""),
+]
 KY_P = [(c, n, a, kdist(la, lo, note), t, d, m, q, la, lo) for c, n, a, t, d, m, q, la, lo, note in KY_RAW]
 
 KYOTO = dict(
@@ -507,13 +539,17 @@ KYOTO = dict(
            ("East · Philosopher's Path", "4-5 km / 6-7 km", ["Nanzen-ji", "Anraku-ji", "Ginkaku-ji"]),
            ("Northwest", "5 km / 8 km", ["Kinkaku-ji"]),
            ("West · Arashiyama & Matsuo", "6-8 km / 7-9 km", ["Saihō-ji (Kokedera)", "Arashiyama Monkey Park", "Arashiyama Yusai-Tei", "Jōjakkō-ji", "Daihikaku Senkō-ji"]),
-           ("Out of town · Hiei, Sakamoto, Kurama", "10-14 km / 12-16 km", ["Mount Hiei", "Former Chikurin-in", "Kurama Onsen"])],
+           ("Out of town · Hiei, Sakamoto, Kurama", "10-14 km / 12-16 km", ["Mount Hiei", "Former Chikurin-in", "Kurama Onsen"]),
+           ("Uji · south, by train", "12.5-14 km / 10-12 km", ["Keihan Uji Station", "Uji Bridge", "Ramen Tanaka Kyu Shoten", "matcha roastery", "Uji Shrine",
+                                                           "Ujikami Shrine", "Kōshō-ji", "Momiji-dani trail", "Hakusan Shrine", "Amagase Bridge"])],
     leads={"must": "The two places we're planning the days around.",
            "food": "Eel, gyukatsu, hotpot, tempura, hamburg steak, more ramen and a food market.",
            "sweets": "Cake, desserts, matcha and a book cafe.",
-           "sights": "Temples for autumn leaves, night light-ups, day trips to the hills, and a few city extras."},
+           "coffee": "Matcha in Uji.",
+           "sights": "Temples for autumn leaves, night light-ups, day trips to the hills and to Uji, and a few city extras."},
     icons={}, titles={"sights": "Temples & sights"},
-    map=dict(k=15.0, W=100.0, H=130.0, scale_km=1.0, scale_lbl="1 km", ycenter_shift=10,
+    videos=[("宇治 KYOTO", "Autumn in Uji: the river, Kōshō-ji, Ujikami Shrine, matcha and the quiet Momiji-dani trail.", "hCXm09-UCbU")],
+    map=dict(k=15.0, W=100.0, H=146.0, scale_km=1.0, scale_lbl="1 km", ycenter_shift=2,
              labels=[("DOWNTOWN", 35.0138, 135.7590, "middle"), ("GION", 35.0002, 135.7800, "start"),
                      ("KYOTO STN", 34.9840, 135.7588, "middle"), ("OKAZAKI", 35.0150, 135.7860, "end"),
                      ("KAMO RIVER", 34.9905, 135.7725, "start")],
@@ -523,7 +559,9 @@ KYOTO = dict(
                        (["Jōjakkō-ji", "Arashiyama Yusai-Tei", "Daihikaku Senkō-ji", "Arashiyama Monkey Park"], 16, "← Arashiyama", "left"),
                        ("Saihō-ji (Kokedera)", 24, "← Saihō-ji 6 km", "left"),
                        ("Kurama Onsen", 8, "Kurama 14 km ↑", "right"),
-                       (["Former Chikurin-in", "Mount Hiei"], 16, "Hiei ↗", "right")]),
+                       (["Former Chikurin-in", "Mount Hiei"], 16, "Hiei ↗", "right"),
+                       (["Keihan Uji Station", "Uji Bridge", "Ramen Tanaka Kyu Shoten", "matcha roastery", "Uji Shrine"], 130, "Uji ↓ 13 km", "left"),
+                       (["Ujikami Shrine", "Kōshō-ji", "Momiji-dani trail", "Hakusan Shrine", "Amagase Bridge"], 138, "", "left")]),
 )
 
 WK_START = {"name": "JR Wakayama Station", "lat": 34.2321803, "lon": 135.1917916,
@@ -761,6 +799,11 @@ for _c in CITIES:
 # A photo that isn't ours always carries its source, shown as a link on the card and in the enlarged view.
 # A slug can also be a list of slugs for several photos of one place (the card shows the first; the enlarged view shows all).
 PHOTOS = {
+    "kyoto": {k: (v, "Photo: from the video", "#jp-kyoto-videos") for k, v in {
+        "Kōshō-ji": ["koshoji-1", "koshoji-2"], "Ujikami Shrine": "ujikami-shrine", "Uji Shrine": "uji-shrine", "Uji Bridge": "uji-bridge",
+        "Keihan Uji Station": "uji-station", "Momiji-dani trail": "momiji-dani", "Hakusan Shrine": "hakusan-shrine",
+        "Amagase Bridge": "amagase-bridge", "matcha roastery": "matcha-roastery", "Ramen Tanaka Kyu Shoten": "ramen-tanaka",
+    }.items()},
     "osaka": {"aoma coffee": ("aoma-coffee", "Photo: YouTube video", "https://www.youtube.com/watch?v=RGqhSRTqsr8")},
     # Shiga photos are frames from the two videos linked in the tab; one credit on each card points to the videos box.
     "shiga": {k: (v, "Photo: from the videos", "#jp-shiga-videos") for k, v in {

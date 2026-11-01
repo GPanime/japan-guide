@@ -261,3 +261,4 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 - **v1.5.1:** site icon.
 - **v1.6:** Hikone tab renamed Shiga, with the full Shiga list, a photo on every place from it (frames from two YouTube videos), multi-photo cards and an inspiration videos box.
 - **v1.6.1:** one shared credit for the Shiga photos, pointing to the videos box.
+- **v1.7:** Uji added to Kyoto (10 places, photos from the Uji video in Kyoto's videos box) and Uji spots in the leaves forecast.
