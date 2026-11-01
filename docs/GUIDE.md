@@ -115,7 +115,7 @@ Required fields:
 | `leads`, `icons`, `titles` | per-category lead sentence, icon override, title override |
 | `map` | drawn-map settings (below) |
 
-Optional fields: `tabdates` (text under the tab name), `hotel2` with `hotel2_name`, `hotel2_note`, `hotel2_dates` and `hotel2_nights` (a second hotel, as in Kyoto), `optional=True` (dashed "maybe" styling, as in Wakayama and Nara), `maybe_label` (the wording of the dashed link from the stop before, default "Maybe on the way"), `soon` (the note shown when a stop has few or no places), `kicker`, `pill`, `hotel_box_title`, `hotel_label` (the map's ★ label), and `next_back` (where the "Next stop" link points, e.g. Hikone back to Kyoto).
+Optional fields: `tabdates` (text under the tab name), `hotel2` with `hotel2_name`, `hotel2_note`, `hotel2_dates` and `hotel2_nights` (a second hotel, as in Kyoto), `optional=True` (dashed "maybe" styling, as in Wakayama and Nara), `maybe_label` (the wording of the dashed link from the stop before, default "Maybe on the way"), `soon` (the note shown when a stop has few or no places), `kicker`, `pill`, `hotel_box_title`, `hotel_label` (the map's ★ label), `next_back` (where the "Next stop" link points, e.g. Shiga back to Kyoto), and `videos`: a list of (title, one-line note, YouTube video id) shown as a "Videos that inspired this list" box with YouTube thumbnails (Shiga has two).
 
 Filters switch on automatically once a stop has 8 or more places (`FILTER_MIN` in `build_site.py`).
 
@@ -124,7 +124,7 @@ Filters switch on automatically once a stop has 8 or more places (`FILTER_MIN` i
 ### Card photos (`PHOTOS` in data.py, `photos/`)
 Only photos the user sends. Never pick or copy photos from elsewhere yourself.
 1. `python3 source/add_photo.py <image file> <stop key> <slug>` writes `photos/<stop>/<slug>-800.webp` (card) and `-1600.webp` (enlarged), and removes all metadata, including the GPS location that phone photos carry.
-2. Add the card to `PHOTOS`: `"Card name": "slug"` for the user's own photo, or `"Card name": ("slug", "Photo: YouTube video", "<link>")` for anything else. A photo that isn't theirs always shows its source as a link, on the card and in the enlarged view.
+2. Add the card to `PHOTOS`: `"Card name": "slug"` for the user's own photo, or `"Card name": ("slug", "Photo: YouTube video", "<link>")` for anything else. A photo that isn't theirs always shows its source as a link, on the card and in the enlarged view. The link can also point inside the page, like `"#jp-shiga-videos"` (the videos box), when it's not clear which of a stop's videos a frame came from. For several photos of one place, give a list of slugs: the card shows the first with a "1 / 2" badge, and the enlarged view shows them side by side (swipe on a phone).
 3. Build and test. The build stops if a listed photo file is missing, and the test opens and closes the enlarged view.
 
 The photo sits at the top of the card. Tapping it opens a full-screen view (`.phbox`, shown with `:target`, so no JavaScript), and tapping anywhere closes it. Each photo is about 20-50 KB per size; the GitHub Pages limit is 1 GB for the whole site.
@@ -252,10 +252,11 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 
 - **Osaka guide:** first an editable doc, then a designed PDF.
 - **Web version:** first a hosted page, then the Squarespace Code Block. That meant no JavaScript on the Personal plan and about 300,000 characters at most, so filters were rebuilt in pure CSS and the file was slimmed down.
-- **Stops added:** Shirahama, Kyoto (two hotels), Hikone, an optional Wakayama stop, and an optional Nara day trip (placeholder). Places came from messages and from shared Google Maps lists.
+- **Stops added:** Shirahama, Kyoto (two hotels), Hikone (renamed Shiga in v1.6, key `shiga`), an optional Wakayama stop, and an optional Nara day trip (placeholder). Places came from messages and from shared Google Maps lists.
 - **v1.2:** moved to GitHub Pages on japan.zhunior.com, with dark mode and embedded Google maps.
 - **v1.2.1:** stronger search-engine hiding. The source and these docs were added to the repo.
 - **v1.3:** autumn leaves forecast in every tab, leaves lines and an Autumn leaves filter, the Nara placeholder tab, and the Kiyomizu-dera light-up dates corrected.
 - **v1.4:** photos on cards, with a tap-to-enlarge view and a source link.
 - **v1.5:** 34 Osaka places from the shared Osaka list, and a Shopping section.
 - **v1.5.1:** site icon.
+- **v1.6:** Hikone tab renamed Shiga, with the full Shiga list, a photo on every place from it (frames from two YouTube videos, credited), multi-photo cards and an inspiration videos box.

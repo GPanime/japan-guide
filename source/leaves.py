@@ -30,7 +30,7 @@ STAYS = {
     "shirahama": [("Our stay", "11/20", "11/23")],
     "kyoto": [("Stay 1", "11/23", "11/27"), ("Stay 2", "11/29", "12/2")],
     "nara": [("Osaka", "11/17", "11/19"), ("Kyoto 1", "11/24", "11/26"), ("Kyoto 2", "11/30", "12/1")],   # days we could go, from each base
-    "hikone": [("Our stay", "11/27", "11/29")],
+    "shiga": [("Our stay", "11/27", "11/29")],
 }
 
 VERDICT = {
@@ -39,7 +39,7 @@ VERDICT = {
     "shirahama": "Not a leaves stop. The coast stays green, and the nearest forecast spots inland peak after we leave.",
     "kyoto": "The best timing of the trip. Most temples in the city are forecast to peak from about Nov 21-24, so both stays should be at or near peak. Mount Hiei comes earlier and will be past peak by the second stay.",
     "nara": "Go early. Nara Park is forecast to peak from Nov 11 and start falling from Nov 30, so a day trip from Osaka or early in the first Kyoto stay is best.",
-    "hikone": "Peak is just arriving. Genkyū-en garden below the castle is forecast to peak from Nov 28, during our stay, and its evening light-up runs until Nov 29.",
+    "shiga": "Peak is just arriving. Genkyū-en garden below the castle is forecast to peak from Nov 28, during our stay, and its evening light-up runs until Nov 29.",
 }
 
 SPOTS = {
@@ -55,7 +55,7 @@ SPOTS = {
               ("Kyoto Gyoen ginkgo trees", "11/25", "12/5"), ("Ryōan-ji", "11/27", "12/14")],
     "nara": [("Nara Park", "11/11", "11/30"), ("Hase-dera", "11/17", "12/4"), ("Shōryaku-ji", "11/19", "12/7"),
              ("Chōgaku-ji", "11/21", "12/7"), ("Murō-ji", "11/24", "12/9")],
-    "hikone": [("Koto Sanzan (Hyakusai-ji)", "11/12", "12/2"), ("Eigen-ji", "11/11", "11/29"),
+    "shiga": [("Koto Sanzan (Hyakusai-ji)", "11/12", "12/2"), ("Eigen-ji", "11/11", "11/29"),
                ("Genkyū-en, Hikone Castle", "11/28", "12/11"), ("Kyorinbo", "11/30", "12/14")],
 }
 
@@ -77,7 +77,7 @@ CARDS = {
         "Honnō-ji": ("Kyoto Gyoen ginkgo trees", "the ginkgo trees at Kyoto Gyoen"),
         "Kinkaku-ji": ("Ryōan-ji", "Ryōan-ji nearby"),
     },
-    "hikone": {"Hikone Castle": ("Genkyū-en, Hikone Castle", False), "Kyorinbo": ("Kyorinbo", False)},
+    "shiga": {"Hikone Castle": ("Genkyū-en, Hikone Castle", False), "Kyorinbo": ("Kyorinbo", False)},
 }
 
 

@@ -28,7 +28,7 @@ EXT = 'target="_blank" rel="noopener"'
 MOODS = ["Must-go", "Quick bite", "Late night", "Low energy", "Outdoors", "Photo spot", "Autumn leaves"]
 CATKEYS = ["food", "sweets", "coffee", "drinks", "onsen", "sights", "shop", "trips"]
 FILTER_MIN = 8  # show filters only when a city has this many places
-JP_CHARS = "大阪絶対ごはん甘味珈琲乾杯温泉名所日帰り白浜京都彦根和歌山奈良紅葉買い物"
+JP_CHARS = "大阪絶対ごはん甘味珈琲乾杯温泉名所日帰り白浜京都彦根和歌山奈良紅葉買い物滋賀"
 _LEAF_D = "M0 -10 L2.4 -4 L8.5 -6 L5 -1 L10 2 L4 2.6 L5 8 L0 4.4 L-5 8 L-4 2.6 L-10 2 L-5 -1 L-8.5 -6 L-2.4 -4Z M-0.9 4 h1.8 v7 h-1.8z"
 LEAF_URI = "data:image/svg+xml," + urllib.parse.quote(f"<svg xmlns='http://www.w3.org/2000/svg' viewBox='-11 -11 22 23'><path d='{_LEAF_D}'/></svg>", safe="/:=' ")
 
@@ -38,38 +38,61 @@ def matches(p, c, M): return (c == "all" or card_cat(p) == c) and all(m in p[4] 
 
 
 def photo_of(city, name):
-    """(file base, source label, source link) for a card's photo, or None. Our own photos have no source."""
+    """([file bases], source label, source link) for a card's photos, or None. Our own photos have no source."""
     v = PHOTOS.get(city["key"], {}).get(name)
     if not v: return None
-    slug, label, url = (v, None, None) if isinstance(v, str) else v
-    base = f"photos/{city['key']}/{slug}"
-    for w in (800, 1600):
-        assert os.path.exists(os.path.join(REPO, f"{base}-{w}.webp")), f"missing photo {base}-{w}.webp (run source/add_photo.py)"
-    return base, label, url
+    slug, label, url = (v, None, None) if isinstance(v, (str, list)) else v
+    bases = [f"photos/{city['key']}/{s}" for s in (slug if isinstance(slug, list) else [slug])]
+    for base in bases:
+        for w in (800, 1600):
+            assert os.path.exists(os.path.join(REPO, f"{base}-{w}.webp")), f"missing photo {base}-{w}.webp (run source/add_photo.py)"
+    return bases, label, url
 
 
 def photo_src(label, url, cls):
-    return f'<a class="{cls}" href="{esc(url)}" {EXT}>{esc(label)} ↗</a>' if url else ""
+    if not url: return ""
+    if url.startswith("#"):   # points to the videos box on the same page, so no new tab
+        return f'<a class="{cls}" href="{esc(url)}">{esc(label)} ↓</a>'
+    return f'<a class="{cls}" href="{esc(url)}" {EXT}>{esc(label)} ↗</a>'
 
 
 def photo_box(city, i, p):
-    """The enlarged photo: a full-screen view opened by the card's photo link (:target, no JavaScript). Tap to close."""
+    """The enlarged photo(s): a full-screen view opened by the card's photo link (:target, no JavaScript). Tap to close.
+    Several photos sit side by side and scroll sideways."""
     ph = photo_of(city, p[1])
     if not ph: return ""
-    base, label, url = ph
+    bases, label, url = ph
     k = city["key"]; back = f"#jp-{k}-p-{i}"
     src = f" · {photo_src(label, url, 'phsrc')}" if url else ""
-    return (f'<div class="phbox" id="jp-{k}-ph-{i}"><a class="phclose" href="{back}" aria-label="Close photo"></a>'
-            f'<img src="{base}-1600.webp" alt="{esc(p[1])}" loading="lazy">'
-            f'<p>{esc(p[1])}{src} · <a href="{back}">Close</a></p></div>')
+    n = len(bases)
+    imgs = "".join(f'<img src="{b}-1600.webp" alt="{esc(p[1])}{f", photo {j + 1} of {n}" if n > 1 else ""}" loading="lazy">' for j, b in enumerate(bases))
+    more = f" · {n} photos" if n > 1 else ""
+    return (f'<div class="phbox{" multi" if n > 1 else ""}" id="jp-{k}-ph-{i}"><a class="phclose" href="{back}" aria-label="Close photo"></a>'
+            f'<div class="phstrip">{imgs}</div>'
+            f'<p>{esc(p[1])}{more}{src} · <a href="{back}">Close</a></p></div>')
+
+
+def videos_box(city):
+    """Links to the videos that inspired a stop's list, with their YouTube thumbnails (loaded from YouTube)."""
+    vids = city.get("videos")
+    if not vids: return ""
+    k = city["key"]
+    items = "".join(f'<a class="vid" href="https://www.youtube.com/watch?v={vid}" {EXT}><img src="https://i.ytimg.com/vi/{vid}/mqdefault.jpg" alt="" loading="lazy">'
+                    f'<span><b>{esc(title)} ↗</b><small>{esc(note)}</small></span></a>' for title, note, vid in vids)
+    return (f'<section class="vids" id="jp-{k}-videos"><div class="vidhead"><h2>Videos that inspired this list</h2>'
+            f'<span>handy to watch before a day out · the photos on the cards come from them</span></div><div class="vidgrid">{items}</div></section>')
 
 
 def card(city, i, p, view):
     cat, name, area, km, tags, desc, maps, pq = p[:8]
     c = CATS[cat]
     ph = photo_of(city, name)
-    ph_h = (f'<div class="ph"><a href="#jp-{city["key"]}-ph-{i}" aria-label="Enlarge photo of {esc(name)}"><img src="{ph[0]}-800.webp" alt="{esc(name)}" loading="lazy"></a>'
-            f'{photo_src(ph[1], ph[2], "phsrc")}</div>') if ph else ""
+    ph_h = ""
+    if ph:
+        bases = ph[0]
+        count = f'<span class="phn">1 / {len(bases)}</span>' if len(bases) > 1 else ""
+        ph_h = (f'<div class="ph"><a href="#jp-{city["key"]}-ph-{i}" aria-label="Enlarge photo of {esc(name)}"><img src="{bases[0]}-800.webp" alt="{esc(name)}" loading="lazy"></a>'
+                f'{count}{photo_src(ph[1], ph[2], "phsrc")}</div>')
     tags_h = "".join(tag_html(t) for t in tags if t != "Autumn leaves")
     return f'''<article class="card{' hasph' if ph else ''}" id="jp-{city['key']}-{view}-{i}" data-n="{i}" data-cat="{cat}" data-tags="{esc('|'.join(tags))}" style="--c:{c['color']}">
   {ph_h}<div class="num" aria-hidden="true">{i}</div>
@@ -313,6 +336,7 @@ def city_panel(city, nxt):
     {day1 or '<div class="box dark"><h3>Still researching</h3><p>Only a few places so far. More food and sights will be added before the trip.</p></div>'}
   </section>
   {leaves_panel(city)}
+  {videos_box(city)}
   <div class="planner">
     <div class="maincol">
       {controls}
@@ -369,9 +393,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.5.1"
+VERSION = "1.6"
 VDATE = "Nov 1, 2026"
 CHANGELOG = [
+    ("1.6", "Nov 1, 2026", "Hikone tab renamed Shiga, with the full Shiga list (20 new places) and a photo on every place from the list. Links to the two videos that inspired it."),
     ("1.5.1", "Nov 1, 2026", "Site icon (a red torii) for browser tabs and phone home screens."),
     ("1.5", "Nov 1, 2026", "Osaka: 34 places added from the shared Osaka list (sushi, oden, yakiniku, sukiyaki, bars, breakfast spots, a museum garden, a viewpoint) and a new Shopping section."),
     ("1.4", "Oct 29, 2026", "Photos on cards: tap to enlarge, with a link to the source. First one on aoma coffee."),
@@ -476,7 +501,7 @@ def build():
 {R} .tab.opt {{ border: 1.5px dashed var(--muted); padding: 4.5px 12.5px; }}
 {R} .tab.opt small {{ font-style: italic; }}
 {R} .hero-wakayama {{ background: linear-gradient(170deg, #FFF2DC, #FAD9B4 60%, #F5C5A0); border: 2px dashed #E0B892; }}
-{R} .hero-hikone {{ background: linear-gradient(170deg, #FFF0D8, #F8D6AE 60%, #F2C096); }}
+{R} .hero-shiga {{ background: linear-gradient(170deg, #FFF0D8, #F8D6AE 60%, #F2C096); }}
 {R} .hero-kyoto {{ background: linear-gradient(170deg, #FFE6CF, #F7C7A6 60%, #F1AE8E); }}
 {R} .hero-shirahama .txt {{ position: relative; z-index: 1; }}
 @media (min-width: 681px) {{ {R} .hero-shirahama .art svg {{ overflow: hidden !important; }} {R} .hero-shirahama .sea-full {{ display: none; }} {R} .hero-shirahama .sea-fade {{ display: inline; }} }}
@@ -544,7 +569,7 @@ def build():
 @media (max-width: 680px) {{ {R} .leaves {{ padding: 16px 14px; }} {R} .lvchart {{ --lw: 118px; }} {R} .lvhead, {R} .lvrow, {R} .lvaxis {{ gap: 8px; }}
   {R} .lvbands {{ left: calc(var(--lw) + 8px); }} {R} .lvname b {{ font-size: 12.5px; }} {R} .lvname small {{ font-size: 11px; }} {R} .lvaxis .lvtrack span {{ font-size: 10.5px; }} }}
 /* ---- our photos ---- */
-{R} .card.hasph {{ flex-wrap: wrap; }}
+{R} .card.hasph {{ flex-wrap: wrap; align-content: flex-start; }}
 {R} .card .ph {{ flex: 1 0 100%; display: block; position: relative; margin: -16px -16px 2px -14px; border-radius: calc(var(--r) - 2px) calc(var(--r) - 2px) 0 0; overflow: hidden; background: var(--chip); }}
 {R} .card .ph > a {{ display: block; cursor: zoom-in; }}
 {R} .card .ph img {{ display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }}
@@ -553,7 +578,25 @@ def build():
 {R} .phbox {{ display: none; position: fixed; inset: 0; z-index: 50; background: rgba(20, 15, 12, .9); align-items: center; justify-content: center; flex-direction: column; gap: 10px; padding: 16px; }}
 {R} .phbox:target {{ display: flex; }}
 {R} .phclose {{ position: absolute; inset: 0; cursor: zoom-out; }}
-{R} .phbox img {{ position: relative; max-width: 100%; max-height: calc(100vh - 70px); border-radius: 12px; pointer-events: none; }}
+{R} .phstrip {{ position: relative; display: flex; gap: 12px; max-width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; }}
+{R} .phbox:not(.multi) .phstrip {{ pointer-events: none; }}
+{R} .phbox img {{ flex: none; max-width: 100%; max-height: calc(100vh - 70px); border-radius: 12px; scroll-snap-align: center; }}
+{R} .phbox:not(.multi) img {{ pointer-events: none; }}
+@media (min-width: 900px) {{ {R} .phbox.multi img {{ max-width: calc(50vw - 30px); }} }}
+{R} .card .phn {{ position: absolute; right: 10px; top: 9px; font-size: 11.5px; font-weight: 800; color: #fff; background: rgba(30, 22, 18, .66); padding: 2px 9px; border-radius: 99px; pointer-events: none; }}
+/* ---- inspiration videos ---- */
+{R} .vids {{ margin-top: 14px; background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--r); padding: 16px 18px; scroll-margin-top: 110px; }}
+{R} .vids:target {{ animation: jp26flash 1.6s ease-out; }}
+{R} .vidhead {{ display: flex; align-items: baseline; gap: 6px 12px; flex-wrap: wrap; }}
+{R} .vidhead h2 {{ font-size: 19px; }}
+{R} .vidhead span {{ font-size: 13px; font-weight: 700; color: var(--muted); }}
+{R} .vidgrid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-top: 12px; }}
+{R} .vid {{ display: flex; gap: 12px; align-items: center; text-decoration: none; color: var(--ink); border-radius: 14px; padding: 6px; border: 1.5px solid var(--line); background: var(--surface2); }}
+{R} .vid:hover {{ border-color: var(--muted); }}
+{R} .vid img {{ width: 140px; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; flex: none; background: var(--chip); }}
+{R} .vid b {{ display: block; font-family: var(--display); font-weight: 600; font-size: 16px; }}
+{R} .vid small {{ display: block; font-size: 13px; color: var(--soft); margin-top: 2px; line-height: 1.35; }}
+@media (max-width: 680px) {{ {R} .vid img {{ width: 112px; }} }}
 {R} .phbox p {{ position: relative; margin: 0; color: #F4E8DA; font-size: 13.5px; font-weight: 700; text-align: center; }}
 {R} .phbox p a {{ color: #F4E8DA; text-decoration: underline; text-underline-offset: 3px; }}
 {R} .hero-nara {{ background: linear-gradient(170deg, #FFF0DE, #F9D3B6 60%, #F3BC9C); border: 2px dashed #E0B892; }}
@@ -592,7 +635,7 @@ Changes:
             "--mapgrid: #3E3330; --maplbl: #8C7869; --day: #4A3229; --leaf: #E8604E; --leaftint: #4A2A24; --stay: rgba(247, 178, 103, .13); color-scheme: dark;")
     HEROES = (".hero-shirahama {{ background: linear-gradient(170deg, #3A2A30, #5B3A3A 60%, #6A4038); }} "
               ".hero-kyoto {{ background: linear-gradient(170deg, #3B2A2B, #5E3934 60%, #6E3F35); }} "
-              ".hero-hikone {{ background: linear-gradient(170deg, #2F2E26, #4A3F30 60%, #5A4733); }} "
+              ".hero-shiga {{ background: linear-gradient(170deg, #2F2E26, #4A3F30 60%, #5A4733); }} "
               ".hero-wakayama {{ background: linear-gradient(170deg, #3A2E2A, #5A4234 60%, #684A38); border-color: #8A6A50; }} "
               ".hero-nara {{ background: linear-gradient(170deg, #3A2B2C, #5A3D36 60%, #6A4539); border-color: #8A6A50; }}").replace("{{", "{").replace("}}", "}")
     def dark_block(pre):
