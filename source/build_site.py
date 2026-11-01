@@ -369,9 +369,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.5"
+VERSION = "1.5.1"
 VDATE = "Nov 1, 2026"
 CHANGELOG = [
+    ("1.5.1", "Nov 1, 2026", "Site icon (a red torii) for browser tabs and phone home screens."),
     ("1.5", "Nov 1, 2026", "Osaka: 34 places added from the shared Osaka list (sushi, oden, yakiniku, sukiyaki, bars, breakfast spots, a museum garden, a viewpoint) and a new Shopping section."),
     ("1.4", "Oct 29, 2026", "Photos on cards: tap to enlarge, with a link to the source. First one on aoma coffee."),
     ("1.3", "Oct 27, 2026", "Autumn leaves forecast in every tab, a leaves line on matching cards and an Autumn leaves filter. New optional Nara day trip tab (placeholder). Kiyomizu-dera light-up dates corrected: 2026 not announced yet."),
@@ -681,12 +682,19 @@ html, body {{ margin: 0; background: #FFF8EE; }}
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="color-scheme" content="light dark">
 <title>Japan Trip Guide</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#FFF8EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1C1613" media="(prefers-color-scheme: dark)">
 <style>{GH_CSS}</style>
 </head><body>
 {gh_body}
 <script>{GH_JS}</script>
 </body></html>
 ''')
+    for f in ("favicon.svg", "favicon-32.png", "apple-touch-icon.png"):
+        assert os.path.exists(os.path.join(REPO, f)), f"missing {f} (run source/build_icons.py)"
     open(os.path.join(REPO, "index.html"), "w").write(gh_page)
     print(f"index.html v{VERSION}: {len(gh_page):,} characters")
     print(f"squarespace variant: {len(snippet):,} characters (Squarespace Code Block limit is about 300,000)")
