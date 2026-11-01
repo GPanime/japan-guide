@@ -105,6 +105,12 @@ ICONS["train"] = f'''<svg viewBox="0 0 64 64"><rect x="14" y="10" width="36" hei
    <rect x="19" y="16" width="26" height="13" rx="3" fill="#E9F5F9" {S}/><circle cx="23" cy="38" r="3" fill="#FFE08A" {S}/><circle cx="41" cy="38" r="3" fill="#FFE08A" {S}/>
    <path d="M20 48 L14 56 M44 48 L50 56 M17 53 H47" fill="none" {S}/></svg>'''
 
+ICONS["bag"] = f'''<svg viewBox="0 0 64 64"><path d="M24 22 V16 a8 8 0 0 1 16 0 V22" fill="none" {S}/>
+   <path d="M12 22 H52 L49 54 H15Z" fill="#8FA3B5" {S}/><path d="M12 22 H52 L51.4 30 H12.6Z" fill="#B9C7D3"/>
+   <path d="M12 22 H52 L49 54 H15Z" fill="none" {S}/>
+   <circle cx="24" cy="30" r="2.2" fill="{INK}"/><circle cx="40" cy="30" r="2.2" fill="{INK}"/>
+   <path d="M26 42 q6 5 12 0" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>'''
+
 HIKONE_ART = f'''<svg viewBox="0 0 200 170" class="coverart">
   <circle cx="44" cy="54" r="22" fill="#F7B267"/>
   <circle cx="44" cy="54" r="22" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="2 7" opacity=".7"/>

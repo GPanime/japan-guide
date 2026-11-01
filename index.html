@@ -29,9 +29,10 @@ html[data-theme="dark"] #jp26 { --bg: #1C1613; --surface: #28201C; --surface2: #
 #jp26 .map a.sel .mpin { stroke: var(--ink); stroke-width: 1.2; }
 </style>
 </head><body>
-<!-- Japan trip guide · VERSION 1.4 · Oct 29, 2026
+<!-- Japan trip guide · VERSION 1.5 · Nov 1, 2026
   GitHub Pages version (japan.zhunior.com), with dark mode and Google maps.
 Changes:
+  v1.5 (Nov 1, 2026): Osaka: 34 places added from the shared Osaka list (sushi, oden, yakiniku, sukiyaki, bars, breakfast spots, a museum garden, a viewpoint) and a new Shopping section.
   v1.4 (Oct 29, 2026): Photos on cards: tap to enlarge, with a link to the source. First one on aoma coffee.
   v1.3 (Oct 27, 2026): Autumn leaves forecast in every tab, a leaves line on matching cards and an Autumn leaves filter. New optional Nara day trip tab (placeholder). Kiyomizu-dera light-up dates corrected: 2026 not announced yet.
   v1.2.1 (Oct 16, 2026): Stronger instructions telling search engines not to list, cache or preview the page.
@@ -40,7 +41,7 @@ Changes:
   v1.0 (Oct 16, 2026): Shirahama list added (12 places, new Hot springs section). Pick-by-area panels replace the By area view to keep the file small.
 -->
 <style>@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;700;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700;900&display=swap&text=%E5%A4%A7%E9%98%AA%E7%B5%B6%E5%AF%BE%E3%81%94%E3%81%AF%E3%82%93%E7%94%98%E5%91%B3%E7%8F%88%E7%90%B2%E4%B9%BE%E6%9D%AF%E6%B8%A9%E6%B3%89%E5%90%8D%E6%89%80%E6%97%A5%E5%B8%B0%E3%82%8A%E7%99%BD%E6%B5%9C%E4%BA%AC%E9%83%BD%E5%BD%A6%E6%A0%B9%E5%92%8C%E6%AD%8C%E5%B1%B1%E5%A5%88%E8%89%AF%E7%B4%85%E8%91%89");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700;900&display=swap&text=%E5%A4%A7%E9%98%AA%E7%B5%B6%E5%AF%BE%E3%81%94%E3%81%AF%E3%82%93%E7%94%98%E5%91%B3%E7%8F%88%E7%90%B2%E4%B9%BE%E6%9D%AF%E6%B8%A9%E6%B3%89%E5%90%8D%E6%89%80%E6%97%A5%E5%B8%B0%E3%82%8A%E7%99%BD%E6%B5%9C%E4%BA%AC%E9%83%BD%E5%BD%A6%E6%A0%B9%E5%92%8C%E6%AD%8C%E5%B1%B1%E5%A5%88%E8%89%AF%E7%B4%85%E8%91%89%E8%B2%B7%E3%81%84%E7%89%A9");
 
 /* Defensive reset: stop the Squarespace theme's type styles leaking in */
 #jp26 :where(form, h1, h2, h3, p, a, span, div, b, em, i, small, button, label, input, summary, details, nav, header, section, article, aside, main, footer) {
@@ -386,6 +387,7 @@ Changes:
 #jp26 #jp-city-osaka:has(#osaka-jc-drinks:checked) .card:not([data-cat="drinks"]),
 #jp26 #jp-city-osaka:has(#osaka-jc-onsen:checked) .card:not([data-cat="onsen"]),
 #jp26 #jp-city-osaka:has(#osaka-jc-sights:checked) .card:not([data-cat="sights"]),
+#jp26 #jp-city-osaka:has(#osaka-jc-shop:checked) .card:not([data-cat="shop"]),
 #jp26 #jp-city-osaka:has(#osaka-jc-trips:checked) .card:not([data-cat="trips"]),
 #jp26 #jp-city-osaka:has(#osaka-jm-0:checked) .card:not([data-tags*="Must-go"]),
 #jp26 #jp-city-osaka:has(#osaka-jm-1:checked) .card:not([data-tags*="Quick bite"]),
@@ -405,57 +407,92 @@ Changes:
 #jp26 #jp-city-osaka:has(#osaka-jc-drinks:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-osaka:has(#osaka-jc-onsen:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-osaka:has(#osaka-jc-sights:checked) .jp-bytype > div:nth-child(1),
+#jp26 #jp-city-osaka:has(#osaka-jc-shop:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-osaka:has(#osaka-jc-trips:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-osaka:has(#osaka-jm-0:checked) .jp-bytype > div:nth-child(2),
-#jp26 #jp-city-osaka:has(#osaka-jm-3:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-osaka:has(#osaka-jm-5:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-osaka:has(#osaka-jm-6:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-osaka:has(#osaka-jm-1:checked):has(#osaka-jm-2:checked) .jp-bytype > div:nth-child(2),
+#jp26 #jp-city-osaka:has(#osaka-jm-1:checked):has(#osaka-jm-3:checked) .jp-bytype > div:nth-child(2),
+#jp26 #jp-city-osaka:has(#osaka-jm-2:checked):has(#osaka-jm-3:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-osaka:has(#osaka-jm-2:checked):has(#osaka-jm-4:checked) .jp-bytype > div:nth-child(2),
+#jp26 #jp-city-osaka:has(#osaka-jm-3:checked):has(#osaka-jm-4:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-osaka:has(#osaka-jc-sweets:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-osaka:has(#osaka-jc-coffee:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-osaka:has(#osaka-jc-drinks:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-osaka:has(#osaka-jc-onsen:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-osaka:has(#osaka-jc-sights:checked) .jp-bytype > div:nth-child(2),
+#jp26 #jp-city-osaka:has(#osaka-jc-shop:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-osaka:has(#osaka-jc-trips:checked) .jp-bytype > div:nth-child(2),
-#jp26 #jp-city-osaka:has(#osaka-jm-1:checked) .jp-bytype > div:nth-child(3),
+#jp26 #jp-city-osaka:has(#osaka-jm-0:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-osaka:has(#osaka-jm-2:checked) .jp-bytype > div:nth-child(3),
+#jp26 #jp-city-osaka:has(#osaka-jm-3:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-osaka:has(#osaka-jm-4:checked) .jp-bytype > div:nth-child(3),
+#jp26 #jp-city-osaka:has(#osaka-jm-5:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-osaka:has(#osaka-jm-6:checked) .jp-bytype > div:nth-child(3),
-#jp26 #jp-city-osaka:has(#osaka-jm-0:checked):has(#osaka-jm-3:checked) .jp-bytype > div:nth-child(3),
-#jp26 #jp-city-osaka:has(#osaka-jm-0:checked):has(#osaka-jm-5:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-osaka:has(#osaka-jc-food:checked) .jp-bytype > div:nth-child(3),
-#jp26 #jp-city-osaka:has(#osaka-jc-sweets:checked) .jp-bytype > div:nth-child(3),
+#jp26 #jp-city-osaka:has(#osaka-jc-coffee:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-osaka:has(#osaka-jc-drinks:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-osaka:has(#osaka-jc-onsen:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-osaka:has(#osaka-jc-sights:checked) .jp-bytype > div:nth-child(3),
+#jp26 #jp-city-osaka:has(#osaka-jc-shop:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-osaka:has(#osaka-jc-trips:checked) .jp-bytype > div:nth-child(3),
-#jp26 #jp-city-osaka:has(#osaka-jm-0:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-osaka:has(#osaka-jm-1:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-osaka:has(#osaka-jm-4:checked) .jp-bytype > div:nth-child(4),
-#jp26 #jp-city-osaka:has(#osaka-jm-5:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-osaka:has(#osaka-jm-6:checked) .jp-bytype > div:nth-child(4),
+#jp26 #jp-city-osaka:has(#osaka-jm-0:checked):has(#osaka-jm-2:checked) .jp-bytype > div:nth-child(4),
+#jp26 #jp-city-osaka:has(#osaka-jm-0:checked):has(#osaka-jm-3:checked) .jp-bytype > div:nth-child(4),
+#jp26 #jp-city-osaka:has(#osaka-jm-0:checked):has(#osaka-jm-5:checked) .jp-bytype > div:nth-child(4),
+#jp26 #jp-city-osaka:has(#osaka-jm-2:checked):has(#osaka-jm-3:checked) .jp-bytype > div:nth-child(4),
+#jp26 #jp-city-osaka:has(#osaka-jm-2:checked):has(#osaka-jm-5:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-osaka:has(#osaka-jc-food:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-osaka:has(#osaka-jc-sweets:checked) .jp-bytype > div:nth-child(4),
-#jp26 #jp-city-osaka:has(#osaka-jc-coffee:checked) .jp-bytype > div:nth-child(4),
+#jp26 #jp-city-osaka:has(#osaka-jc-drinks:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-osaka:has(#osaka-jc-onsen:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-osaka:has(#osaka-jc-sights:checked) .jp-bytype > div:nth-child(4),
+#jp26 #jp-city-osaka:has(#osaka-jc-shop:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-osaka:has(#osaka-jc-trips:checked) .jp-bytype > div:nth-child(4),
+#jp26 #jp-city-osaka:has(#osaka-jm-0:checked) .jp-bytype > div:nth-child(5),
 #jp26 #jp-city-osaka:has(#osaka-jm-1:checked) .jp-bytype > div:nth-child(5),
-#jp26 #jp-city-osaka:has(#osaka-jm-0:checked):has(#osaka-jm-2:checked) .jp-bytype > div:nth-child(5),
-#jp26 #jp-city-osaka:has(#osaka-jm-0:checked):has(#osaka-jm-3:checked) .jp-bytype > div:nth-child(5),
-#jp26 #jp-city-osaka:has(#osaka-jm-0:checked):has(#osaka-jm-6:checked) .jp-bytype > div:nth-child(5),
-#jp26 #jp-city-osaka:has(#osaka-jm-2:checked):has(#osaka-jm-3:checked) .jp-bytype > div:nth-child(5),
-#jp26 #jp-city-osaka:has(#osaka-jm-2:checked):has(#osaka-jm-5:checked) .jp-bytype > div:nth-child(5),
-#jp26 #jp-city-osaka:has(#osaka-jm-2:checked):has(#osaka-jm-6:checked) .jp-bytype > div:nth-child(5),
-#jp26 #jp-city-osaka:has(#osaka-jm-3:checked):has(#osaka-jm-5:checked) .jp-bytype > div:nth-child(5),
-#jp26 #jp-city-osaka:has(#osaka-jm-3:checked):has(#osaka-jm-6:checked) .jp-bytype > div:nth-child(5),
+#jp26 #jp-city-osaka:has(#osaka-jm-4:checked) .jp-bytype > div:nth-child(5),
+#jp26 #jp-city-osaka:has(#osaka-jm-5:checked) .jp-bytype > div:nth-child(5),
+#jp26 #jp-city-osaka:has(#osaka-jm-6:checked) .jp-bytype > div:nth-child(5),
 #jp26 #jp-city-osaka:has(#osaka-jc-food:checked) .jp-bytype > div:nth-child(5),
 #jp26 #jp-city-osaka:has(#osaka-jc-sweets:checked) .jp-bytype > div:nth-child(5),
 #jp26 #jp-city-osaka:has(#osaka-jc-coffee:checked) .jp-bytype > div:nth-child(5),
-#jp26 #jp-city-osaka:has(#osaka-jc-drinks:checked) .jp-bytype > div:nth-child(5),
 #jp26 #jp-city-osaka:has(#osaka-jc-onsen:checked) .jp-bytype > div:nth-child(5),
-#jp26 #jp-city-osaka:has(#osaka-jc-trips:checked) .jp-bytype > div:nth-child(5) { display: none; }
+#jp26 #jp-city-osaka:has(#osaka-jc-sights:checked) .jp-bytype > div:nth-child(5),
+#jp26 #jp-city-osaka:has(#osaka-jc-shop:checked) .jp-bytype > div:nth-child(5),
+#jp26 #jp-city-osaka:has(#osaka-jc-trips:checked) .jp-bytype > div:nth-child(5),
+#jp26 #jp-city-osaka:has(#osaka-jm-1:checked) .jp-bytype > div:nth-child(6),
+#jp26 #jp-city-osaka:has(#osaka-jm-0:checked):has(#osaka-jm-2:checked) .jp-bytype > div:nth-child(6),
+#jp26 #jp-city-osaka:has(#osaka-jm-0:checked):has(#osaka-jm-3:checked) .jp-bytype > div:nth-child(6),
+#jp26 #jp-city-osaka:has(#osaka-jm-0:checked):has(#osaka-jm-6:checked) .jp-bytype > div:nth-child(6),
+#jp26 #jp-city-osaka:has(#osaka-jm-2:checked):has(#osaka-jm-3:checked) .jp-bytype > div:nth-child(6),
+#jp26 #jp-city-osaka:has(#osaka-jm-2:checked):has(#osaka-jm-5:checked) .jp-bytype > div:nth-child(6),
+#jp26 #jp-city-osaka:has(#osaka-jm-2:checked):has(#osaka-jm-6:checked) .jp-bytype > div:nth-child(6),
+#jp26 #jp-city-osaka:has(#osaka-jm-3:checked):has(#osaka-jm-5:checked) .jp-bytype > div:nth-child(6),
+#jp26 #jp-city-osaka:has(#osaka-jm-3:checked):has(#osaka-jm-6:checked) .jp-bytype > div:nth-child(6),
+#jp26 #jp-city-osaka:has(#osaka-jc-food:checked) .jp-bytype > div:nth-child(6),
+#jp26 #jp-city-osaka:has(#osaka-jc-sweets:checked) .jp-bytype > div:nth-child(6),
+#jp26 #jp-city-osaka:has(#osaka-jc-coffee:checked) .jp-bytype > div:nth-child(6),
+#jp26 #jp-city-osaka:has(#osaka-jc-drinks:checked) .jp-bytype > div:nth-child(6),
+#jp26 #jp-city-osaka:has(#osaka-jc-onsen:checked) .jp-bytype > div:nth-child(6),
+#jp26 #jp-city-osaka:has(#osaka-jc-shop:checked) .jp-bytype > div:nth-child(6),
+#jp26 #jp-city-osaka:has(#osaka-jc-trips:checked) .jp-bytype > div:nth-child(6),
+#jp26 #jp-city-osaka:has(#osaka-jm-1:checked) .jp-bytype > div:nth-child(7),
+#jp26 #jp-city-osaka:has(#osaka-jm-2:checked) .jp-bytype > div:nth-child(7),
+#jp26 #jp-city-osaka:has(#osaka-jm-3:checked) .jp-bytype > div:nth-child(7),
+#jp26 #jp-city-osaka:has(#osaka-jm-4:checked) .jp-bytype > div:nth-child(7),
+#jp26 #jp-city-osaka:has(#osaka-jm-5:checked) .jp-bytype > div:nth-child(7),
+#jp26 #jp-city-osaka:has(#osaka-jm-6:checked) .jp-bytype > div:nth-child(7),
+#jp26 #jp-city-osaka:has(#osaka-jc-food:checked) .jp-bytype > div:nth-child(7),
+#jp26 #jp-city-osaka:has(#osaka-jc-sweets:checked) .jp-bytype > div:nth-child(7),
+#jp26 #jp-city-osaka:has(#osaka-jc-coffee:checked) .jp-bytype > div:nth-child(7),
+#jp26 #jp-city-osaka:has(#osaka-jc-drinks:checked) .jp-bytype > div:nth-child(7),
+#jp26 #jp-city-osaka:has(#osaka-jc-onsen:checked) .jp-bytype > div:nth-child(7),
+#jp26 #jp-city-osaka:has(#osaka-jc-sights:checked) .jp-bytype > div:nth-child(7),
+#jp26 #jp-city-osaka:has(#osaka-jc-trips:checked) .jp-bytype > div:nth-child(7) { display: none; }
 #jp26 #jp-city-osaka:has(#osaka-jm-0:checked):has(#osaka-jm-1:checked) .empty,
 #jp26 #jp-city-osaka:has(#osaka-jm-0:checked):has(#osaka-jm-2:checked) .empty,
 #jp26 #jp-city-osaka:has(#osaka-jm-0:checked):has(#osaka-jm-3:checked) .empty,
@@ -469,17 +506,23 @@ Changes:
 #jp26 #jp-city-osaka:has(#osaka-jm-3:checked):has(#osaka-jm-6:checked) .empty,
 #jp26 #jp-city-osaka:has(#osaka-jm-2:checked):has(#osaka-jm-3:checked):has(#osaka-jm-4:checked) .empty,
 #jp26 #jp-city-osaka:has(#osaka-jm-3:checked):has(#osaka-jm-4:checked):has(#osaka-jm-5:checked) .empty,
-#jp26 #jp-city-osaka:has(#osaka-jc-food:checked):has(#osaka-jm-3:checked) .empty,
 #jp26 #jp-city-osaka:has(#osaka-jc-food:checked):has(#osaka-jm-5:checked) .empty,
 #jp26 #jp-city-osaka:has(#osaka-jc-food:checked):has(#osaka-jm-6:checked) .empty,
 #jp26 #jp-city-osaka:has(#osaka-jc-food:checked):has(#osaka-jm-0:checked):has(#osaka-jm-4:checked) .empty,
+#jp26 #jp-city-osaka:has(#osaka-jc-food:checked):has(#osaka-jm-2:checked):has(#osaka-jm-3:checked) .empty,
 #jp26 #jp-city-osaka:has(#osaka-jc-food:checked):has(#osaka-jm-2:checked):has(#osaka-jm-4:checked) .empty,
-#jp26 #jp-city-osaka:has(#osaka-jc-sweets:checked) .empty,
+#jp26 #jp-city-osaka:has(#osaka-jc-food:checked):has(#osaka-jm-3:checked):has(#osaka-jm-4:checked) .empty,
+#jp26 #jp-city-osaka:has(#osaka-jc-sweets:checked):has(#osaka-jm-0:checked) .empty,
+#jp26 #jp-city-osaka:has(#osaka-jc-sweets:checked):has(#osaka-jm-2:checked) .empty,
+#jp26 #jp-city-osaka:has(#osaka-jc-sweets:checked):has(#osaka-jm-3:checked) .empty,
+#jp26 #jp-city-osaka:has(#osaka-jc-sweets:checked):has(#osaka-jm-4:checked) .empty,
+#jp26 #jp-city-osaka:has(#osaka-jc-sweets:checked):has(#osaka-jm-5:checked) .empty,
+#jp26 #jp-city-osaka:has(#osaka-jc-sweets:checked):has(#osaka-jm-6:checked) .empty,
 #jp26 #jp-city-osaka:has(#osaka-jc-coffee:checked):has(#osaka-jm-1:checked) .empty,
-#jp26 #jp-city-osaka:has(#osaka-jc-coffee:checked):has(#osaka-jm-2:checked) .empty,
 #jp26 #jp-city-osaka:has(#osaka-jc-coffee:checked):has(#osaka-jm-4:checked) .empty,
 #jp26 #jp-city-osaka:has(#osaka-jc-coffee:checked):has(#osaka-jm-6:checked) .empty,
 #jp26 #jp-city-osaka:has(#osaka-jc-coffee:checked):has(#osaka-jm-0:checked):has(#osaka-jm-5:checked) .empty,
+#jp26 #jp-city-osaka:has(#osaka-jc-coffee:checked):has(#osaka-jm-2:checked):has(#osaka-jm-3:checked) .empty,
 #jp26 #jp-city-osaka:has(#osaka-jc-drinks:checked):has(#osaka-jm-0:checked) .empty,
 #jp26 #jp-city-osaka:has(#osaka-jc-drinks:checked):has(#osaka-jm-1:checked) .empty,
 #jp26 #jp-city-osaka:has(#osaka-jc-drinks:checked):has(#osaka-jm-4:checked) .empty,
@@ -489,6 +532,12 @@ Changes:
 #jp26 #jp-city-osaka:has(#osaka-jc-sights:checked):has(#osaka-jm-1:checked) .empty,
 #jp26 #jp-city-osaka:has(#osaka-jc-sights:checked):has(#osaka-jm-2:checked):has(#osaka-jm-3:checked) .empty,
 #jp26 #jp-city-osaka:has(#osaka-jc-sights:checked):has(#osaka-jm-3:checked):has(#osaka-jm-5:checked) .empty,
+#jp26 #jp-city-osaka:has(#osaka-jc-shop:checked):has(#osaka-jm-1:checked) .empty,
+#jp26 #jp-city-osaka:has(#osaka-jc-shop:checked):has(#osaka-jm-2:checked) .empty,
+#jp26 #jp-city-osaka:has(#osaka-jc-shop:checked):has(#osaka-jm-3:checked) .empty,
+#jp26 #jp-city-osaka:has(#osaka-jc-shop:checked):has(#osaka-jm-4:checked) .empty,
+#jp26 #jp-city-osaka:has(#osaka-jc-shop:checked):has(#osaka-jm-5:checked) .empty,
+#jp26 #jp-city-osaka:has(#osaka-jc-shop:checked):has(#osaka-jm-6:checked) .empty,
 #jp26 #jp-city-osaka:has(#osaka-jc-trips:checked) .empty { display: block; }
 #jp26 #jp-city-osaka:has(#osaka-jc-food:checked) a[data-pin]:not(.pc-food),
 #jp26 #jp-city-osaka:has(#osaka-jc-sweets:checked) a[data-pin]:not(.pc-sweets),
@@ -496,6 +545,7 @@ Changes:
 #jp26 #jp-city-osaka:has(#osaka-jc-drinks:checked) a[data-pin]:not(.pc-drinks),
 #jp26 #jp-city-osaka:has(#osaka-jc-onsen:checked) a[data-pin]:not(.pc-onsen),
 #jp26 #jp-city-osaka:has(#osaka-jc-sights:checked) a[data-pin]:not(.pc-sights),
+#jp26 #jp-city-osaka:has(#osaka-jc-shop:checked) a[data-pin]:not(.pc-shop),
 #jp26 #jp-city-osaka:has(#osaka-jc-trips:checked) a[data-pin]:not(.pc-trips),
 #jp26 #jp-city-osaka:has(#osaka-jm-0:checked) a[data-pin]:not(.pt-0),
 #jp26 #jp-city-osaka:has(#osaka-jm-1:checked) a[data-pin]:not(.pt-1),
@@ -511,6 +561,7 @@ Changes:
 #jp26 #jp-city-wakayama:has(#wakayama-jc-drinks:checked) .card:not([data-cat="drinks"]),
 #jp26 #jp-city-wakayama:has(#wakayama-jc-onsen:checked) .card:not([data-cat="onsen"]),
 #jp26 #jp-city-wakayama:has(#wakayama-jc-sights:checked) .card:not([data-cat="sights"]),
+#jp26 #jp-city-wakayama:has(#wakayama-jc-shop:checked) .card:not([data-cat="shop"]),
 #jp26 #jp-city-wakayama:has(#wakayama-jc-trips:checked) .card:not([data-cat="trips"]),
 #jp26 #jp-city-wakayama:has(#wakayama-jm-0:checked) .card:not([data-tags*="Must-go"]),
 #jp26 #jp-city-wakayama:has(#wakayama-jm-1:checked) .card:not([data-tags*="Quick bite"]),
@@ -530,6 +581,7 @@ Changes:
 #jp26 #jp-city-wakayama:has(#wakayama-jc-drinks:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-wakayama:has(#wakayama-jc-onsen:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-wakayama:has(#wakayama-jc-sights:checked) .jp-bytype > div:nth-child(1),
+#jp26 #jp-city-wakayama:has(#wakayama-jc-shop:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-wakayama:has(#wakayama-jc-trips:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-wakayama:has(#wakayama-jm-0:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-wakayama:has(#wakayama-jm-1:checked) .jp-bytype > div:nth-child(2),
@@ -542,6 +594,7 @@ Changes:
 #jp26 #jp-city-wakayama:has(#wakayama-jc-coffee:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-wakayama:has(#wakayama-jc-onsen:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-wakayama:has(#wakayama-jc-sights:checked) .jp-bytype > div:nth-child(2),
+#jp26 #jp-city-wakayama:has(#wakayama-jc-shop:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-wakayama:has(#wakayama-jc-trips:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-wakayama:has(#wakayama-jm-0:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-wakayama:has(#wakayama-jm-1:checked) .jp-bytype > div:nth-child(3),
@@ -552,6 +605,7 @@ Changes:
 #jp26 #jp-city-wakayama:has(#wakayama-jc-coffee:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-wakayama:has(#wakayama-jc-drinks:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-wakayama:has(#wakayama-jc-onsen:checked) .jp-bytype > div:nth-child(3),
+#jp26 #jp-city-wakayama:has(#wakayama-jc-shop:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-wakayama:has(#wakayama-jc-trips:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-wakayama:has(#wakayama-jm-0:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-wakayama:has(#wakayama-jm-2:checked) .jp-bytype > div:nth-child(4),
@@ -564,7 +618,8 @@ Changes:
 #jp26 #jp-city-wakayama:has(#wakayama-jc-coffee:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-wakayama:has(#wakayama-jc-drinks:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-wakayama:has(#wakayama-jc-onsen:checked) .jp-bytype > div:nth-child(4),
-#jp26 #jp-city-wakayama:has(#wakayama-jc-sights:checked) .jp-bytype > div:nth-child(4) { display: none; }
+#jp26 #jp-city-wakayama:has(#wakayama-jc-sights:checked) .jp-bytype > div:nth-child(4),
+#jp26 #jp-city-wakayama:has(#wakayama-jc-shop:checked) .jp-bytype > div:nth-child(4) { display: none; }
 #jp26 #jp-city-wakayama:has(#wakayama-jm-0:checked) .empty,
 #jp26 #jp-city-wakayama:has(#wakayama-jm-3:checked) .empty,
 #jp26 #jp-city-wakayama:has(#wakayama-jm-1:checked):has(#wakayama-jm-2:checked) .empty,
@@ -587,6 +642,7 @@ Changes:
 #jp26 #jp-city-wakayama:has(#wakayama-jc-onsen:checked) .empty,
 #jp26 #jp-city-wakayama:has(#wakayama-jc-sights:checked):has(#wakayama-jm-1:checked) .empty,
 #jp26 #jp-city-wakayama:has(#wakayama-jc-sights:checked):has(#wakayama-jm-2:checked) .empty,
+#jp26 #jp-city-wakayama:has(#wakayama-jc-shop:checked) .empty,
 #jp26 #jp-city-wakayama:has(#wakayama-jc-trips:checked):has(#wakayama-jm-2:checked) .empty { display: block; }
 #jp26 #jp-city-wakayama:has(#wakayama-jc-food:checked) a[data-pin]:not(.pc-food),
 #jp26 #jp-city-wakayama:has(#wakayama-jc-sweets:checked) a[data-pin]:not(.pc-sweets),
@@ -594,6 +650,7 @@ Changes:
 #jp26 #jp-city-wakayama:has(#wakayama-jc-drinks:checked) a[data-pin]:not(.pc-drinks),
 #jp26 #jp-city-wakayama:has(#wakayama-jc-onsen:checked) a[data-pin]:not(.pc-onsen),
 #jp26 #jp-city-wakayama:has(#wakayama-jc-sights:checked) a[data-pin]:not(.pc-sights),
+#jp26 #jp-city-wakayama:has(#wakayama-jc-shop:checked) a[data-pin]:not(.pc-shop),
 #jp26 #jp-city-wakayama:has(#wakayama-jc-trips:checked) a[data-pin]:not(.pc-trips),
 #jp26 #jp-city-wakayama:has(#wakayama-jm-0:checked) a[data-pin]:not(.pt-0),
 #jp26 #jp-city-wakayama:has(#wakayama-jm-1:checked) a[data-pin]:not(.pt-1),
@@ -609,6 +666,7 @@ Changes:
 #jp26 #jp-city-shirahama:has(#shirahama-jc-drinks:checked) .card:not([data-cat="drinks"]),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-onsen:checked) .card:not([data-cat="onsen"]),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-sights:checked) .card:not([data-cat="sights"]),
+#jp26 #jp-city-shirahama:has(#shirahama-jc-shop:checked) .card:not([data-cat="shop"]),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-trips:checked) .card:not([data-cat="trips"]),
 #jp26 #jp-city-shirahama:has(#shirahama-jm-0:checked) .card:not([data-tags*="Must-go"]),
 #jp26 #jp-city-shirahama:has(#shirahama-jm-1:checked) .card:not([data-tags*="Quick bite"]),
@@ -627,6 +685,7 @@ Changes:
 #jp26 #jp-city-shirahama:has(#shirahama-jc-drinks:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-onsen:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-sights:checked) .jp-bytype > div:nth-child(1),
+#jp26 #jp-city-shirahama:has(#shirahama-jc-shop:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-trips:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-shirahama:has(#shirahama-jm-0:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-shirahama:has(#shirahama-jm-2:checked) .jp-bytype > div:nth-child(2),
@@ -639,6 +698,7 @@ Changes:
 #jp26 #jp-city-shirahama:has(#shirahama-jc-drinks:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-onsen:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-sights:checked) .jp-bytype > div:nth-child(2),
+#jp26 #jp-city-shirahama:has(#shirahama-jc-shop:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-trips:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-shirahama:has(#shirahama-jm-1:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-shirahama:has(#shirahama-jm-2:checked) .jp-bytype > div:nth-child(3),
@@ -651,6 +711,7 @@ Changes:
 #jp26 #jp-city-shirahama:has(#shirahama-jc-drinks:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-onsen:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-sights:checked) .jp-bytype > div:nth-child(3),
+#jp26 #jp-city-shirahama:has(#shirahama-jc-shop:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-trips:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-shirahama:has(#shirahama-jm-0:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-shirahama:has(#shirahama-jm-1:checked) .jp-bytype > div:nth-child(4),
@@ -663,6 +724,7 @@ Changes:
 #jp26 #jp-city-shirahama:has(#shirahama-jc-coffee:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-onsen:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-sights:checked) .jp-bytype > div:nth-child(4),
+#jp26 #jp-city-shirahama:has(#shirahama-jc-shop:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-trips:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-shirahama:has(#shirahama-jm-0:checked) .jp-bytype > div:nth-child(5),
 #jp26 #jp-city-shirahama:has(#shirahama-jm-1:checked) .jp-bytype > div:nth-child(5),
@@ -675,6 +737,7 @@ Changes:
 #jp26 #jp-city-shirahama:has(#shirahama-jc-coffee:checked) .jp-bytype > div:nth-child(5),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-drinks:checked) .jp-bytype > div:nth-child(5),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-sights:checked) .jp-bytype > div:nth-child(5),
+#jp26 #jp-city-shirahama:has(#shirahama-jc-shop:checked) .jp-bytype > div:nth-child(5),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-trips:checked) .jp-bytype > div:nth-child(5),
 #jp26 #jp-city-shirahama:has(#shirahama-jm-0:checked) .jp-bytype > div:nth-child(6),
 #jp26 #jp-city-shirahama:has(#shirahama-jm-1:checked) .jp-bytype > div:nth-child(6),
@@ -686,6 +749,7 @@ Changes:
 #jp26 #jp-city-shirahama:has(#shirahama-jc-coffee:checked) .jp-bytype > div:nth-child(6),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-drinks:checked) .jp-bytype > div:nth-child(6),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-onsen:checked) .jp-bytype > div:nth-child(6),
+#jp26 #jp-city-shirahama:has(#shirahama-jc-shop:checked) .jp-bytype > div:nth-child(6),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-trips:checked) .jp-bytype > div:nth-child(6),
 #jp26 #jp-city-shirahama:has(#shirahama-jm-0:checked) .jp-bytype > div:nth-child(7),
 #jp26 #jp-city-shirahama:has(#shirahama-jm-1:checked) .jp-bytype > div:nth-child(7),
@@ -697,7 +761,8 @@ Changes:
 #jp26 #jp-city-shirahama:has(#shirahama-jc-coffee:checked) .jp-bytype > div:nth-child(7),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-drinks:checked) .jp-bytype > div:nth-child(7),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-onsen:checked) .jp-bytype > div:nth-child(7),
-#jp26 #jp-city-shirahama:has(#shirahama-jc-sights:checked) .jp-bytype > div:nth-child(7) { display: none; }
+#jp26 #jp-city-shirahama:has(#shirahama-jc-sights:checked) .jp-bytype > div:nth-child(7),
+#jp26 #jp-city-shirahama:has(#shirahama-jc-shop:checked) .jp-bytype > div:nth-child(7) { display: none; }
 #jp26 #jp-city-shirahama:has(#shirahama-jm-6:checked) .empty,
 #jp26 #jp-city-shirahama:has(#shirahama-jm-0:checked):has(#shirahama-jm-2:checked) .empty,
 #jp26 #jp-city-shirahama:has(#shirahama-jm-0:checked):has(#shirahama-jm-3:checked) .empty,
@@ -733,6 +798,7 @@ Changes:
 #jp26 #jp-city-shirahama:has(#shirahama-jc-sights:checked):has(#shirahama-jm-1:checked) .empty,
 #jp26 #jp-city-shirahama:has(#shirahama-jc-sights:checked):has(#shirahama-jm-2:checked) .empty,
 #jp26 #jp-city-shirahama:has(#shirahama-jc-sights:checked):has(#shirahama-jm-3:checked) .empty,
+#jp26 #jp-city-shirahama:has(#shirahama-jc-shop:checked) .empty,
 #jp26 #jp-city-shirahama:has(#shirahama-jc-trips:checked):has(#shirahama-jm-0:checked) .empty,
 #jp26 #jp-city-shirahama:has(#shirahama-jc-trips:checked):has(#shirahama-jm-1:checked) .empty,
 #jp26 #jp-city-shirahama:has(#shirahama-jc-trips:checked):has(#shirahama-jm-2:checked) .empty,
@@ -743,6 +809,7 @@ Changes:
 #jp26 #jp-city-shirahama:has(#shirahama-jc-drinks:checked) a[data-pin]:not(.pc-drinks),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-onsen:checked) a[data-pin]:not(.pc-onsen),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-sights:checked) a[data-pin]:not(.pc-sights),
+#jp26 #jp-city-shirahama:has(#shirahama-jc-shop:checked) a[data-pin]:not(.pc-shop),
 #jp26 #jp-city-shirahama:has(#shirahama-jc-trips:checked) a[data-pin]:not(.pc-trips),
 #jp26 #jp-city-shirahama:has(#shirahama-jm-0:checked) a[data-pin]:not(.pt-0),
 #jp26 #jp-city-shirahama:has(#shirahama-jm-1:checked) a[data-pin]:not(.pt-1),
@@ -758,6 +825,7 @@ Changes:
 #jp26 #jp-city-kyoto:has(#kyoto-jc-drinks:checked) .card:not([data-cat="drinks"]),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-onsen:checked) .card:not([data-cat="onsen"]),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-sights:checked) .card:not([data-cat="sights"]),
+#jp26 #jp-city-kyoto:has(#kyoto-jc-shop:checked) .card:not([data-cat="shop"]),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-trips:checked) .card:not([data-cat="trips"]),
 #jp26 #jp-city-kyoto:has(#kyoto-jm-0:checked) .card:not([data-tags*="Must-go"]),
 #jp26 #jp-city-kyoto:has(#kyoto-jm-1:checked) .card:not([data-tags*="Quick bite"]),
@@ -776,6 +844,7 @@ Changes:
 #jp26 #jp-city-kyoto:has(#kyoto-jc-drinks:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-onsen:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-sights:checked) .jp-bytype > div:nth-child(1),
+#jp26 #jp-city-kyoto:has(#kyoto-jc-shop:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-trips:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-kyoto:has(#kyoto-jm-0:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-kyoto:has(#kyoto-jm-2:checked) .jp-bytype > div:nth-child(2),
@@ -788,6 +857,7 @@ Changes:
 #jp26 #jp-city-kyoto:has(#kyoto-jc-drinks:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-onsen:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-sights:checked) .jp-bytype > div:nth-child(2),
+#jp26 #jp-city-kyoto:has(#kyoto-jc-shop:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-trips:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-kyoto:has(#kyoto-jm-0:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-kyoto:has(#kyoto-jm-2:checked) .jp-bytype > div:nth-child(3),
@@ -799,6 +869,7 @@ Changes:
 #jp26 #jp-city-kyoto:has(#kyoto-jc-drinks:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-onsen:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-sights:checked) .jp-bytype > div:nth-child(3),
+#jp26 #jp-city-kyoto:has(#kyoto-jc-shop:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-trips:checked) .jp-bytype > div:nth-child(3),
 #jp26 #jp-city-kyoto:has(#kyoto-jm-1:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-kyoto:has(#kyoto-jm-0:checked):has(#kyoto-jm-2:checked) .jp-bytype > div:nth-child(4),
@@ -812,6 +883,7 @@ Changes:
 #jp26 #jp-city-kyoto:has(#kyoto-jc-coffee:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-drinks:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-onsen:checked) .jp-bytype > div:nth-child(4),
+#jp26 #jp-city-kyoto:has(#kyoto-jc-shop:checked) .jp-bytype > div:nth-child(4),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-trips:checked) .jp-bytype > div:nth-child(4) { display: none; }
 #jp26 #jp-city-kyoto:has(#kyoto-jm-0:checked):has(#kyoto-jm-1:checked) .empty,
 #jp26 #jp-city-kyoto:has(#kyoto-jm-0:checked):has(#kyoto-jm-3:checked) .empty,
@@ -839,6 +911,7 @@ Changes:
 #jp26 #jp-city-kyoto:has(#kyoto-jc-onsen:checked) .empty,
 #jp26 #jp-city-kyoto:has(#kyoto-jc-sights:checked):has(#kyoto-jm-1:checked) .empty,
 #jp26 #jp-city-kyoto:has(#kyoto-jc-sights:checked):has(#kyoto-jm-0:checked):has(#kyoto-jm-2:checked) .empty,
+#jp26 #jp-city-kyoto:has(#kyoto-jc-shop:checked) .empty,
 #jp26 #jp-city-kyoto:has(#kyoto-jc-trips:checked) .empty { display: block; }
 #jp26 #jp-city-kyoto:has(#kyoto-jc-food:checked) a[data-pin]:not(.pc-food),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-sweets:checked) a[data-pin]:not(.pc-sweets),
@@ -846,6 +919,7 @@ Changes:
 #jp26 #jp-city-kyoto:has(#kyoto-jc-drinks:checked) a[data-pin]:not(.pc-drinks),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-onsen:checked) a[data-pin]:not(.pc-onsen),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-sights:checked) a[data-pin]:not(.pc-sights),
+#jp26 #jp-city-kyoto:has(#kyoto-jc-shop:checked) a[data-pin]:not(.pc-shop),
 #jp26 #jp-city-kyoto:has(#kyoto-jc-trips:checked) a[data-pin]:not(.pc-trips),
 #jp26 #jp-city-kyoto:has(#kyoto-jm-0:checked) a[data-pin]:not(.pt-0),
 #jp26 #jp-city-kyoto:has(#kyoto-jm-1:checked) a[data-pin]:not(.pt-1),
@@ -862,6 +936,7 @@ Changes:
 #jp26 #jp-city-hikone:has(#hikone-jc-drinks:checked) .card:not([data-cat="drinks"]),
 #jp26 #jp-city-hikone:has(#hikone-jc-onsen:checked) .card:not([data-cat="onsen"]),
 #jp26 #jp-city-hikone:has(#hikone-jc-sights:checked) .card:not([data-cat="sights"]),
+#jp26 #jp-city-hikone:has(#hikone-jc-shop:checked) .card:not([data-cat="shop"]),
 #jp26 #jp-city-hikone:has(#hikone-jc-trips:checked) .card:not([data-cat="trips"]),
 #jp26 #jp-city-hikone:has(#hikone-jm-0:checked) .card:not([data-tags*="Must-go"]),
 #jp26 #jp-city-hikone:has(#hikone-jm-1:checked) .card:not([data-tags*="Quick bite"]),
@@ -881,6 +956,7 @@ Changes:
 #jp26 #jp-city-hikone:has(#hikone-jc-drinks:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-hikone:has(#hikone-jc-onsen:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-hikone:has(#hikone-jc-sights:checked) .jp-bytype > div:nth-child(1),
+#jp26 #jp-city-hikone:has(#hikone-jc-shop:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-hikone:has(#hikone-jc-trips:checked) .jp-bytype > div:nth-child(1),
 #jp26 #jp-city-hikone:has(#hikone-jm-0:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-hikone:has(#hikone-jm-1:checked) .jp-bytype > div:nth-child(2),
@@ -892,6 +968,7 @@ Changes:
 #jp26 #jp-city-hikone:has(#hikone-jc-coffee:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-hikone:has(#hikone-jc-drinks:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-hikone:has(#hikone-jc-onsen:checked) .jp-bytype > div:nth-child(2),
+#jp26 #jp-city-hikone:has(#hikone-jc-shop:checked) .jp-bytype > div:nth-child(2),
 #jp26 #jp-city-hikone:has(#hikone-jc-trips:checked) .jp-bytype > div:nth-child(2) { display: none; }
 #jp26 #jp-city-hikone:has(#hikone-jm-0:checked) .empty,
 #jp26 #jp-city-hikone:has(#hikone-jm-1:checked) .empty,
@@ -905,6 +982,7 @@ Changes:
 #jp26 #jp-city-hikone:has(#hikone-jc-coffee:checked):has(#hikone-jm-6:checked) .empty,
 #jp26 #jp-city-hikone:has(#hikone-jc-drinks:checked) .empty,
 #jp26 #jp-city-hikone:has(#hikone-jc-onsen:checked) .empty,
+#jp26 #jp-city-hikone:has(#hikone-jc-shop:checked) .empty,
 #jp26 #jp-city-hikone:has(#hikone-jc-trips:checked) .empty { display: block; }
 #jp26 #jp-city-hikone:has(#hikone-jc-food:checked) a[data-pin]:not(.pc-food),
 #jp26 #jp-city-hikone:has(#hikone-jc-sweets:checked) a[data-pin]:not(.pc-sweets),
@@ -912,6 +990,7 @@ Changes:
 #jp26 #jp-city-hikone:has(#hikone-jc-drinks:checked) a[data-pin]:not(.pc-drinks),
 #jp26 #jp-city-hikone:has(#hikone-jc-onsen:checked) a[data-pin]:not(.pc-onsen),
 #jp26 #jp-city-hikone:has(#hikone-jc-sights:checked) a[data-pin]:not(.pc-sights),
+#jp26 #jp-city-hikone:has(#hikone-jc-shop:checked) a[data-pin]:not(.pc-shop),
 #jp26 #jp-city-hikone:has(#hikone-jc-trips:checked) a[data-pin]:not(.pc-trips),
 #jp26 #jp-city-hikone:has(#hikone-jm-0:checked) a[data-pin]:not(.pt-0),
 #jp26 #jp-city-hikone:has(#hikone-jm-1:checked) a[data-pin]:not(.pt-1),
@@ -980,8 +1059,8 @@ Changes:
     <div class="maincol">
       <form class="controls" id="osaka-f" action="#" autocomplete="off">
         <div class="ctrlhead"><h2>Days 2-4<span>pick by mood</span></h2></div>
-        <div class="row"><span class="rowlbl">Show</span><input class="vh jc" type="radio" name="osaka-cat" id="osaka-jc-all" checked><label class="chip" for="osaka-jc-all">Everything</label><input class="vh jc" type="radio" name="osaka-cat" id="osaka-jc-food"><label class="chip" for="osaka-jc-food"><i style=background:#E8952F></i>Food</label><input class="vh jc" type="radio" name="osaka-cat" id="osaka-jc-coffee"><label class="chip" for="osaka-jc-coffee"><i style=background:#9A6B4B></i>Coffee</label><input class="vh jc" type="radio" name="osaka-cat" id="osaka-jc-drinks"><label class="chip" for="osaka-jc-drinks"><i style=background:#8A5AA6></i>Drinks</label><input class="vh jc" type="radio" name="osaka-cat" id="osaka-jc-sights"><label class="chip" for="osaka-jc-sights"><i style=background:#4F9A6A></i>Sights</label></div>
-        <div class="row"><span class="rowlbl">Feeling</span><input class="vh jm" type="checkbox" id="osaka-jm-0"><label class="chip mood must" for="osaka-jm-0"><span class=ti><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/></svg></span>Must-go<em>4</em></label><input class="vh jm" type="checkbox" id="osaka-jm-1"><label class="chip mood" for="osaka-jm-1">Quick bite<em>3</em></label><input class="vh jm" type="checkbox" id="osaka-jm-2"><label class="chip mood" for="osaka-jm-2">Late night<em>4</em></label><input class="vh jm" type="checkbox" id="osaka-jm-3"><label class="chip mood" for="osaka-jm-3">Low energy<em>4</em></label><input class="vh jm" type="checkbox" id="osaka-jm-4"><label class="chip mood" for="osaka-jm-4">Outdoors<em>6</em></label><input class="vh jm" type="checkbox" id="osaka-jm-5"><label class="chip mood" for="osaka-jm-5">Photo spot<em>5</em></label><input class="vh jm" type="checkbox" id="osaka-jm-6"><label class="chip mood" for="osaka-jm-6">Autumn leaves<em>1</em></label></div>
+        <div class="row"><span class="rowlbl">Show</span><input class="vh jc" type="radio" name="osaka-cat" id="osaka-jc-all" checked><label class="chip" for="osaka-jc-all">Everything</label><input class="vh jc" type="radio" name="osaka-cat" id="osaka-jc-food"><label class="chip" for="osaka-jc-food"><i style=background:#E8952F></i>Food</label><input class="vh jc" type="radio" name="osaka-cat" id="osaka-jc-sweets"><label class="chip" for="osaka-jc-sweets"><i style=background:#D2648E></i>Sweets</label><input class="vh jc" type="radio" name="osaka-cat" id="osaka-jc-coffee"><label class="chip" for="osaka-jc-coffee"><i style=background:#9A6B4B></i>Coffee</label><input class="vh jc" type="radio" name="osaka-cat" id="osaka-jc-drinks"><label class="chip" for="osaka-jc-drinks"><i style=background:#8A5AA6></i>Drinks</label><input class="vh jc" type="radio" name="osaka-cat" id="osaka-jc-sights"><label class="chip" for="osaka-jc-sights"><i style=background:#4F9A6A></i>Sights</label><input class="vh jc" type="radio" name="osaka-cat" id="osaka-jc-shop"><label class="chip" for="osaka-jc-shop"><i style=background:#5F6E7E></i>Shopping</label></div>
+        <div class="row"><span class="rowlbl">Feeling</span><input class="vh jm" type="checkbox" id="osaka-jm-0"><label class="chip mood must" for="osaka-jm-0"><span class=ti><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/></svg></span>Must-go<em>5</em></label><input class="vh jm" type="checkbox" id="osaka-jm-1"><label class="chip mood" for="osaka-jm-1">Quick bite<em>6</em></label><input class="vh jm" type="checkbox" id="osaka-jm-2"><label class="chip mood" for="osaka-jm-2">Late night<em>9</em></label><input class="vh jm" type="checkbox" id="osaka-jm-3"><label class="chip mood" for="osaka-jm-3">Low energy<em>7</em></label><input class="vh jm" type="checkbox" id="osaka-jm-4"><label class="chip mood" for="osaka-jm-4">Outdoors<em>8</em></label><input class="vh jm" type="checkbox" id="osaka-jm-5"><label class="chip mood" for="osaka-jm-5">Photo spot<em>6</em></label><input class="vh jm" type="checkbox" id="osaka-jm-6"><label class="chip mood" for="osaka-jm-6">Autumn leaves<em>1</em></label></div>
       </form>
       <div class="jp-bytype"><div class="sec" data-cat-sec="must" style="--c:#E2604A;--t:#FDE7E1">
   <div class="sechead"><div class="secicon"><svg viewBox="0 0 64 64"><path d="M22 14 q3 -4 0 -8 M30 12 q3 -4 0 -8" fill="none" stroke="#3A2E2A" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" opacity=".45"/>
@@ -1021,7 +1100,7 @@ Changes:
    <circle cx="32" cy="29" r="9.5" fill="#E09A45" stroke="#3A2E2A" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
    <path d="M12 32 q4 -3 8 0 t8 -4 t8 0 t8 4 t8 0" fill="none" stroke="#6B3A1F" stroke-width="2.6" stroke-linecap="round"/>
    <circle cx="27" cy="24" r="1.3" fill="#5E9E6E"/><circle cx="37" cy="26" r="1.3" fill="#5E9E6E"/><circle cx="47" cy="30" r="1.3" fill="#5E9E6E"/></svg></div>
-    <div><div class="jp">ごはん</div><h2>More food</h2><p class="lead">Curry, burgers, takoyaki and fried-everything, for whatever the mood is.</p></div></div>
+    <div><div class="jp">ごはん</div><h2>More food</h2><p class="lead">Curry, burgers, takoyaki, sushi, oden, yakiniku, sukiyaki and fried-everything, for whatever the mood is.</p></div></div>
   <div class="grid"><div class="card" id="jp-osaka-p-3" data-n="3" data-cat="food" data-tags="" style="--c:#E8952F">
   <div class="num" aria-hidden="true">3</div>
   <div class="cbody">
@@ -1117,6 +1196,192 @@ Changes:
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/hRHXdwzPzJUmRGfN9" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Hanakujira+honten+oden+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="10" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-11" data-n="11" data-cat="food" data-tags="Queue" style="--c:#E8952F">
+  <div class="num" aria-hidden="true">11</div>
+  <div class="cbody">
+    <h3>Daiko Sushi honten</h3>
+    <div class="meta"><span class="catlbl">More food · </span>Shinsekai <span class="dot">•</span> 4.5 km</div>
+    <div class="tags"><span class="tag">Queue</span></div>
+    <p>Cheap sushi where the locals go. Go early, before lunch, to avoid the queue. Closed Thursdays.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=15134371316587236401" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E5%A4%A7%E8%88%88%E5%AF%BF%E5%8F%B8+%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="11" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-12" data-n="12" data-cat="food" data-tags="" style="--c:#E8952F">
+  <div class="num" aria-hidden="true">12</div>
+  <div class="cbody">
+    <h3>Rokusen Sushi Tsutenkaku</h3>
+    <div class="meta"><span class="catlbl">More food · </span>Shinsekai <span class="dot">•</span> 4.2 km</div>
+    
+    <p>Another cheap sushi place popular with locals. Our second option after Daiko.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=17176441973772918911" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E5%85%AD%E9%AE%AE+%E9%80%9A%E5%A4%A9%E9%96%A3%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="12" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-13" data-n="13" data-cat="food" data-tags="" style="--c:#E8952F">
+  <div class="num" aria-hidden="true">13</div>
+  <div class="cbody">
+    <h3>Uoshin Sushi Shinsaibashi</h3>
+    <div class="meta"><span class="catlbl">More food · </span>Shinsaibashi <span class="dot">•</span> 1.9 km</div>
+    
+    <p>Sushi with huge pieces of fish. Called 元祖ぶっち切り寿司 魚心 on the map.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=8842138768329540273" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E3%81%B6%E3%81%A3%E3%81%A1%E5%88%87%E3%82%8A%E5%AF%BF%E5%8F%B8+%E9%AD%9A%E5%BF%83+%E5%BF%83%E6%96%8E%E6%A9%8B" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="13" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-14" data-n="14" data-cat="food" data-tags="Quick bite" style="--c:#E8952F">
+  <div class="num" aria-hidden="true">14</div>
+  <div class="cbody">
+    <h3>Ramen Bukkoshi</h3>
+    <div class="meta"><span class="catlbl">More food · </span>Kitahama, by the hotel <span class="dot">•</span> 0.2 km · walkable</div>
+    <div class="tags"><span class="tag">Quick bite</span></div>
+    <p>Ramen with a beef bone broth, a couple of minutes from the hotel. Lunch and dinner, with a break in the afternoon.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=15243957712833055394" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E7%89%9B%E9%AA%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3+%E3%81%B6%E3%81%A3%E3%81%93%E5%BF%97+%E5%8C%97%E6%B5%9C" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="14" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-15" data-n="15" data-cat="food" data-tags="" style="--c:#E8952F">
+  <div class="num" aria-hidden="true">15</div>
+  <div class="cbody">
+    <h3>Kagawa-udon Kitashinchi</h3>
+    <div class="meta"><span class="catlbl">More food · </span>Kitashinchi <span class="dot">•</span> 1.2 km · walkable</div>
+    
+    <p>Oden and udon. Called 手打うどん 香川 on the map.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=12297340603286855047" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E6%89%8B%E6%89%93%E3%81%86%E3%81%A9%E3%82%93+%E9%A6%99%E5%B7%9D+%E5%8C%97%E6%96%B0%E5%9C%B0" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="15" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-16" data-n="16" data-cat="food" data-tags="" style="--c:#E8952F">
+  <div class="num" aria-hidden="true">16</div>
+  <div class="cbody">
+    <h3>Ishibashi Shokuhin</h3>
+    <div class="meta"><span class="catlbl">More food · </span>Nipponbashi, by Namba <span class="dot">•</span> 2.8 km</div>
+    
+    <p>Oden, near Namba.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=17219655171291354842" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E7%9F%B3%E6%A9%8B%E9%A3%9F%E5%93%81+%E6%97%A5%E6%9C%AC%E6%A9%8B+%E3%81%8A%E3%81%A7%E3%82%93" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="16" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-17" data-n="17" data-cat="food" data-tags="Low energy" style="--c:#E8952F">
+  <div class="num" aria-hidden="true">17</div>
+  <div class="cbody">
+    <h3>Nabeya</h3>
+    <div class="meta"><span class="catlbl">More food · </span>Tengachaya, south of Shinsekai <span class="dot">•</span> 5.1 km</div>
+    <div class="tags"><span class="tag">Low energy</span></div>
+    <p>Sukiyaki and oyster hot pot, cheap and tasty. Called すき焼鍋物 なべや on the map.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=18230356705201633677" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E3%81%99%E3%81%8D%E7%84%BC%E9%8D%8B%E7%89%A9+%E3%81%AA%E3%81%B9%E3%82%84+%E5%A4%A9%E4%B8%8B%E8%8C%B6%E5%B1%8B" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="17" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-18" data-n="18" data-cat="food" data-tags="" style="--c:#E8952F">
+  <div class="num" aria-hidden="true">18</div>
+  <div class="cbody">
+    <h3>Ie Shige</h3>
+    <div class="meta"><span class="catlbl">More food · </span>Tenma <span class="dot">•</span> 1.8 km</div>
+    
+    <p>Sukiyaki. Called 和食美味in家しげ on the map.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=12601464365516000121" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E5%92%8C%E9%A3%9F%E7%BE%8E%E5%91%B3in%E5%AE%B6%E3%81%97%E3%81%92" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="18" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-19" data-n="19" data-cat="food" data-tags="Book ahead|Pricier" style="--c:#E8952F">
+  <div class="num" aria-hidden="true">19</div>
+  <div class="cbody">
+    <h3>Yakitori Sanzen</h3>
+    <div class="meta"><span class="catlbl">More food · </span>Tenmabashi <span class="dot">•</span> 0.7 km · walkable</div>
+    <div class="tags"><span class="tag">Book ahead</span><span class="tag">Pricier</span></div>
+    <p>Tasty yakitori omakase, and the chicken egg rice is tasty too. Needs a reservation, on TableCheck. Courses are about ¥10,000-16,000. Called 焼鳥 燦然 on the map.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=17655392979059327079" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E7%84%BC%E9%B3%A5+%E7%87%A6%E7%84%B6+%E5%A4%A7%E9%98%AA" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="19" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-20" data-n="20" data-cat="food" data-tags="" style="--c:#E8952F">
+  <div class="num" aria-hidden="true">20</div>
+  <div class="cbody">
+    <h3>Hakuundai Tsuruhashi</h3>
+    <div class="meta"><span class="catlbl">More food · </span>Tsuruhashi <span class="dot">•</span> 3.5 km</div>
+    
+    <p>Korean-style wagyu BBQ by Tsuruhashi Station. It&#x27;s closed on Mon Nov 16 and Tue Nov 17 this year, so it&#x27;s one for later in the week.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=12485286075232686059" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E7%99%BD%E9%9B%B2%E5%8F%B0+%E9%B6%B4%E6%A9%8B%E9%A7%85%E5%89%8D%E5%BA%97" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="20" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-21" data-n="21" data-cat="food" data-tags="" style="--c:#E8952F">
+  <div class="num" aria-hidden="true">21</div>
+  <div class="cbody">
+    <h3>Hakuundai Grand Front</h3>
+    <div class="meta"><span class="catlbl">More food · </span>Umeda, by Osaka Station <span class="dot">•</span> 1.9 km</div>
+    
+    <p>The same Korean-style wagyu BBQ, in Grand Front Osaka. Easy to combine with shopping in Umeda.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=14228122968292675460" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E7%84%BC%E8%82%89+%E7%99%BD%E9%9B%B2%E5%8F%B0+%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E5%A4%A7%E9%98%AA" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="21" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-22" data-n="22" data-cat="food" data-tags="Late night" style="--c:#E8952F">
+  <div class="num" aria-hidden="true">22</div>
+  <div class="cbody">
+    <h3>Yakiniku Mitsuru</h3>
+    <div class="meta"><span class="catlbl">More food · </span>Shinsaibashi <span class="dot">•</span> 1.9 km</div>
+    <div class="tags"><span class="tag">Late night</span></div>
+    <p>Wagyu yakiniku in Shinsaibashi, saved without a note. Open late.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=4980008302685252879" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E9%81%93%E9%A0%93%E5%A0%80%E3%81%BF%E3%81%A4%E3%82%8B+%E5%BF%83%E6%96%8E%E6%A9%8B%E5%BA%97" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="22" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-23" data-n="23" data-cat="food" data-tags="" style="--c:#E8952F">
+  <div class="num" aria-hidden="true">23</div>
+  <div class="cbody">
+    <h3>Uma Yotsubashi</h3>
+    <div class="meta"><span class="catlbl">More food · </span>Kitahorie <span class="dot">•</span> 2.1 km</div>
+    
+    <p>Yakiniku with private rooms, saved without a note.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=1095829155044768800" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E5%80%8B%E5%AE%A4%E7%84%BC%E8%82%89+%E7%89%9B%E9%AD%94+%E5%9B%9B%E3%83%84%E6%A9%8B%E5%BA%97" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="23" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-24" data-n="24" data-cat="food" data-tags="Quick bite" style="--c:#E8952F">
+  <div class="num" aria-hidden="true">24</div>
+  <div class="cbody">
+    <h3>Onigiri Gorichan</h3>
+    <div class="meta"><span class="catlbl">More food · </span>Nakazakichō <span class="dot">•</span> 1.9 km</div>
+    <div class="tags"><span class="tag">Quick bite</span></div>
+    <p>Rice balls popular with locals. Open every day from 7:00 until they sell out.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=5273802679295432360" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E3%81%8A%E3%81%AB%E3%81%8E%E3%82%8A%E3%81%94%E3%82%8A%E3%81%A1%E3%82%83%E3%82%93+%E4%B8%AD%E5%B4%8E%E7%94%BA" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="24" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div></div>
+</div>
+<div class="sec" data-cat-sec="sweets" style="--c:#D2648E;--t:#FBE5EE">
+  <div class="sechead"><div class="secicon"><svg viewBox="0 0 64 64"><path d="M14 54 L52 12" stroke="#C99A62" stroke-width="3.4" stroke-linecap="round"/>
+   <circle cx="21" cy="46" r="8.5" fill="#9CC48A" stroke="#3A2E2A" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="32" cy="34" r="8.5" fill="#FFF6EA" stroke="#3A2E2A" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="43" cy="22" r="8.5" fill="#F4A3BE" stroke="#3A2E2A" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+   <circle cx="40" cy="19" r="1.8" fill="#fff" opacity=".8"/></svg></div>
+    <div><div class="jp">甘味</div><h2>Sweets</h2><p class="lead">A crème brûlée to take away.</p></div></div>
+  <div class="grid"><div class="card" id="jp-osaka-p-25" data-n="25" data-cat="sweets" data-tags="Quick bite" style="--c:#D2648E">
+  <div class="num" aria-hidden="true">25</div>
+  <div class="cbody">
+    <h3>grenier</h3>
+    <div class="meta"><span class="catlbl">Sweets · </span>Umeda <span class="dot">•</span> 1.6 km</div>
+    <div class="tags"><span class="tag">Quick bite</span></div>
+    <p>Very tasty crème brûlée. There are no seats inside, so it&#x27;s one to take away.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=4885162933966756039" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=grenier+%E6%A2%85%E7%94%B0+%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%96%E3%83%AA%E3%83%A5%E3%83%AC" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="25" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="coffee" style="--c:#9A6B4B;--t:#F4E9DF">
@@ -1126,9 +1391,9 @@ Changes:
    <path d="M48 26 Q58 26 56 34 Q54 40 47 40" fill="none" stroke="#3A2E2A" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
    <ellipse cx="30" cy="23" rx="17" ry="3.2" fill="#B07A52"/>
    <path d="M30 27 c-3 -4 -8 0 0 6 c8 -6 3 -10 0 -6Z" fill="#F7E7D8"/></svg></div>
-    <div><div class="jp">珈琲</div><h2>Coffee</h2><p class="lead">Osaka does great coffee. Honmachi has three of these within a few minutes&#x27; walk.</p></div></div>
-  <div class="grid"><div class="card hasph" id="jp-osaka-p-11" data-n="11" data-cat="coffee" data-tags="Must-go" style="--c:#9A6B4B">
-  <div class="ph"><a href="#jp-osaka-ph-11" aria-label="Enlarge photo of aoma coffee"><img src="photos/osaka/aoma-coffee-800.webp" alt="aoma coffee" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=RGqhSRTqsr8" target="_blank" rel="noopener">Photo: YouTube video ↗</a></div><div class="num" aria-hidden="true">11</div>
+    <div><div class="jp">珈琲</div><h2>Coffee</h2><p class="lead">Osaka does great coffee. Honmachi has three of these within a few minutes&#x27; walk, and three more are right by the hotel.</p></div></div>
+  <div class="grid"><div class="card hasph" id="jp-osaka-p-26" data-n="26" data-cat="coffee" data-tags="Must-go" style="--c:#9A6B4B">
+  <div class="ph"><a href="#jp-osaka-ph-26" aria-label="Enlarge photo of aoma coffee"><img src="photos/osaka/aoma-coffee-800.webp" alt="aoma coffee" loading="lazy"></a><a class="phsrc" href="https://www.youtube.com/watch?v=RGqhSRTqsr8" target="_blank" rel="noopener">Photo: YouTube video ↗</a></div><div class="num" aria-hidden="true">26</div>
   <div class="cbody">
     <h3>aoma coffee</h3>
     <div class="meta"><span class="catlbl">Coffee · </span>Honmachi <span class="dot">•</span> 1.1 km · walkable</div>
@@ -1137,10 +1402,10 @@ Changes:
     
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/a6caNjRxmH4DXR44A" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=aoma+coffee+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
-    <button type="button" class="btn ghost onmap" data-onmap="11" hidden><span class="bi i-map"></span>Show on map</button></div>
+    <button type="button" class="btn ghost onmap" data-onmap="26" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
-<div class="card" id="jp-osaka-p-12" data-n="12" data-cat="coffee" data-tags="Low energy|Photo spot" style="--c:#9A6B4B">
-  <div class="num" aria-hidden="true">12</div>
+<div class="card" id="jp-osaka-p-27" data-n="27" data-cat="coffee" data-tags="Low energy|Photo spot" style="--c:#9A6B4B">
+  <div class="num" aria-hidden="true">27</div>
   <div class="cbody">
     <h3>Roji Cafe</h3>
     <div class="meta"><span class="catlbl">Coffee · </span>Tenma <span class="dot">•</span> 2.0 km</div>
@@ -1149,10 +1414,10 @@ Changes:
     
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/oquAxfsyoLKZoGQy5" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Roji+Cafe+Tenma+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
-    <button type="button" class="btn ghost onmap" data-onmap="12" hidden><span class="bi i-map"></span>Show on map</button></div>
+    <button type="button" class="btn ghost onmap" data-onmap="27" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
-<div class="card" id="jp-osaka-p-13" data-n="13" data-cat="coffee" data-tags="" style="--c:#9A6B4B">
-  <div class="num" aria-hidden="true">13</div>
+<div class="card" id="jp-osaka-p-28" data-n="28" data-cat="coffee" data-tags="" style="--c:#9A6B4B">
+  <div class="num" aria-hidden="true">28</div>
   <div class="cbody">
     <h3>Notequal Coffee</h3>
     <div class="meta"><span class="catlbl">Coffee · </span>Honmachi <span class="dot">•</span> 1.1 km · walkable</div>
@@ -1161,10 +1426,10 @@ Changes:
     
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/5REqAHeuFbHpBB2NA" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Notequal+Coffee+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
-    <button type="button" class="btn ghost onmap" data-onmap="13" hidden><span class="bi i-map"></span>Show on map</button></div>
+    <button type="button" class="btn ghost onmap" data-onmap="28" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
-<div class="card" id="jp-osaka-p-14" data-n="14" data-cat="coffee" data-tags="" style="--c:#9A6B4B">
-  <div class="num" aria-hidden="true">14</div>
+<div class="card" id="jp-osaka-p-29" data-n="29" data-cat="coffee" data-tags="" style="--c:#9A6B4B">
+  <div class="num" aria-hidden="true">29</div>
   <div class="cbody">
     <h3>Melbourne Coffee Senba</h3>
     <div class="meta"><span class="catlbl">Coffee · </span>Semba <span class="dot">•</span> 1.4 km · walkable</div>
@@ -1173,10 +1438,10 @@ Changes:
     
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/XkVRKpE85pUuTRae8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Melbourne+Coffee+Senba+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
-    <button type="button" class="btn ghost onmap" data-onmap="14" hidden><span class="bi i-map"></span>Show on map</button></div>
+    <button type="button" class="btn ghost onmap" data-onmap="29" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
-<div class="card" id="jp-osaka-p-15" data-n="15" data-cat="coffee" data-tags="Photo spot" style="--c:#9A6B4B">
-  <div class="num" aria-hidden="true">15</div>
+<div class="card" id="jp-osaka-p-30" data-n="30" data-cat="coffee" data-tags="Photo spot" style="--c:#9A6B4B">
+  <div class="num" aria-hidden="true">30</div>
   <div class="cbody">
     <h3>Mole &amp; Hosoi Coffees</h3>
     <div class="meta"><span class="catlbl">Coffee · </span>Kitahama <span class="dot">•</span> 0.5 km · closest to hotel</div>
@@ -1185,10 +1450,10 @@ Changes:
     
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/Fvj66Dr9hDiCtFwt9" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Mole+Hosoi+Coffees+Kitahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
-    <button type="button" class="btn ghost onmap" data-onmap="15" hidden><span class="bi i-map"></span>Show on map</button></div>
+    <button type="button" class="btn ghost onmap" data-onmap="30" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
-<div class="card" id="jp-osaka-p-16" data-n="16" data-cat="coffee" data-tags="Queue" style="--c:#9A6B4B">
-  <div class="num" aria-hidden="true">16</div>
+<div class="card" id="jp-osaka-p-31" data-n="31" data-cat="coffee" data-tags="Queue" style="--c:#9A6B4B">
+  <div class="num" aria-hidden="true">31</div>
   <div class="cbody">
     <h3>SHIMATONERIKO</h3>
     <div class="meta"><span class="catlbl">Coffee · </span>Tennōji <span class="dot">•</span> 5.1 km</div>
@@ -1197,10 +1462,10 @@ Changes:
     
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/1YsWrF6HHS12GM6N7" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=SHIMATONERIKO+coffee+roaster+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
-    <button type="button" class="btn ghost onmap" data-onmap="16" hidden><span class="bi i-map"></span>Show on map</button></div>
+    <button type="button" class="btn ghost onmap" data-onmap="31" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
-<div class="card" id="jp-osaka-p-17" data-n="17" data-cat="coffee" data-tags="" style="--c:#9A6B4B">
-  <div class="num" aria-hidden="true">17</div>
+<div class="card" id="jp-osaka-p-32" data-n="32" data-cat="coffee" data-tags="" style="--c:#9A6B4B">
+  <div class="num" aria-hidden="true">32</div>
   <div class="cbody">
     <h3>Saturdays NYC</h3>
     <div class="meta"><span class="catlbl">Coffee · </span>Minamisenba <span class="dot">•</span> 1.8 km</div>
@@ -1209,7 +1474,43 @@ Changes:
     
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/Ea2XRYr1iyjBxmsu5" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Saturdays+NYC+Osaka+cafe" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
-    <button type="button" class="btn ghost onmap" data-onmap="17" hidden><span class="bi i-map"></span>Show on map</button></div>
+    <button type="button" class="btn ghost onmap" data-onmap="32" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-33" data-n="33" data-cat="coffee" data-tags="Low energy" style="--c:#9A6B4B">
+  <div class="num" aria-hidden="true">33</div>
+  <div class="cbody">
+    <h3>Spectacle Kitahama</h3>
+    <div class="meta"><span class="catlbl">Coffee · </span>Kitahama, by the hotel <span class="dot">•</span> 0.2 km · walkable</div>
+    <div class="tags"><span class="tag">Low energy</span></div>
+    <p>A brunch place for the days we wake up late. A few minutes&#x27; walk from the hotel.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=2246540390906561902" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Spectacle+Kitahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="33" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-34" data-n="34" data-cat="coffee" data-tags="" style="--c:#9A6B4B">
+  <div class="num" aria-hidden="true">34</div>
+  <div class="cbody">
+    <h3>Rivoli</h3>
+    <div class="meta"><span class="catlbl">Coffee · </span>Kitahama, by the hotel <span class="dot">•</span> 0.3 km · walkable</div>
+    
+    <p>For an early morning coffee and breakfast, a few minutes from the hotel. Opens at 7:00 on weekdays. Called 珈琲専門店 リヴォリ on the map.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=8434763051379690132" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E7%8F%88%E7%90%B2%E5%B0%82%E9%96%80%E5%BA%97+%E3%83%AA%E3%83%B4%E3%82%A9%E3%83%AA+%E5%8C%97%E6%B5%9C" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="34" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-35" data-n="35" data-cat="coffee" data-tags="Late night" style="--c:#9A6B4B">
+  <div class="num" aria-hidden="true">35</div>
+  <div class="cbody">
+    <h3>Mansarde</h3>
+    <div class="meta"><span class="catlbl">Coffee · </span>Nakazakichō <span class="dot">•</span> 2.0 km</div>
+    <div class="tags"><span class="tag">Late night</span></div>
+    <p>Coffee in the daytime and drinks at night. It&#x27;s a late-night cafe, so check the hours before a daytime visit. Called 深夜喫茶マンサルド on the map.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=10448013461445657814" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E6%B7%B1%E5%A4%9C%E5%96%AB%E8%8C%B6%E3%83%9E%E3%83%B3%E3%82%B5%E3%83%AB%E3%83%89" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="35" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="drinks" style="--c:#8A5AA6;--t:#F1E8F6">
@@ -1217,9 +1518,9 @@ Changes:
    <path d="M19.5 16 H44.5 Q43 29 32 32 Q21 29 19.5 16Z" fill="#9B5FB8"/>
    <path d="M32 34 V52 M22 54 H42" fill="none" stroke="#3A2E2A" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
    <circle cx="26" cy="21" r="1.6" fill="#fff" opacity=".7"/><circle cx="36" cy="25" r="1.2" fill="#fff" opacity=".7"/></svg></div>
-    <div><div class="jp">乾杯</div><h2>Drinks</h2><p class="lead">All three are in Namba, a few minutes apart, so they work as a little bar crawl.</p></div></div>
-  <div class="grid"><div class="card" id="jp-osaka-p-18" data-n="18" data-cat="drinks" data-tags="Late night" style="--c:#8A5AA6">
-  <div class="num" aria-hidden="true">18</div>
+    <div><div class="jp">乾杯</div><h2>Drinks</h2><p class="lead">Bars and izakaya. The Namba ones are a few minutes apart, so they work as a little bar crawl.</p></div></div>
+  <div class="grid"><div class="card" id="jp-osaka-p-36" data-n="36" data-cat="drinks" data-tags="Late night" style="--c:#8A5AA6">
+  <div class="num" aria-hidden="true">36</div>
   <div class="cbody">
     <h3>Manmanki</h3>
     <div class="meta"><span class="catlbl">Drinks · </span>Namba <span class="dot">•</span> 2.5 km</div>
@@ -1228,10 +1529,10 @@ Changes:
     
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/5ox63xbe6cpLZXsg6" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Manmanki+Namba+izakaya" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
-    <button type="button" class="btn ghost onmap" data-onmap="18" hidden><span class="bi i-map"></span>Show on map</button></div>
+    <button type="button" class="btn ghost onmap" data-onmap="36" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
-<div class="card" id="jp-osaka-p-19" data-n="19" data-cat="drinks" data-tags="Late night|Low energy" style="--c:#8A5AA6">
-  <div class="num" aria-hidden="true">19</div>
+<div class="card" id="jp-osaka-p-37" data-n="37" data-cat="drinks" data-tags="Late night|Low energy" style="--c:#8A5AA6">
+  <div class="num" aria-hidden="true">37</div>
   <div class="cbody">
     <h3>Bar Seven</h3>
     <div class="meta"><span class="catlbl">Drinks · </span>Namba <span class="dot">•</span> 2.5 km</div>
@@ -1240,10 +1541,10 @@ Changes:
     
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/vPcRWdro36thTdjF6" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Bar+Seven+Namba+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
-    <button type="button" class="btn ghost onmap" data-onmap="19" hidden><span class="bi i-map"></span>Show on map</button></div>
+    <button type="button" class="btn ghost onmap" data-onmap="37" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
-<div class="card" id="jp-osaka-p-20" data-n="20" data-cat="drinks" data-tags="Low energy|Pricier" style="--c:#8A5AA6">
-  <div class="num" aria-hidden="true">20</div>
+<div class="card" id="jp-osaka-p-38" data-n="38" data-cat="drinks" data-tags="Low energy|Pricier" style="--c:#8A5AA6">
+  <div class="num" aria-hidden="true">38</div>
   <div class="cbody">
     <h3>Luv Wine Namba</h3>
     <div class="meta"><span class="catlbl">Drinks · </span>Namba <span class="dot">•</span> 2.8 km</div>
@@ -1252,7 +1553,55 @@ Changes:
     
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/Z6AciSS3z4qhoNPv9" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Luv+Wine+Namba+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
-    <button type="button" class="btn ghost onmap" data-onmap="20" hidden><span class="bi i-map"></span>Show on map</button></div>
+    <button type="button" class="btn ghost onmap" data-onmap="38" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-39" data-n="39" data-cat="drinks" data-tags="Late night" style="--c:#8A5AA6">
+  <div class="num" aria-hidden="true">39</div>
+  <div class="cbody">
+    <h3>Shudon Ario</h3>
+    <div class="meta"><span class="catlbl">Drinks · </span>Namba <span class="dot">•</span> 3.3 km</div>
+    <div class="tags"><span class="tag">Late night</span></div>
+    <p>Dinner and drinks on an underground street where the locals go. Try the chicken sashimi. Opens at 17:00. Called 酒呑 ありお on the map.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=14293254747410148118" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E9%85%92%E5%91%91+%E3%81%82%E3%82%8A%E3%81%8A+%E9%9B%A3%E6%B3%A2" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="39" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-40" data-n="40" data-cat="drinks" data-tags="Late night" style="--c:#8A5AA6">
+  <div class="num" aria-hidden="true">40</div>
+  <div class="cbody">
+    <h3>Akagakiya Namba</h3>
+    <div class="meta"><span class="catlbl">Drinks · </span>Namba <span class="dot">•</span> 2.7 km</div>
+    <div class="tags"><span class="tag">Late night</span></div>
+    <p>A standing bar for dinner and drinks.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=13769389827459796874" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E8%B5%A4%E5%9E%A3%E5%B1%8B+%E3%81%AA%E3%82%93%E3%81%B0" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="40" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-41" data-n="41" data-cat="drinks" data-tags="Late night" style="--c:#8A5AA6">
+  <div class="num" aria-hidden="true">41</div>
+  <div class="cbody">
+    <h3>CRAFTROOM</h3>
+    <div class="meta"><span class="catlbl">Drinks · </span>Umeda <span class="dot">•</span> 1.4 km · walkable</div>
+    <div class="tags"><span class="tag">Late night</span></div>
+    <p>A cocktail bar that has made the Asia&#x27;s 50 Best Bars list. Opens in the late afternoon.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=273993575549924215" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=CRAFTROOM+Osaka+bar" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="41" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-42" data-n="42" data-cat="drinks" data-tags="" style="--c:#8A5AA6">
+  <div class="num" aria-hidden="true">42</div>
+  <div class="cbody">
+    <h3>Nikai no Oasis KITTE Osaka</h3>
+    <div class="meta"><span class="catlbl">Drinks · </span>Umeda, by Osaka Station <span class="dot">•</span> 1.6 km</div>
+    
+    <p>An izakaya in KITTE Osaka, next to Osaka Station. Saved without a note.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=12350169142246624256" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E3%83%8B%E3%82%AB%E3%82%A4%E3%83%8E%E3%82%AA%E3%82%A2%E3%82%B7%E3%82%B9+KITTE%E5%A4%A7%E9%98%AA" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="42" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div>
 <div class="sec" data-cat-sec="sights" style="--c:#4F9A6A;--t:#E3F2E7">
@@ -1261,9 +1610,9 @@ Changes:
    <path d="M17 18 L15 56 M47 18 L49 56" fill="none" stroke="#3A2E2A" stroke-width="7" stroke-linecap="round"/>
    <path d="M17 18 L15 56 M47 18 L49 56" fill="none" stroke="#D9483B" stroke-width="3" stroke-linecap="round"/>
    <rect x="29" y="17" width="6" height="9" fill="#F6E3C6" stroke="#3A2E2A" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
-    <div><div class="jp">名所</div><h2>Sights</h2><p class="lead">Nightlife, a castle, and two half-day trips out of the city.</p></div></div>
-  <div class="grid"><div class="card" id="jp-osaka-p-21" data-n="21" data-cat="sights" data-tags="Late night|Outdoors" style="--c:#4F9A6A">
-  <div class="num" aria-hidden="true">21</div>
+    <div><div class="jp">名所</div><h2>Sights</h2><p class="lead">Nightlife, a castle, a museum garden, and half-day trips into the hills.</p></div></div>
+  <div class="grid"><div class="card" id="jp-osaka-p-43" data-n="43" data-cat="sights" data-tags="Late night|Outdoors" style="--c:#4F9A6A">
+  <div class="num" aria-hidden="true">43</div>
   <div class="cbody">
     <h3>Ebisu Bridge &amp; Dotonbori</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Namba <span class="dot">•</span> 2.4 km</div>
@@ -1272,10 +1621,10 @@ Changes:
     
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/WaDFD5NCBPPYQLx7A" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Ebisubashi+Dotonbori+night" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
-    <button type="button" class="btn ghost onmap" data-onmap="21" hidden><span class="bi i-map"></span>Show on map</button></div>
+    <button type="button" class="btn ghost onmap" data-onmap="43" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
-<div class="card" id="jp-osaka-p-22" data-n="22" data-cat="sights" data-tags="Outdoors|Photo spot|Autumn leaves" style="--c:#4F9A6A">
-  <div class="num" aria-hidden="true">22</div>
+<div class="card" id="jp-osaka-p-44" data-n="44" data-cat="sights" data-tags="Outdoors|Photo spot|Autumn leaves" style="--c:#4F9A6A">
+  <div class="num" aria-hidden="true">44</div>
   <div class="cbody">
     <h3>Osaka Castle</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Osaka Castle Park <span class="dot">•</span> 1.8 km</div>
@@ -1284,10 +1633,10 @@ Changes:
     <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves forecast: peak from Nov 20, falling from Dec 10.</span> <span class="lvb peak">Our stay · peak from Nov 20</span></div></div>
     <div class="btns"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Osaka+Castle" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Osaka+Castle+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
-    <button type="button" class="btn ghost onmap" data-onmap="22" hidden><span class="bi i-map"></span>Show on map</button></div>
+    <button type="button" class="btn ghost onmap" data-onmap="44" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
-<div class="card" id="jp-osaka-p-23" data-n="23" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
-  <div class="num" aria-hidden="true">23</div>
+<div class="card" id="jp-osaka-p-45" data-n="45" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
+  <div class="num" aria-hidden="true">45</div>
   <div class="cbody">
     <h3>Shitennō-ji</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Tennōji <span class="dot">•</span> 4.1 km</div>
@@ -1296,10 +1645,10 @@ Changes:
     
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/C1XpHUcgMBRRREwk8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Shitennoji+temple+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
-    <button type="button" class="btn ghost onmap" data-onmap="23" hidden><span class="bi i-map"></span>Show on map</button></div>
+    <button type="button" class="btn ghost onmap" data-onmap="45" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
-<div class="card" id="jp-osaka-p-24" data-n="24" data-cat="sights" data-tags="Must-go|Outdoors|Photo spot" style="--c:#4F9A6A">
-  <div class="num" aria-hidden="true">24</div>
+<div class="card" id="jp-osaka-p-46" data-n="46" data-cat="sights" data-tags="Must-go|Outdoors|Photo spot" style="--c:#4F9A6A">
+  <div class="num" aria-hidden="true">46</div>
   <div class="cbody">
     <h3>Shubodai</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Ikeda, hills north of the city <span class="dot">•</span> 17 km · half-day trip</div>
@@ -1308,10 +1657,10 @@ Changes:
     
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/g1hxcX8Ah5Q3S4nc9" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Shubodai+Ikeda+torii+view" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
-    <button type="button" class="btn ghost onmap" data-onmap="24" hidden><span class="bi i-map"></span>Show on map</button></div>
+    <button type="button" class="btn ghost onmap" data-onmap="46" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div>
-<div class="card" id="jp-osaka-p-25" data-n="25" data-cat="sights" data-tags="Low energy|Outdoors" style="--c:#4F9A6A">
-  <div class="num" aria-hidden="true">25</div>
+<div class="card" id="jp-osaka-p-47" data-n="47" data-cat="sights" data-tags="Low energy|Outdoors" style="--c:#4F9A6A">
+  <div class="num" aria-hidden="true">47</div>
   <div class="cbody">
     <h3>Ishikiri Tsurugiya Jinja</h3>
     <div class="meta"><span class="catlbl">Sights · </span>Higashiōsaka, east of the city <span class="dot">•</span> 13 km · half-day trip</div>
@@ -1320,16 +1669,168 @@ Changes:
     
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/dgJnc7e3JwWpEw2HA" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Ishikiri+Tsurugiya+Shrine" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
-    <button type="button" class="btn ghost onmap" data-onmap="25" hidden><span class="bi i-map"></span>Show on map</button></div>
+    <button type="button" class="btn ghost onmap" data-onmap="47" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-48" data-n="48" data-cat="sights" data-tags="Low energy" style="--c:#4F9A6A">
+  <div class="num" aria-hidden="true">48</div>
+  <div class="cbody">
+    <h3>Fujita Museum</h3>
+    <div class="meta"><span class="catlbl">Sights · </span>North of Osaka Castle <span class="dot">•</span> 1.8 km</div>
+    <div class="tags"><span class="tag">Low energy</span></div>
+    <p>A museum with a nice garden that&#x27;s free to visit. Open 10:00-18:00. The museum itself is ¥1,000.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=8369724044415383612" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Fujita+Museum+Osaka+garden" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="48" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-49" data-n="49" data-cat="sights" data-tags="Outdoors" style="--c:#4F9A6A">
+  <div class="num" aria-hidden="true">49</div>
+  <div class="cbody">
+    <h3>Hiraoka Park</h3>
+    <div class="meta"><span class="catlbl">Sights · </span>Higashiōsaka, east hills <span class="dot">•</span> 14 km · half-day trip</div>
+    <div class="tags"><span class="tag">Outdoors</span></div>
+    <p>A park in the hills where you can take slides instead of the stairs. Quite far to go, though. The Nukatayama viewpoint is next to it.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=11692419480026569457" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Hiraoka+Park+slide+Higashiosaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="49" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-50" data-n="50" data-cat="sights" data-tags="Outdoors|Photo spot" style="--c:#4F9A6A">
+  <div class="num" aria-hidden="true">50</div>
+  <div class="cbody">
+    <h3>Nukatayama viewpoint</h3>
+    <div class="meta"><span class="catlbl">Sights · </span>Higashiōsaka, east hills <span class="dot">•</span> 14 km · half-day trip</div>
+    <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
+    <p>A viewpoint over the city, next to Hiraoka Park. Called 額田山 展望台 on the map.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=3932455855687598971" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E9%A1%8D%E7%94%B0%E5%B1%B1+%E5%B1%95%E6%9C%9B%E5%8F%B0+%E5%A4%9C%E6%99%AF" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="50" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div></div>
+</div>
+<div class="sec" data-cat-sec="shop" style="--c:#5F6E7E;--t:#E9EDF1">
+  <div class="sechead"><div class="secicon"><svg viewBox="0 0 64 64"><path d="M24 22 V16 a8 8 0 0 1 16 0 V22" fill="none" stroke="#3A2E2A" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+   <path d="M12 22 H52 L49 54 H15Z" fill="#8FA3B5" stroke="#3A2E2A" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 22 H52 L51.4 30 H12.6Z" fill="#B9C7D3"/>
+   <path d="M12 22 H52 L49 54 H15Z" fill="none" stroke="#3A2E2A" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+   <circle cx="24" cy="30" r="2.2" fill="#3A2E2A"/><circle cx="40" cy="30" r="2.2" fill="#3A2E2A"/>
+   <path d="M26 42 q6 5 12 0" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+    <div><div class="jp">買い物</div><h2>Shopping</h2><p class="lead">Clothes, vintage and second-hand shops, mostly around Umeda and Namba. LUCUA is the big one.</p></div></div>
+  <div class="grid"><div class="card" id="jp-osaka-p-51" data-n="51" data-cat="shop" data-tags="Must-go" style="--c:#5F6E7E">
+  <div class="num" aria-hidden="true">51</div>
+  <div class="cbody">
+    <h3>LUCUA Osaka</h3>
+    <div class="meta"><span class="catlbl">Shopping · </span>Umeda, by Osaka Station <span class="dot">•</span> 1.8 km</div>
+    <div class="tags"><span class="tag must"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/></svg></span>Must-go</span></div>
+    <p>Must go for shopping. In the B2 supermarket (Hankyu Oasis) there&#x27;s a cheap self-service wagyu BBQ.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=7138839288115191113" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=LUCUA+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="51" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-52" data-n="52" data-cat="shop" data-tags="" style="--c:#5F6E7E">
+  <div class="num" aria-hidden="true">52</div>
+  <div class="cbody">
+    <h3>Top of the Hill</h3>
+    <div class="meta"><span class="catlbl">Shopping · </span>Umeda, in LUCUA <span class="dot">•</span> 1.8 km</div>
+    
+    <p>A vintage clothing shop inside LUCUA.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=8484884090507537407" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Top+of+the+Hill+LUCUA+Osaka+vintage" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="52" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-53" data-n="53" data-cat="shop" data-tags="" style="--c:#5F6E7E">
+  <div class="num" aria-hidden="true">53</div>
+  <div class="cbody">
+    <h3>FREAK&#x27;S STORE</h3>
+    <div class="meta"><span class="catlbl">Shopping · </span>Umeda, in LUCUA <span class="dot">•</span> 1.8 km</div>
+    
+    <p>Clothes, inside LUCUA.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=776548195959436025" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=FREAK%27S+STORE+LUCUA+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="53" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-54" data-n="54" data-cat="shop" data-tags="" style="--c:#5F6E7E">
+  <div class="num" aria-hidden="true">54</div>
+  <div class="cbody">
+    <h3>B-Shop Grand Front</h3>
+    <div class="meta"><span class="catlbl">Shopping · </span>Umeda, by Osaka Station <span class="dot">•</span> 1.9 km</div>
+    
+    <p>Clothes, in Grand Front Osaka. There&#x27;s another B-Shop in Namba Parks.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=13786622733799975056" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Bshop+Grand+Front+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="54" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-55" data-n="55" data-cat="shop" data-tags="" style="--c:#5F6E7E">
+  <div class="num" aria-hidden="true">55</div>
+  <div class="cbody">
+    <h3>B-Shop Namba Parks</h3>
+    <div class="meta"><span class="catlbl">Shopping · </span>Namba <span class="dot">•</span> 3.1 km</div>
+    
+    <p>Clothes, in Namba Parks.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=1118006480312981401" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Bshop+Namba+Parks" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="55" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-56" data-n="56" data-cat="shop" data-tags="" style="--c:#5F6E7E">
+  <div class="num" aria-hidden="true">56</div>
+  <div class="cbody">
+    <h3>BEAMS Namba</h3>
+    <div class="meta"><span class="catlbl">Shopping · </span>Namba <span class="dot">•</span> 2.9 km</div>
+    
+    <p>Clothes, in Namba.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=6467389678483146118" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=BEAMS+Namba" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="56" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-57" data-n="57" data-cat="shop" data-tags="" style="--c:#5F6E7E">
+  <div class="num" aria-hidden="true">57</div>
+  <div class="cbody">
+    <h3>ichimaruni</h3>
+    <div class="meta"><span class="catlbl">Shopping · </span>Tenma <span class="dot">•</span> 2.1 km</div>
+    
+    <p>A bag shop. Opens at 12:00.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=9103070976864902258" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=ichimaruni+bag+Osaka" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="57" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-58" data-n="58" data-cat="shop" data-tags="" style="--c:#5F6E7E">
+  <div class="num" aria-hidden="true">58</div>
+  <div class="cbody">
+    <h3>kindal Umeda</h3>
+    <div class="meta"><span class="catlbl">Shopping · </span>Umeda <span class="dot">•</span> 2.1 km</div>
+    
+    <p>A second-hand clothing store.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=12676902649691529848" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=kindal+umeda" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="58" hidden><span class="bi i-map"></span>Show on map</button></div>
+  </div></div>
+<div class="card" id="jp-osaka-p-59" data-n="59" data-cat="shop" data-tags="" style="--c:#5F6E7E">
+  <div class="num" aria-hidden="true">59</div>
+  <div class="cbody">
+    <h3>2nd Street Umeda</h3>
+    <div class="meta"><span class="catlbl">Shopping · </span>Umeda <span class="dot">•</span> 2.1 km</div>
+    
+    <p>A second-hand shop. There are two 2nd Street branches here, a minute apart.</p>
+    
+    <div class="btns"><a class="btn" href="https://maps.google.com/?cid=11751890896027012926" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
+    <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=2nd+Street+Umeda" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
+    <button type="button" class="btn ghost onmap" data-onmap="59" hidden><span class="bi i-map"></span>Show on map</button></div>
   </div></div></div>
 </div></div>
-      <details class="areas"><summary>Pick by area <span>places close together, to combine in one outing</span></summary><div class="arows"><div class="arow"><div class="aname">Kitahama / Dōjima<span>0.5-1 km</span></div><div class="achips"><a class="achip pc-coffee pt-5" data-pin="15" href="#jp-osaka-p-15" style="--c:#9A6B4B"><b>15</b>Mole &amp; Hosoi Coffees</a><a class="achip pc-food" data-pin="3" href="#jp-osaka-p-3" style="--c:#E8952F"><b>3</b>NICO CAFE</a></div></div><div class="arow"><div class="aname">Honmachi / Semba<span>1-1.5 km · walk</span></div><div class="achips"><a class="achip pc-food pt-0" data-pin="2" href="#jp-osaka-p-2" style="--c:#E2604A"><b>2</b>MENSTYLE TANIMOTOKE</a><a class="achip pc-coffee pt-0" data-pin="11" href="#jp-osaka-p-11" style="--c:#9A6B4B"><b>11</b>aoma coffee</a><a class="achip pc-coffee" data-pin="13" href="#jp-osaka-p-13" style="--c:#9A6B4B"><b>13</b>Notequal Coffee</a><a class="achip pc-coffee" data-pin="14" href="#jp-osaka-p-14" style="--c:#9A6B4B"><b>14</b>Melbourne Coffee Senba</a></div></div><div class="arow"><div class="aname">Osaka Castle<span>2 km</span></div><div class="achips"><a class="achip pc-sights pt-4 pt-5 pt-6" data-pin="22" href="#jp-osaka-p-22" style="--c:#4F9A6A"><b>22</b>Osaka Castle</a></div></div><div class="arow"><div class="aname">Tenma / Umeda<span>2 km</span></div><div class="achips"><a class="achip pc-coffee pt-3 pt-5" data-pin="12" href="#jp-osaka-p-12" style="--c:#9A6B4B"><b>12</b>Roji Cafe</a><a class="achip pc-food pt-1" data-pin="6" href="#jp-osaka-p-6" style="--c:#E8952F"><b>6</b>Takoyaki Umaiya</a><a class="achip pc-food pt-1 pt-4" data-pin="7" href="#jp-osaka-p-7" style="--c:#E8952F"><b>7</b>Takocha</a></div></div><div class="arow"><div class="aname">Fukushima<span>2 km</span></div><div class="achips"><a class="achip pc-food" data-pin="10" href="#jp-osaka-p-10" style="--c:#E8952F"><b>10</b>Hanakujira honten</a></div></div><div class="arow"><div class="aname">Horie / Shinsaibashi<span>2 km</span></div><div class="achips"><a class="achip pc-food" data-pin="4" href="#jp-osaka-p-4" style="--c:#E8952F"><b>4</b>Craft Burger co.</a><a class="achip pc-coffee" data-pin="17" href="#jp-osaka-p-17" style="--c:#9A6B4B"><b>17</b>Saturdays NYC</a></div></div><div class="arow"><div class="aname">Namba / Dotonbori<span>2.5 km</span></div><div class="achips"><a class="achip pc-sights pt-2 pt-4" data-pin="21" href="#jp-osaka-p-21" style="--c:#4F9A6A"><b>21</b>Ebisu Bridge &amp; Dotonbori</a><a class="achip pc-drinks pt-2" data-pin="18" href="#jp-osaka-p-18" style="--c:#8A5AA6"><b>18</b>Manmanki</a><a class="achip pc-drinks pt-2 pt-3" data-pin="19" href="#jp-osaka-p-19" style="--c:#8A5AA6"><b>19</b>Bar Seven</a><a class="achip pc-drinks pt-3" data-pin="20" href="#jp-osaka-p-20" style="--c:#8A5AA6"><b>20</b>Luv Wine Namba</a><a class="achip pc-food pt-1" data-pin="8" href="#jp-osaka-p-8" style="--c:#E8952F"><b>8</b>OYASUMI ICE &amp; HOTEL</a></div></div><div class="arow"><div class="aname">Shinsekai / Tennōji<span>4-6 km</span></div><div class="achips"><a class="achip pc-sights pt-4 pt-5" data-pin="23" href="#jp-osaka-p-23" style="--c:#4F9A6A"><b>23</b>Shitennō-ji</a><a class="achip pc-food pt-0" data-pin="1" href="#jp-osaka-p-1" style="--c:#E2604A"><b>1</b>Go Go Curry Tsutenkaku</a><a class="achip pc-food pt-2" data-pin="5" href="#jp-osaka-p-5" style="--c:#E8952F"><b>5</b>Kushikatsu Shinsekai</a><a class="achip pc-coffee" data-pin="16" href="#jp-osaka-p-16" style="--c:#9A6B4B"><b>16</b>SHIMATONERIKO</a><a class="achip pc-food" data-pin="9" href="#jp-osaka-p-9" style="--c:#E8952F"><b>9</b>Marukome</a></div></div><div class="arow"><div class="aname">Half-day trips<span>13-17 km</span></div><div class="achips"><a class="achip pc-sights pt-0 pt-4 pt-5" data-pin="24" href="#jp-osaka-p-24" style="--c:#4F9A6A"><b>24</b>Shubodai</a><a class="achip pc-sights pt-3 pt-4" data-pin="25" href="#jp-osaka-p-25" style="--c:#4F9A6A"><b>25</b>Ishikiri Tsurugiya Jinja</a></div></div></div></details>
-      <div class="status"><span class="cnt-all">All 25 places</span><span class="cnt-some">Showing <span class="cnt"></span> of 25</span><input type="reset" form="osaka-f" class="linkbtn clr" value="Clear filters"></div>
+      <details class="areas"><summary>Pick by area <span>places close together, to combine in one outing</span></summary><div class="arows"><div class="arow"><div class="aname">By the hotel · Kitahama, Tenmabashi<span>0.2-0.7 km · walk</span></div><div class="achips"><a class="achip pc-coffee pt-3" data-pin="33" href="#jp-osaka-p-33" style="--c:#9A6B4B"><b>33</b>Spectacle Kitahama</a><a class="achip pc-food pt-1" data-pin="14" href="#jp-osaka-p-14" style="--c:#E8952F"><b>14</b>Ramen Bukkoshi</a><a class="achip pc-coffee" data-pin="34" href="#jp-osaka-p-34" style="--c:#9A6B4B"><b>34</b>Rivoli</a><a class="achip pc-coffee pt-5" data-pin="30" href="#jp-osaka-p-30" style="--c:#9A6B4B"><b>30</b>Mole &amp; Hosoi Coffees</a><a class="achip pc-food" data-pin="19" href="#jp-osaka-p-19" style="--c:#E8952F"><b>19</b>Yakitori Sanzen</a></div></div><div class="arow"><div class="aname">Dōjima / Kitashinchi<span>1-1.4 km · walk</span></div><div class="achips"><a class="achip pc-food" data-pin="3" href="#jp-osaka-p-3" style="--c:#E8952F"><b>3</b>NICO CAFE</a><a class="achip pc-food" data-pin="15" href="#jp-osaka-p-15" style="--c:#E8952F"><b>15</b>Kagawa-udon Kitashinchi</a><a class="achip pc-drinks pt-2" data-pin="41" href="#jp-osaka-p-41" style="--c:#8A5AA6"><b>41</b>CRAFTROOM</a></div></div><div class="arow"><div class="aname">Honmachi / Semba<span>1-1.5 km · walk</span></div><div class="achips"><a class="achip pc-food pt-0" data-pin="2" href="#jp-osaka-p-2" style="--c:#E2604A"><b>2</b>MENSTYLE TANIMOTOKE</a><a class="achip pc-coffee pt-0" data-pin="26" href="#jp-osaka-p-26" style="--c:#9A6B4B"><b>26</b>aoma coffee</a><a class="achip pc-coffee" data-pin="28" href="#jp-osaka-p-28" style="--c:#9A6B4B"><b>28</b>Notequal Coffee</a><a class="achip pc-coffee" data-pin="29" href="#jp-osaka-p-29" style="--c:#9A6B4B"><b>29</b>Melbourne Coffee Senba</a></div></div><div class="arow"><div class="aname">Umeda · Osaka Station<span>1.6-2.1 km</span></div><div class="achips"><a class="achip pc-shop pt-0" data-pin="51" href="#jp-osaka-p-51" style="--c:#5F6E7E"><b>51</b>LUCUA Osaka</a><a class="achip pc-shop" data-pin="52" href="#jp-osaka-p-52" style="--c:#5F6E7E"><b>52</b>Top of the Hill</a><a class="achip pc-shop" data-pin="53" href="#jp-osaka-p-53" style="--c:#5F6E7E"><b>53</b>FREAK&#x27;S STORE</a><a class="achip pc-shop" data-pin="54" href="#jp-osaka-p-54" style="--c:#5F6E7E"><b>54</b>B-Shop Grand Front</a><a class="achip pc-food" data-pin="21" href="#jp-osaka-p-21" style="--c:#E8952F"><b>21</b>Hakuundai Grand Front</a><a class="achip pc-drinks" data-pin="42" href="#jp-osaka-p-42" style="--c:#8A5AA6"><b>42</b>Nikai no Oasis KITTE Osaka</a><a class="achip pc-sweets pt-1" data-pin="25" href="#jp-osaka-p-25" style="--c:#D2648E"><b>25</b>grenier</a><a class="achip pc-food pt-1 pt-4" data-pin="7" href="#jp-osaka-p-7" style="--c:#E8952F"><b>7</b>Takocha</a><a class="achip pc-shop" data-pin="58" href="#jp-osaka-p-58" style="--c:#5F6E7E"><b>58</b>kindal Umeda</a><a class="achip pc-shop" data-pin="59" href="#jp-osaka-p-59" style="--c:#5F6E7E"><b>59</b>2nd Street Umeda</a></div></div><div class="arow"><div class="aname">Tenma / Nakazakichō<span>1.8-2.1 km</span></div><div class="achips"><a class="achip pc-food" data-pin="18" href="#jp-osaka-p-18" style="--c:#E8952F"><b>18</b>Ie Shige</a><a class="achip pc-food pt-1" data-pin="24" href="#jp-osaka-p-24" style="--c:#E8952F"><b>24</b>Onigiri Gorichan</a><a class="achip pc-coffee pt-3 pt-5" data-pin="27" href="#jp-osaka-p-27" style="--c:#9A6B4B"><b>27</b>Roji Cafe</a><a class="achip pc-food pt-1" data-pin="6" href="#jp-osaka-p-6" style="--c:#E8952F"><b>6</b>Takoyaki Umaiya</a><a class="achip pc-coffee pt-2" data-pin="35" href="#jp-osaka-p-35" style="--c:#9A6B4B"><b>35</b>Mansarde</a><a class="achip pc-shop" data-pin="57" href="#jp-osaka-p-57" style="--c:#5F6E7E"><b>57</b>ichimaruni</a></div></div><div class="arow"><div class="aname">Osaka Castle &amp; Fujita Museum<span>1.8 km</span></div><div class="achips"><a class="achip pc-sights pt-4 pt-5 pt-6" data-pin="44" href="#jp-osaka-p-44" style="--c:#4F9A6A"><b>44</b>Osaka Castle</a><a class="achip pc-sights pt-3" data-pin="48" href="#jp-osaka-p-48" style="--c:#4F9A6A"><b>48</b>Fujita Museum</a></div></div><div class="arow"><div class="aname">Fukushima<span>2 km</span></div><div class="achips"><a class="achip pc-food" data-pin="10" href="#jp-osaka-p-10" style="--c:#E8952F"><b>10</b>Hanakujira honten</a></div></div><div class="arow"><div class="aname">Horie / Shinsaibashi<span>1.9-2.1 km</span></div><div class="achips"><a class="achip pc-food" data-pin="4" href="#jp-osaka-p-4" style="--c:#E8952F"><b>4</b>Craft Burger co.</a><a class="achip pc-coffee" data-pin="32" href="#jp-osaka-p-32" style="--c:#9A6B4B"><b>32</b>Saturdays NYC</a><a class="achip pc-food" data-pin="13" href="#jp-osaka-p-13" style="--c:#E8952F"><b>13</b>Uoshin Sushi Shinsaibashi</a><a class="achip pc-food pt-2" data-pin="22" href="#jp-osaka-p-22" style="--c:#E8952F"><b>22</b>Yakiniku Mitsuru</a><a class="achip pc-food" data-pin="23" href="#jp-osaka-p-23" style="--c:#E8952F"><b>23</b>Uma Yotsubashi</a></div></div><div class="arow"><div class="aname">Namba / Dotonbori<span>2.4-3.3 km</span></div><div class="achips"><a class="achip pc-sights pt-2 pt-4" data-pin="43" href="#jp-osaka-p-43" style="--c:#4F9A6A"><b>43</b>Ebisu Bridge &amp; Dotonbori</a><a class="achip pc-drinks pt-2" data-pin="36" href="#jp-osaka-p-36" style="--c:#8A5AA6"><b>36</b>Manmanki</a><a class="achip pc-drinks pt-2 pt-3" data-pin="37" href="#jp-osaka-p-37" style="--c:#8A5AA6"><b>37</b>Bar Seven</a><a class="achip pc-drinks pt-3" data-pin="38" href="#jp-osaka-p-38" style="--c:#8A5AA6"><b>38</b>Luv Wine Namba</a><a class="achip pc-food pt-1" data-pin="8" href="#jp-osaka-p-8" style="--c:#E8952F"><b>8</b>OYASUMI ICE &amp; HOTEL</a><a class="achip pc-drinks pt-2" data-pin="40" href="#jp-osaka-p-40" style="--c:#8A5AA6"><b>40</b>Akagakiya Namba</a><a class="achip pc-shop" data-pin="56" href="#jp-osaka-p-56" style="--c:#5F6E7E"><b>56</b>BEAMS Namba</a><a class="achip pc-shop" data-pin="55" href="#jp-osaka-p-55" style="--c:#5F6E7E"><b>55</b>B-Shop Namba Parks</a><a class="achip pc-food" data-pin="16" href="#jp-osaka-p-16" style="--c:#E8952F"><b>16</b>Ishibashi Shokuhin</a><a class="achip pc-drinks pt-2" data-pin="39" href="#jp-osaka-p-39" style="--c:#8A5AA6"><b>39</b>Shudon Ario</a></div></div><div class="arow"><div class="aname">Tsuruhashi<span>3.5 km</span></div><div class="achips"><a class="achip pc-food" data-pin="20" href="#jp-osaka-p-20" style="--c:#E8952F"><b>20</b>Hakuundai Tsuruhashi</a></div></div><div class="arow"><div class="aname">Shinsekai / Tennōji<span>4-6 km</span></div><div class="achips"><a class="achip pc-sights pt-4 pt-5" data-pin="45" href="#jp-osaka-p-45" style="--c:#4F9A6A"><b>45</b>Shitennō-ji</a><a class="achip pc-food pt-0" data-pin="1" href="#jp-osaka-p-1" style="--c:#E2604A"><b>1</b>Go Go Curry Tsutenkaku</a><a class="achip pc-food pt-2" data-pin="5" href="#jp-osaka-p-5" style="--c:#E8952F"><b>5</b>Kushikatsu Shinsekai</a><a class="achip pc-food" data-pin="12" href="#jp-osaka-p-12" style="--c:#E8952F"><b>12</b>Rokusen Sushi Tsutenkaku</a><a class="achip pc-food" data-pin="11" href="#jp-osaka-p-11" style="--c:#E8952F"><b>11</b>Daiko Sushi honten</a><a class="achip pc-coffee" data-pin="31" href="#jp-osaka-p-31" style="--c:#9A6B4B"><b>31</b>SHIMATONERIKO</a><a class="achip pc-food pt-3" data-pin="17" href="#jp-osaka-p-17" style="--c:#E8952F"><b>17</b>Nabeya</a><a class="achip pc-food" data-pin="9" href="#jp-osaka-p-9" style="--c:#E8952F"><b>9</b>Marukome</a></div></div><div class="arow"><div class="aname">Half-day trips<span>13-17 km</span></div><div class="achips"><a class="achip pc-sights pt-0 pt-4 pt-5" data-pin="46" href="#jp-osaka-p-46" style="--c:#4F9A6A"><b>46</b>Shubodai</a><a class="achip pc-sights pt-3 pt-4" data-pin="47" href="#jp-osaka-p-47" style="--c:#4F9A6A"><b>47</b>Ishikiri Tsurugiya Jinja</a><a class="achip pc-sights pt-4" data-pin="49" href="#jp-osaka-p-49" style="--c:#4F9A6A"><b>49</b>Hiraoka Park</a><a class="achip pc-sights pt-4 pt-5" data-pin="50" href="#jp-osaka-p-50" style="--c:#4F9A6A"><b>50</b>Nukatayama viewpoint</a></div></div></div></details>
+      <div class="status"><span class="cnt-all">All 59 places</span><span class="cnt-some">Showing <span class="cnt"></span> of 59</span><input type="reset" form="osaka-f" class="linkbtn clr" value="Clear filters"></div>
       <div class="empty">Nothing matches all of those at once. Untick one, or tap <b>Clear filters</b>.</div>
     </div>
     <div class="mapcol">
-      <div class="mapbox"><input class="vh maptog" type="checkbox" id="osaka-maptog"><label class="maphead" for="osaka-maptog">Osaka at a glance <span>25 places</span></label>
-        <div class="mapbody"><svg viewBox="0 0 100 150" class="map map-t" style="aspect-ratio:100/150" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="100" height="150" rx="6" class="mbg" fill="#FFFDF8" stroke="#EADCC8" stroke-width=".5"/><defs><pattern id="jpdots1" x="2.5" y="2.5" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r=".22" class="mgrid" fill="#E6D6C1"/></pattern></defs><rect x="2.5" y="2.5" width="95" height="145" fill="url(#jpdots1)"/><text x="31.3" y="13.1" text-anchor="end" class="area">UMEDA · TENMA</text><text x="60.1" y="40.5" text-anchor="start" class="area">KITAHAMA</text><text x="28.2" y="60.3" text-anchor="end" class="area">HONMACHI</text><text x="26.7" y="76.4" text-anchor="end" class="area">HORIE</text><text x="19.8" y="33.0" text-anchor="middle" class="area">FUKUSHIMA</text><text x="27.4" y="96.2" text-anchor="end" class="area">NAMBA</text><text x="39.9" y="121.6" text-anchor="end" class="area">SHINSEKAI</text><text x="70.2" y="135.8" text-anchor="start" class="area">TENNŌJI</text><text x="38.3" y="147.1" text-anchor="start" class="area">KISHINOSATO</text><text x="80.7" y="46.2" text-anchor="middle" class="area">CASTLE</text><line x1="48.75" y1="118.63" x2="48.06" y2="116.31" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="42.06" y1="63.72" x2="40.17" y2="65.21" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="34.13" y1="77.11" x2="33.11" y2="78.80" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="49.38" y1="120.70" x2="50.07" y2="123.02" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="56.23" y1="13.90" x2="57.54" y2="16.55" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="38.95" y1="89.38" x2="34.60" y2="90.34" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="43.62" y1="63.34" x2="43.80" y2="59.22" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="55.76" y1="12.96" x2="54.45" y2="10.31" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="45.49" y1="64.28" x2="47.36" y2="65.28" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="43.00" y1="69.94" x2="43.73" y2="71.39" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="36.62" y1="74.28" x2="36.73" y2="72.77" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="39.11" y1="87.87" x2="38.56" y2="84.72" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="42.69" y1="88.81" x2="43.25" y2="90.14" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="38.17" y1="91.83" x2="38.97" y2="95.74" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="41.91" y1="86.55" x2="45.43" y2="83.51" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><circle cx="48.75" cy="118.63" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="42.06" cy="63.72" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="38.48" cy="32.96" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="34.13" cy="77.11" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="49.38" cy="120.70" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="56.23" cy="13.90" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="40.20" cy="15.60" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="38.95" cy="89.38" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="34.13" cy="145.05" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="19.81" cy="38.43" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="43.62" cy="63.34" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="55.76" cy="12.96" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="45.49" cy="64.28" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="43.00" cy="69.94" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="42.69" cy="48.81" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="63.38" cy="132.59" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="36.62" cy="74.28" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="39.11" cy="87.87" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="42.69" cy="88.81" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="38.17" cy="91.83" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="41.91" cy="86.55" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="80.19" cy="52.20" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="65.56" cy="114.10" r=".8" class="manchor" fill="#3A2E2A"/><g><circle cx="50.62" cy="46.73" r="3.4" class="mhotel" fill="#3A2E2A"/><text x="50.62" y="47.98" text-anchor="middle" class="hotel">★</text><text x="55.02" y="47.83" class="hotellbl">hotel</text></g><a href="#jp-osaka-p-1" data-pin="1" class="pc-food pt-0"><circle cx="48.06" cy="116.31" r="3.0" class="mpin" fill="#E2604A" stroke="#fff" stroke-width=".6"/><text x="48.06" y="117.36" text-anchor="middle" class="pinnum">1</text></a><a href="#jp-osaka-p-2" data-pin="2" class="pc-food pt-0"><circle cx="40.17" cy="65.21" r="3.0" class="mpin" fill="#E2604A" stroke="#fff" stroke-width=".6"/><text x="40.17" y="66.26" text-anchor="middle" class="pinnum">2</text></a><a href="#jp-osaka-p-3" data-pin="3" class="pc-food"><circle cx="38.48" cy="32.96" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="38.48" y="34.01" text-anchor="middle" class="pinnum">3</text></a><a href="#jp-osaka-p-4" data-pin="4" class="pc-food"><circle cx="33.11" cy="78.80" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="33.11" y="79.85" text-anchor="middle" class="pinnum">4</text></a><a href="#jp-osaka-p-5" data-pin="5" class="pc-food pt-2"><circle cx="50.07" cy="123.02" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="50.07" y="124.07" text-anchor="middle" class="pinnum">5</text></a><a href="#jp-osaka-p-6" data-pin="6" class="pc-food pt-1"><circle cx="57.54" cy="16.55" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="57.54" y="17.60" text-anchor="middle" class="pinnum">6</text></a><a href="#jp-osaka-p-7" data-pin="7" class="pc-food pt-1 pt-4"><circle cx="40.20" cy="15.60" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="40.20" y="16.65" text-anchor="middle" class="pinnum">7</text></a><a href="#jp-osaka-p-8" data-pin="8" class="pc-food pt-1"><circle cx="34.60" cy="90.34" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="34.60" y="91.39" text-anchor="middle" class="pinnum">8</text></a><a href="#jp-osaka-p-9" data-pin="9" class="pc-food"><circle cx="34.13" cy="145.05" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="34.13" y="146.10" text-anchor="middle" class="pinnum">9</text></a><a href="#jp-osaka-p-10" data-pin="10" class="pc-food"><circle cx="19.81" cy="38.43" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="19.81" y="39.48" text-anchor="middle" class="pinnum">10</text></a><a href="#jp-osaka-p-11" data-pin="11" class="pc-coffee pt-0"><circle cx="43.80" cy="59.22" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="43.80" y="60.27" text-anchor="middle" class="pinnum">11</text></a><a href="#jp-osaka-p-12" data-pin="12" class="pc-coffee pt-3 pt-5"><circle cx="54.45" cy="10.31" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="54.45" y="11.36" text-anchor="middle" class="pinnum">12</text></a><a href="#jp-osaka-p-13" data-pin="13" class="pc-coffee"><circle cx="47.36" cy="65.28" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="47.36" y="66.33" text-anchor="middle" class="pinnum">13</text></a><a href="#jp-osaka-p-14" data-pin="14" class="pc-coffee"><circle cx="43.73" cy="71.39" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="43.73" y="72.44" text-anchor="middle" class="pinnum">14</text></a><a href="#jp-osaka-p-15" data-pin="15" class="pc-coffee pt-5"><circle cx="42.69" cy="48.81" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="42.69" y="49.86" text-anchor="middle" class="pinnum">15</text></a><a href="#jp-osaka-p-16" data-pin="16" class="pc-coffee"><circle cx="63.38" cy="132.59" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="63.38" y="133.64" text-anchor="middle" class="pinnum">16</text></a><a href="#jp-osaka-p-17" data-pin="17" class="pc-coffee"><circle cx="36.73" cy="72.77" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="36.73" y="73.82" text-anchor="middle" class="pinnum">17</text></a><a href="#jp-osaka-p-18" data-pin="18" class="pc-drinks pt-2"><circle cx="38.56" cy="84.72" r="3.0" class="mpin" fill="#8A5AA6" stroke="#fff" stroke-width=".6"/><text x="38.56" y="85.77" text-anchor="middle" class="pinnum">18</text></a><a href="#jp-osaka-p-19" data-pin="19" class="pc-drinks pt-2 pt-3"><circle cx="43.25" cy="90.14" r="3.0" class="mpin" fill="#8A5AA6" stroke="#fff" stroke-width=".6"/><text x="43.25" y="91.19" text-anchor="middle" class="pinnum">19</text></a><a href="#jp-osaka-p-20" data-pin="20" class="pc-drinks pt-3"><circle cx="38.97" cy="95.74" r="3.0" class="mpin" fill="#8A5AA6" stroke="#fff" stroke-width=".6"/><text x="38.97" y="96.79" text-anchor="middle" class="pinnum">20</text></a><a href="#jp-osaka-p-21" data-pin="21" class="pc-sights pt-2 pt-4"><circle cx="45.43" cy="83.51" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="45.43" y="84.56" text-anchor="middle" class="pinnum">21</text></a><a href="#jp-osaka-p-22" data-pin="22" class="pc-sights pt-4 pt-5 pt-6"><circle cx="80.19" cy="52.20" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="80.19" y="53.25" text-anchor="middle" class="pinnum">22</text></a><a href="#jp-osaka-p-23" data-pin="23" class="pc-sights pt-4 pt-5"><circle cx="65.56" cy="114.10" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="65.56" y="115.15" text-anchor="middle" class="pinnum">23</text></a><a href="#jp-osaka-p-24" data-pin="24" class="pc-sights pt-0 pt-4 pt-5"><g transform="translate(92 27)"><circle r="3" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">24</text></g></a><text x="87.4" y="28.2" text-anchor="end" class="far">↑ Shubodai · 17 km north</text><a href="#jp-osaka-p-25" data-pin="25" class="pc-sights pt-3 pt-4"><g transform="translate(92 70)"><circle r="3" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">25</text></g></a><text x="87.4" y="71.2" text-anchor="end" class="far">Ishikiri · 13 km east →</text><g transform="translate(66 144)"><line x1="0" y1="0" x2="17" y2="0" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><line x1="0" y1="-1" x2="0" y2="1" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><line x1="17" y1="-1" x2="17" y2="1" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><text x="19" y="1" class="scale">1 km</text></g><text x="94" y="138" text-anchor="end" class="scale">N ↑</text></svg>
+      <div class="mapbox"><input class="vh maptog" type="checkbox" id="osaka-maptog"><label class="maphead" for="osaka-maptog">Osaka at a glance <span>59 places</span></label>
+        <div class="mapbody"><svg viewBox="0 0 100 158" class="map map-t" style="aspect-ratio:100/158" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="100" height="158" rx="6" class="mbg" fill="#FFFDF8" stroke="#EADCC8" stroke-width=".5"/><defs><pattern id="jpdots1" x="2.5" y="2.5" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r=".22" class="mgrid" fill="#E6D6C1"/></pattern></defs><rect x="2.5" y="2.5" width="95" height="153" fill="url(#jpdots1)"/><text x="32.8" y="12.2" text-anchor="middle" class="area">UMEDA · TENMA</text><text x="56.9" y="51.3" text-anchor="start" class="area">KITAHAMA</text><text x="25.0" y="71.1" text-anchor="end" class="area">HONMACHI</text><text x="23.4" y="87.1" text-anchor="end" class="area">HORIE</text><text x="16.6" y="54.5" text-anchor="middle" class="area">FUKUSHIMA</text><text x="83.3" y="109.2" text-anchor="middle" class="area">TSURUHASHI</text><text x="24.2" y="107.0" text-anchor="end" class="area">NAMBA</text><text x="36.7" y="132.4" text-anchor="end" class="area">SHINSEKAI</text><text x="67.0" y="146.6" text-anchor="start" class="area">TENNŌJI</text><text x="35.1" y="157.9" text-anchor="start" class="area">KISHINOSATO</text><text x="77.4" y="56.9" text-anchor="middle" class="area">CASTLE</text><line x1="45.53" y1="129.41" x2="42.61" y2="129.84" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="38.84" y1="74.50" x2="35.71" y2="74.90" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="35.26" y1="43.74" x2="38.43" y2="42.15" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="30.90" y1="87.90" x2="26.80" y2="86.21" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="46.15" y1="131.49" x2="49.51" y2="131.57" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="53.00" y1="24.68" x2="54.64" y2="26.88" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="36.97" y1="26.38" x2="41.92" y2="28.39" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="35.73" y1="100.16" x2="30.73" y2="104.00" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="46.22" y1="133.77" x2="44.71" y2="136.64" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="46.42" y1="128.19" x2="47.50" y2="124.80" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="40.49" y1="88.23" x2="45.00" y2="90.27" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="48.53" y1="60.69" x2="52.42" y2="62.91" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="32.97" y1="43.00" x2="33.67" y2="47.21" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="47.62" y1="104.88" x2="49.69" y2="104.61" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="48.03" y1="26.42" x2="48.65" y2="30.71" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="58.51" y1="61.23" x2="59.40" y2="61.39" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="28.79" y1="30.99" x2="28.43" y2="24.95" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="40.21" y1="88.52" x2="38.81" y2="87.44" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="45.81" y1="25.59" x2="47.24" y2="23.92" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="35.40" y1="32.34" x2="37.37" y2="33.39" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="40.40" y1="74.12" x2="40.93" y2="70.27" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="52.53" y1="23.74" x2="53.17" y2="20.07" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="42.26" y1="75.06" x2="45.17" y2="75.84" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="33.39" y1="85.07" x2="33.21" y2="83.14" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="51.17" y1="57.23" x2="54.60" y2="56.06" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="48.31" y1="62.19" x2="45.65" y2="64.77" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="42.02" y1="23.46" x2="40.44" y2="21.61" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="35.88" y1="98.65" x2="31.66" y2="97.15" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="39.46" y1="99.59" x2="43.69" y2="98.61" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="34.95" y1="102.61" x2="37.14" y2="101.40" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="31.73" y1="110.62" x2="30.00" y2="111.48" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="40.08" y1="102.57" x2="42.72" y2="105.51" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="30.64" y1="41.65" x2="27.93" y2="43.33" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="27.51" y1="38.10" x2="21.24" y2="41.29" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="38.68" y1="97.33" x2="38.17" y2="94.46" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="29.38" y1="33.58" x2="32.54" y2="38.18" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="29.01" y1="33.70" x2="25.94" y2="36.43" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="30.07" y1="33.22" x2="30.59" y2="31.53" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="28.55" y1="31.77" x2="23.65" y2="29.96" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="39.81" y1="109.76" x2="41.87" y2="112.57" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="38.06" y1="106.31" x2="36.31" y2="108.34" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="43.67" y1="22.17" x2="45.71" y2="17.12" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="35.24" y1="24.64" x2="35.32" y2="26.49" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><line x1="35.56" y1="24.35" x2="33.53" y2="19.88" stroke="#3A2E2A" stroke-width=".3" opacity=".55" class="mlead"/><circle cx="45.53" cy="129.41" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="38.84" cy="74.50" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="35.26" cy="43.74" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="30.90" cy="87.90" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="46.15" cy="131.49" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="53.00" cy="24.68" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="36.97" cy="26.38" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="35.73" cy="100.16" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="30.90" cy="155.83" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="16.59" cy="49.21" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="46.22" cy="133.77" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="46.42" cy="128.19" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="40.49" cy="88.23" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="48.53" cy="60.69" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="32.97" cy="43.00" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="47.62" cy="104.88" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="38.39" cy="144.32" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="48.03" cy="26.42" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="58.51" cy="61.23" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="83.41" cy="104.17" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="28.79" cy="30.99" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="40.21" cy="88.52" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="31.65" cy="90.41" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="45.81" cy="25.59" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="35.40" cy="32.34" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="40.40" cy="74.12" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="52.53" cy="23.74" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="42.26" cy="75.06" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="39.77" cy="80.72" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="39.46" cy="59.59" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="60.16" cy="143.37" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="33.39" cy="85.07" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="51.17" cy="57.23" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="48.31" cy="62.19" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="42.02" cy="23.46" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="35.88" cy="98.65" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="39.46" cy="99.59" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="34.95" cy="102.61" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="31.73" cy="110.62" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="40.08" cy="102.57" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="30.64" cy="41.65" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="27.51" cy="38.10" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="38.68" cy="97.33" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="76.97" cy="62.99" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="62.34" cy="124.88" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="76.39" cy="48.95" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="29.38" cy="33.58" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="29.01" cy="33.70" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="30.07" cy="33.22" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="28.55" cy="31.77" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="39.81" cy="109.76" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="38.06" cy="106.31" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="43.67" cy="22.17" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="35.24" cy="24.64" r=".8" class="manchor" fill="#3A2E2A"/><circle cx="35.56" cy="24.35" r=".8" class="manchor" fill="#3A2E2A"/><g><circle cx="47.40" cy="57.51" r="3.4" class="mhotel" fill="#3A2E2A"/><text x="47.40" y="58.76" text-anchor="middle" class="hotel">★</text><text x="51.80" y="58.61" class="hotellbl">hotel</text></g><a href="#jp-osaka-p-1" data-pin="1" class="pc-food pt-0"><circle cx="42.61" cy="129.84" r="3.0" class="mpin" fill="#E2604A" stroke="#fff" stroke-width=".6"/><text x="42.61" y="130.89" text-anchor="middle" class="pinnum">1</text></a><a href="#jp-osaka-p-2" data-pin="2" class="pc-food pt-0"><circle cx="35.71" cy="74.90" r="3.0" class="mpin" fill="#E2604A" stroke="#fff" stroke-width=".6"/><text x="35.71" y="75.95" text-anchor="middle" class="pinnum">2</text></a><a href="#jp-osaka-p-3" data-pin="3" class="pc-food"><circle cx="38.43" cy="42.15" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="38.43" y="43.20" text-anchor="middle" class="pinnum">3</text></a><a href="#jp-osaka-p-4" data-pin="4" class="pc-food"><circle cx="26.80" cy="86.21" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="26.80" y="87.26" text-anchor="middle" class="pinnum">4</text></a><a href="#jp-osaka-p-5" data-pin="5" class="pc-food pt-2"><circle cx="49.51" cy="131.57" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="49.51" y="132.62" text-anchor="middle" class="pinnum">5</text></a><a href="#jp-osaka-p-6" data-pin="6" class="pc-food pt-1"><circle cx="54.64" cy="26.88" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="54.64" y="27.93" text-anchor="middle" class="pinnum">6</text></a><a href="#jp-osaka-p-7" data-pin="7" class="pc-food pt-1 pt-4"><circle cx="41.92" cy="28.39" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="41.92" y="29.44" text-anchor="middle" class="pinnum">7</text></a><a href="#jp-osaka-p-8" data-pin="8" class="pc-food pt-1"><circle cx="30.73" cy="104.00" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="30.73" y="105.05" text-anchor="middle" class="pinnum">8</text></a><a href="#jp-osaka-p-9" data-pin="9" class="pc-food"><circle cx="30.90" cy="155.83" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="30.90" y="156.88" text-anchor="middle" class="pinnum">9</text></a><a href="#jp-osaka-p-10" data-pin="10" class="pc-food"><circle cx="16.59" cy="49.21" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="16.59" y="50.26" text-anchor="middle" class="pinnum">10</text></a><a href="#jp-osaka-p-11" data-pin="11" class="pc-food"><circle cx="44.71" cy="136.64" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="44.71" y="137.69" text-anchor="middle" class="pinnum">11</text></a><a href="#jp-osaka-p-12" data-pin="12" class="pc-food"><circle cx="47.50" cy="124.80" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="47.50" y="125.85" text-anchor="middle" class="pinnum">12</text></a><a href="#jp-osaka-p-13" data-pin="13" class="pc-food"><circle cx="45.00" cy="90.27" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="45.00" y="91.32" text-anchor="middle" class="pinnum">13</text></a><a href="#jp-osaka-p-14" data-pin="14" class="pc-food pt-1"><circle cx="52.42" cy="62.91" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="52.42" y="63.96" text-anchor="middle" class="pinnum">14</text></a><a href="#jp-osaka-p-15" data-pin="15" class="pc-food"><circle cx="33.67" cy="47.21" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="33.67" y="48.26" text-anchor="middle" class="pinnum">15</text></a><a href="#jp-osaka-p-16" data-pin="16" class="pc-food"><circle cx="49.69" cy="104.61" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="49.69" y="105.66" text-anchor="middle" class="pinnum">16</text></a><a href="#jp-osaka-p-17" data-pin="17" class="pc-food pt-3"><circle cx="38.39" cy="144.32" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="38.39" y="145.37" text-anchor="middle" class="pinnum">17</text></a><a href="#jp-osaka-p-18" data-pin="18" class="pc-food"><circle cx="48.65" cy="30.71" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="48.65" y="31.76" text-anchor="middle" class="pinnum">18</text></a><a href="#jp-osaka-p-19" data-pin="19" class="pc-food"><circle cx="59.40" cy="61.39" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="59.40" y="62.44" text-anchor="middle" class="pinnum">19</text></a><a href="#jp-osaka-p-20" data-pin="20" class="pc-food"><circle cx="83.41" cy="104.17" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="83.41" y="105.22" text-anchor="middle" class="pinnum">20</text></a><a href="#jp-osaka-p-21" data-pin="21" class="pc-food"><circle cx="28.43" cy="24.95" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="28.43" y="26.00" text-anchor="middle" class="pinnum">21</text></a><a href="#jp-osaka-p-22" data-pin="22" class="pc-food pt-2"><circle cx="38.81" cy="87.44" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="38.81" y="88.49" text-anchor="middle" class="pinnum">22</text></a><a href="#jp-osaka-p-23" data-pin="23" class="pc-food"><circle cx="32.39" cy="90.26" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="32.39" y="91.31" text-anchor="middle" class="pinnum">23</text></a><a href="#jp-osaka-p-24" data-pin="24" class="pc-food pt-1"><circle cx="47.24" cy="23.92" r="3.0" class="mpin" fill="#E8952F" stroke="#fff" stroke-width=".6"/><text x="47.24" y="24.97" text-anchor="middle" class="pinnum">24</text></a><a href="#jp-osaka-p-25" data-pin="25" class="pc-sweets pt-1"><circle cx="37.37" cy="33.39" r="3.0" class="mpin" fill="#D2648E" stroke="#fff" stroke-width=".6"/><text x="37.37" y="34.44" text-anchor="middle" class="pinnum">25</text></a><a href="#jp-osaka-p-26" data-pin="26" class="pc-coffee pt-0"><circle cx="40.93" cy="70.27" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="40.93" y="71.32" text-anchor="middle" class="pinnum">26</text></a><a href="#jp-osaka-p-27" data-pin="27" class="pc-coffee pt-3 pt-5"><circle cx="53.17" cy="20.07" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="53.17" y="21.12" text-anchor="middle" class="pinnum">27</text></a><a href="#jp-osaka-p-28" data-pin="28" class="pc-coffee"><circle cx="45.17" cy="75.84" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="45.17" y="76.89" text-anchor="middle" class="pinnum">28</text></a><a href="#jp-osaka-p-29" data-pin="29" class="pc-coffee"><circle cx="39.93" cy="80.56" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="39.93" y="81.61" text-anchor="middle" class="pinnum">29</text></a><a href="#jp-osaka-p-30" data-pin="30" class="pc-coffee pt-5"><circle cx="39.46" cy="59.59" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="39.46" y="60.64" text-anchor="middle" class="pinnum">30</text></a><a href="#jp-osaka-p-31" data-pin="31" class="pc-coffee"><circle cx="60.16" cy="143.37" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="60.16" y="144.42" text-anchor="middle" class="pinnum">31</text></a><a href="#jp-osaka-p-32" data-pin="32" class="pc-coffee"><circle cx="33.21" cy="83.14" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="33.21" y="84.19" text-anchor="middle" class="pinnum">32</text></a><a href="#jp-osaka-p-33" data-pin="33" class="pc-coffee pt-3"><circle cx="54.60" cy="56.06" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="54.60" y="57.11" text-anchor="middle" class="pinnum">33</text></a><a href="#jp-osaka-p-34" data-pin="34" class="pc-coffee"><circle cx="45.65" cy="64.77" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="45.65" y="65.82" text-anchor="middle" class="pinnum">34</text></a><a href="#jp-osaka-p-35" data-pin="35" class="pc-coffee pt-2"><circle cx="40.44" cy="21.61" r="3.0" class="mpin" fill="#9A6B4B" stroke="#fff" stroke-width=".6"/><text x="40.44" y="22.66" text-anchor="middle" class="pinnum">35</text></a><a href="#jp-osaka-p-36" data-pin="36" class="pc-drinks pt-2"><circle cx="31.66" cy="97.15" r="3.0" class="mpin" fill="#8A5AA6" stroke="#fff" stroke-width=".6"/><text x="31.66" y="98.20" text-anchor="middle" class="pinnum">36</text></a><a href="#jp-osaka-p-37" data-pin="37" class="pc-drinks pt-2 pt-3"><circle cx="43.69" cy="98.61" r="3.0" class="mpin" fill="#8A5AA6" stroke="#fff" stroke-width=".6"/><text x="43.69" y="99.66" text-anchor="middle" class="pinnum">37</text></a><a href="#jp-osaka-p-38" data-pin="38" class="pc-drinks pt-3"><circle cx="37.14" cy="101.40" r="3.0" class="mpin" fill="#8A5AA6" stroke="#fff" stroke-width=".6"/><text x="37.14" y="102.45" text-anchor="middle" class="pinnum">38</text></a><a href="#jp-osaka-p-39" data-pin="39" class="pc-drinks pt-2"><circle cx="30.00" cy="111.48" r="3.0" class="mpin" fill="#8A5AA6" stroke="#fff" stroke-width=".6"/><text x="30.00" y="112.53" text-anchor="middle" class="pinnum">39</text></a><a href="#jp-osaka-p-40" data-pin="40" class="pc-drinks pt-2"><circle cx="42.72" cy="105.51" r="3.0" class="mpin" fill="#8A5AA6" stroke="#fff" stroke-width=".6"/><text x="42.72" y="106.56" text-anchor="middle" class="pinnum">40</text></a><a href="#jp-osaka-p-41" data-pin="41" class="pc-drinks pt-2"><circle cx="27.93" cy="43.33" r="3.0" class="mpin" fill="#8A5AA6" stroke="#fff" stroke-width=".6"/><text x="27.93" y="44.38" text-anchor="middle" class="pinnum">41</text></a><a href="#jp-osaka-p-42" data-pin="42" class="pc-drinks"><circle cx="21.24" cy="41.29" r="3.0" class="mpin" fill="#8A5AA6" stroke="#fff" stroke-width=".6"/><text x="21.24" y="42.34" text-anchor="middle" class="pinnum">42</text></a><a href="#jp-osaka-p-43" data-pin="43" class="pc-sights pt-2 pt-4"><circle cx="38.17" cy="94.46" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="38.17" y="95.51" text-anchor="middle" class="pinnum">43</text></a><a href="#jp-osaka-p-44" data-pin="44" class="pc-sights pt-4 pt-5 pt-6"><circle cx="76.97" cy="62.99" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="76.97" y="64.04" text-anchor="middle" class="pinnum">44</text></a><a href="#jp-osaka-p-45" data-pin="45" class="pc-sights pt-4 pt-5"><circle cx="62.34" cy="124.88" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="62.34" y="125.93" text-anchor="middle" class="pinnum">45</text></a><a href="#jp-osaka-p-48" data-pin="48" class="pc-sights pt-3"><circle cx="76.39" cy="48.95" r="3.0" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text x="76.39" y="50.00" text-anchor="middle" class="pinnum">48</text></a><a href="#jp-osaka-p-51" data-pin="51" class="pc-shop pt-0"><circle cx="32.54" cy="38.18" r="3.0" class="mpin" fill="#5F6E7E" stroke="#fff" stroke-width=".6"/><text x="32.54" y="39.23" text-anchor="middle" class="pinnum">51</text></a><a href="#jp-osaka-p-52" data-pin="52" class="pc-shop"><circle cx="25.94" cy="36.43" r="3.0" class="mpin" fill="#5F6E7E" stroke="#fff" stroke-width=".6"/><text x="25.94" y="37.48" text-anchor="middle" class="pinnum">52</text></a><a href="#jp-osaka-p-53" data-pin="53" class="pc-shop"><circle cx="30.59" cy="31.53" r="3.0" class="mpin" fill="#5F6E7E" stroke="#fff" stroke-width=".6"/><text x="30.59" y="32.58" text-anchor="middle" class="pinnum">53</text></a><a href="#jp-osaka-p-54" data-pin="54" class="pc-shop"><circle cx="23.65" cy="29.96" r="3.0" class="mpin" fill="#5F6E7E" stroke="#fff" stroke-width=".6"/><text x="23.65" y="31.01" text-anchor="middle" class="pinnum">54</text></a><a href="#jp-osaka-p-55" data-pin="55" class="pc-shop"><circle cx="41.87" cy="112.57" r="3.0" class="mpin" fill="#5F6E7E" stroke="#fff" stroke-width=".6"/><text x="41.87" y="113.62" text-anchor="middle" class="pinnum">55</text></a><a href="#jp-osaka-p-56" data-pin="56" class="pc-shop"><circle cx="36.31" cy="108.34" r="3.0" class="mpin" fill="#5F6E7E" stroke="#fff" stroke-width=".6"/><text x="36.31" y="109.39" text-anchor="middle" class="pinnum">56</text></a><a href="#jp-osaka-p-57" data-pin="57" class="pc-shop"><circle cx="45.71" cy="17.12" r="3.0" class="mpin" fill="#5F6E7E" stroke="#fff" stroke-width=".6"/><text x="45.71" y="18.17" text-anchor="middle" class="pinnum">57</text></a><a href="#jp-osaka-p-58" data-pin="58" class="pc-shop"><circle cx="35.32" cy="26.49" r="3.0" class="mpin" fill="#5F6E7E" stroke="#fff" stroke-width=".6"/><text x="35.32" y="27.54" text-anchor="middle" class="pinnum">58</text></a><a href="#jp-osaka-p-59" data-pin="59" class="pc-shop"><circle cx="33.53" cy="19.88" r="3.0" class="mpin" fill="#5F6E7E" stroke="#fff" stroke-width=".6"/><text x="33.53" y="20.93" text-anchor="middle" class="pinnum">59</text></a><a href="#jp-osaka-p-46" data-pin="46" class="pc-sights pt-0 pt-4 pt-5"><g transform="translate(92 7)"><circle r="3" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">46</text></g></a><text x="87.4" y="8.2" text-anchor="end" class="far">↑ Shubodai · 17 km north</text><a href="#jp-osaka-p-47" data-pin="47" class="pc-sights pt-3 pt-4"><g transform="translate(92 70)"><circle r="3" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">47</text></g></a><a href="#jp-osaka-p-49" data-pin="49" class="pc-sights pt-4"><g transform="translate(85 70)"><circle r="3" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">49</text></g></a><a href="#jp-osaka-p-50" data-pin="50" class="pc-sights pt-4 pt-5"><g transform="translate(78 70)"><circle r="3" class="mpin" fill="#4F9A6A" stroke="#fff" stroke-width=".6"/><text y="1.05" text-anchor="middle" class="pinnum">50</text></g></a><text x="73.4" y="71.2" text-anchor="end" class="far">East hills · 13-14 km →</text><g transform="translate(66 152)"><line x1="0" y1="0" x2="17" y2="0" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><line x1="0" y1="-1" x2="0" y2="1" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><line x1="17" y1="-1" x2="17" y2="1" class="mscale" stroke="#3A2E2A" stroke-width=".6"/><text x="19" y="1" class="scale">1 km</text></g><text x="94" y="146" text-anchor="end" class="scale">N ↑</text></svg>
         <p class="mapnote">Tap a pin to jump to that place. Distances are straight-line from the hotel (★).</p>
         <div class="gmap" data-city="osaka" hidden><div class="gmap-head"><span class="gmap-sel"></span><a class="gmap-open" href="#" target="_blank" rel="noopener">Open in Google Maps</a></div>
           <iframe title="Google map of Osaka" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -1338,7 +1839,7 @@ Changes:
     </div>
   </div>
   <a class="nextstop" href="#jp-city-shirahama">Next stop: <b>Shirahama</b> <span>Nov 20-23 →</span></a><a class="nextstop opt" href="#jp-city-wakayama">Maybe on the way: <b>Wakayama</b> <span>optional stop →</span></a>
-  <div class="phbox" id="jp-osaka-ph-11"><a class="phclose" href="#jp-osaka-p-11" aria-label="Close photo"></a><img src="photos/osaka/aoma-coffee-1600.webp" alt="aoma coffee" loading="lazy"><p>aoma coffee · <a class="phsrc" href="https://www.youtube.com/watch?v=RGqhSRTqsr8" target="_blank" rel="noopener">Photo: YouTube video ↗</a> · <a href="#jp-osaka-p-11">Close</a></p></div>
+  <div class="phbox" id="jp-osaka-ph-26"><a class="phclose" href="#jp-osaka-p-26" aria-label="Close photo"></a><img src="photos/osaka/aoma-coffee-1600.webp" alt="aoma coffee" loading="lazy"><p>aoma coffee · <a class="phsrc" href="https://www.youtube.com/watch?v=RGqhSRTqsr8" target="_blank" rel="noopener">Photo: YouTube video ↗</a> · <a href="#jp-osaka-p-26">Close</a></p></div>
 </div><div class="city" id="jp-city-wakayama">
   <div class="hero hero-wakayama">
     <div class="txt">
@@ -2707,12 +3208,12 @@ Changes:
     <p>Options for the rest of the trip are on the way.</p>
     <div class="latgrid"></div>
   </div>
-  <div class="foot">Japan trip guide · Version 1.4 · updated Oct 29, 2026</div>
+  <div class="foot">Japan trip guide · Version 1.5 · updated Nov 1, 2026</div>
 </div></div>
 
 <script>
 (() => {
-  const D = {"osaka": {"hotels": [{"name": "Best Western Plus Hotel Fino Osaka Kitahama", "lat": 34.6902, "lon": 135.5069, "url": "https://www.google.com/maps/search/?api=1&query=Best+Western+Plus+Hotel+Fino+Osaka+Kitahama"}], "places": {"1": {"name": "Go Go Curry Tsutenkaku", "lat": 34.6521, "lon": 135.5057, "url": "https://maps.app.goo.gl/mSh6H6RMG7RDmiTG8"}, "2": {"name": "MENSTYLE TANIMOTOKE", "lat": 34.6812, "lon": 135.5014, "url": "https://maps.app.goo.gl/NhvNePS4b8ttajJi9"}, "3": {"name": "NICO CAFE", "lat": 34.6975, "lon": 135.4991, "url": "https://maps.app.goo.gl/Jb78hnzRPkMNrCUb8"}, "4": {"name": "Craft Burger co.", "lat": 34.6741, "lon": 135.4963, "url": "https://maps.app.goo.gl/JrwxHjaBxJ9EccBL8"}, "5": {"name": "Kushikatsu Shinsekai", "lat": 34.651, "lon": 135.5061, "url": "https://maps.app.goo.gl/VtEc4GhdFGU9hUdx9"}, "6": {"name": "Takoyaki Umaiya", "lat": 34.7076, "lon": 135.5105, "url": "https://maps.app.goo.gl/Zspo5bN73neMdk7N9"}, "7": {"name": "Takocha", "lat": 34.7067, "lon": 135.5002, "url": "https://maps.app.goo.gl/PnMj9Jjo5gAx1RqG7"}, "8": {"name": "OYASUMI ICE & HOTEL", "lat": 34.6676, "lon": 135.4994, "url": "https://maps.app.goo.gl/Mz9ySLd1bpXPP1hc6"}, "9": {"name": "Marukome", "lat": 34.6381, "lon": 135.4963, "url": "https://maps.app.goo.gl/8SopKeSroLo64Nnd9"}, "10": {"name": "Hanakujira honten", "lat": 34.6946, "lon": 135.4871, "url": "https://maps.app.goo.gl/hRHXdwzPzJUmRGfN9"}, "11": {"name": "aoma coffee", "lat": 34.6814, "lon": 135.5024, "url": "https://maps.app.goo.gl/a6caNjRxmH4DXR44A"}, "12": {"name": "Roji Cafe", "lat": 34.7081, "lon": 135.5102, "url": "https://maps.app.goo.gl/oquAxfsyoLKZoGQy5"}, "13": {"name": "Notequal Coffee", "lat": 34.6809, "lon": 135.5036, "url": "https://maps.app.goo.gl/5REqAHeuFbHpBB2NA"}, "14": {"name": "Melbourne Coffee Senba", "lat": 34.6779, "lon": 135.502, "url": "https://maps.app.goo.gl/XkVRKpE85pUuTRae8"}, "15": {"name": "Mole & Hosoi Coffees", "lat": 34.6891, "lon": 135.5018, "url": "https://maps.app.goo.gl/Fvj66Dr9hDiCtFwt9"}, "16": {"name": "SHIMATONERIKO", "lat": 34.6447, "lon": 135.5151, "url": "https://maps.app.goo.gl/1YsWrF6HHS12GM6N7"}, "17": {"name": "Saturdays NYC", "lat": 34.6756, "lon": 135.4979, "url": "https://maps.app.goo.gl/Ea2XRYr1iyjBxmsu5"}, "18": {"name": "Manmanki", "lat": 34.6684, "lon": 135.4995, "url": "https://maps.app.goo.gl/5ox63xbe6cpLZXsg6"}, "19": {"name": "Bar Seven", "lat": 34.6679, "lon": 135.5018, "url": "https://maps.app.goo.gl/vPcRWdro36thTdjF6"}, "20": {"name": "Luv Wine Namba", "lat": 34.6663, "lon": 135.4989, "url": "https://maps.app.goo.gl/Z6AciSS3z4qhoNPv9"}, "21": {"name": "Ebisu Bridge & Dotonbori", "lat": 34.6691, "lon": 135.5013, "url": "https://maps.app.goo.gl/WaDFD5NCBPPYQLx7A"}, "22": {"name": "Osaka Castle", "lat": 34.6873, "lon": 135.5259, "url": "https://www.google.com/maps/search/?api=1&query=Osaka+Castle"}, "23": {"name": "Shitennō-ji", "lat": 34.6545, "lon": 135.5165, "url": "https://maps.app.goo.gl/C1XpHUcgMBRRREwk8"}, "24": {"name": "Shubodai", "lat": 34.8318, "lon": 135.4272, "url": "https://maps.app.goo.gl/g1hxcX8Ah5Q3S4nc9"}, "25": {"name": "Ishikiri Tsurugiya Jinja", "lat": 34.6823, "lon": 135.6463, "url": "https://maps.app.goo.gl/dgJnc7e3JwWpEw2HA"}}}, "wakayama": {"hotels": [{"name": "JR Wakayama Station", "lat": 34.2321803, "lon": 135.1917916, "url": "https://www.google.com/maps/search/?api=1&query=JR+Wakayama+Station"}], "places": {"1": {"name": "Katto", "lat": 34.231044499999996, "lon": 135.1900757, "url": "https://maps.google.com/?cid=3540497299708346347"}, "2": {"name": "Niyoro", "lat": 34.2330401, "lon": 135.1881569, "url": "https://maps.google.com/?cid=1221958384847454444"}, "3": {"name": "Kalbi 1cho", "lat": 34.2335338, "lon": 135.1886719, "url": "https://maps.google.com/?cid=11554976602232267605"}, "4": {"name": "Yakitori Kairo", "lat": 34.2384353, "lon": 135.1791332, "url": "https://maps.google.com/?cid=7804657641492008548"}, "5": {"name": "BRIDGE", "lat": 34.2342381, "lon": 135.1724671, "url": "https://maps.google.com/?cid=2290438624177363043"}, "6": {"name": "Ichidai", "lat": 34.225703599999996, "lon": 135.169587, "url": "https://maps.google.com/?cid=1833223725525101210"}, "7": {"name": "Maruman Ramen", "lat": 34.2314699, "lon": 135.17057269999998, "url": "https://maps.google.com/?cid=11560120881329501842"}, "8": {"name": "Umimachi Shokudo Urara", "lat": 34.1902445, "lon": 135.144645, "url": "https://maps.google.com/?cid=5911579447961568639"}, "9": {"name": "Goen", "lat": 34.231074899999996, "lon": 135.1910408, "url": "https://maps.google.com/?cid=16494497776411410737"}, "10": {"name": "Bandoko Garden", "lat": 34.1906797, "lon": 135.14067989999998, "url": "https://maps.google.com/?cid=6190730922807149711"}, "11": {"name": "Wakayama Castle", "lat": 34.2276558, "lon": 135.1715109, "url": "https://www.google.com/maps/search/?api=1&query=Wakayama+Castle"}, "12": {"name": "Kishi Station", "lat": 34.2093, "lon": 135.3121, "url": "https://maps.google.com/?cid=17241543118648371379"}, "13": {"name": "Awashima Shrine", "lat": 34.2737, "lon": 135.0664, "url": "https://maps.google.com/?cid=15657838165788794839"}, "14": {"name": "Koyasan", "lat": 34.2132, "lon": 135.5863, "url": "https://maps.google.com/?cid=11714349864090713783"}}}, "shirahama": {"hotels": [{"name": "Dormitory Sandanya Guesthouse", "lat": 33.6662113, "lon": 135.3368365, "url": "https://maps.app.goo.gl/6sgeUW4YiEcYHqxr9"}], "places": {"1": {"name": "Dakishimetai", "lat": 33.674535999999996, "lon": 135.33741179999998, "url": "https://maps.google.com/?cid=10240352576288176698"}, "2": {"name": "Yakiniku Man", "lat": 33.6832646, "lon": 135.3485744, "url": "https://maps.google.com/?cid=4356415629714341682"}, "3": {"name": "Toretore Market", "lat": 33.6813502, "lon": 135.3752515, "url": "https://maps.google.com/?cid=7938307802199390379"}, "4": {"name": "Tsumugi Cafe", "lat": 33.668306, "lon": 135.334818, "url": "https://maps.app.goo.gl/cVsnAEcKvUkGaXHL8"}, "5": {"name": "Miyuki Sushi", "lat": 33.6750843, "lon": 135.3402668, "url": "https://maps.app.goo.gl/1zX18KPgxKSMuwFJ8"}, "6": {"name": "Ikesu Warouda / Sushi Yata", "lat": 33.675353099999995, "lon": 135.3373919, "url": "https://maps.google.com/?cid=10848447305798194294"}, "7": {"name": "Ban-ya", "lat": 33.676940699999996, "lon": 135.3413859, "url": "https://maps.google.com/?cid=15270952934666379931"}, "8": {"name": "Sumibi Dining Hayate", "lat": 33.6835692, "lon": 135.3502521, "url": "https://maps.google.com/?cid=14075486803131133320"}, "9": {"name": "Mame no Yu", "lat": 33.6825212, "lon": 135.3463572, "url": "https://maps.google.com/?cid=3195587893017237390"}, "10": {"name": "Popular Bar Chokyu", "lat": 33.6795273, "lon": 135.34422469999998, "url": "https://maps.google.com/?cid=7785594314647488227"}, "11": {"name": "Saki-no-Yu", "lat": 33.676823999999996, "lon": 135.3369842, "url": "https://maps.google.com/?cid=17602803442712138027"}, "12": {"name": "Hamachidori-no-yu Kaishu", "lat": 33.673034, "lon": 135.334343, "url": "https://maps.google.com/?cid=3390272157845678808"}, "13": {"name": "Senjojiki Rock Plateau", "lat": 33.6707012, "lon": 135.3304584, "url": "https://maps.app.goo.gl/X7obhxQpo7ApiCdNA"}, "14": {"name": "Ura-Senjojiki", "lat": 33.6689484, "lon": 135.33135099999998, "url": "https://maps.google.com/?cid=12856806204964319956"}, "15": {"name": "Kumano Sansho Shrine", "lat": 33.6851069, "lon": 135.34242949999998, "url": "https://maps.google.com/?cid=11663528559639994824"}, "16": {"name": "Kumano Kodo Nakahechi", "lat": 33.7836, "lon": 135.5166, "url": "https://maps.google.com/?cid=8946960721844952529"}}}, "kyoto": {"hotels": [{"name": "Hotel ZIZI Horikawa Gojo", "lat": 34.9976817, "lon": 135.7540521, "url": "https://maps.app.goo.gl/jgtEtLKyQvY8QCyL6"}, {"name": "Kyoto Plaza Hotel Kintetsu Jujo", "lat": 34.9734786, "lon": 135.7472537, "url": "https://maps.app.goo.gl/QCL8hgja5Wy7ZZxy6"}], "places": {"1": {"name": "Ramen Mugyu Vol. 2", "lat": 35.006548, "lon": 135.7602896, "url": "https://maps.app.goo.gl/MTMqmLb44jYt3tQr7"}, "2": {"name": "Rokkaku Ace", "lat": 35.0074364, "lon": 135.7638627, "url": "https://maps.app.goo.gl/t3BPCqP94pLCnFpY8"}, "3": {"name": "Kyogoku Kaneyo", "lat": 35.007592, "lon": 135.767949, "url": "https://maps.app.goo.gl/d1dSvUQgKdxh59pw8"}, "4": {"name": "Kitchen Gon Rokkaku", "lat": 35.0072273, "lon": 135.7627796, "url": "https://maps.app.goo.gl/JHsjYDhMVoTa2JYR8"}, "5": {"name": "Gyukatsu Kyoto Katsugyu", "lat": 35.005403, "lon": 135.7669232, "url": "https://maps.app.goo.gl/pxXWHSLYfdYrQe2C8"}, "6": {"name": "Kyo-Motsunabe Kamehachi", "lat": 35.0072749, "lon": 135.7707854, "url": "https://maps.app.goo.gl/KH59QUEssErBdUuRA"}, "7": {"name": "Ten no Meshi Gion", "lat": 35.0042282, "lon": 135.7745187, "url": "https://maps.app.goo.gl/Qphf8UeRnZ5U9pX67"}, "8": {"name": "Hikiniku to Come", "lat": 35.0051, "lon": 135.7746, "url": "https://maps.google.com/?cid=5604413755966420161"}, "9": {"name": "Kunton Akutagawa", "lat": 35.0064, "lon": 135.7667, "url": "https://maps.google.com/?cid=13196192196322562881"}, "10": {"name": "Nishiki Market", "lat": 35.005, "lon": 135.7647, "url": "https://maps.google.com/?cid=13159134450370243740"}, "11": {"name": "Second House Cake Works", "lat": 35.0064319, "lon": 135.7609654, "url": "https://maps.app.goo.gl/3CBqHFL6P8rh8Zab6"}, "12": {"name": "Micasadeco & Cafe", "lat": 35.0058856, "lon": 135.7657151, "url": "https://maps.app.goo.gl/4L5zU4MjY3mS6PuR8"}, "13": {"name": "Itoh Kyuemon Sabo", "lat": 35.0036759, "lon": 135.7731794, "url": "https://maps.app.goo.gl/qP44cdyMzwYrJ8hZA"}, "14": {"name": "Cafe Bibliotic Hello!", "lat": 35.0137, "lon": 135.7642, "url": "https://maps.google.com/?cid=9811042860654385097"}, "15": {"name": "Kinkaku-ji", "lat": 35.03937, "lon": 135.7292431, "url": "https://maps.app.goo.gl/C7yMTuzNasRxVTK87"}, "16": {"name": "Yasaka Shrine", "lat": 35.0036559, "lon": 135.7785534, "url": "https://maps.app.goo.gl/r2T89NW5XDg5C6Gn6"}, "17": {"name": "Nanzen-ji", "lat": 35.0114138, "lon": 135.7944841, "url": "https://maps.app.goo.gl/42GvsGz7u1fjYyRs8"}, "18": {"name": "Anraku-ji", "lat": 35.0216167, "lon": 135.7966367, "url": "https://maps.app.goo.gl/98J73Gu88dbsEw5i9"}, "19": {"name": "Tōfuku-ji", "lat": 34.976025, "lon": 135.7737627, "url": "https://maps.app.goo.gl/J86VZzDy6UqLb7Jm8"}, "20": {"name": "Arashiyama Yusai-Tei", "lat": 35.0141337, "lon": 135.6709556, "url": "https://maps.app.goo.gl/BxhAA4TK4mPumWgk7"}, "21": {"name": "Jōjakkō-ji", "lat": 35.0198102, "lon": 135.6686405, "url": "https://maps.app.goo.gl/Zs3ALEwkemQo9Ury8"}, "22": {"name": "Kiyomizu-dera", "lat": 34.9947, "lon": 135.7847, "url": "https://maps.google.com/?cid=7111013964196361402"}, "23": {"name": "Ginkaku-ji", "lat": 35.027, "lon": 135.7982, "url": "https://maps.google.com/?cid=2705196751698570185"}, "24": {"name": "Honnō-ji", "lat": 35.0103, "lon": 135.7683, "url": "https://maps.google.com/?cid=2201652011559631590"}, "25": {"name": "Rokudō Chinnō-ji", "lat": 34.9983, "lon": 135.7754, "url": "https://maps.google.com/?cid=5165877923149119340"}, "26": {"name": "Saihō-ji (Kokedera)", "lat": 34.9922, "lon": 135.6837, "url": "https://maps.google.com/?cid=12604676872959930581"}, "27": {"name": "Daihikaku Senkō-ji", "lat": 35.0158, "lon": 135.6656, "url": "https://maps.google.com/?cid=14257992469760671362"}, "28": {"name": "Arashiyama Monkey Park", "lat": 35.0114, "lon": 135.6766, "url": "https://maps.google.com/?cid=1960354123061081266"}, "29": {"name": "Mount Hiei", "lat": 35.0622, "lon": 135.8315, "url": "https://maps.google.com/?cid=16309124816119328751"}, "30": {"name": "Former Chikurin-in", "lat": 35.0716, "lon": 135.8658, "url": "https://maps.google.com/?cid=13309011099031202891"}, "31": {"name": "Kurama Onsen", "lat": 35.1192, "lon": 135.7766, "url": "https://maps.google.com/?cid=6234670849390713272"}, "32": {"name": "Kyoto Tower", "lat": 34.9875, "lon": 135.7593, "url": "https://maps.google.com/?cid=17017157882742292436"}, "33": {"name": "GEAR non-verbal theatre", "lat": 35.0085, "lon": 135.7665, "url": "https://maps.google.com/?cid=590976552152252111"}, "34": {"name": "Naniwa Camera", "lat": 35.0039, "lon": 135.7662, "url": "https://maps.google.com/?cid=9608848783477973023"}}}, "nara": {"hotels": [{"name": "Kintetsu Nara Station", "lat": 34.6842485, "lon": 135.8275275, "url": "https://www.google.com/maps/search/?api=1&query=Kintetsu+Nara+Station"}], "places": {}}, "hikone": {"hotels": [{"name": "Hotel Sunroute Hikone", "lat": 35.2730945, "lon": 136.262185, "url": "https://maps.app.goo.gl/9NpEg9hq8h4yYqeu7"}], "places": {"1": {"name": "Jinnosuke Coffee", "lat": 35.1392, "lon": 136.0884, "url": "https://maps.google.com/?cid=1420078449805569034"}, "2": {"name": "Hikone Castle", "lat": 35.2763, "lon": 136.2519, "url": "https://www.google.com/maps/search/?api=1&query=Hikone+Castle"}, "3": {"name": "Yutani Shrine", "lat": 35.3128, "lon": 136.2953, "url": "https://maps.google.com/?cid=2770015437704597159"}, "4": {"name": "Chikubu Island", "lat": 35.4232, "lon": 136.1437, "url": "https://maps.google.com/?cid=2901414486857167280"}, "5": {"name": "Kyorinbo", "lat": 35.1389, "lon": 136.164, "url": "https://maps.google.com/?cid=1454445400296920734"}, "6": {"name": "Omihachiman", "lat": 35.1284, "lon": 136.098, "url": "https://maps.google.com/?cid=8511313074295460791"}, "7": {"name": "Shirahige Shrine", "lat": 35.2745, "lon": 136.011, "url": "https://maps.google.com/?cid=13664484576260554187"}, "8": {"name": "Keisokuji", "lat": 35.5061, "lon": 136.2579, "url": "https://maps.google.com/?cid=2366704082444976644"}, "9": {"name": "Yogo Station", "lat": 35.5339, "lon": 136.1997, "url": "https://maps.google.com/?cid=1657791961354483095"}}}};
+  const D = {"osaka": {"hotels": [{"name": "Best Western Plus Hotel Fino Osaka Kitahama", "lat": 34.6902, "lon": 135.5069, "url": "https://www.google.com/maps/search/?api=1&query=Best+Western+Plus+Hotel+Fino+Osaka+Kitahama"}], "places": {"1": {"name": "Go Go Curry Tsutenkaku", "lat": 34.6521, "lon": 135.5057, "url": "https://maps.app.goo.gl/mSh6H6RMG7RDmiTG8"}, "2": {"name": "MENSTYLE TANIMOTOKE", "lat": 34.6812, "lon": 135.5014, "url": "https://maps.app.goo.gl/NhvNePS4b8ttajJi9"}, "3": {"name": "NICO CAFE", "lat": 34.6975, "lon": 135.4991, "url": "https://maps.app.goo.gl/Jb78hnzRPkMNrCUb8"}, "4": {"name": "Craft Burger co.", "lat": 34.6741, "lon": 135.4963, "url": "https://maps.app.goo.gl/JrwxHjaBxJ9EccBL8"}, "5": {"name": "Kushikatsu Shinsekai", "lat": 34.651, "lon": 135.5061, "url": "https://maps.app.goo.gl/VtEc4GhdFGU9hUdx9"}, "6": {"name": "Takoyaki Umaiya", "lat": 34.7076, "lon": 135.5105, "url": "https://maps.app.goo.gl/Zspo5bN73neMdk7N9"}, "7": {"name": "Takocha", "lat": 34.7067, "lon": 135.5002, "url": "https://maps.app.goo.gl/PnMj9Jjo5gAx1RqG7"}, "8": {"name": "OYASUMI ICE & HOTEL", "lat": 34.6676, "lon": 135.4994, "url": "https://maps.app.goo.gl/Mz9ySLd1bpXPP1hc6"}, "9": {"name": "Marukome", "lat": 34.6381, "lon": 135.4963, "url": "https://maps.app.goo.gl/8SopKeSroLo64Nnd9"}, "10": {"name": "Hanakujira honten", "lat": 34.6946, "lon": 135.4871, "url": "https://maps.app.goo.gl/hRHXdwzPzJUmRGfN9"}, "11": {"name": "Daiko Sushi honten", "lat": 34.6497915, "lon": 135.5061446, "url": "https://maps.google.com/?cid=15134371316587236401"}, "12": {"name": "Rokusen Sushi Tsutenkaku", "lat": 34.6527468, "lon": 135.5062688, "url": "https://maps.google.com/?cid=17176441973772918911"}, "13": {"name": "Uoshin Sushi Shinsaibashi", "lat": 34.6739235, "lon": 135.5024631, "url": "https://maps.google.com/?cid=8842138768329540273"}, "14": {"name": "Ramen Bukkoshi", "lat": 34.6885176, "lon": 135.5076259, "url": "https://maps.google.com/?cid=15243957712833055394"}, "15": {"name": "Kagawa-udon Kitashinchi", "lat": 34.6978918, "lon": 135.4976279, "url": "https://maps.google.com/?cid=12297340603286855047"}, "16": {"name": "Ishibashi Shokuhin", "lat": 34.6650998, "lon": 135.5070408, "url": "https://maps.google.com/?cid=17219655171291354842"}, "17": {"name": "Nabeya", "lat": 34.6442008, "lon": 135.5011133, "url": "https://maps.google.com/?cid=18230356705201633677"}, "18": {"name": "Ie Shige", "lat": 34.7066775, "lon": 135.5073032, "url": "https://maps.google.com/?cid=12601464365516000121"}, "19": {"name": "Yakitori Sanzen", "lat": 34.6882325, "lon": 135.5140416, "url": "https://maps.google.com/?cid=17655392979059327079"}, "20": {"name": "Hakuundai Tsuruhashi", "lat": 34.6654764, "lon": 135.5300442, "url": "https://maps.google.com/?cid=12485286075232686059"}, "21": {"name": "Hakuundai Grand Front", "lat": 34.704258, "lon": 135.4949443, "url": "https://maps.google.com/?cid=14228122968292675460"}, "22": {"name": "Yakiniku Mitsuru", "lat": 34.6737677, "lon": 135.5022823, "url": "https://maps.google.com/?cid=4980008302685252879"}, "23": {"name": "Uma Yotsubashi", "lat": 34.67277, "lon": 135.4967813, "url": "https://maps.google.com/?cid=1095829155044768800"}, "24": {"name": "Onigiri Gorichan", "lat": 34.7071179, "lon": 135.5058786, "url": "https://maps.google.com/?cid=5273802679295432360"}, "25": {"name": "grenier", "lat": 34.7035422, "lon": 135.4991909, "url": "https://maps.google.com/?cid=4885162933966756039"}, "26": {"name": "aoma coffee", "lat": 34.6814, "lon": 135.5024, "url": "https://maps.app.goo.gl/a6caNjRxmH4DXR44A"}, "27": {"name": "Roji Cafe", "lat": 34.7081, "lon": 135.5102, "url": "https://maps.app.goo.gl/oquAxfsyoLKZoGQy5"}, "28": {"name": "Notequal Coffee", "lat": 34.6809, "lon": 135.5036, "url": "https://maps.app.goo.gl/5REqAHeuFbHpBB2NA"}, "29": {"name": "Melbourne Coffee Senba", "lat": 34.6779, "lon": 135.502, "url": "https://maps.app.goo.gl/XkVRKpE85pUuTRae8"}, "30": {"name": "Mole & Hosoi Coffees", "lat": 34.6891, "lon": 135.5018, "url": "https://maps.app.goo.gl/Fvj66Dr9hDiCtFwt9"}, "31": {"name": "SHIMATONERIKO", "lat": 34.6447, "lon": 135.5151, "url": "https://maps.app.goo.gl/1YsWrF6HHS12GM6N7"}, "32": {"name": "Saturdays NYC", "lat": 34.6756, "lon": 135.4979, "url": "https://maps.app.goo.gl/Ea2XRYr1iyjBxmsu5"}, "33": {"name": "Spectacle Kitahama", "lat": 34.6903488, "lon": 135.5093264, "url": "https://maps.google.com/?cid=2246540390906561902"}, "34": {"name": "Rivoli", "lat": 34.6877242, "lon": 135.5074885, "url": "https://maps.google.com/?cid=8434763051379690132"}, "35": {"name": "Mansarde", "lat": 34.7082495, "lon": 135.5034444, "url": "https://maps.google.com/?cid=10448013461445657814"}, "36": {"name": "Manmanki", "lat": 34.6684, "lon": 135.4995, "url": "https://maps.app.goo.gl/5ox63xbe6cpLZXsg6"}, "37": {"name": "Bar Seven", "lat": 34.6679, "lon": 135.5018, "url": "https://maps.app.goo.gl/vPcRWdro36thTdjF6"}, "38": {"name": "Luv Wine Namba", "lat": 34.6663, "lon": 135.4989, "url": "https://maps.app.goo.gl/Z6AciSS3z4qhoNPv9"}, "39": {"name": "Shudon Ario", "lat": 34.6620556, "lon": 135.4968293, "url": "https://maps.google.com/?cid=14293254747410148118"}, "40": {"name": "Akagakiya Namba", "lat": 34.6663211, "lon": 135.5022005, "url": "https://maps.google.com/?cid=13769389827459796874"}, "41": {"name": "CRAFTROOM", "lat": 34.6986077, "lon": 135.4961332, "url": "https://maps.google.com/?cid=273993575549924215"}, "42": {"name": "Nikai no Oasis KITTE Osaka", "lat": 34.7004907, "lon": 135.4941224, "url": "https://maps.google.com/?cid=12350169142246624256"}, "43": {"name": "Ebisu Bridge & Dotonbori", "lat": 34.6691, "lon": 135.5013, "url": "https://maps.app.goo.gl/WaDFD5NCBPPYQLx7A"}, "44": {"name": "Osaka Castle", "lat": 34.6873, "lon": 135.5259, "url": "https://www.google.com/maps/search/?api=1&query=Osaka+Castle"}, "45": {"name": "Shitennō-ji", "lat": 34.6545, "lon": 135.5165, "url": "https://maps.app.goo.gl/C1XpHUcgMBRRREwk8"}, "46": {"name": "Shubodai", "lat": 34.8318, "lon": 135.4272, "url": "https://maps.app.goo.gl/g1hxcX8Ah5Q3S4nc9"}, "47": {"name": "Ishikiri Tsurugiya Jinja", "lat": 34.6823, "lon": 135.6463, "url": "https://maps.app.goo.gl/dgJnc7e3JwWpEw2HA"}, "48": {"name": "Fujita Museum", "lat": 34.6947381, "lon": 135.5255326, "url": "https://maps.google.com/?cid=8369724044415383612"}, "49": {"name": "Hiraoka Park", "lat": 34.6740958, "lon": 135.6545298, "url": "https://maps.google.com/?cid=11692419480026569457"}, "50": {"name": "Nukatayama viewpoint", "lat": 34.672718, "lon": 135.656547, "url": "https://maps.google.com/?cid=3932455855687598971"}, "51": {"name": "LUCUA Osaka", "lat": 34.7028866, "lon": 135.4953236, "url": "https://maps.google.com/?cid=7138839288115191113"}, "52": {"name": "Top of the Hill", "lat": 34.7028201, "lon": 135.4950815, "url": "https://maps.google.com/?cid=8484884090507537407"}, "53": {"name": "FREAK'S STORE", "lat": 34.7030742, "lon": 135.4957624, "url": "https://maps.google.com/?cid=776548195959436025"}, "54": {"name": "B-Shop Grand Front", "lat": 34.7038457, "lon": 135.4947901, "url": "https://maps.google.com/?cid=13786622733799975056"}, "55": {"name": "B-Shop Namba Parks", "lat": 34.6625108, "lon": 135.5020254, "url": "https://maps.google.com/?cid=1118006480312981401"}, "56": {"name": "BEAMS Namba", "lat": 34.6643388, "lon": 135.5008973, "url": "https://maps.google.com/?cid=6467389678483146118"}, "57": {"name": "ichimaruni", "lat": 34.7089294, "lon": 135.5045066, "url": "https://maps.google.com/?cid=9103070976864902258"}, "58": {"name": "kindal Umeda", "lat": 34.7076229, "lon": 135.4990846, "url": "https://maps.google.com/?cid=12676902649691529848"}, "59": {"name": "2nd Street Umeda", "lat": 34.707777, "lon": 135.499292, "url": "https://maps.google.com/?cid=11751890896027012926"}}}, "wakayama": {"hotels": [{"name": "JR Wakayama Station", "lat": 34.2321803, "lon": 135.1917916, "url": "https://www.google.com/maps/search/?api=1&query=JR+Wakayama+Station"}], "places": {"1": {"name": "Katto", "lat": 34.231044499999996, "lon": 135.1900757, "url": "https://maps.google.com/?cid=3540497299708346347"}, "2": {"name": "Niyoro", "lat": 34.2330401, "lon": 135.1881569, "url": "https://maps.google.com/?cid=1221958384847454444"}, "3": {"name": "Kalbi 1cho", "lat": 34.2335338, "lon": 135.1886719, "url": "https://maps.google.com/?cid=11554976602232267605"}, "4": {"name": "Yakitori Kairo", "lat": 34.2384353, "lon": 135.1791332, "url": "https://maps.google.com/?cid=7804657641492008548"}, "5": {"name": "BRIDGE", "lat": 34.2342381, "lon": 135.1724671, "url": "https://maps.google.com/?cid=2290438624177363043"}, "6": {"name": "Ichidai", "lat": 34.225703599999996, "lon": 135.169587, "url": "https://maps.google.com/?cid=1833223725525101210"}, "7": {"name": "Maruman Ramen", "lat": 34.2314699, "lon": 135.17057269999998, "url": "https://maps.google.com/?cid=11560120881329501842"}, "8": {"name": "Umimachi Shokudo Urara", "lat": 34.1902445, "lon": 135.144645, "url": "https://maps.google.com/?cid=5911579447961568639"}, "9": {"name": "Goen", "lat": 34.231074899999996, "lon": 135.1910408, "url": "https://maps.google.com/?cid=16494497776411410737"}, "10": {"name": "Bandoko Garden", "lat": 34.1906797, "lon": 135.14067989999998, "url": "https://maps.google.com/?cid=6190730922807149711"}, "11": {"name": "Wakayama Castle", "lat": 34.2276558, "lon": 135.1715109, "url": "https://www.google.com/maps/search/?api=1&query=Wakayama+Castle"}, "12": {"name": "Kishi Station", "lat": 34.2093, "lon": 135.3121, "url": "https://maps.google.com/?cid=17241543118648371379"}, "13": {"name": "Awashima Shrine", "lat": 34.2737, "lon": 135.0664, "url": "https://maps.google.com/?cid=15657838165788794839"}, "14": {"name": "Koyasan", "lat": 34.2132, "lon": 135.5863, "url": "https://maps.google.com/?cid=11714349864090713783"}}}, "shirahama": {"hotels": [{"name": "Dormitory Sandanya Guesthouse", "lat": 33.6662113, "lon": 135.3368365, "url": "https://maps.app.goo.gl/6sgeUW4YiEcYHqxr9"}], "places": {"1": {"name": "Dakishimetai", "lat": 33.674535999999996, "lon": 135.33741179999998, "url": "https://maps.google.com/?cid=10240352576288176698"}, "2": {"name": "Yakiniku Man", "lat": 33.6832646, "lon": 135.3485744, "url": "https://maps.google.com/?cid=4356415629714341682"}, "3": {"name": "Toretore Market", "lat": 33.6813502, "lon": 135.3752515, "url": "https://maps.google.com/?cid=7938307802199390379"}, "4": {"name": "Tsumugi Cafe", "lat": 33.668306, "lon": 135.334818, "url": "https://maps.app.goo.gl/cVsnAEcKvUkGaXHL8"}, "5": {"name": "Miyuki Sushi", "lat": 33.6750843, "lon": 135.3402668, "url": "https://maps.app.goo.gl/1zX18KPgxKSMuwFJ8"}, "6": {"name": "Ikesu Warouda / Sushi Yata", "lat": 33.675353099999995, "lon": 135.3373919, "url": "https://maps.google.com/?cid=10848447305798194294"}, "7": {"name": "Ban-ya", "lat": 33.676940699999996, "lon": 135.3413859, "url": "https://maps.google.com/?cid=15270952934666379931"}, "8": {"name": "Sumibi Dining Hayate", "lat": 33.6835692, "lon": 135.3502521, "url": "https://maps.google.com/?cid=14075486803131133320"}, "9": {"name": "Mame no Yu", "lat": 33.6825212, "lon": 135.3463572, "url": "https://maps.google.com/?cid=3195587893017237390"}, "10": {"name": "Popular Bar Chokyu", "lat": 33.6795273, "lon": 135.34422469999998, "url": "https://maps.google.com/?cid=7785594314647488227"}, "11": {"name": "Saki-no-Yu", "lat": 33.676823999999996, "lon": 135.3369842, "url": "https://maps.google.com/?cid=17602803442712138027"}, "12": {"name": "Hamachidori-no-yu Kaishu", "lat": 33.673034, "lon": 135.334343, "url": "https://maps.google.com/?cid=3390272157845678808"}, "13": {"name": "Senjojiki Rock Plateau", "lat": 33.6707012, "lon": 135.3304584, "url": "https://maps.app.goo.gl/X7obhxQpo7ApiCdNA"}, "14": {"name": "Ura-Senjojiki", "lat": 33.6689484, "lon": 135.33135099999998, "url": "https://maps.google.com/?cid=12856806204964319956"}, "15": {"name": "Kumano Sansho Shrine", "lat": 33.6851069, "lon": 135.34242949999998, "url": "https://maps.google.com/?cid=11663528559639994824"}, "16": {"name": "Kumano Kodo Nakahechi", "lat": 33.7836, "lon": 135.5166, "url": "https://maps.google.com/?cid=8946960721844952529"}}}, "kyoto": {"hotels": [{"name": "Hotel ZIZI Horikawa Gojo", "lat": 34.9976817, "lon": 135.7540521, "url": "https://maps.app.goo.gl/jgtEtLKyQvY8QCyL6"}, {"name": "Kyoto Plaza Hotel Kintetsu Jujo", "lat": 34.9734786, "lon": 135.7472537, "url": "https://maps.app.goo.gl/QCL8hgja5Wy7ZZxy6"}], "places": {"1": {"name": "Ramen Mugyu Vol. 2", "lat": 35.006548, "lon": 135.7602896, "url": "https://maps.app.goo.gl/MTMqmLb44jYt3tQr7"}, "2": {"name": "Rokkaku Ace", "lat": 35.0074364, "lon": 135.7638627, "url": "https://maps.app.goo.gl/t3BPCqP94pLCnFpY8"}, "3": {"name": "Kyogoku Kaneyo", "lat": 35.007592, "lon": 135.767949, "url": "https://maps.app.goo.gl/d1dSvUQgKdxh59pw8"}, "4": {"name": "Kitchen Gon Rokkaku", "lat": 35.0072273, "lon": 135.7627796, "url": "https://maps.app.goo.gl/JHsjYDhMVoTa2JYR8"}, "5": {"name": "Gyukatsu Kyoto Katsugyu", "lat": 35.005403, "lon": 135.7669232, "url": "https://maps.app.goo.gl/pxXWHSLYfdYrQe2C8"}, "6": {"name": "Kyo-Motsunabe Kamehachi", "lat": 35.0072749, "lon": 135.7707854, "url": "https://maps.app.goo.gl/KH59QUEssErBdUuRA"}, "7": {"name": "Ten no Meshi Gion", "lat": 35.0042282, "lon": 135.7745187, "url": "https://maps.app.goo.gl/Qphf8UeRnZ5U9pX67"}, "8": {"name": "Hikiniku to Come", "lat": 35.0051, "lon": 135.7746, "url": "https://maps.google.com/?cid=5604413755966420161"}, "9": {"name": "Kunton Akutagawa", "lat": 35.0064, "lon": 135.7667, "url": "https://maps.google.com/?cid=13196192196322562881"}, "10": {"name": "Nishiki Market", "lat": 35.005, "lon": 135.7647, "url": "https://maps.google.com/?cid=13159134450370243740"}, "11": {"name": "Second House Cake Works", "lat": 35.0064319, "lon": 135.7609654, "url": "https://maps.app.goo.gl/3CBqHFL6P8rh8Zab6"}, "12": {"name": "Micasadeco & Cafe", "lat": 35.0058856, "lon": 135.7657151, "url": "https://maps.app.goo.gl/4L5zU4MjY3mS6PuR8"}, "13": {"name": "Itoh Kyuemon Sabo", "lat": 35.0036759, "lon": 135.7731794, "url": "https://maps.app.goo.gl/qP44cdyMzwYrJ8hZA"}, "14": {"name": "Cafe Bibliotic Hello!", "lat": 35.0137, "lon": 135.7642, "url": "https://maps.google.com/?cid=9811042860654385097"}, "15": {"name": "Kinkaku-ji", "lat": 35.03937, "lon": 135.7292431, "url": "https://maps.app.goo.gl/C7yMTuzNasRxVTK87"}, "16": {"name": "Yasaka Shrine", "lat": 35.0036559, "lon": 135.7785534, "url": "https://maps.app.goo.gl/r2T89NW5XDg5C6Gn6"}, "17": {"name": "Nanzen-ji", "lat": 35.0114138, "lon": 135.7944841, "url": "https://maps.app.goo.gl/42GvsGz7u1fjYyRs8"}, "18": {"name": "Anraku-ji", "lat": 35.0216167, "lon": 135.7966367, "url": "https://maps.app.goo.gl/98J73Gu88dbsEw5i9"}, "19": {"name": "Tōfuku-ji", "lat": 34.976025, "lon": 135.7737627, "url": "https://maps.app.goo.gl/J86VZzDy6UqLb7Jm8"}, "20": {"name": "Arashiyama Yusai-Tei", "lat": 35.0141337, "lon": 135.6709556, "url": "https://maps.app.goo.gl/BxhAA4TK4mPumWgk7"}, "21": {"name": "Jōjakkō-ji", "lat": 35.0198102, "lon": 135.6686405, "url": "https://maps.app.goo.gl/Zs3ALEwkemQo9Ury8"}, "22": {"name": "Kiyomizu-dera", "lat": 34.9947, "lon": 135.7847, "url": "https://maps.google.com/?cid=7111013964196361402"}, "23": {"name": "Ginkaku-ji", "lat": 35.027, "lon": 135.7982, "url": "https://maps.google.com/?cid=2705196751698570185"}, "24": {"name": "Honnō-ji", "lat": 35.0103, "lon": 135.7683, "url": "https://maps.google.com/?cid=2201652011559631590"}, "25": {"name": "Rokudō Chinnō-ji", "lat": 34.9983, "lon": 135.7754, "url": "https://maps.google.com/?cid=5165877923149119340"}, "26": {"name": "Saihō-ji (Kokedera)", "lat": 34.9922, "lon": 135.6837, "url": "https://maps.google.com/?cid=12604676872959930581"}, "27": {"name": "Daihikaku Senkō-ji", "lat": 35.0158, "lon": 135.6656, "url": "https://maps.google.com/?cid=14257992469760671362"}, "28": {"name": "Arashiyama Monkey Park", "lat": 35.0114, "lon": 135.6766, "url": "https://maps.google.com/?cid=1960354123061081266"}, "29": {"name": "Mount Hiei", "lat": 35.0622, "lon": 135.8315, "url": "https://maps.google.com/?cid=16309124816119328751"}, "30": {"name": "Former Chikurin-in", "lat": 35.0716, "lon": 135.8658, "url": "https://maps.google.com/?cid=13309011099031202891"}, "31": {"name": "Kurama Onsen", "lat": 35.1192, "lon": 135.7766, "url": "https://maps.google.com/?cid=6234670849390713272"}, "32": {"name": "Kyoto Tower", "lat": 34.9875, "lon": 135.7593, "url": "https://maps.google.com/?cid=17017157882742292436"}, "33": {"name": "GEAR non-verbal theatre", "lat": 35.0085, "lon": 135.7665, "url": "https://maps.google.com/?cid=590976552152252111"}, "34": {"name": "Naniwa Camera", "lat": 35.0039, "lon": 135.7662, "url": "https://maps.google.com/?cid=9608848783477973023"}}}, "nara": {"hotels": [{"name": "Kintetsu Nara Station", "lat": 34.6842485, "lon": 135.8275275, "url": "https://www.google.com/maps/search/?api=1&query=Kintetsu+Nara+Station"}], "places": {}}, "hikone": {"hotels": [{"name": "Hotel Sunroute Hikone", "lat": 35.2730945, "lon": 136.262185, "url": "https://maps.app.goo.gl/9NpEg9hq8h4yYqeu7"}], "places": {"1": {"name": "Jinnosuke Coffee", "lat": 35.1392, "lon": 136.0884, "url": "https://maps.google.com/?cid=1420078449805569034"}, "2": {"name": "Hikone Castle", "lat": 35.2763, "lon": 136.2519, "url": "https://www.google.com/maps/search/?api=1&query=Hikone+Castle"}, "3": {"name": "Yutani Shrine", "lat": 35.3128, "lon": 136.2953, "url": "https://maps.google.com/?cid=2770015437704597159"}, "4": {"name": "Chikubu Island", "lat": 35.4232, "lon": 136.1437, "url": "https://maps.google.com/?cid=2901414486857167280"}, "5": {"name": "Kyorinbo", "lat": 35.1389, "lon": 136.164, "url": "https://maps.google.com/?cid=1454445400296920734"}, "6": {"name": "Omihachiman", "lat": 35.1284, "lon": 136.098, "url": "https://maps.google.com/?cid=8511313074295460791"}, "7": {"name": "Shirahige Shrine", "lat": 35.2745, "lon": 136.011, "url": "https://maps.google.com/?cid=13664484576260554187"}, "8": {"name": "Keisokuji", "lat": 35.5061, "lon": 136.2579, "url": "https://maps.google.com/?cid=2366704082444976644"}, "9": {"name": "Yogo Station", "lat": 35.5339, "lon": 136.1997, "url": "https://maps.google.com/?cid=1657791961354483095"}}}};
   const root = document.getElementById("jp26"); if (!root) return;
   const html = document.documentElement;
   // theme: auto (follows the phone) / dark / light

@@ -76,9 +76,10 @@ Each category has a title, a local-language label (`jp`), a colour, a light tint
 | drinks | Drinks | #8A5AA6 |
 | onsen | Hot springs | #6C7FC4 |
 | sights | Sights (e.g. "Temples & sights") | #4F9A6A |
+| shop | Shopping | #5F6E7E |
 | trips | Day trips / Further out | #3E8FA8 |
 
-The "Food" filter chip includes Must-eats.
+The "Food" filter chip includes Must-eats. To add a category, also add its key to `CATKEYS` in `build_site.py`, its icon to `ICONS`, and its `jp` label characters to `JP_CHARS`. The category colours don't all pass a colour-blind check on their own, so pins always carry their number and cards their section title; keep that if colours are added.
 
 ### A place
 Each place is a tuple:
@@ -254,3 +255,4 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 - **v1.2.1:** stronger search-engine hiding. The source and these docs were added to the repo.
 - **v1.3:** autumn leaves forecast in every tab, leaves lines and an Autumn leaves filter, the Nara placeholder tab, and the Kiyomizu-dera light-up dates corrected.
 - **v1.4:** photos on cards, with a tap-to-enlarge view and a source link.
+- **v1.5:** 34 Osaka places from the shared Osaka list, and a Shopping section.

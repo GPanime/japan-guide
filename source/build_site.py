@@ -26,9 +26,9 @@ OUTDIR = os.path.join(HERE, "out")
 os.makedirs(OUTDIR, exist_ok=True)
 EXT = 'target="_blank" rel="noopener"'
 MOODS = ["Must-go", "Quick bite", "Late night", "Low energy", "Outdoors", "Photo spot", "Autumn leaves"]
-CATKEYS = ["food", "sweets", "coffee", "drinks", "onsen", "sights", "trips"]
+CATKEYS = ["food", "sweets", "coffee", "drinks", "onsen", "sights", "shop", "trips"]
 FILTER_MIN = 8  # show filters only when a city has this many places
-JP_CHARS = "大阪絶対ごはん甘味珈琲乾杯温泉名所日帰り白浜京都彦根和歌山奈良紅葉"
+JP_CHARS = "大阪絶対ごはん甘味珈琲乾杯温泉名所日帰り白浜京都彦根和歌山奈良紅葉買い物"
 _LEAF_D = "M0 -10 L2.4 -4 L8.5 -6 L5 -1 L10 2 L4 2.6 L5 8 L0 4.4 L-5 8 L-4 2.6 L-10 2 L-5 -1 L-8.5 -6 L-2.4 -4Z M-0.9 4 h1.8 v7 h-1.8z"
 LEAF_URI = "data:image/svg+xml," + urllib.parse.quote(f"<svg xmlns='http://www.w3.org/2000/svg' viewBox='-11 -11 22 23'><path d='{_LEAF_D}'/></svg>", safe="/:=' ")
 
@@ -369,9 +369,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.4"
-VDATE = "Oct 29, 2026"
+VERSION = "1.5"
+VDATE = "Nov 1, 2026"
 CHANGELOG = [
+    ("1.5", "Nov 1, 2026", "Osaka: 34 places added from the shared Osaka list (sushi, oden, yakiniku, sukiyaki, bars, breakfast spots, a museum garden, a viewpoint) and a new Shopping section."),
     ("1.4", "Oct 29, 2026", "Photos on cards: tap to enlarge, with a link to the source. First one on aoma coffee."),
     ("1.3", "Oct 27, 2026", "Autumn leaves forecast in every tab, a leaves line on matching cards and an Autumn leaves filter. New optional Nara day trip tab (placeholder). Kiyomizu-dera light-up dates corrected: 2026 not announced yet."),
     ("1.2.1", "Oct 16, 2026", "Stronger instructions telling search engines not to list, cache or preview the page."),
