@@ -130,15 +130,16 @@ Only photos the user sends. Never pick or copy photos from elsewhere yourself.
 The photo sits at the top of the card. Tapping it opens a full-screen view (`.phbox`, shown with `:target`, so no JavaScript), and tapping anywhere closes it. Each photo is about 20-50 KB per size; the GitHub Pages limit is 1 GB for the whole site.
 
 ### Autumn leaves forecast (`source/leaves.py`)
-- `SPOTS[stop]`: forecast spots in display order, as (name, peak from "M/D", leaves start to fall "M/D").
+- `SPOTS[stop]`: forecast spots in display order, as (name, Weathernews peak "M/D", Weathernews falling "M/D", tenki.jp period). The tenki.jp period is copied as written on its spot page ("11月下旬～12月上旬", "12月上旬", or a start date like "11/13～") and turned into dates by `tenki_range()`. Either source can be missing (None / ""). `WN_IDS` keeps the Weathernews spot ids for the next refresh.
 - `CARDS[stop]`: links a card (by its name in data.py) to a spot: (spot name, `False`) when the forecast is for that exact place, or (spot name, "Eikandō, on the same hillside") for an estimate from a nearby spot. The build stops if a name doesn't match a card.
 - `STAYS[stop]`: our days there, as (label, first day, last day). They are shaded on the timeline, and each card gets a badge per stay: "at peak", "peak from Nov 20", "peak, falling from Dec 2", "still colouring" or "leaves falling". These are worked out from the dates by `status()`.
 - `VERDICT[stop]`: one or two plain sentences at the top of the panel. Rewrite them when the dates change.
-- `CHECKED`, `SOURCES`, and the chart's range (`START`, `END`).
+- `CHECKED`, `SOURCES`, `CONTEXT` (one line on the city-level forecasts) and the chart's range (`START`, `END`).
+- Stay badges use Weathernews when a spot has it, otherwise the tenki.jp period (`window()`).
 
-The timeline is plain HTML and CSS, so it works without JavaScript: a bar per spot from the start of peak to the start of falling (solid if it's on our list, striped if it's only nearby), the stay days as shaded bands, a legend, the dates written under each name, and a tooltip on hover or tap. Bar colours were checked with the dataviz palette validator: `#D9483B` on light, `#E8604E` on dark.
+The timeline is plain HTML and CSS, so it works without JavaScript: per spot, a red Weathernews bar from the start of peak to the start of falling (solid if it's on our list, striped if it's only nearby) and a thin blue tenki.jp bar for its peak period, the stay days as shaded bands, a legend, the dates written under each name, and a tooltip on hover or tap. Bar colours were checked with the dataviz palette validator: red `#D9483B` / blue `#3F6FB0` on light, `#E8604E` / `#6A96DA` on dark.
 
-**To refresh the forecast:** open the Weathernews spot pages (weathernews.jp/koyo/area/kinki/ lists them by prefecture). Each says 見頃予想 "見頃 X月Y日頃〜" (peak from) and "落葉はじめ" (leaves start to fall). Update `SPOTS`, `CHECKED` and the verdicts, then cross-check against official sources: the JMA average dates (data.jma.go.jp/sakura/data/phn_014.html) and Kyoto City's reports (from late October). Light-up dates (Kiyomizu-dera, Genkyū-en) are announced by the temples, usually in October or November.
+**To refresh the forecast:** open the Weathernews spot pages (ids in `WN_IDS`; each says 見頃予想 "見頃 X月Y日頃〜" and "落葉はじめ") and the tenki.jp spot pages (tenki.jp/kouyou/6/ by prefecture; each says 今年の見頃予想). tenki.jp's national overview is tenki.jp/kouyou/expectation.html. Update `SPOTS`, `CHECKED` and the verdicts, then cross-check against official sources: the JMA average dates (data.jma.go.jp/sakura/data/phn_014.html) and Kyoto City's reports (from late October). Light-up dates (Kiyomizu-dera, Genkyū-en) are announced by the temples, usually in October or November.
 
 ### Map settings (`map=dict(...)`)
 - `k`: map units per km (the scale). `W` and `H`: canvas size (100 wide). `ycenter_shift`: moves the content down to leave room at the top.
@@ -262,3 +263,4 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 - **v1.6:** Hikone tab renamed Shiga, with the full Shiga list, a photo on every place from it (frames from two YouTube videos), multi-photo cards and an inspiration videos box.
 - **v1.6.1:** one shared credit for the Shiga photos, pointing to the videos box.
 - **v1.7:** Uji added to Kyoto (10 places, photos from the Uji video in Kyoto's videos box) and Uji spots in the leaves forecast.
+- **v1.8:** 17 more Kyoto places (Arashiyama and Saga, Shimogamo, Ichijoji) with photos and two more videos; leaves forecast refreshed with tenki.jp alongside Weathernews.

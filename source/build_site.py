@@ -118,11 +118,21 @@ def lv_pct(d):
 
 
 def lv_spot(k, name):
-    return next((LV.day(p), LV.day(f)) for n, p, f in LV.SPOTS[k] if n == name)
+    return next(sp for sp in LV.SPOTS[k] if sp[0] == name)
 
 
 def lv_stays(k):
     return [(lbl, LV.day(a), LV.day(b)) for lbl, a, b in LV.STAYS[k]]
+
+
+def lv_text(sp, about=""):
+    """'peak from Nov 22, falling from Dec 9 (Weathernews); tenki.jp: late Nov-early Dec' for one spot."""
+    name, p, f, t = sp
+    tr = LV.tenki_range(t)
+    parts = []
+    if p: parts.append(f"peak from {about}{LV.fmt(LV.day(p))}, falling from {about}{LV.fmt(LV.day(f))} (Weathernews)")
+    if tr: parts.append(f"tenki.jp: {tr[2]}")
+    return "; ".join(parts)
 
 
 def leaves_line(city, name):
@@ -131,17 +141,17 @@ def leaves_line(city, name):
     m = LV.CARDS.get(k, {}).get(name)
     if not m: return ""
     spot, est = m
-    peak, fall = lv_spot(k, spot)
-    about = "about " if est else ""
+    sp = lv_spot(k, spot)
+    peak, fall = LV.window(sp)
     head = f"Leaves, estimate from {est}" if est else "Leaves forecast"
     badges = "".join(f'<span class="lvb {cls}">{esc(lbl)} · {esc(txt)}</span>'
                      for lbl, a, b in lv_stays(k) for cls, txt in [LV.status(peak, fall, a, b)])
-    return (f'<div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">{esc(head)}: peak from {about}{LV.fmt(peak)}, '
-            f'falling from {about}{LV.fmt(fall)}.</span> {badges}</div></div>')
+    return (f'<div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">{esc(head)}: {esc(lv_text(sp, "about " if est else ""))}.</span> '
+            f'{badges}</div></div>')
 
 
 def leaves_panel(city):
-    """Per-stop panel: verdict, then a timeline with one bar per forecast spot and the stay days shaded."""
+    """Per-stop panel: verdict, then a timeline with one row per forecast spot (two forecasters) and the stay days shaded."""
     k = city["key"]
     if k not in LV.SPOTS: return ""
     stays = lv_stays(k)
@@ -154,36 +164,52 @@ def leaves_panel(city):
     ticks = "".join(f'<span style="left:{lv_pct(LV.day(t)):.2f}%">{lbl}</span>'
                     for t, lbl in (("11/10", "Nov 10"), ("11/20", "Nov 20"), ("11/30", "Nov 30"), ("12/10", "Dec 10")))
     rows = []
-    for name, p, f in LV.SPOTS[k]:
-        peak, fall = LV.day(p), LV.day(f)
-        exact = [c for c, (sp, est) in cards.items() if sp == name and not est]
-        ests = [c for c, (sp, est) in cards.items() if sp == name and est]
+    has = {"wn": False, "off": False, "tk": False}
+    for sp in LV.SPOTS[k]:
+        name, p, f, t = sp
+        tr = LV.tenki_range(t)
+        exact = [c for c, (s_, est) in cards.items() if s_ == name and not est]
+        ests = [c for c, (s_, est) in cards.items() if s_ == name and est]
         link = []
         if exact: link.append("on our list" if exact == [name] else "our list: " + ", ".join(exact))
         if ests: link.append("estimate for " + ", ".join(ests))
-        sub = f'{LV.fmt_range(peak, fall)} · {"; ".join(link) if link else "not on our list"}'
-        tip = (f"{name}: peak from {LV.fmt(peak)}, leaves start to fall from {LV.fmt(fall)}. "
-               + " ".join(f"{lbl}: {LV.status(peak, fall, a, b)[1]}." for lbl, a, b in stays))
-        rows.append(f'<div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>{esc(name)}</b><small>{esc(sub)}</small></div>'
-                    f'<div class="lvtrack"><i class="lvbar{"" if (exact or ests) else " off"}" style="left:{lv_pct(peak):.2f}%;width:{lv_pct(fall) - lv_pct(peak):.2f}%"></i>'
-                    f'<span class="lvtip">{esc(tip)}</span></div></div>')
-    off_lg = '<span><i class="sw sw-off"></i>Peak colour (nearby, not on our list)</span>' if any(' off"' in r for r in rows) else ""
+        dates = []
+        if p: dates.append(LV.fmt_range(LV.day(p), LV.day(f)))
+        if tr: dates.append(f"tenki.jp {tr[2]}")
+        peak, fall = LV.window(sp)
+        tip = (f"{name}: {lv_text(sp)}. " + " ".join(f"{lbl}: {LV.status(peak, fall, a, b)[1]}." for lbl, a, b in stays))
+        bars = ""
+        if p:
+            off = not (exact or ests)
+            has["wn" if not off else "off"] = True
+            bars += f'<i class="lvbar{" off" if off else ""}" style="left:{lv_pct(LV.day(p)):.2f}%;width:{lv_pct(LV.day(f)) - lv_pct(LV.day(p)):.2f}%"></i>'
+        if tr:
+            has["tk"] = True
+            bars += f'<i class="lvtk" style="left:{lv_pct(tr[0]):.2f}%;width:{max(lv_pct(tr[1] + one) - lv_pct(tr[0]), 1.5):.2f}%"></i>'
+        rows.append(f'<div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>{esc(name)}</b><small>{esc(" · ".join(dates))}</small>'
+                    f'<small class="lvlink">{esc("; ".join(link) if link else "not on our list")}</small></div>'
+                    f'<div class="lvtrack">{bars}<span class="lvtip">{esc(tip)}</span></div></div>')
     stay_txt = " · ".join(f"{lbl}: {LV.fmt_range(a, b)}" for lbl, a, b in stays)
     if k in LV.STAY_TITLE: stay_txt = f"{LV.STAY_TITLE[k]} {stay_txt}"
-    on_lg = '<span><i class="sw sw-bar"></i>Peak colour (on our list)</span>' if any('lvbar"' in r for r in rows) else ""
+    legend = ""
+    if has["wn"]: legend += '<span><i class="sw sw-bar"></i>Weathernews: peak to leaves falling (on our list)</span>'
+    if has["off"]: legend += '<span><i class="sw sw-off"></i>Weathernews, nearby spot</span>'
+    if has["tk"]: legend += '<span><i class="sw sw-tk"></i>tenki.jp: peak period, to the nearest 10 days</span>'
     srcs = " · ".join(f'<a href="{esc(u)}" {EXT}>{esc(t)}</a>' for t, u in LV.SOURCES)
     return f'''<section class="leaves" id="jp-{k}-leaves">
     <div class="lvtxt"><div class="lvjp">紅葉</div><h2>Autumn leaves forecast</h2>
       <p class="lvverdict">{esc(LV.VERDICT[k])}</p>
-      <p class="lvnote">Each bar runs from the forecast start of peak colour to the day the leaves start to fall. There's still colour for a while after that.
-        Forecast checked {LV.CHECKED}. This autumn looks warm and a bit late, so dates can still move by a week.</p>
+      <p class="lvnote">Two forecasts per spot. The red bar is Weathernews, from the start of peak colour to the day the leaves start to fall; there's still colour for a while after that.
+        The thin blue bar is tenki.jp, which gives the peak to the nearest ten days. Where they disagree, the truth is often in between.
+        Checked {LV.CHECKED}. This autumn is warm, so dates can still move by a week.</p>
+      <p class="lvnote">{esc(LV.CONTEXT)}</p>
       <p class="lvsrc">Sources: {srcs}</p></div>
     <div class="lvwrap"><div class="lvchart">
       <div class="lvbands" aria-hidden="true">{grid}{bands}</div>
       <div class="lvhead" aria-hidden="true"><span></span><div class="lvtrack">{blabels}</div></div>
       <div class="lvrows" role="list" aria-label="Forecast by spot">{"".join(rows)}</div>
       <div class="lvaxis" aria-hidden="true"><span></span><div class="lvtrack">{ticks}</div></div></div>
-      <div class="lvlegend">{on_lg}{off_lg}
+      <div class="lvlegend">{legend}
         <span><i class="sw sw-stay"></i>{esc(stay_txt)}</span></div></div>
   </section>'''
 
@@ -393,9 +419,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.7"
+VERSION = "1.8"
 VDATE = "Nov 1, 2026"
 CHANGELOG = [
+    ("1.8", "Nov 1, 2026", "Kyoto: 17 more places (Arashiyama and Saga, Shimogamo, Ichijoji) with photos and two more videos. Leaves forecast refreshed for every stop, now with tenki.jp next to Weathernews."),
     ("1.7", "Nov 1, 2026", "Kyoto: Uji added (10 places with photos from the Uji video, linked in a new videos box) and Uji spots in the leaves forecast."),
     ("1.6.1", "Nov 1, 2026", "Shiga photos: one simple credit pointing to the two videos, instead of a link per photo."),
     ("1.6", "Nov 1, 2026", "Hikone tab renamed Shiga, with the full Shiga list (20 new places) and a photo on every place from the list. Links to the two videos that inspired it."),
@@ -524,7 +551,7 @@ def build():
 }}
 @media (max-width: 680px) {{ {R} .basics.two {{ grid-template-columns: minmax(0, 1fr); }} {R} .maphead span {{ display: none; }} }}
 /* ---- autumn leaves forecast ---- */
-{R} {{ --leaf: #D9483B; --leaftint: #FBE1DA; --stay: rgba(247, 178, 103, .26); }}
+{R} {{ --leaf: #D9483B; --leaf2: #3F6FB0; --leaftint: #FBE1DA; --stay: rgba(247, 178, 103, .26); }}
 {R} .i-leaf {{ -webkit-mask: url("{LEAF_URI}") center / contain no-repeat; mask: url("{LEAF_URI}") center / contain no-repeat; }}
 {R} .leaves {{ margin-top: 14px; background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--r); padding: 20px 22px;
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.75fr); gap: 16px 30px; scroll-margin-top: 110px; }}
@@ -547,7 +574,11 @@ def build():
 {R} .lvname {{ min-width: 0; padding-left: 4px; }}
 {R} .lvname b {{ display: block; font-size: 13.5px; line-height: 1.2; color: var(--ink); }}
 {R} .lvname small {{ display: block; font-size: 11.5px; font-weight: 700; color: var(--muted); line-height: 1.25; margin-top: 1px; }}
-{R} .lvbar {{ position: absolute; top: 50%; height: 10px; margin-top: -5px; border-radius: 4px; background: var(--leaf); min-width: 4px; }}
+{R} .lvbar {{ position: absolute; top: 50%; height: 10px; margin-top: -9px; border-radius: 4px; background: var(--leaf); min-width: 4px; }}
+{R} .lvtk {{ position: absolute; top: 50%; height: 4px; margin-top: 4px; border-radius: 2px; background: var(--leaf2); min-width: 4px; }}
+{R} .lvrow:not(:has(.lvbar)) .lvtk {{ margin-top: -2px; }}
+{R} .sw-tk {{ background: var(--leaf2); height: 4px; border-radius: 2px; }}
+{R} .lvname .lvlink {{ font-weight: 600; font-style: italic; }}
 {R} .lvbar.off, {R} .sw-off {{ background: repeating-linear-gradient(135deg, var(--leaf) 0 3px, color-mix(in srgb, var(--leaf) 30%, transparent) 3px 6px); }}
 {R} .lvtip {{ display: none; position: absolute; right: 0; bottom: calc(50% + 10px); z-index: 3; width: max-content; max-width: min(280px, 100%);
   background: var(--dark); color: var(--onDark); font-size: 12.5px; font-weight: 700; line-height: 1.35; padding: 7px 10px; border-radius: 10px; box-shadow: 0 4px 14px rgba(0,0,0,.18); }}
@@ -634,7 +665,7 @@ Changes:
         }
     DARK = ("--bg: #1C1613; --surface: #28201C; --surface2: #221B17; --ink: #F4E8DA; --soft: #E2CDB8; --muted: #B29D8D; "
             "--line: #3B302A; --chip: #362B25; --accent: #F07261; --dark: #F4E8DA; --onDark: #2A211C; --hero1: #3B2A2B; --hero2: #5E3B34; "
-            "--mapgrid: #3E3330; --maplbl: #8C7869; --day: #4A3229; --leaf: #E8604E; --leaftint: #4A2A24; --stay: rgba(247, 178, 103, .13); color-scheme: dark;")
+            "--mapgrid: #3E3330; --maplbl: #8C7869; --day: #4A3229; --leaf: #E8604E; --leaf2: #6A96DA; --leaftint: #4A2A24; --stay: rgba(247, 178, 103, .13); color-scheme: dark;")
     HEROES = (".hero-shirahama {{ background: linear-gradient(170deg, #3A2A30, #5B3A3A 60%, #6A4038); }} "
               ".hero-kyoto {{ background: linear-gradient(170deg, #3B2A2B, #5E3934 60%, #6E3F35); }} "
               ".hero-shiga {{ background: linear-gradient(170deg, #2F2E26, #4A3F30 60%, #5A4733); }} "

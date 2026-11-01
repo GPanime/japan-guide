@@ -1,27 +1,37 @@
-"""Autumn leaves forecast for each stop. build_site.py draws it as a timeline in every tab and adds a line to matching cards.
+"""Autumn leaves forecast for each stop, from two forecasters. build_site.py draws it as a timeline in every tab
+and adds a line to matching cards.
 
 How to refresh it (details in docs/GUIDE.md, "Autumn leaves forecast"):
-  1. Open the Weathernews spot pages (weathernews.jp/koyo/area/kinki/ lists them by prefecture).
-     Each page says 見頃予想 "見頃 X月Y日頃〜" (peak from) and "落葉はじめ X月Y日頃" (leaves start to fall).
-  2. Update the "peak" and "fall" dates below, and CHECKED.
-  3. Rebuild. The stay badges (at peak, still colouring...) are worked out from the dates.
+  1. Weathernews: open each spot page (weathernews.jp/koyo/spot/<id>/; the ids are in WN_IDS below). It says
+     見頃予想 "見頃 X月Y日頃〜" (peak from) and "落葉はじめ X月Y日頃" (leaves start to fall).
+  2. tenki.jp (Japan Weather Association): open each spot page (tenki.jp/kouyou/6/<pref>/<id>.html; prefecture lists
+     at tenki.jp/kouyou/6/). It says 今年の見頃予想, a period to the nearest ten days such as "11月下旬～12月上旬".
+     Copy it as it is; it's turned into dates when the page is built.
+  3. Update the dates below, CHECKED and the verdicts, then rebuild. Stay badges are worked out from the dates.
 
-SPOTS[city] lists forecast spots, in the order shown: (name, peak from "M/D", falling from "M/D").
+SPOTS[city] lists forecast spots in the order shown: (name, Weathernews peak "M/D", Weathernews falling "M/D", tenki.jp period).
+Either source can be missing (None for Weathernews, "" for tenki.jp).
 CARDS[city] links a card (by its name in data.py) to a spot: (spot name, estimate). estimate=False when the forecast is for
 that exact place; otherwise a short text such as "Eikando nearby", shown as "estimate from Eikando nearby".
 A spot with no linked card is drawn as "nearby, not on our list".
 """
 import datetime as _dt
+import re as _re
 
 YEAR = 2026
-CHECKED = "Oct 27, 2026"
+CHECKED = "Nov 1, 2026"
 START, END = "11/1", "12/20"          # the chart's date range
 
 SOURCES = [
-    ("Weathernews autumn leaves forecast (Kinki)", "https://weathernews.jp/koyo/area/kinki/"),
-    ("Japan Meteorological Agency: usual autumn leaf dates", "https://www.data.jma.go.jp/sakura/data/phn_014.html"),
-    ("Kyoto City: autumn leaves reports (from Oct 30)", "https://ja.kyoto.travel/flower/momiji/"),
+    ("Weathernews spot forecasts", "https://weathernews.jp/koyo/area/kinki/"),
+    ("tenki.jp forecast, 3rd update (Oct 28)", "https://tenki.jp/kouyou/expectation.html"),
+    ("tenki.jp spot forecasts (Kinki)", "https://tenki.jp/kouyou/6/"),
+    ("Nippon Kisho city forecast", "https://www.nippon.com/ja/japan-data/h02888/"),
+    ("Japan Meteorological Agency: usual dates", "https://www.data.jma.go.jp/sakura/data/phn_014.html"),
 ]
+# One line on the city-level forecasts, shown under the sources.
+CONTEXT = ("City-level forecasts for when the maples are fully red: Kyoto Dec 11, Osaka Dec 4, Wakayama Dec 11 (Nippon Kisho). "
+           "The usual dates are Kyoto Dec 5, Osaka Dec 1, Nara Nov 21, Hikone Nov 28 (Japan Meteorological Agency).")
 
 # the days we are there (or could go, for optional stops): (label, first day, last day)
 STAYS = {
@@ -34,31 +44,43 @@ STAYS = {
 }
 
 VERDICT = {
-    "osaka": "Still a bit early. Osaka Castle Park and Expo Park are forecast to reach peak around Nov 19-20, our last days here. Expect colour starting rather than full peak.",
-    "wakayama": "Not the right time in the city. The garden at Wakayama Castle peaks from about Dec 2. Koyasan, up in the mountains, will already be past peak by Nov 20.",
+    "osaka": "Still a bit early in the city. Osaka Castle Park and Expo Park are forecast to reach peak around Nov 19-20, our last days here. The hills to the north (Minoo, Katsuo-ji) now look a little earlier, from about Nov 14-20. tenki.jp expects mid to late November for most spots.",
+    "wakayama": "Not the right time in the city. The garden at Wakayama Castle peaks from about Dec 2. Koyasan, up in the mountains, peaks from about Nov 7 and starts falling around Nov 19, so Nov 20 is right at the end.",
     "shirahama": "Not a leaves stop. The coast stays green, and the nearest forecast spots inland peak after we leave.",
-    "kyoto": "The best timing of the trip. Most temples in the city are forecast to peak from about Nov 21-24, so both stays should be at or near peak. Mount Hiei comes earlier and will be past peak by the second stay. Uji comes a little later, from about Nov 24-29.",
-    "nara": "Go early. Nara Park is forecast to peak from Nov 11 and start falling from Nov 30, so a day trip from Osaka or early in the first Kyoto stay is best.",
-    "shiga": "Peak is just arriving. Genkyū-en garden below the castle is forecast to peak from Nov 28, during our stay, and its evening light-up runs until Nov 29.",
+    "kyoto": "Still the best timing of the trip. Weathernews has most temples at peak from about Nov 21-25, so both stays should be good. tenki.jp is a bit later, late November to early December, which favours the second stay. Mount Hiei comes earlier, and Uji a little later.",
+    "nara": "Later than the first forecast. Nara Park now peaks from about Nov 18 and should last into early December, so any of the possible days works. Murō-ji and Hase-dera in the hills are earlier on Weathernews, but tenki.jp disagrees.",
+    "shiga": "Good timing. Genkyū-en below the castle peaks from about Nov 28 (tenki.jp says early December), and Keisokuji up north is forecast for late November to early December. Kyorinbo moved earlier, to about Nov 25. The Genkyū-en evening light-up runs until Nov 29.",
 }
 
 SPOTS = {
-    "osaka": [("Expo '70 Commemorative Park", "11/19", "12/8"), ("Osaka Castle Park", "11/20", "12/10"),
-              ("Katsuo-ji, Minoh", "11/21", "12/9"), ("Minoo Park", "11/24", "12/9")],
-    "wakayama": [("Koyasan", "11/4", "11/16"), ("Momijidani garden, Wakayama Castle", "12/2", "12/19"),
-                 ("Negoro-ji", "12/3", "12/14")],
-    "shirahama": [("Kumano Nachi Taisha", "11/26", "12/6"), ("Kozagawa gorge", "12/2", "12/12")],
-    "kyoto": [("Enryaku-ji, Mount Hiei", "11/8", "11/26"), ("Ōhara Sanzen-in", "11/15", "12/3"),
-              ("Jōjakkō-ji", "11/21", "12/8"), ("Hiyoshi Taisha, Sakamoto", "11/21", "12/4"),
-              ("Tōfuku-ji", "11/22", "12/9"), ("Nanzen-ji", "11/23", "12/7"), ("Eikandō", "11/23", "12/5"),
-              ("Arashiyama", "11/23", "12/9"), ("Kiyomizu-dera", "11/24", "12/9"),
-              ("Kyoto Gyoen ginkgo trees", "11/25", "12/5"), ("Byōdō-in, Uji", "11/24", "12/7"), ("Uji River gorge", "11/24", "12/12"),
-              ("Ryōan-ji", "11/27", "12/14"), ("Kōshō-ji, Uji", "11/29", "12/8")],
-    "nara": [("Nara Park", "11/11", "11/30"), ("Hase-dera", "11/17", "12/4"), ("Shōryaku-ji", "11/19", "12/7"),
-             ("Chōgaku-ji", "11/21", "12/7"), ("Murō-ji", "11/24", "12/9")],
-    "shiga": [("Koto Sanzan (Hyakusai-ji)", "11/12", "12/2"), ("Eigen-ji", "11/11", "11/29"),
-               ("Genkyū-en, Hikone Castle", "11/28", "12/11"), ("Kyorinbo", "11/30", "12/14")],
+    "osaka": [("Katsuo-ji, Minoh", "11/14", "12/2", "11月下旬～12月上旬"), ("Expo '70 Commemorative Park", "11/19", "12/8", "11月中旬～12月上旬"),
+              ("Osaka Castle Park", "11/20", "12/10", ""), ("Minoo Park", "11/20", "12/5", "11月下旬～12月上旬")],
+    "wakayama": [("Koyasan", "11/7", "11/19", "10月下旬～11月上旬"), ("Momijidani garden, Wakayama Castle", "12/2", "12/19", "12月上旬"),
+                 ("Negoro-ji", "12/4", "12/15", "11月下旬～12月上旬")],
+    "shirahama": [("Kozagawa gorge", "11/26", "12/6", "11月下旬～12月上旬"), ("Kumano Nachi Taisha", "11/27", "12/7", "")],
+    "kyoto": [("Enryaku-ji, Mount Hiei", "11/9", "11/27", "11月上旬～11月中旬"), ("Ōhara Sanzen-in", "11/19", "12/7", "11月下旬～12月上旬"),
+              ("Jōjakkō-ji", "11/21", "12/8", "11月下旬～12月上旬"), ("Hiyoshi Taisha, Sakamoto", "11/21", "12/4", "11月下旬～12月上旬"),
+              ("Enkōji", "11/21", "12/6", "11月下旬～12月上旬"), ("Tōfuku-ji", "11/22", "12/9", "11月下旬～12月上旬"),
+              ("Nanzen-ji", "11/23", "12/7", ""), ("Eikandō", "11/23", "12/5", "11月下旬～12月上旬"),
+              ("Arashiyama", "11/23", "12/9", "11/13～"), ("Kiyomizu-dera", "11/24", "12/9", "12月上旬"),
+              ("Kyoto Gyoen ginkgo trees", "11/25", "12/5", ""), ("Byōdō-in, Uji", "11/24", "12/7", "11月下旬～12月上旬"),
+              ("Uji River gorge", "11/24", "12/12", ""), ("Ryōan-ji", "11/27", "12/14", "12月上旬"),
+              ("Kōshō-ji, Uji", "11/29", "12/8", "12月上旬"), ("Shimogamo Shrine", None, None, "12月上旬～12月中旬")],
+    "nara": [("Murō-ji", "11/8", "11/23", "11月下旬～12月上旬"), ("Hase-dera", "11/12", "11/29", "11月上旬～11月下旬"),
+             ("Chōgaku-ji", "11/16", "12/2", "12月上旬"), ("Nara Park", "11/18", "12/7", "10月下旬～12月上旬"),
+             ("Shōryaku-ji", "11/20", "12/8", "11月中旬～12月上旬")],
+    "shiga": [("Koto Sanzan (Hyakusai-ji)", "11/11", "12/1", "11月上旬～11月下旬"), ("Eigen-ji", "11/14", "12/2", "11月下旬～12月上旬"),
+              ("Kyorinbo", "11/25", "12/9", ""), ("Genkyū-en, Hikone Castle", "11/28", "12/11", "12月上旬"),
+              ("Keisokuji", None, None, "11月下旬～12月上旬")],
 }
+# Weathernews spot ids (weathernews.jp/koyo/spot/<id>/) and tenki.jp pages, for the next refresh.
+WN_IDS = {"Tōfuku-ji": 26111, "Kiyomizu-dera": 26112, "Arashiyama": 26101, "Jōjakkō-ji": 26134, "Ryōan-ji": 26131, "Kyoto Gyoen ginkgo trees": 26140,
+          "Ōhara Sanzen-in": 26103, "Nanzen-ji": 26105, "Enkōji": 26114, "Eikandō": 26120, "Byōdō-in, Uji": 26136, "Kōshō-ji, Uji": 26155,
+          "Uji River gorge": 26173, "Koyasan": 26503, "Enryaku-ji, Mount Hiei": 26104, "Kyorinbo": 26021, "Koto Sanzan (Hyakusai-ji)": 26008,
+          "Eigen-ji": 26001, "Hiyoshi Taisha, Sakamoto": 26003, "Genkyū-en, Hikone Castle": 26107, "Osaka Castle Park": 26207, "Minoo Park": 26202,
+          "Katsuo-ji, Minoh": 26222, "Expo '70 Commemorative Park": 26205, "Kumano Nachi Taisha": 26513, "Kozagawa gorge": 26512,
+          "Negoro-ji": 26504, "Momijidani garden, Wakayama Castle": 26514, "Nara Park": 26402, "Hase-dera": 26403, "Shōryaku-ji": 26410,
+          "Chōgaku-ji": 26411, "Murō-ji": 26422}
 
 CARDS = {
     "osaka": {"Osaka Castle": ("Osaka Castle Park", False)},
@@ -69,7 +91,13 @@ CARDS = {
         "Jōjakkō-ji": ("Jōjakkō-ji", False),
         "Daihikaku Senkō-ji": ("Arashiyama", "Arashiyama"),
         "Arashiyama Yusai-Tei": ("Arashiyama", "Arashiyama"),
+        "Togetsukyō Bridge": ("Arashiyama", "Arashiyama"),
+        "Arashiyama Park Nakanoshima": ("Arashiyama", "Arashiyama"),
+        "Seiryōji (Saga Shakadō)": ("Jōjakkō-ji", "Jōjakkō-ji nearby"),
+        "Gohodo Benzaiten": ("Jōjakkō-ji", "Jōjakkō-ji nearby"),
+        "Enrian": ("Jōjakkō-ji", "Jōjakkō-ji nearby"),
         "Former Chikurin-in": ("Hiyoshi Taisha, Sakamoto", "Hiyoshi Taisha next door"),
+        "Enkōji": ("Enkōji", False),
         "Tōfuku-ji": ("Tōfuku-ji", False),
         "Nanzen-ji": ("Nanzen-ji", False),
         "Ginkaku-ji": ("Eikandō", "Eikandō, on the same hillside"),
@@ -81,8 +109,14 @@ CARDS = {
         "Ujikami Shrine": ("Byōdō-in, Uji", "Byōdō-in, across the river"),
         "Momiji-dani trail": ("Uji River gorge", "the Uji River gorge"),
         "Amagase Bridge": ("Uji River gorge", "the Uji River gorge"),
+        "Shimogamo Shrine": ("Shimogamo Shrine", False),
+        "Tadasu-no-Mori Forest": ("Shimogamo Shrine", "Shimogamo Shrine, in the same forest"),
+        "Kawai Shrine": ("Shimogamo Shrine", "Shimogamo Shrine next door"),
+        "Old Mitsui Family Villa": ("Shimogamo Shrine", "Shimogamo Shrine nearby"),
     },
-    "shiga": {"Hikone Castle": ("Genkyū-en, Hikone Castle", False), "Kyorinbo": ("Kyorinbo", False)},
+    "shiga": {"Hikone Castle": ("Genkyū-en, Hikone Castle", False), "Kyorinbo": ("Kyorinbo", False),
+              "Keisokuji": ("Keisokuji", False), "Shakudoji": ("Keisokuji", "Keisokuji next door"),
+              "Yoshirou Shrine": ("Keisokuji", "Keisokuji nearby"), "Kamisaki Shrine": ("Keisokuji", "Keisokuji nearby")},
 }
 
 
@@ -101,6 +135,37 @@ def fmt_range(a, b):
 
 
 STAY_TITLE = {"nara": "Days we could go from"}   # legend wording for the shaded days, when "our stay" doesn't fit
+
+_PART = {"上旬": ("early", 1, 10), "中旬": ("mid", 11, 20), "下旬": ("late", 21, None)}
+
+
+def _last(m):
+    return (_dt.date(YEAR, m % 12 + 1, 1) - _dt.timedelta(days=1)).day
+
+
+def tenki_range(s):
+    """tenki.jp's period ("11月下旬～12月上旬", "12月上旬", "11/13～") -> (first day, last day, English label), or None."""
+    if not s or s.strip("-") == "": return None
+    m = _re.fullmatch(r"(\d+)/(\d+)～", s)
+    if m:   # a single start date ("from Nov 13"): drawn as ten days
+        a = _dt.date(YEAR, int(m[1]), int(m[2]))
+        return a, a + _dt.timedelta(days=9), f"from {fmt(a)}"
+    parts = _re.findall(r"(\d+)月(上旬|中旬|下旬)", s)
+    if not parts: return None
+    (m1, p1), (m2, p2) = parts[0], parts[-1]
+    a = _dt.date(YEAR, int(m1), _PART[p1][1])
+    b = _dt.date(YEAR, int(m2), _PART[p2][2] or _last(int(m2)))
+    mon = lambda mm: _dt.date(YEAR, int(mm), 1).strftime("%b")
+    l1, l2 = f"{_PART[p1][0]} {mon(m1)}", f"{_PART[p2][0]} {mon(m2)}"
+    return a, b, l1 if (m1, p1) == (m2, p2) else f"{l1}-{l2}"
+
+
+def window(spot):
+    """(peak, fall) used for the stay badges: Weathernews when there is one, else tenki.jp's period."""
+    name, p, f, t = spot
+    if p: return day(p), day(f)
+    a, b, _ = tenki_range(t)
+    return a, b + _dt.timedelta(days=1)
 
 
 def status(peak, fall, a, b):
