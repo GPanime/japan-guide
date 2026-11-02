@@ -7,7 +7,7 @@ Checks, on a desktop and a phone-sized window:
   * every stop's tab opens its own section and only that one
   * filters work without JavaScript (category and mood chips change the card count)
   * card photos open full screen and close again
-  * every stop shows the autumn leaves forecast, and the Autumn leaves filter matches the cards with a forecast line
+  * every stop shows the autumn leaves forecast, and the Autumn leaves filter shows exactly the leaves spots
   * nothing spills sideways on a phone (no horizontal scroll)
   * dark mode applies, the theme switch cycles, and the Google map loads and follows pins / "Show on map"
   * no script errors
@@ -62,8 +62,8 @@ with sync_playwright() as pw:
         if leaf:
             leaf.click(); pg.wait_for_timeout(200)
             n = visible_cards(pg, k)
-            want = pg.evaluate(f"document.querySelectorAll('#jp-city-{k} .jp-bytype .card .lvcard').length")
-            check(n == want > 0, f"{k}: Autumn leaves filter shows the {want} cards with a forecast ({n} shown)")
+            want = pg.evaluate(f"document.querySelectorAll('#jp-city-{k} .jp-bytype .card[data-tags*=\\'Autumn leaves\\']').length")
+            check(n == want > 0, f"{k}: Autumn leaves filter shows the {want} leaves spots ({n} shown)")
             pg.click(f"#jp-city-{k} .clr"); pg.wait_for_timeout(200)
     ph = pg.query_selector(".card.hasph")
     if ph:   # a card photo opens full screen and closes again, without JavaScript, keeping its tab open

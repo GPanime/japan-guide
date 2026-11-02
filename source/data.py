@@ -132,7 +132,7 @@ TAGS = [
  ("Low energy", "sit down and chill"),
  ("Outdoors", "better on a dry day"),
  ("Photo spot", "bring the camera"),
- ("Autumn leaves", "has a leaves forecast"),
+ ("Autumn leaves", "good for autumn leaves"),
  ("Queue", "expect a short wait"),
  ("Pricier", "a bit more expensive"),
 ]

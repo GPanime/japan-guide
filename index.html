@@ -34,9 +34,10 @@ html[data-theme="dark"] #jp26 { --bg: #1C1613; --surface: #28201C; --surface2: #
 #jp26 .map a.sel .mpin { stroke: var(--ink); stroke-width: 1.2; }
 </style>
 </head><body>
-<!-- Japan trip guide · VERSION 1.8 · Nov 1, 2026
+<!-- Japan trip guide · VERSION 1.9 · Nov 2, 2026
   GitHub Pages version (japan.zhunior.com), with dark mode and Google maps.
 Changes:
+  v1.9 (Nov 2, 2026): Shorter leaves forecast: two or three spots per stop. A forecast note now shows only on cards whose timing stands out.
   v1.8 (Nov 1, 2026): Kyoto: 17 more places (Arashiyama and Saga, Shimogamo, Ichijoji) with photos and two more videos. Leaves forecast refreshed for every stop, now with tenki.jp next to Weathernews.
   v1.7 (Nov 1, 2026): Kyoto: Uji added (10 places with photos from the Uji video, linked in a new videos box) and Uji spots in the leaves forecast.
   v1.6.1 (Nov 1, 2026): Shiga photos: one simple credit pointing to the two videos, instead of a link per photo.
@@ -1151,18 +1152,16 @@ Changes:
   </div>
   <div class="leaves" id="jp-osaka-leaves">
     <div class="lvtxt"><div class="lvjp">紅葉</div><h2>Autumn leaves forecast</h2>
-      <p class="lvverdict">Still a bit early in the city. Osaka Castle Park and Expo Park are forecast to reach peak around Nov 19-20, our last days here. The hills to the north (Minoo, Katsuo-ji) now look a little earlier, from about Nov 14-20. tenki.jp expects mid to late November for most spots.</p>
-      <p class="lvnote">Two forecasts per spot. The red bar is Weathernews, from the start of peak colour to the day the leaves start to fall; there's still colour for a while after that.
-        The thin blue bar is tenki.jp, which gives the peak to the nearest ten days. Where they disagree, the truth is often in between.
-        Checked Nov 1, 2026. This autumn is warm, so dates can still move by a week.</p>
-      <p class="lvnote">City-level forecasts for when the maples are fully red: Kyoto Dec 11, Osaka Dec 4, Wakayama Dec 11 (Nippon Kisho). The usual dates are Kyoto Dec 5, Osaka Dec 1, Nara Nov 21, Hikone Nov 28 (Japan Meteorological Agency).</p>
+      <p class="lvverdict">A bit early. The city peaks around Nov 19-20, our last days here. The hills to the north (Minoo, Katsuo-ji) start a little earlier.</p>
+      <p class="lvnote">A couple of spots for the overall picture, from two forecasters. Places that peak much earlier or later say so on their card.
+        Checked Nov 1, 2026; dates can still move by a week.</p>
       <p class="lvsrc">Sources: <a href="https://weathernews.jp/koyo/area/kinki/" target="_blank" rel="noopener">Weathernews spot forecasts</a> · <a href="https://tenki.jp/kouyou/expectation.html" target="_blank" rel="noopener">tenki.jp forecast, 3rd update (Oct 28)</a> · <a href="https://tenki.jp/kouyou/6/" target="_blank" rel="noopener">tenki.jp spot forecasts (Kinki)</a> · <a href="https://www.nippon.com/ja/japan-data/h02888/" target="_blank" rel="noopener">Nippon Kisho city forecast</a> · <a href="https://www.data.jma.go.jp/sakura/data/phn_014.html" target="_blank" rel="noopener">Japan Meteorological Agency: usual dates</a></p></div>
     <div class="lvwrap"><div class="lvchart">
       <div class="lvbands" aria-hidden="true"><i class="lvgrid" style="left:18.00%"></i><i class="lvgrid" style="left:38.00%"></i><i class="lvgrid" style="left:58.00%"></i><i class="lvgrid" style="left:78.00%"></i><i class="lvband" style="left:30.00%;width:10.00%"></i></div>
       <div class="lvhead" aria-hidden="true"><span></span><div class="lvtrack"><span class="lvbl" style="left:35.00%;top:0px">Our stay</span></div></div>
-      <div class="lvrows" role="list" aria-label="Forecast by spot"><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Katsuo-ji, Minoh</b><small>Nov 14-Dec 2 · tenki.jp late Nov-early Dec</small><small class="lvlink">not on our list</small></div><div class="lvtrack"><i class="lvbar off" style="left:26.00%;width:36.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Katsuo-ji, Minoh: peak from Nov 14, falling from Dec 2 (Weathernews); tenki.jp: late Nov-early Dec. Our stay: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Expo &#x27;70 Commemorative Park</b><small>Nov 19-Dec 8 · tenki.jp mid Nov-early Dec</small><small class="lvlink">not on our list</small></div><div class="lvtrack"><i class="lvbar off" style="left:36.00%;width:38.00%"></i><i class="lvtk" style="left:20.00%;width:60.00%"></i><span class="lvtip">Expo &#x27;70 Commemorative Park: peak from Nov 19, falling from Dec 8 (Weathernews); tenki.jp: mid Nov-early Dec. Our stay: peak from Nov 19.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Osaka Castle Park</b><small>Nov 20-Dec 10</small><small class="lvlink">our list: Osaka Castle</small></div><div class="lvtrack"><i class="lvbar" style="left:38.00%;width:40.00%"></i><span class="lvtip">Osaka Castle Park: peak from Nov 20, falling from Dec 10 (Weathernews). Our stay: peak from Nov 20.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Minoo Park</b><small>Nov 20-Dec 5 · tenki.jp late Nov-early Dec</small><small class="lvlink">not on our list</small></div><div class="lvtrack"><i class="lvbar off" style="left:38.00%;width:30.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Minoo Park: peak from Nov 20, falling from Dec 5 (Weathernews); tenki.jp: late Nov-early Dec. Our stay: peak from Nov 20.</span></div></div></div>
+      <div class="lvrows" role="list" aria-label="Forecast by spot"><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Osaka Castle Park</b><small>Nov 20-Dec 10</small></div><div class="lvtrack"><i class="lvbar" style="left:38.00%;width:40.00%"></i><span class="lvtip">Osaka Castle Park: peak from Nov 20, falling from Dec 10 (Weathernews). Our stay: peak from Nov 20.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Minoo Park</b><small>Nov 20-Dec 5 · tenki.jp late Nov-early Dec</small></div><div class="lvtrack"><i class="lvbar" style="left:38.00%;width:30.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Minoo Park: peak from Nov 20, falling from Dec 5 (Weathernews); tenki.jp: late Nov-early Dec. Our stay: peak from Nov 20.</span></div></div></div>
       <div class="lvaxis" aria-hidden="true"><span></span><div class="lvtrack"><span style="left:18.00%">Nov 10</span><span style="left:38.00%">Nov 20</span><span style="left:58.00%">Nov 30</span><span style="left:78.00%">Dec 10</span></div></div></div>
-      <div class="lvlegend"><span><i class="sw sw-bar"></i>Weathernews: peak to leaves falling (on our list)</span><span><i class="sw sw-off"></i>Weathernews, nearby spot</span><span><i class="sw sw-tk"></i>tenki.jp: peak period, to the nearest 10 days</span>
+      <div class="lvlegend"><span><i class="sw sw-bar"></i>Weathernews: peak until leaves start to fall</span><span><i class="sw sw-tk"></i>tenki.jp: peak period</span>
         <span><i class="sw sw-stay"></i>Our stay: Nov 16-20</span></div></div>
   </div>
   
@@ -1741,7 +1740,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Osaka Castle Park <span class="dot">•</span> 1.8 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A decent park and good photos of the castle; inside is a museum, open during the day. Not a must.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves forecast: peak from Nov 20, falling from Dec 10 (Weathernews).</span> <span class="lvb peak">Our stay · peak from Nov 20</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Osaka+Castle" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Osaka+Castle+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="44" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -1986,18 +1985,16 @@ Changes:
   </div>
   <div class="leaves" id="jp-wakayama-leaves">
     <div class="lvtxt"><div class="lvjp">紅葉</div><h2>Autumn leaves forecast</h2>
-      <p class="lvverdict">Not the right time in the city. The garden at Wakayama Castle peaks from about Dec 2. Koyasan, up in the mountains, peaks from about Nov 7 and starts falling around Nov 19, so Nov 20 is right at the end.</p>
-      <p class="lvnote">Two forecasts per spot. The red bar is Weathernews, from the start of peak colour to the day the leaves start to fall; there's still colour for a while after that.
-        The thin blue bar is tenki.jp, which gives the peak to the nearest ten days. Where they disagree, the truth is often in between.
-        Checked Nov 1, 2026. This autumn is warm, so dates can still move by a week.</p>
-      <p class="lvnote">City-level forecasts for when the maples are fully red: Kyoto Dec 11, Osaka Dec 4, Wakayama Dec 11 (Nippon Kisho). The usual dates are Kyoto Dec 5, Osaka Dec 1, Nara Nov 21, Hikone Nov 28 (Japan Meteorological Agency).</p>
+      <p class="lvverdict">Too early in the city: the castle garden peaks from about Dec 2. Koyasan, up in the mountains, is earlier and ends around Nov 19.</p>
+      <p class="lvnote">A couple of spots for the overall picture, from two forecasters. Places that peak much earlier or later say so on their card.
+        Checked Nov 1, 2026; dates can still move by a week.</p>
       <p class="lvsrc">Sources: <a href="https://weathernews.jp/koyo/area/kinki/" target="_blank" rel="noopener">Weathernews spot forecasts</a> · <a href="https://tenki.jp/kouyou/expectation.html" target="_blank" rel="noopener">tenki.jp forecast, 3rd update (Oct 28)</a> · <a href="https://tenki.jp/kouyou/6/" target="_blank" rel="noopener">tenki.jp spot forecasts (Kinki)</a> · <a href="https://www.nippon.com/ja/japan-data/h02888/" target="_blank" rel="noopener">Nippon Kisho city forecast</a> · <a href="https://www.data.jma.go.jp/sakura/data/phn_014.html" target="_blank" rel="noopener">Japan Meteorological Agency: usual dates</a></p></div>
     <div class="lvwrap"><div class="lvchart">
       <div class="lvbands" aria-hidden="true"><i class="lvgrid" style="left:18.00%"></i><i class="lvgrid" style="left:38.00%"></i><i class="lvgrid" style="left:58.00%"></i><i class="lvgrid" style="left:78.00%"></i><i class="lvband" style="left:38.00%;width:2.00%"></i></div>
       <div class="lvhead" aria-hidden="true"><span></span><div class="lvtrack"><span class="lvbl" style="left:39.00%;top:0px">Our stop</span></div></div>
-      <div class="lvrows" role="list" aria-label="Forecast by spot"><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Koyasan</b><small>Nov 7-19 · tenki.jp late Oct-early Nov</small><small class="lvlink">on our list</small></div><div class="lvtrack"><i class="lvbar" style="left:12.00%;width:24.00%"></i><i class="lvtk" style="left:0.00%;width:20.00%"></i><span class="lvtip">Koyasan: peak from Nov 7, falling from Nov 19 (Weathernews); tenki.jp: late Oct-early Nov. Our stop: leaves falling.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Momijidani garden, Wakayama Castle</b><small>Dec 2-19 · tenki.jp early Dec</small><small class="lvlink">our list: Wakayama Castle</small></div><div class="lvtrack"><i class="lvbar" style="left:62.00%;width:34.00%"></i><i class="lvtk" style="left:60.00%;width:20.00%"></i><span class="lvtip">Momijidani garden, Wakayama Castle: peak from Dec 2, falling from Dec 19 (Weathernews); tenki.jp: early Dec. Our stop: still colouring.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Negoro-ji</b><small>Dec 4-15 · tenki.jp late Nov-early Dec</small><small class="lvlink">not on our list</small></div><div class="lvtrack"><i class="lvbar off" style="left:66.00%;width:22.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Negoro-ji: peak from Dec 4, falling from Dec 15 (Weathernews); tenki.jp: late Nov-early Dec. Our stop: still colouring.</span></div></div></div>
+      <div class="lvrows" role="list" aria-label="Forecast by spot"><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Momijidani garden, Wakayama Castle</b><small>Dec 2-19 · tenki.jp early Dec</small></div><div class="lvtrack"><i class="lvbar" style="left:62.00%;width:34.00%"></i><i class="lvtk" style="left:60.00%;width:20.00%"></i><span class="lvtip">Momijidani garden, Wakayama Castle: peak from Dec 2, falling from Dec 19 (Weathernews); tenki.jp: early Dec. Our stop: still colouring.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Koyasan</b><small>Nov 7-19 · tenki.jp late Oct-early Nov</small></div><div class="lvtrack"><i class="lvbar" style="left:12.00%;width:24.00%"></i><i class="lvtk" style="left:0.00%;width:20.00%"></i><span class="lvtip">Koyasan: peak from Nov 7, falling from Nov 19 (Weathernews); tenki.jp: late Oct-early Nov. Our stop: leaves falling.</span></div></div></div>
       <div class="lvaxis" aria-hidden="true"><span></span><div class="lvtrack"><span style="left:18.00%">Nov 10</span><span style="left:38.00%">Nov 20</span><span style="left:58.00%">Nov 30</span><span style="left:78.00%">Dec 10</span></div></div></div>
-      <div class="lvlegend"><span><i class="sw sw-bar"></i>Weathernews: peak to leaves falling (on our list)</span><span><i class="sw sw-off"></i>Weathernews, nearby spot</span><span><i class="sw sw-tk"></i>tenki.jp: peak period, to the nearest 10 days</span>
+      <div class="lvlegend"><span><i class="sw sw-bar"></i>Weathernews: peak until leaves start to fall</span><span><i class="sw sw-tk"></i>tenki.jp: peak period</span>
         <span><i class="sw sw-stay"></i>Our stop: Nov 20</span></div></div>
   </div>
   
@@ -2157,7 +2154,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>City centre <span class="dot">•</span> 1.9 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>The castle on its hill in the middle of the city, with a park around it.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves forecast: peak from Dec 2, falling from Dec 19 (Weathernews); tenki.jp: early Dec.</span> <span class="lvb early">Our stop · still colouring</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Wakayama+Castle" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Wakayama+Castle" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="11" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -2199,7 +2196,7 @@ Changes:
     <div class="meta"><span class="catlbl">Day trips · </span>Koya, Wakayama mountains <span class="dot">•</span> 36.3 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A mountain-top temple town and a centre of Shingon Buddhism, with the huge Okunoin cemetery and temple stays. A full day on its own.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves forecast: peak from Nov 7, falling from Nov 19 (Weathernews); tenki.jp: late Oct-early Nov.</span> <span class="lvb late">Our stop · leaves falling</span></div></div>
+    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves: </span>Earlier than the city, up in the mountains: peak from about Nov 7, and leaves start falling around Nov 19 (Weathernews). Nov 20 is right at the end.</div></div>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=11714349864090713783" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Koyasan+Okunoin" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="14" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -2254,17 +2251,15 @@ Changes:
   <div class="leaves" id="jp-shirahama-leaves">
     <div class="lvtxt"><div class="lvjp">紅葉</div><h2>Autumn leaves forecast</h2>
       <p class="lvverdict">Not a leaves stop. The coast stays green, and the nearest forecast spots inland peak after we leave.</p>
-      <p class="lvnote">Two forecasts per spot. The red bar is Weathernews, from the start of peak colour to the day the leaves start to fall; there's still colour for a while after that.
-        The thin blue bar is tenki.jp, which gives the peak to the nearest ten days. Where they disagree, the truth is often in between.
-        Checked Nov 1, 2026. This autumn is warm, so dates can still move by a week.</p>
-      <p class="lvnote">City-level forecasts for when the maples are fully red: Kyoto Dec 11, Osaka Dec 4, Wakayama Dec 11 (Nippon Kisho). The usual dates are Kyoto Dec 5, Osaka Dec 1, Nara Nov 21, Hikone Nov 28 (Japan Meteorological Agency).</p>
+      <p class="lvnote">A couple of spots for the overall picture, from two forecasters. Places that peak much earlier or later say so on their card.
+        Checked Nov 1, 2026; dates can still move by a week.</p>
       <p class="lvsrc">Sources: <a href="https://weathernews.jp/koyo/area/kinki/" target="_blank" rel="noopener">Weathernews spot forecasts</a> · <a href="https://tenki.jp/kouyou/expectation.html" target="_blank" rel="noopener">tenki.jp forecast, 3rd update (Oct 28)</a> · <a href="https://tenki.jp/kouyou/6/" target="_blank" rel="noopener">tenki.jp spot forecasts (Kinki)</a> · <a href="https://www.nippon.com/ja/japan-data/h02888/" target="_blank" rel="noopener">Nippon Kisho city forecast</a> · <a href="https://www.data.jma.go.jp/sakura/data/phn_014.html" target="_blank" rel="noopener">Japan Meteorological Agency: usual dates</a></p></div>
     <div class="lvwrap"><div class="lvchart">
       <div class="lvbands" aria-hidden="true"><i class="lvgrid" style="left:18.00%"></i><i class="lvgrid" style="left:38.00%"></i><i class="lvgrid" style="left:58.00%"></i><i class="lvgrid" style="left:78.00%"></i><i class="lvband" style="left:38.00%;width:8.00%"></i></div>
       <div class="lvhead" aria-hidden="true"><span></span><div class="lvtrack"><span class="lvbl" style="left:42.00%;top:0px">Our stay</span></div></div>
-      <div class="lvrows" role="list" aria-label="Forecast by spot"><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Kozagawa gorge</b><small>Nov 26-Dec 6 · tenki.jp late Nov-early Dec</small><small class="lvlink">not on our list</small></div><div class="lvtrack"><i class="lvbar off" style="left:50.00%;width:20.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Kozagawa gorge: peak from Nov 26, falling from Dec 6 (Weathernews); tenki.jp: late Nov-early Dec. Our stay: still colouring.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Kumano Nachi Taisha</b><small>Nov 27-Dec 7</small><small class="lvlink">not on our list</small></div><div class="lvtrack"><i class="lvbar off" style="left:52.00%;width:20.00%"></i><span class="lvtip">Kumano Nachi Taisha: peak from Nov 27, falling from Dec 7 (Weathernews). Our stay: still colouring.</span></div></div></div>
+      <div class="lvrows" role="list" aria-label="Forecast by spot"><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Kozagawa gorge</b><small>Nov 26-Dec 6 · tenki.jp late Nov-early Dec</small></div><div class="lvtrack"><i class="lvbar" style="left:50.00%;width:20.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Kozagawa gorge: peak from Nov 26, falling from Dec 6 (Weathernews); tenki.jp: late Nov-early Dec. Our stay: still colouring.</span></div></div></div>
       <div class="lvaxis" aria-hidden="true"><span></span><div class="lvtrack"><span style="left:18.00%">Nov 10</span><span style="left:38.00%">Nov 20</span><span style="left:58.00%">Nov 30</span><span style="left:78.00%">Dec 10</span></div></div></div>
-      <div class="lvlegend"><span><i class="sw sw-off"></i>Weathernews, nearby spot</span><span><i class="sw sw-tk"></i>tenki.jp: peak period, to the nearest 10 days</span>
+      <div class="lvlegend"><span><i class="sw sw-bar"></i>Weathernews: peak until leaves start to fall</span><span><i class="sw sw-tk"></i>tenki.jp: peak period</span>
         <span><i class="sw sw-stay"></i>Our stay: Nov 20-23</span></div></div>
   </div>
   
@@ -2571,18 +2566,16 @@ Changes:
   </div>
   <div class="leaves" id="jp-kyoto-leaves">
     <div class="lvtxt"><div class="lvjp">紅葉</div><h2>Autumn leaves forecast</h2>
-      <p class="lvverdict">Still the best timing of the trip. Weathernews has most temples at peak from about Nov 21-25, so both stays should be good. tenki.jp is a bit later, late November to early December, which favours the second stay. Mount Hiei comes earlier, and Uji a little later.</p>
-      <p class="lvnote">Two forecasts per spot. The red bar is Weathernews, from the start of peak colour to the day the leaves start to fall; there's still colour for a while after that.
-        The thin blue bar is tenki.jp, which gives the peak to the nearest ten days. Where they disagree, the truth is often in between.
-        Checked Nov 1, 2026. This autumn is warm, so dates can still move by a week.</p>
-      <p class="lvnote">City-level forecasts for when the maples are fully red: Kyoto Dec 11, Osaka Dec 4, Wakayama Dec 11 (Nippon Kisho). The usual dates are Kyoto Dec 5, Osaka Dec 1, Nara Nov 21, Hikone Nov 28 (Japan Meteorological Agency).</p>
+      <p class="lvverdict">The best timing of the trip. Most temples peak from about Nov 21-25, and tenki.jp is a little later, so both stays should be good. Mount Hiei is earlier; Uji and Shimogamo are later.</p>
+      <p class="lvnote">A couple of spots for the overall picture, from two forecasters. Places that peak much earlier or later say so on their card.
+        Checked Nov 1, 2026; dates can still move by a week.</p>
       <p class="lvsrc">Sources: <a href="https://weathernews.jp/koyo/area/kinki/" target="_blank" rel="noopener">Weathernews spot forecasts</a> · <a href="https://tenki.jp/kouyou/expectation.html" target="_blank" rel="noopener">tenki.jp forecast, 3rd update (Oct 28)</a> · <a href="https://tenki.jp/kouyou/6/" target="_blank" rel="noopener">tenki.jp spot forecasts (Kinki)</a> · <a href="https://www.nippon.com/ja/japan-data/h02888/" target="_blank" rel="noopener">Nippon Kisho city forecast</a> · <a href="https://www.data.jma.go.jp/sakura/data/phn_014.html" target="_blank" rel="noopener">Japan Meteorological Agency: usual dates</a></p></div>
     <div class="lvwrap"><div class="lvchart">
       <div class="lvbands" aria-hidden="true"><i class="lvgrid" style="left:18.00%"></i><i class="lvgrid" style="left:38.00%"></i><i class="lvgrid" style="left:58.00%"></i><i class="lvgrid" style="left:78.00%"></i><i class="lvband" style="left:44.00%;width:10.00%"></i><i class="lvband" style="left:56.00%;width:8.00%"></i></div>
       <div class="lvhead" aria-hidden="true"><span></span><div class="lvtrack"><span class="lvbl" style="left:49.00%;top:0px">Stay 1</span><span class="lvbl" style="left:60.00%;top:14px">Stay 2</span></div></div>
-      <div class="lvrows" role="list" aria-label="Forecast by spot"><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Enryaku-ji, Mount Hiei</b><small>Nov 9-27 · tenki.jp early Nov-mid Nov</small><small class="lvlink">our list: Mount Hiei</small></div><div class="lvtrack"><i class="lvbar" style="left:16.00%;width:36.00%"></i><i class="lvtk" style="left:0.00%;width:40.00%"></i><span class="lvtip">Enryaku-ji, Mount Hiei: peak from Nov 9, falling from Nov 27 (Weathernews); tenki.jp: early Nov-mid Nov. Stay 1: peak, falling from Nov 27. Stay 2: leaves falling.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Ōhara Sanzen-in</b><small>Nov 19-Dec 7 · tenki.jp late Nov-early Dec</small><small class="lvlink">estimate for Kurama Onsen</small></div><div class="lvtrack"><i class="lvbar" style="left:36.00%;width:36.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Ōhara Sanzen-in: peak from Nov 19, falling from Dec 7 (Weathernews); tenki.jp: late Nov-early Dec. Stay 1: at peak. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Jōjakkō-ji</b><small>Nov 21-Dec 8 · tenki.jp late Nov-early Dec</small><small class="lvlink">on our list; estimate for Seiryōji (Saga Shakadō), Gohodo Benzaiten, Enrian</small></div><div class="lvtrack"><i class="lvbar" style="left:40.00%;width:34.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Jōjakkō-ji: peak from Nov 21, falling from Dec 8 (Weathernews); tenki.jp: late Nov-early Dec. Stay 1: at peak. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Hiyoshi Taisha, Sakamoto</b><small>Nov 21-Dec 4 · tenki.jp late Nov-early Dec</small><small class="lvlink">estimate for Former Chikurin-in</small></div><div class="lvtrack"><i class="lvbar" style="left:40.00%;width:26.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Hiyoshi Taisha, Sakamoto: peak from Nov 21, falling from Dec 4 (Weathernews); tenki.jp: late Nov-early Dec. Stay 1: at peak. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Enkōji</b><small>Nov 21-Dec 6 · tenki.jp late Nov-early Dec</small><small class="lvlink">on our list</small></div><div class="lvtrack"><i class="lvbar" style="left:40.00%;width:30.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Enkōji: peak from Nov 21, falling from Dec 6 (Weathernews); tenki.jp: late Nov-early Dec. Stay 1: at peak. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Tōfuku-ji</b><small>Nov 22-Dec 9 · tenki.jp late Nov-early Dec</small><small class="lvlink">on our list</small></div><div class="lvtrack"><i class="lvbar" style="left:42.00%;width:34.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Tōfuku-ji: peak from Nov 22, falling from Dec 9 (Weathernews); tenki.jp: late Nov-early Dec. Stay 1: at peak. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Nanzen-ji</b><small>Nov 23-Dec 7</small><small class="lvlink">on our list</small></div><div class="lvtrack"><i class="lvbar" style="left:44.00%;width:28.00%"></i><span class="lvtip">Nanzen-ji: peak from Nov 23, falling from Dec 7 (Weathernews). Stay 1: at peak. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Eikandō</b><small>Nov 23-Dec 5 · tenki.jp late Nov-early Dec</small><small class="lvlink">estimate for Ginkaku-ji, Anraku-ji</small></div><div class="lvtrack"><i class="lvbar" style="left:44.00%;width:24.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Eikandō: peak from Nov 23, falling from Dec 5 (Weathernews); tenki.jp: late Nov-early Dec. Stay 1: at peak. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Arashiyama</b><small>Nov 23-Dec 9 · tenki.jp from Nov 13</small><small class="lvlink">estimate for Daihikaku Senkō-ji, Arashiyama Yusai-Tei, Togetsukyō Bridge, Arashiyama Park Nakanoshima</small></div><div class="lvtrack"><i class="lvbar" style="left:44.00%;width:32.00%"></i><i class="lvtk" style="left:24.00%;width:20.00%"></i><span class="lvtip">Arashiyama: peak from Nov 23, falling from Dec 9 (Weathernews); tenki.jp: from Nov 13. Stay 1: at peak. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Kiyomizu-dera</b><small>Nov 24-Dec 9 · tenki.jp early Dec</small><small class="lvlink">on our list</small></div><div class="lvtrack"><i class="lvbar" style="left:46.00%;width:30.00%"></i><i class="lvtk" style="left:60.00%;width:20.00%"></i><span class="lvtip">Kiyomizu-dera: peak from Nov 24, falling from Dec 9 (Weathernews); tenki.jp: early Dec. Stay 1: peak from Nov 24. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Kyoto Gyoen ginkgo trees</b><small>Nov 25-Dec 5</small><small class="lvlink">estimate for Honnō-ji</small></div><div class="lvtrack"><i class="lvbar" style="left:48.00%;width:20.00%"></i><span class="lvtip">Kyoto Gyoen ginkgo trees: peak from Nov 25, falling from Dec 5 (Weathernews). Stay 1: peak from Nov 25. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Byōdō-in, Uji</b><small>Nov 24-Dec 7 · tenki.jp late Nov-early Dec</small><small class="lvlink">estimate for Ujikami Shrine</small></div><div class="lvtrack"><i class="lvbar" style="left:46.00%;width:26.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Byōdō-in, Uji: peak from Nov 24, falling from Dec 7 (Weathernews); tenki.jp: late Nov-early Dec. Stay 1: peak from Nov 24. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Uji River gorge</b><small>Nov 24-Dec 12</small><small class="lvlink">estimate for Momiji-dani trail, Amagase Bridge</small></div><div class="lvtrack"><i class="lvbar" style="left:46.00%;width:36.00%"></i><span class="lvtip">Uji River gorge: peak from Nov 24, falling from Dec 12 (Weathernews). Stay 1: peak from Nov 24. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Ryōan-ji</b><small>Nov 27-Dec 14 · tenki.jp early Dec</small><small class="lvlink">estimate for Kinkaku-ji</small></div><div class="lvtrack"><i class="lvbar" style="left:52.00%;width:34.00%"></i><i class="lvtk" style="left:60.00%;width:20.00%"></i><span class="lvtip">Ryōan-ji: peak from Nov 27, falling from Dec 14 (Weathernews); tenki.jp: early Dec. Stay 1: peak from Nov 27. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Kōshō-ji, Uji</b><small>Nov 29-Dec 8 · tenki.jp early Dec</small><small class="lvlink">our list: Kōshō-ji</small></div><div class="lvtrack"><i class="lvbar" style="left:56.00%;width:18.00%"></i><i class="lvtk" style="left:60.00%;width:20.00%"></i><span class="lvtip">Kōshō-ji, Uji: peak from Nov 29, falling from Dec 8 (Weathernews); tenki.jp: early Dec. Stay 1: still colouring. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Shimogamo Shrine</b><small>tenki.jp early Dec-mid Dec</small><small class="lvlink">on our list; estimate for Tadasu-no-Mori Forest, Kawai Shrine, Old Mitsui Family Villa</small></div><div class="lvtrack"><i class="lvtk" style="left:60.00%;width:40.00%"></i><span class="lvtip">Shimogamo Shrine: tenki.jp: early Dec-mid Dec. Stay 1: still colouring. Stay 2: peak from Dec 1.</span></div></div></div>
+      <div class="lvrows" role="list" aria-label="Forecast by spot"><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Tōfuku-ji</b><small>Nov 22-Dec 9 · tenki.jp late Nov-early Dec</small></div><div class="lvtrack"><i class="lvbar" style="left:42.00%;width:34.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Tōfuku-ji: peak from Nov 22, falling from Dec 9 (Weathernews); tenki.jp: late Nov-early Dec. Stay 1: at peak. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Eikandō</b><small>Nov 23-Dec 5 · tenki.jp late Nov-early Dec</small></div><div class="lvtrack"><i class="lvbar" style="left:44.00%;width:24.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Eikandō: peak from Nov 23, falling from Dec 5 (Weathernews); tenki.jp: late Nov-early Dec. Stay 1: at peak. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Arashiyama</b><small>Nov 23-Dec 9 · tenki.jp from Nov 13</small></div><div class="lvtrack"><i class="lvbar" style="left:44.00%;width:32.00%"></i><i class="lvtk" style="left:24.00%;width:20.00%"></i><span class="lvtip">Arashiyama: peak from Nov 23, falling from Dec 9 (Weathernews); tenki.jp: from Nov 13. Stay 1: at peak. Stay 2: at peak.</span></div></div></div>
       <div class="lvaxis" aria-hidden="true"><span></span><div class="lvtrack"><span style="left:18.00%">Nov 10</span><span style="left:38.00%">Nov 20</span><span style="left:58.00%">Nov 30</span><span style="left:78.00%">Dec 10</span></div></div></div>
-      <div class="lvlegend"><span><i class="sw sw-bar"></i>Weathernews: peak to leaves falling (on our list)</span><span><i class="sw sw-tk"></i>tenki.jp: peak period, to the nearest 10 days</span>
+      <div class="lvlegend"><span><i class="sw sw-bar"></i>Weathernews: peak until leaves start to fall</span><span><i class="sw sw-tk"></i>tenki.jp: peak period</span>
         <span><i class="sw sw-stay"></i>Stay 1: Nov 23-27 · Stay 2: Nov 29-Dec 2</span></div></div>
   </div>
   <div class="vids" id="jp-kyoto-videos"><div class="vidhead"><h2>Videos that inspired this list</h2><span>handy to watch before a day out · the photos on the cards come from them</span></div><div class="vidgrid"><a class="vid" href="https://www.youtube.com/watch?v=hCXm09-UCbU" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/hCXm09-UCbU/mqdefault.jpg" alt="" loading="lazy"><span><b>宇治 KYOTO ↗</b><small>Autumn in Uji: the river, Kōshō-ji, Ujikami Shrine, matcha and the quiet Momiji-dani trail.</small></span></a><a class="vid" href="https://www.youtube.com/watch?v=cJsKLFrBug4" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/cJsKLFrBug4/mqdefault.jpg" alt="" loading="lazy"><span><b>KYOTO 嵐山 ↗</b><small>Arashiyama and Saga in autumn: Enrian, Seiryōji, Togetsukyō and food along the way.</small></span></a><a class="vid" href="https://www.youtube.com/watch?v=U_17EqTHUIo" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/U_17EqTHUIo/mqdefault.jpg" alt="" loading="lazy"><span><b>Kyoto 雨の京都 ↗</b><small>Kyoto in the rain: Shimogamo and Tadasu-no-Mori, then Ichijōji with Enkōji, Keibunsha and Nakatani.</small></span></a></div></div>
@@ -2902,7 +2895,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Kita, northwest Kyoto <span class="dot">•</span> 5.2 km / 7.5 km</div>
     <div class="tags"><span class="tag must"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/></svg></span>Must-go</span><span class="tag">Photo spot</span></div>
     <p>The Golden Pavilion. We couldn&#x27;t make it last time, so it&#x27;s a must-visit this trip.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Ryōan-ji nearby: peak from about Nov 27, falling from about Dec 14 (Weathernews); tenki.jp: early Dec.</span> <span class="lvb peak">Stay 1 · peak from Nov 27</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves: </span>A bit later than most: nearby Ryōan-ji peaks from about Nov 27 (Weathernews), early December on tenki.jp. Better in the second stay.</div></div>
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/C7yMTuzNasRxVTK87" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kinkakuji+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="23" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -2926,7 +2919,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Okazaki, east Kyoto <span class="dot">•</span> 4.0 km / 6.0 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A huge Buddhist temple. Should be good for autumn leaves photos.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves forecast: peak from Nov 23, falling from Dec 7 (Weathernews).</span> <span class="lvb peak">Stay 1 · at peak</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/42GvsGz7u1fjYyRs8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Nanzenji+autumn+leaves" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="25" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -2938,7 +2931,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Shishigatani, east Kyoto <span class="dot">•</span> 4.7 km / 7.0 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A small, cute temple we saw in a travel video. Nice in the fall. It only opens on weekends and holidays in November, which on our dates means Mon Nov 23 (a public holiday) or Sun Nov 29.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Eikandō, on the same hillside: peak from about Nov 23, falling from about Dec 5 (Weathernews); tenki.jp: late Nov-early Dec.</span> <span class="lvb peak">Stay 1 · at peak</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/98J73Gu88dbsEw5i9" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Anrakuji+Shishigatani+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="26" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -2950,7 +2943,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Higashiyama, south Kyoto <span class="dot">•</span> 3.0 km / 2.4 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A large, old temple. Should also be great for autumn photos.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves forecast: peak from Nov 22, falling from Dec 9 (Weathernews); tenki.jp: late Nov-early Dec.</span> <span class="lvb peak">Stay 1 · at peak</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/J86VZzDy6UqLb7Jm8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Tofukuji+autumn+leaves" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="27" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -2962,7 +2955,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Arashiyama <span class="dot">•</span> 7.8 km / 8.3 km</div>
     <div class="tags"><span class="tag">Photo spot</span><span class="tag">Book ahead</span></div>
     <p>An art gallery we saw in a travel video, super nice for photos. It was closed on our last trip. In the second half of November it&#x27;s reservation only, with timed tickets bought online.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Arashiyama: peak from about Nov 23, falling from about Dec 9 (Weathernews); tenki.jp: from Nov 13.</span> <span class="lvb peak">Stay 1 · at peak</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/BxhAA4TK4mPumWgk7" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Arashiyama+Yusai-tei+gallery" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="28" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -2974,7 +2967,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Arashiyama <span class="dot">•</span> 8.2 km / 8.8 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A temple in Arashiyama. Should be good for autumn leaves photos, and pairs with Yusai-Tei.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves forecast: peak from Nov 21, falling from Dec 8 (Weathernews); tenki.jp: late Nov-early Dec.</span> <span class="lvb peak">Stay 1 · at peak</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.app.goo.gl/Zs3ALEwkemQo9Ury8" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Jojakkoji+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="29" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -2986,7 +2979,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Higashiyama <span class="dot">•</span> 2.8 km / 4.1 km</div>
     <div class="tags"><span class="tag">Photo spot</span><span class="tag">Late night</span></div>
     <p>The temple with the famous wooden stage over the hillside. It usually opens in the evening in autumn for a light-up (in 2025 it ran Nov 22-Dec 7). The 2026 dates are not announced yet.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves forecast: peak from Nov 24, falling from Dec 9 (Weathernews); tenki.jp: early Dec.</span> <span class="lvb peak">Stay 1 · peak from Nov 24</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=7111013964196361402" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kiyomizudera+autumn+illumination" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="30" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -2998,7 +2991,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Sakyo, east Kyoto <span class="dot">•</span> 5.2 km / 7.5 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>The Silver Pavilion and its garden. The Philosopher&#x27;s Path starts here and runs south past Anraku-ji towards Nanzen-ji, so they make a good walk together.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Eikandō, on the same hillside: peak from about Nov 23, falling from about Dec 5 (Weathernews); tenki.jp: late Nov-early Dec.</span> <span class="lvb peak">Stay 1 · at peak</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=2705196751698570185" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Ginkakuji+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="31" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3010,7 +3003,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Teramachi, downtown <span class="dot">•</span> 1.9 km / 4.5 km</div>
     <div class="tags"><span class="tag">Photo spot</span></div>
     <p>A downtown temple famous for its old fire-protecting ginkgo tree, which turns bright yellow in late autumn.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from the ginkgo trees at Kyoto Gyoen: peak from about Nov 25, falling from about Dec 5 (Weathernews).</span> <span class="lvb peak">Stay 1 · peak from Nov 25</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=2201652011559631590" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Honnoji+ginkgo+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="32" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3046,7 +3039,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Arashiyama <span class="dot">•</span> 8.3 km / 8.8 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A small temple up the hillside above the river in Arashiyama, with views over the valley. Pairs with Jōjakkō-ji and Yusai-Tei.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Arashiyama: peak from about Nov 23, falling from about Dec 9 (Weathernews); tenki.jp: from Nov 13.</span> <span class="lvb peak">Stay 1 · at peak</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=14257992469760671362" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Daihikaku+Senkoji+Arashiyama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="35" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3070,7 +3063,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Northeast of Kyoto <span class="dot">•</span> 10.1 km / 12.5 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>The mountain on Kyoto&#x27;s northeast edge, home to the Enryaku-ji temple complex, with big views. Pairs with Former Chikurin-in at its foot.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves forecast: peak from Nov 9, falling from Nov 27 (Weathernews); tenki.jp: early Nov-mid Nov.</span> <span class="lvb peak">Stay 1 · peak, falling from Nov 27</span><span class="lvb late">Stay 2 · leaves falling</span></div></div>
+    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves: </span>Earlier than the city: peak from about Nov 9, and leaves start falling around Nov 27 (Weathernews). Best in the first stay.</div></div>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=16309124816119328751" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Mount+Hiei+Enryakuji+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="37" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3082,7 +3075,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Sakamoto, Shiga side of Hiei <span class="dot">•</span> 13.1 km / 15.3 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Low energy</span></div>
     <p>A garden at the foot of Mount Hiei in Sakamoto. Easy to combine with Mount Hiei.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Hiyoshi Taisha next door: peak from about Nov 21, falling from about Dec 4 (Weathernews); tenki.jp: late Nov-early Dec.</span> <span class="lvb peak">Stay 1 · at peak</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=13309011099031202891" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Former+Chikurinin+Sakamoto+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="38" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3094,7 +3087,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Kurama, north of Kyoto <span class="dot">•</span> 13.7 km / 16.4 km</div>
     <div class="tags"><span class="tag">Low energy</span><span class="tag">Outdoors</span></div>
     <p>A hot spring in the mountain village of Kurama. A relaxing half-day out of the city.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Ōhara, also in the northern hills: peak from about Nov 19, falling from about Dec 7 (Weathernews); tenki.jp: late Nov-early Dec.</span> <span class="lvb peak">Stay 1 · at peak</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=6234670849390713272" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kurama+Onsen+outdoor+bath" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="39" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3142,7 +3135,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Uji <span class="dot">•</span> 13.1 km / 11.1 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>Next to other temples, with really nice colours. A short walk from it is a great spot to see the Uji River. Open 10:00-16:00.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves forecast: peak from Nov 29, falling from Dec 8 (Weathernews); tenki.jp: early Dec.</span> <span class="lvb early">Stay 1 · still colouring</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves: </span>Later than most of Kyoto: peak from about Nov 29 (Weathernews), early December on tenki.jp. Best in the second stay.</div></div>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=78672279002019378" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Koshoji+Uji+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="43" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3154,7 +3147,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Uji <span class="dot">•</span> 12.9 km / 10.8 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A very short walk from Uji Shrine, with very beautiful fall foliage.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Byōdō-in, across the river: peak from about Nov 24, falling from about Dec 7 (Weathernews); tenki.jp: late Nov-early Dec.</span> <span class="lvb peak">Stay 1 · peak from Nov 24</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=1252017123913850719" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Ujigami+Shrine+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="44" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3202,7 +3195,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Uji, up the river <span class="dot">•</span> 14.1 km / 12.0 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A hiking trail to see the autumn leaves with no tourists. Very peaceful and empty. Called もみじ谷 on the map.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from the Uji River gorge: peak from about Nov 24, falling from about Dec 12 (Weathernews).</span> <span class="lvb peak">Stay 1 · peak from Nov 24</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=8004895267741624539" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E5%AE%87%E6%B2%BB+%E3%82%82%E3%81%BF%E3%81%98%E8%B0%B7" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="48" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3226,7 +3219,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Uji, up the river <span class="dot">•</span> 14.3 km / 12.2 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A nice bridge, with a walkway back to Uji Station.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from the Uji River gorge: peak from about Nov 24, falling from about Dec 12 (Weathernews).</span> <span class="lvb peak">Stay 1 · peak from Nov 24</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=4037505517073721296" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Amagase+Bridge+Uji" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="50" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3238,7 +3231,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Arashiyama <span class="dot">•</span> 7.2 km / 7.7 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A huge, popular bridge. It&#x27;s worth walking around the river area next to it.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Arashiyama: peak from about Nov 23, falling from about Dec 9 (Weathernews); tenki.jp: from Nov 13.</span> <span class="lvb peak">Stay 1 · at peak</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=17011495368415127613" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Togetsukyo+Bridge+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="51" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3250,7 +3243,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Arashiyama <span class="dot">•</span> 7.1 km / 7.6 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span><span class="tag">Low energy</span></div>
     <p>A park right next to the station. A great place to watch the fall leaves.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Arashiyama: peak from about Nov 23, falling from about Dec 9 (Weathernews); tenki.jp: from Nov 13.</span> <span class="lvb peak">Stay 1 · at peak</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=13039171249015684163" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Arashiyama+Nakanoshima+park+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="52" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3262,7 +3255,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Saga, Arashiyama <span class="dot">•</span> 7.8 km / 8.6 km</div>
     <div class="tags"><span class="tag">Photo spot</span></div>
     <p>Huge temples, with some nice trees. Open 9:00-16:00.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Jōjakkō-ji nearby: peak from about Nov 21, falling from about Dec 8 (Weathernews); tenki.jp: late Nov-early Dec.</span> <span class="lvb peak">Stay 1 · at peak</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=9168046495846015700" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Seiryoji+Saga+Shakado" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="53" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3274,7 +3267,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Saga, Arashiyama <span class="dot">•</span> 8.4 km / 9.3 km</div>
     <div class="tags"><span class="tag">Photo spot</span></div>
     <p>A small temple that&#x27;s beautiful in the fall.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Jōjakkō-ji nearby: peak from about Nov 21, falling from about Dec 8 (Weathernews); tenki.jp: late Nov-early Dec.</span> <span class="lvb peak">Stay 1 · at peak</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=12416482612466603590" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Gohodo+Benzaiten+Arashiyama+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="54" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3286,7 +3279,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Saga, Arashiyama <span class="dot">•</span> 8.1 km / 8.9 km</div>
     <div class="tags"><span class="tag must"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/></svg></span>Must-go</span><span class="tag">Photo spot</span></div>
     <p>Must visit. A nice small temple that&#x27;s open only in the fall, with a great garden in autumn colours. Last year it opened Nov 1-Dec 7. Open 9:00-16:00.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Jōjakkō-ji nearby: peak from about Nov 21, falling from about Dec 8 (Weathernews); tenki.jp: late Nov-early Dec.</span> <span class="lvb peak">Stay 1 · at peak</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=8700190627802613877" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Enrian+temple+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="55" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3298,7 +3291,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Shimogamo <span class="dot">•</span> 4.9 km / 7.7 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>Another shrine inside the forest, and a pretty famous one.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves forecast: tenki.jp: early Dec-mid Dec.</span> <span class="lvb early">Stay 1 · still colouring</span><span class="lvb peak">Stay 2 · peak from Dec 1</span></div></div>
+    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves: </span>One of the latest in Kyoto: tenki.jp expects the peak in early to mid December, so the second stay is better. Same for Tadasu-no-Mori, Kawai Shrine and the Mitsui Villa next to it.</div></div>
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=268029265908714956" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Shimogamo+Shrine" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="56" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3310,7 +3303,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Shimogamo <span class="dot">•</span> 4.6 km / 7.4 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Low energy</span></div>
     <p>An ancient forest in the middle of Kyoto, with shrines inside. Worth going.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Shimogamo Shrine, in the same forest: tenki.jp: early Dec-mid Dec.</span> <span class="lvb early">Stay 1 · still colouring</span><span class="lvb peak">Stay 2 · peak from Dec 1</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=12467959435869434826" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Tadasu+no+Mori+forest" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="57" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3322,7 +3315,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Shimogamo <span class="dot">•</span> 4.4 km / 7.2 km</div>
     <div class="tags"><span class="tag">Outdoors</span></div>
     <p>A shrine surrounded by a forest.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Shimogamo Shrine next door: tenki.jp: early Dec-mid Dec.</span> <span class="lvb early">Stay 1 · still colouring</span><span class="lvb peak">Stay 2 · peak from Dec 1</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=17258213867964211309" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kawai+Shrine+Shimogamo" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="58" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3334,7 +3327,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Shimogamo <span class="dot">•</span> 4.1 km / 6.9 km</div>
     <div class="tags"><span class="tag">Photo spot</span></div>
     <p>A beautiful spot with a garden, but it can be crowded. Open 9:00-17:00, closed Wednesdays. ¥500 on weekdays.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Shimogamo Shrine nearby: tenki.jp: early Dec-mid Dec.</span> <span class="lvb early">Stay 1 · still colouring</span><span class="lvb peak">Stay 2 · peak from Dec 1</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=14107270176555232408" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Old+Mitsui+Family+Shimogamo+Villa" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="59" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3346,7 +3339,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Ichijōji <span class="dot">•</span> 6.6 km / 9.2 km</div>
     <div class="tags"><span class="tag must"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/></svg></span>Must-go</span><span class="tag">Photo spot</span></div>
     <p>A huge and really beautiful temple complex. Must go this time, we haven&#x27;t been before. Open 9:00-17:00.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves forecast: peak from Nov 21, falling from Dec 6 (Weathernews); tenki.jp: late Nov-early Dec.</span> <span class="lvb peak">Stay 1 · at peak</span><span class="lvb peak">Stay 2 · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=16379541971888387186" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Enkoji+Kyoto+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="60" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3434,18 +3427,16 @@ Changes:
   </div>
   <div class="leaves" id="jp-nara-leaves">
     <div class="lvtxt"><div class="lvjp">紅葉</div><h2>Autumn leaves forecast</h2>
-      <p class="lvverdict">Later than the first forecast. Nara Park now peaks from about Nov 18 and should last into early December, so any of the possible days works. Murō-ji and Hase-dera in the hills are earlier on Weathernews, but tenki.jp disagrees.</p>
-      <p class="lvnote">Two forecasts per spot. The red bar is Weathernews, from the start of peak colour to the day the leaves start to fall; there's still colour for a while after that.
-        The thin blue bar is tenki.jp, which gives the peak to the nearest ten days. Where they disagree, the truth is often in between.
-        Checked Nov 1, 2026. This autumn is warm, so dates can still move by a week.</p>
-      <p class="lvnote">City-level forecasts for when the maples are fully red: Kyoto Dec 11, Osaka Dec 4, Wakayama Dec 11 (Nippon Kisho). The usual dates are Kyoto Dec 5, Osaka Dec 1, Nara Nov 21, Hikone Nov 28 (Japan Meteorological Agency).</p>
+      <p class="lvverdict">Nara Park peaks from about Nov 18 and should last into early December, so any of the possible days works.</p>
+      <p class="lvnote">A couple of spots for the overall picture, from two forecasters. Places that peak much earlier or later say so on their card.
+        Checked Nov 1, 2026; dates can still move by a week.</p>
       <p class="lvsrc">Sources: <a href="https://weathernews.jp/koyo/area/kinki/" target="_blank" rel="noopener">Weathernews spot forecasts</a> · <a href="https://tenki.jp/kouyou/expectation.html" target="_blank" rel="noopener">tenki.jp forecast, 3rd update (Oct 28)</a> · <a href="https://tenki.jp/kouyou/6/" target="_blank" rel="noopener">tenki.jp spot forecasts (Kinki)</a> · <a href="https://www.nippon.com/ja/japan-data/h02888/" target="_blank" rel="noopener">Nippon Kisho city forecast</a> · <a href="https://www.data.jma.go.jp/sakura/data/phn_014.html" target="_blank" rel="noopener">Japan Meteorological Agency: usual dates</a></p></div>
     <div class="lvwrap"><div class="lvchart">
       <div class="lvbands" aria-hidden="true"><i class="lvgrid" style="left:18.00%"></i><i class="lvgrid" style="left:38.00%"></i><i class="lvgrid" style="left:58.00%"></i><i class="lvgrid" style="left:78.00%"></i><i class="lvband" style="left:32.00%;width:6.00%"></i><i class="lvband" style="left:46.00%;width:6.00%"></i><i class="lvband" style="left:58.00%;width:4.00%"></i></div>
       <div class="lvhead" aria-hidden="true"><span></span><div class="lvtrack"><span class="lvbl" style="left:35.00%;top:0px">Osaka</span><span class="lvbl" style="left:49.00%;top:14px">Kyoto 1</span><span class="lvbl" style="left:60.00%;top:0px">Kyoto 2</span></div></div>
-      <div class="lvrows" role="list" aria-label="Forecast by spot"><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Murō-ji</b><small>Nov 8-23 · tenki.jp late Nov-early Dec</small><small class="lvlink">not on our list</small></div><div class="lvtrack"><i class="lvbar off" style="left:14.00%;width:30.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Murō-ji: peak from Nov 8, falling from Nov 23 (Weathernews); tenki.jp: late Nov-early Dec. Osaka: at peak. Kyoto 1: leaves falling. Kyoto 2: leaves falling.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Hase-dera</b><small>Nov 12-29 · tenki.jp early Nov-late Nov</small><small class="lvlink">not on our list</small></div><div class="lvtrack"><i class="lvbar off" style="left:22.00%;width:34.00%"></i><i class="lvtk" style="left:0.00%;width:60.00%"></i><span class="lvtip">Hase-dera: peak from Nov 12, falling from Nov 29 (Weathernews); tenki.jp: early Nov-late Nov. Osaka: at peak. Kyoto 1: at peak. Kyoto 2: leaves falling.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Chōgaku-ji</b><small>Nov 16-Dec 2 · tenki.jp early Dec</small><small class="lvlink">not on our list</small></div><div class="lvtrack"><i class="lvbar off" style="left:30.00%;width:32.00%"></i><i class="lvtk" style="left:60.00%;width:20.00%"></i><span class="lvtip">Chōgaku-ji: peak from Nov 16, falling from Dec 2 (Weathernews); tenki.jp: early Dec. Osaka: at peak. Kyoto 1: at peak. Kyoto 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Nara Park</b><small>Nov 18-Dec 7 · tenki.jp late Oct-early Dec</small><small class="lvlink">not on our list</small></div><div class="lvtrack"><i class="lvbar off" style="left:34.00%;width:38.00%"></i><i class="lvtk" style="left:0.00%;width:80.00%"></i><span class="lvtip">Nara Park: peak from Nov 18, falling from Dec 7 (Weathernews); tenki.jp: late Oct-early Dec. Osaka: peak from Nov 18. Kyoto 1: at peak. Kyoto 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Shōryaku-ji</b><small>Nov 20-Dec 8 · tenki.jp mid Nov-early Dec</small><small class="lvlink">not on our list</small></div><div class="lvtrack"><i class="lvbar off" style="left:38.00%;width:36.00%"></i><i class="lvtk" style="left:20.00%;width:60.00%"></i><span class="lvtip">Shōryaku-ji: peak from Nov 20, falling from Dec 8 (Weathernews); tenki.jp: mid Nov-early Dec. Osaka: still colouring. Kyoto 1: at peak. Kyoto 2: at peak.</span></div></div></div>
+      <div class="lvrows" role="list" aria-label="Forecast by spot"><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Nara Park</b><small>Nov 18-Dec 7 · tenki.jp late Oct-early Dec</small></div><div class="lvtrack"><i class="lvbar" style="left:34.00%;width:38.00%"></i><i class="lvtk" style="left:0.00%;width:80.00%"></i><span class="lvtip">Nara Park: peak from Nov 18, falling from Dec 7 (Weathernews); tenki.jp: late Oct-early Dec. Osaka: peak from Nov 18. Kyoto 1: at peak. Kyoto 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Shōryaku-ji</b><small>Nov 20-Dec 8 · tenki.jp mid Nov-early Dec</small></div><div class="lvtrack"><i class="lvbar" style="left:38.00%;width:36.00%"></i><i class="lvtk" style="left:20.00%;width:60.00%"></i><span class="lvtip">Shōryaku-ji: peak from Nov 20, falling from Dec 8 (Weathernews); tenki.jp: mid Nov-early Dec. Osaka: still colouring. Kyoto 1: at peak. Kyoto 2: at peak.</span></div></div></div>
       <div class="lvaxis" aria-hidden="true"><span></span><div class="lvtrack"><span style="left:18.00%">Nov 10</span><span style="left:38.00%">Nov 20</span><span style="left:58.00%">Nov 30</span><span style="left:78.00%">Dec 10</span></div></div></div>
-      <div class="lvlegend"><span><i class="sw sw-off"></i>Weathernews, nearby spot</span><span><i class="sw sw-tk"></i>tenki.jp: peak period, to the nearest 10 days</span>
+      <div class="lvlegend"><span><i class="sw sw-bar"></i>Weathernews: peak until leaves start to fall</span><span><i class="sw sw-tk"></i>tenki.jp: peak period</span>
         <span><i class="sw sw-stay"></i>Days we could go from Osaka: Nov 17-19 · Kyoto 1: Nov 24-26 · Kyoto 2: Nov 30-Dec 1</span></div></div>
   </div>
   
@@ -3505,18 +3496,16 @@ Changes:
   </div>
   <div class="leaves" id="jp-shiga-leaves">
     <div class="lvtxt"><div class="lvjp">紅葉</div><h2>Autumn leaves forecast</h2>
-      <p class="lvverdict">Good timing. Genkyū-en below the castle peaks from about Nov 28 (tenki.jp says early December), and Keisokuji up north is forecast for late November to early December. Kyorinbo moved earlier, to about Nov 25. The Genkyū-en evening light-up runs until Nov 29.</p>
-      <p class="lvnote">Two forecasts per spot. The red bar is Weathernews, from the start of peak colour to the day the leaves start to fall; there's still colour for a while after that.
-        The thin blue bar is tenki.jp, which gives the peak to the nearest ten days. Where they disagree, the truth is often in between.
-        Checked Nov 1, 2026. This autumn is warm, so dates can still move by a week.</p>
-      <p class="lvnote">City-level forecasts for when the maples are fully red: Kyoto Dec 11, Osaka Dec 4, Wakayama Dec 11 (Nippon Kisho). The usual dates are Kyoto Dec 5, Osaka Dec 1, Nara Nov 21, Hikone Nov 28 (Japan Meteorological Agency).</p>
+      <p class="lvverdict">Good timing. Genkyū-en and the temples up north peak from late November to early December. The Genkyū-en evening light-up runs until Nov 29.</p>
+      <p class="lvnote">A couple of spots for the overall picture, from two forecasters. Places that peak much earlier or later say so on their card.
+        Checked Nov 1, 2026; dates can still move by a week.</p>
       <p class="lvsrc">Sources: <a href="https://weathernews.jp/koyo/area/kinki/" target="_blank" rel="noopener">Weathernews spot forecasts</a> · <a href="https://tenki.jp/kouyou/expectation.html" target="_blank" rel="noopener">tenki.jp forecast, 3rd update (Oct 28)</a> · <a href="https://tenki.jp/kouyou/6/" target="_blank" rel="noopener">tenki.jp spot forecasts (Kinki)</a> · <a href="https://www.nippon.com/ja/japan-data/h02888/" target="_blank" rel="noopener">Nippon Kisho city forecast</a> · <a href="https://www.data.jma.go.jp/sakura/data/phn_014.html" target="_blank" rel="noopener">Japan Meteorological Agency: usual dates</a></p></div>
     <div class="lvwrap"><div class="lvchart">
       <div class="lvbands" aria-hidden="true"><i class="lvgrid" style="left:18.00%"></i><i class="lvgrid" style="left:38.00%"></i><i class="lvgrid" style="left:58.00%"></i><i class="lvgrid" style="left:78.00%"></i><i class="lvband" style="left:52.00%;width:6.00%"></i></div>
       <div class="lvhead" aria-hidden="true"><span></span><div class="lvtrack"><span class="lvbl" style="left:55.00%;top:0px">Our stay</span></div></div>
-      <div class="lvrows" role="list" aria-label="Forecast by spot"><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Koto Sanzan (Hyakusai-ji)</b><small>Nov 11-Dec 1 · tenki.jp early Nov-late Nov</small><small class="lvlink">not on our list</small></div><div class="lvtrack"><i class="lvbar off" style="left:20.00%;width:40.00%"></i><i class="lvtk" style="left:0.00%;width:60.00%"></i><span class="lvtip">Koto Sanzan (Hyakusai-ji): peak from Nov 11, falling from Dec 1 (Weathernews); tenki.jp: early Nov-late Nov. Our stay: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Eigen-ji</b><small>Nov 14-Dec 2 · tenki.jp late Nov-early Dec</small><small class="lvlink">not on our list</small></div><div class="lvtrack"><i class="lvbar off" style="left:26.00%;width:36.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Eigen-ji: peak from Nov 14, falling from Dec 2 (Weathernews); tenki.jp: late Nov-early Dec. Our stay: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Kyorinbo</b><small>Nov 25-Dec 9</small><small class="lvlink">on our list</small></div><div class="lvtrack"><i class="lvbar" style="left:48.00%;width:28.00%"></i><span class="lvtip">Kyorinbo: peak from Nov 25, falling from Dec 9 (Weathernews). Our stay: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Genkyū-en, Hikone Castle</b><small>Nov 28-Dec 11 · tenki.jp early Dec</small><small class="lvlink">our list: Hikone Castle</small></div><div class="lvtrack"><i class="lvbar" style="left:54.00%;width:26.00%"></i><i class="lvtk" style="left:60.00%;width:20.00%"></i><span class="lvtip">Genkyū-en, Hikone Castle: peak from Nov 28, falling from Dec 11 (Weathernews); tenki.jp: early Dec. Our stay: peak from Nov 28.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Keisokuji</b><small>tenki.jp late Nov-early Dec</small><small class="lvlink">on our list; estimate for Shakudoji, Yoshirou Shrine, Kamisaki Shrine</small></div><div class="lvtrack"><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Keisokuji: tenki.jp: late Nov-early Dec. Our stay: at peak.</span></div></div></div>
+      <div class="lvrows" role="list" aria-label="Forecast by spot"><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Genkyū-en, Hikone Castle</b><small>Nov 28-Dec 11 · tenki.jp early Dec</small></div><div class="lvtrack"><i class="lvbar" style="left:54.00%;width:26.00%"></i><i class="lvtk" style="left:60.00%;width:20.00%"></i><span class="lvtip">Genkyū-en, Hikone Castle: peak from Nov 28, falling from Dec 11 (Weathernews); tenki.jp: early Dec. Our stay: peak from Nov 28.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Kyorinbo</b><small>Nov 25-Dec 9</small></div><div class="lvtrack"><i class="lvbar" style="left:48.00%;width:28.00%"></i><span class="lvtip">Kyorinbo: peak from Nov 25, falling from Dec 9 (Weathernews). Our stay: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Keisokuji</b><small>tenki.jp late Nov-early Dec</small></div><div class="lvtrack"><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Keisokuji: tenki.jp: late Nov-early Dec. Our stay: at peak.</span></div></div></div>
       <div class="lvaxis" aria-hidden="true"><span></span><div class="lvtrack"><span style="left:18.00%">Nov 10</span><span style="left:38.00%">Nov 20</span><span style="left:58.00%">Nov 30</span><span style="left:78.00%">Dec 10</span></div></div></div>
-      <div class="lvlegend"><span><i class="sw sw-bar"></i>Weathernews: peak to leaves falling (on our list)</span><span><i class="sw sw-off"></i>Weathernews, nearby spot</span><span><i class="sw sw-tk"></i>tenki.jp: peak period, to the nearest 10 days</span>
+      <div class="lvlegend"><span><i class="sw sw-bar"></i>Weathernews: peak until leaves start to fall</span><span><i class="sw sw-tk"></i>tenki.jp: peak period</span>
         <span><i class="sw sw-stay"></i>Our stay: Nov 27-29</span></div></div>
   </div>
   <div class="vids" id="jp-shiga-videos"><div class="vidhead"><h2>Videos that inspired this list</h2><span>handy to watch before a day out · the photos on the cards come from them</span></div><div class="vidgrid"><a class="vid" href="https://www.youtube.com/watch?v=usbzVo8lxB0" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/usbzVo8lxB0/mqdefault.jpg" alt="" loading="lazy"><span><b>SHIGA 滋賀 ↗</b><small>Autumn: Seiganji, Keisokuji and the temples and shrines around Kinomoto and Takatsuki.</small></span></a><a class="vid" href="https://www.youtube.com/watch?v=VtXBq71Cjbg" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/VtXBq71Cjbg/mqdefault.jpg" alt="" loading="lazy"><span><b>滋賀旅 (Shiga trip) ↗</b><small>Late spring: Omihachiman, Hikone Castle, Chikubu Island and La Collina.</small></span></a></div></div>
@@ -3660,7 +3649,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Hikone, walkable <span class="dot">•</span> 1 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A very historic castle. One of the few in Japan with its original keep still standing, and a National Treasure. Genkyu-en garden sits right below it. Walkable from the hotel. Open 8:30-17:00.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves forecast: peak from Nov 28, falling from Dec 11 (Weathernews); tenki.jp: early Dec.</span> <span class="lvb peak">Our stay · peak from Nov 28</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=17161565663193041968" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Hikone+Castle+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="9" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3792,7 +3781,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Kinomoto area <span class="dot">•</span> 25 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Low energy</span></div>
     <p>Not crowded, close to the other places we want to see, and has nice big steps.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Keisokuji nearby: tenki.jp: late Nov-early Dec.</span> <span class="lvb peak">Our stay · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=61851636970824422" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kamisaki+Shrine+Nagahama" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="20" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3804,7 +3793,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Kinomoto area <span class="dot">•</span> 26 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A temple with a nice pond and red leaves. Google Maps shows it open on weekends only, which works for Sat Nov 28 or Sun Nov 29.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Keisokuji next door: tenki.jp: late Nov-early Dec.</span> <span class="lvb peak">Our stay · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=11288930212506388755" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Shakudoji+Nagahama+autumn" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="21" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3816,7 +3805,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Kinomoto area <span class="dot">•</span> 26 km</div>
     <div class="tags"><span class="tag must"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"/></svg></span>Must-go</span><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>Must go. A temple with really famous stone steps covered in red leaves. Open 8:30-16:00.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves forecast: tenki.jp: late Nov-early Dec.</span> <span class="lvb peak">Our stay · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=2366704082444976644" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Keisokuji+autumn+leaves" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="22" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3828,7 +3817,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Kinomoto area <span class="dot">•</span> 26 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A shrine with nice red leaves.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves, estimate from Keisokuji nearby: tenki.jp: late Nov-early Dec.</span> <span class="lvb peak">Our stay · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=13778143549889845234" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=%E4%B8%8E%E5%BF%97%E6%BC%8F%E7%A5%9E%E7%A4%BE+%E7%B4%85%E8%91%89" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="23" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3864,7 +3853,7 @@ Changes:
     <div class="meta"><span class="catlbl">Sights · </span>Azuchi, south of Hikone <span class="dot">•</span> 17 km</div>
     <div class="tags"><span class="tag">Outdoors</span><span class="tag">Photo spot</span></div>
     <p>A temple garden known for autumn leaves. It normally opens only on weekends, but in past years it has opened daily for a few weeks in autumn, with an evening light-up. Check this year&#x27;s dates.</p>
-    <div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves forecast: peak from Nov 25, falling from Dec 9 (Weathernews).</span> <span class="lvb peak">Our stay · at peak</span></div></div>
+    
     <div class="btns"><a class="btn" href="https://maps.google.com/?cid=1454445400296920734" target="_blank" rel="noopener"><span class="bi i-pin"></span>Open in Maps</a>
     <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Kyorinbo+autumn+leaves" target="_blank" rel="noopener"><span class="bi i-cam"></span>Photos</a>
     <button type="button" class="btn ghost onmap" data-onmap="26" hidden><span class="bi i-map"></span>Show on map</button></div>
@@ -3929,7 +3918,7 @@ Changes:
     <p>Options for the rest of the trip are on the way.</p>
     <div class="latgrid"></div>
   </div>
-  <div class="foot">Japan trip guide · Version 1.8 · updated Nov 1, 2026</div>
+  <div class="foot">Japan trip guide · Version 1.9 · updated Nov 2, 2026</div>
 </div></div>
 
 <script>

@@ -132,8 +132,10 @@ The photo sits at the top of the card. Tapping it opens a full-screen view (`.ph
 ### Autumn leaves forecast (`source/leaves.py`)
 - `SPOTS[stop]`: forecast spots in display order, as (name, Weathernews peak "M/D", Weathernews falling "M/D", tenki.jp period). The tenki.jp period is copied as written on its spot page ("11月下旬～12月上旬", "12月上旬", or a start date like "11/13～") and turned into dates by `tenki_range()`. Either source can be missing (None / ""). `WN_IDS` keeps the Weathernews spot ids for the next refresh.
 - `CARDS[stop]`: links a card (by its name in data.py) to a spot: (spot name, `False`) when the forecast is for that exact place, or (spot name, "Eikandō, on the same hillside") for an estimate from a nearby spot. The build stops if a name doesn't match a card.
-- `STAYS[stop]`: our days there, as (label, first day, last day). They are shaded on the timeline, and each card gets a badge per stay: "at peak", "peak from Nov 20", "peak, falling from Dec 2", "still colouring" or "leaves falling". These are worked out from the dates by `status()`.
+- `STAYS[stop]`: our days there, as (label, first day, last day). They are shaded on the timeline, and the tooltip on each row says how it looks per stay ("at peak", "peak from Nov 20", "still colouring"...), worked out by `status()`.
 - `VERDICT[stop]`: one or two plain sentences at the top of the panel. Rewrite them when the dates change.
+- `SHOW[stop]`: the two or three spots drawn in the panel, for the overall picture. The other spots stay in `SPOTS` as reference.
+- `NOTES[stop]`: a short forecast line on a card, only where its timing is very different from the rest of the area (Mount Hiei, Kōshō-ji, Shimogamo, Kinkaku-ji, Koyasan). Cards listed in `CARDS` still get the "Autumn leaves" filter tag.
 - `CHECKED`, `SOURCES`, `CONTEXT` (one line on the city-level forecasts) and the chart's range (`START`, `END`).
 - Stay badges use Weathernews when a spot has it, otherwise the tenki.jp period (`window()`).
 
@@ -264,3 +266,4 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 - **v1.6.1:** one shared credit for the Shiga photos, pointing to the videos box.
 - **v1.7:** Uji added to Kyoto (10 places, photos from the Uji video in Kyoto's videos box) and Uji spots in the leaves forecast.
 - **v1.8:** 17 more Kyoto places (Arashiyama and Saga, Shimogamo, Ichijoji) with photos and two more videos; leaves forecast refreshed with tenki.jp alongside Weathernews.
+- **v1.9:** shorter leaves forecast (two or three spots per stop); forecast notes only on cards whose timing stands out.

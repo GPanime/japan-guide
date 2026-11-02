@@ -136,18 +136,10 @@ def lv_text(sp, about=""):
 
 
 def leaves_line(city, name):
-    """The forecast line on a card, with how it looks during each stay."""
-    k = city["key"]
-    m = LV.CARDS.get(k, {}).get(name)
-    if not m: return ""
-    spot, est = m
-    sp = lv_spot(k, spot)
-    peak, fall = LV.window(sp)
-    head = f"Leaves, estimate from {est}" if est else "Leaves forecast"
-    badges = "".join(f'<span class="lvb {cls}">{esc(lbl)} · {esc(txt)}</span>'
-                     for lbl, a, b in lv_stays(k) for cls, txt in [LV.status(peak, fall, a, b)])
-    return (f'<div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">{esc(head)}: {esc(lv_text(sp, "about " if est else ""))}.</span> '
-            f'{badges}</div></div>')
+    """A short forecast note on a card, only where leaves.NOTES has one (timing very different from the area)."""
+    note = LV.NOTES.get(city["key"], {}).get(name)
+    if not note: return ""
+    return f'<div class="lvcard"><span class="bi i-leaf"></span><div><span class="lvt">Leaves: </span>{esc(note)}</div></div>'
 
 
 def leaves_panel(city):
@@ -164,15 +156,11 @@ def leaves_panel(city):
     ticks = "".join(f'<span style="left:{lv_pct(LV.day(t)):.2f}%">{lbl}</span>'
                     for t, lbl in (("11/10", "Nov 10"), ("11/20", "Nov 20"), ("11/30", "Nov 30"), ("12/10", "Dec 10")))
     rows = []
-    has = {"wn": False, "off": False, "tk": False}
-    for sp in LV.SPOTS[k]:
-        name, p, f, t = sp
+    has = {"wn": False, "tk": False}
+    for name in LV.SHOW[k]:
+        sp = lv_spot(k, name)
+        _, p, f, t = sp
         tr = LV.tenki_range(t)
-        exact = [c for c, (s_, est) in cards.items() if s_ == name and not est]
-        ests = [c for c, (s_, est) in cards.items() if s_ == name and est]
-        link = []
-        if exact: link.append("on our list" if exact == [name] else "our list: " + ", ".join(exact))
-        if ests: link.append("estimate for " + ", ".join(ests))
         dates = []
         if p: dates.append(LV.fmt_range(LV.day(p), LV.day(f)))
         if tr: dates.append(f"tenki.jp {tr[2]}")
@@ -180,29 +168,24 @@ def leaves_panel(city):
         tip = (f"{name}: {lv_text(sp)}. " + " ".join(f"{lbl}: {LV.status(peak, fall, a, b)[1]}." for lbl, a, b in stays))
         bars = ""
         if p:
-            off = not (exact or ests)
-            has["wn" if not off else "off"] = True
-            bars += f'<i class="lvbar{" off" if off else ""}" style="left:{lv_pct(LV.day(p)):.2f}%;width:{lv_pct(LV.day(f)) - lv_pct(LV.day(p)):.2f}%"></i>'
+            has["wn"] = True
+            bars += f'<i class="lvbar" style="left:{lv_pct(LV.day(p)):.2f}%;width:{lv_pct(LV.day(f)) - lv_pct(LV.day(p)):.2f}%"></i>'
         if tr:
             has["tk"] = True
             bars += f'<i class="lvtk" style="left:{lv_pct(tr[0]):.2f}%;width:{max(lv_pct(tr[1] + one) - lv_pct(tr[0]), 1.5):.2f}%"></i>'
-        rows.append(f'<div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>{esc(name)}</b><small>{esc(" · ".join(dates))}</small>'
-                    f'<small class="lvlink">{esc("; ".join(link) if link else "not on our list")}</small></div>'
+        rows.append(f'<div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>{esc(name)}</b><small>{esc(" · ".join(dates))}</small></div>'
                     f'<div class="lvtrack">{bars}<span class="lvtip">{esc(tip)}</span></div></div>')
     stay_txt = " · ".join(f"{lbl}: {LV.fmt_range(a, b)}" for lbl, a, b in stays)
     if k in LV.STAY_TITLE: stay_txt = f"{LV.STAY_TITLE[k]} {stay_txt}"
     legend = ""
-    if has["wn"]: legend += '<span><i class="sw sw-bar"></i>Weathernews: peak to leaves falling (on our list)</span>'
-    if has["off"]: legend += '<span><i class="sw sw-off"></i>Weathernews, nearby spot</span>'
-    if has["tk"]: legend += '<span><i class="sw sw-tk"></i>tenki.jp: peak period, to the nearest 10 days</span>'
+    if has["wn"]: legend += '<span><i class="sw sw-bar"></i>Weathernews: peak until leaves start to fall</span>'
+    if has["tk"]: legend += '<span><i class="sw sw-tk"></i>tenki.jp: peak period</span>'
     srcs = " · ".join(f'<a href="{esc(u)}" {EXT}>{esc(t)}</a>' for t, u in LV.SOURCES)
     return f'''<section class="leaves" id="jp-{k}-leaves">
     <div class="lvtxt"><div class="lvjp">紅葉</div><h2>Autumn leaves forecast</h2>
       <p class="lvverdict">{esc(LV.VERDICT[k])}</p>
-      <p class="lvnote">Two forecasts per spot. The red bar is Weathernews, from the start of peak colour to the day the leaves start to fall; there's still colour for a while after that.
-        The thin blue bar is tenki.jp, which gives the peak to the nearest ten days. Where they disagree, the truth is often in between.
-        Checked {LV.CHECKED}. This autumn is warm, so dates can still move by a week.</p>
-      <p class="lvnote">{esc(LV.CONTEXT)}</p>
+      <p class="lvnote">A couple of spots for the overall picture, from two forecasters. Places that peak much earlier or later say so on their card.
+        Checked {LV.CHECKED}; dates can still move by a week.</p>
       <p class="lvsrc">Sources: {srcs}</p></div>
     <div class="lvwrap"><div class="lvchart">
       <div class="lvbands" aria-hidden="true">{grid}{bands}</div>
@@ -419,9 +402,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.8"
-VDATE = "Nov 1, 2026"
+VERSION = "1.9"
+VDATE = "Nov 2, 2026"
 CHANGELOG = [
+    ("1.9", "Nov 2, 2026", "Shorter leaves forecast: two or three spots per stop. A forecast note now shows only on cards whose timing stands out."),
     ("1.8", "Nov 1, 2026", "Kyoto: 17 more places (Arashiyama and Saga, Shimogamo, Ichijoji) with photos and two more videos. Leaves forecast refreshed for every stop, now with tenki.jp next to Weathernews."),
     ("1.7", "Nov 1, 2026", "Kyoto: Uji added (10 places with photos from the Uji video, linked in a new videos box) and Uji spots in the leaves forecast."),
     ("1.6.1", "Nov 1, 2026", "Shiga photos: one simple credit pointing to the two videos, instead of a link per photo."),

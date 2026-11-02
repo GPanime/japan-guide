@@ -11,9 +11,10 @@ How to refresh it (details in docs/GUIDE.md, "Autumn leaves forecast"):
 
 SPOTS[city] lists forecast spots in the order shown: (name, Weathernews peak "M/D", Weathernews falling "M/D", tenki.jp period).
 Either source can be missing (None for Weathernews, "" for tenki.jp).
-CARDS[city] links a card (by its name in data.py) to a spot: (spot name, estimate). estimate=False when the forecast is for
-that exact place; otherwise a short text such as "Eikando nearby", shown as "estimate from Eikando nearby".
-A spot with no linked card is drawn as "nearby, not on our list".
+SHOW[city] picks the two or three spots drawn in the tab's panel, to give the overall picture. The rest of SPOTS is kept
+as reference (and for NOTES).
+CARDS[city] links a card (by its name in data.py) to a spot: those cards get the "Autumn leaves" filter tag.
+NOTES[city] is a short line shown on a card, only where its timing stands out from the rest of the area.
 """
 import datetime as _dt
 import re as _re
@@ -44,12 +45,12 @@ STAYS = {
 }
 
 VERDICT = {
-    "osaka": "Still a bit early in the city. Osaka Castle Park and Expo Park are forecast to reach peak around Nov 19-20, our last days here. The hills to the north (Minoo, Katsuo-ji) now look a little earlier, from about Nov 14-20. tenki.jp expects mid to late November for most spots.",
-    "wakayama": "Not the right time in the city. The garden at Wakayama Castle peaks from about Dec 2. Koyasan, up in the mountains, peaks from about Nov 7 and starts falling around Nov 19, so Nov 20 is right at the end.",
+    "osaka": "A bit early. The city peaks around Nov 19-20, our last days here. The hills to the north (Minoo, Katsuo-ji) start a little earlier.",
+    "wakayama": "Too early in the city: the castle garden peaks from about Dec 2. Koyasan, up in the mountains, is earlier and ends around Nov 19.",
     "shirahama": "Not a leaves stop. The coast stays green, and the nearest forecast spots inland peak after we leave.",
-    "kyoto": "Still the best timing of the trip. Weathernews has most temples at peak from about Nov 21-25, so both stays should be good. tenki.jp is a bit later, late November to early December, which favours the second stay. Mount Hiei comes earlier, and Uji a little later.",
-    "nara": "Later than the first forecast. Nara Park now peaks from about Nov 18 and should last into early December, so any of the possible days works. Murō-ji and Hase-dera in the hills are earlier on Weathernews, but tenki.jp disagrees.",
-    "shiga": "Good timing. Genkyū-en below the castle peaks from about Nov 28 (tenki.jp says early December), and Keisokuji up north is forecast for late November to early December. Kyorinbo moved earlier, to about Nov 25. The Genkyū-en evening light-up runs until Nov 29.",
+    "kyoto": "The best timing of the trip. Most temples peak from about Nov 21-25, and tenki.jp is a little later, so both stays should be good. Mount Hiei is earlier; Uji and Shimogamo are later.",
+    "nara": "Nara Park peaks from about Nov 18 and should last into early December, so any of the possible days works.",
+    "shiga": "Good timing. Genkyū-en and the temples up north peak from late November to early December. The Genkyū-en evening light-up runs until Nov 29.",
 }
 
 SPOTS = {
@@ -73,6 +74,27 @@ SPOTS = {
               ("Kyorinbo", "11/25", "12/9", ""), ("Genkyū-en, Hikone Castle", "11/28", "12/11", "12月上旬"),
               ("Keisokuji", None, None, "11月下旬～12月上旬")],
 }
+# The spots drawn in each tab's panel: a couple that show the area's overall timing.
+SHOW = {
+    "osaka": ["Osaka Castle Park", "Minoo Park"],
+    "wakayama": ["Momijidani garden, Wakayama Castle", "Koyasan"],
+    "shirahama": ["Kozagawa gorge"],
+    "kyoto": ["Tōfuku-ji", "Eikandō", "Arashiyama"],
+    "nara": ["Nara Park", "Shōryaku-ji"],
+    "shiga": ["Genkyū-en, Hikone Castle", "Kyorinbo", "Keisokuji"],
+}
+
+# Shown on a card when its timing is very different from the rest of the area.
+NOTES = {
+    "wakayama": {"Koyasan": "Earlier than the city, up in the mountains: peak from about Nov 7, and leaves start falling around Nov 19 (Weathernews). Nov 20 is right at the end."},
+    "kyoto": {
+        "Mount Hiei": "Earlier than the city: peak from about Nov 9, and leaves start falling around Nov 27 (Weathernews). Best in the first stay.",
+        "Kōshō-ji": "Later than most of Kyoto: peak from about Nov 29 (Weathernews), early December on tenki.jp. Best in the second stay.",
+        "Shimogamo Shrine": "One of the latest in Kyoto: tenki.jp expects the peak in early to mid December, so the second stay is better. Same for Tadasu-no-Mori, Kawai Shrine and the Mitsui Villa next to it.",
+        "Kinkaku-ji": "A bit later than most: nearby Ryōan-ji peaks from about Nov 27 (Weathernews), early December on tenki.jp. Better in the second stay.",
+    },
+}
+
 # Weathernews spot ids (weathernews.jp/koyo/spot/<id>/) and tenki.jp pages, for the next refresh.
 WN_IDS = {"Tōfuku-ji": 26111, "Kiyomizu-dera": 26112, "Arashiyama": 26101, "Jōjakkō-ji": 26134, "Ryōan-ji": 26131, "Kyoto Gyoen ginkgo trees": 26140,
           "Ōhara Sanzen-in": 26103, "Nanzen-ji": 26105, "Enkōji": 26114, "Eikandō": 26120, "Byōdō-in, Uji": 26136, "Kōshō-ji, Uji": 26155,
