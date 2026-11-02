@@ -901,4 +901,7 @@ PHOTOS = {
         "Ikkyu soba": "ikkyu-soba",
     }.items()},
 }
+# Reservations we've made: {stop: {card name: "when, details"}}. The card gets a green "Reserved" line,
+# and the tab lists them at the top.
+BOOKED = {}
 LATER = []

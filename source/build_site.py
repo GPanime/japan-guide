@@ -14,7 +14,7 @@ How the page works (details in docs/GUIDE.md):
 import os, re, sys, itertools, urllib.parse
 from datetime import timedelta
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from data import PHOTOS
+from data import PHOTOS, BOOKED
 from common import CATS, CITIES, LATER, TAGS, ICONS, ART, PIN, CAM, HEART, build_map, esc, tag_html, photos
 import styles  # base stylesheet, scoped under #jp26
 import leaves as LV  # autumn leaves forecast (source/leaves.py)
@@ -83,6 +83,15 @@ def videos_box(city):
             f'<span>handy to watch before a day out · the photos on the cards come from them</span></div><div class="vidgrid">{items}</div></section>')
 
 
+def reservations_box(city):
+    """A short list of the reservations we've made in this stop, each linking to its card."""
+    b = BOOKED.get(city["key"])
+    if not b: return ""
+    idx = {p[1]: i + 1 for i, p in enumerate(city["places"])}
+    items = "".join(f'<li><a href="#jp-{city["key"]}-p-{idx[n]}"><span class="bi i-check"></span><b>{esc(when)}</b> {esc(n)}</a></li>' for n, when in b.items())
+    return f'<section class="resv"><h2>Our reservations</h2><ul>{items}</ul></section>'
+
+
 def card(city, i, p, view):
     cat, name, area, km, tags, desc, maps, pq = p[:8]
     c = CATS[cat]
@@ -93,11 +102,15 @@ def card(city, i, p, view):
         count = f'<span class="phn">1 / {len(bases)}</span>' if len(bases) > 1 else ""
         ph_h = (f'<div class="ph"><a href="#jp-{city["key"]}-ph-{i}" aria-label="Enlarge photo of {esc(name)}"><img src="{bases[0]}-800.webp" alt="{esc(name)}" loading="lazy"></a>'
                 f'{count}{photo_src(ph[1], ph[2], "phsrc")}</div>')
-    tags_h = "".join(tag_html(t) for t in tags if t != "Autumn leaves")
-    return f'''<article class="card{' hasph' if ph else ''}" id="jp-{city['key']}-{view}-{i}" data-n="{i}" data-cat="{cat}" data-tags="{esc('|'.join(tags))}" style="--c:{c['color']}">
+    booked = BOOKED.get(city["key"], {}).get(name)
+    shown_tags = [t for t in tags if t != "Autumn leaves" and not (booked and t == "Book ahead")]
+    tags_h = "".join(tag_html(t) for t in shown_tags)
+    book_h = f'<div class="bookd"><span class="bi i-check"></span><b>Reserved</b> · {esc(booked)}</div>' if booked else ""
+    return f'''<article class="card{' hasph' if ph else ''}{' booked' if booked else ''}" id="jp-{city['key']}-{view}-{i}" data-n="{i}" data-cat="{cat}" data-tags="{esc('|'.join(tags))}" style="--c:{c['color']}">
   {ph_h}<div class="num" aria-hidden="true">{i}</div>
   <div class="cbody">
     <h3>{esc(name)}</h3>
+    {book_h}
     <div class="meta"><span class="catlbl">{c['title']} · </span>{esc(area)} <span class="dot">•</span> {esc(km)}</div>
     {f'<div class="tags">{tags_h}</div>' if tags_h else ''}
     <p>{esc(desc)}</p>
@@ -343,6 +356,7 @@ def city_panel(city, nxt):
     {hotel_boxes}
     {day1 or '<div class="box dark"><h3>Still researching</h3><p>Only a few places so far. More food and sights will be added before the trip.</p></div>'}
   </section>
+  {reservations_box(city)}
   {leaves_panel(city)}
   {videos_box(city)}
   <div class="planner">
@@ -585,6 +599,18 @@ def build():
 @media (max-width: 860px) {{ {R} .leaves {{ grid-template-columns: minmax(0, 1fr); }} }}
 @media (max-width: 680px) {{ {R} .leaves {{ padding: 16px 14px; }} {R} .lvchart {{ --lw: 118px; }} {R} .lvhead, {R} .lvrow, {R} .lvaxis {{ gap: 8px; }}
   {R} .lvbands {{ left: calc(var(--lw) + 8px); }} {R} .lvname b {{ font-size: 12.5px; }} {R} .lvname small {{ font-size: 11px; }} {R} .lvaxis .lvtrack span {{ font-size: 10.5px; }} }}
+/* ---- reservations ---- */
+{R} {{ --booked: #2F8A57; --bookedtint: #E2F3E8; }}
+{R} .i-check {{ -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12.5l5 5L20 6.5'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12.5l5 5L20 6.5'/%3E%3C/svg%3E") center / contain no-repeat; }}
+{R} .card.booked {{ border-color: var(--booked); box-shadow: 0 0 0 1.5px var(--booked) inset; }}
+{R} .bookd {{ display: flex; align-items: center; gap: 6px; margin-top: 6px; padding: 6px 10px; border-radius: 10px; background: var(--bookedtint); color: var(--ink); font-size: 13.5px; font-weight: 700; }}
+{R} .bookd b {{ font-weight: 800; }}
+{R} .bookd .bi, {R} .resv .bi {{ color: var(--booked); }}
+{R} .resv {{ margin-top: 14px; background: var(--surface); border: 1.5px solid var(--booked); border-radius: var(--r); padding: 14px 18px; }}
+{R} .resv h2 {{ font-size: 19px; }}
+{R} .resv ul {{ list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 10px; }}
+{R} .resv a {{ display: inline-flex; align-items: center; gap: 7px; padding: 6px 12px; border-radius: 99px; background: var(--bookedtint); color: var(--ink); text-decoration: none; font-size: 14px; }}
+{R} .resv a:hover {{ box-shadow: 0 0 0 1.5px var(--booked) inset; }}
 /* ---- our photos ---- */
 {R} .card.hasph {{ flex-wrap: wrap; align-content: flex-start; }}
 {R} .card .ph {{ flex: 1 0 100%; display: block; position: relative; margin: -16px -16px 2px -14px; border-radius: calc(var(--r) - 2px) calc(var(--r) - 2px) 0 0; overflow: hidden; background: var(--chip); }}
@@ -649,7 +675,7 @@ Changes:
         }
     DARK = ("--bg: #1C1613; --surface: #28201C; --surface2: #221B17; --ink: #F4E8DA; --soft: #E2CDB8; --muted: #B29D8D; "
             "--line: #3B302A; --chip: #362B25; --accent: #F07261; --dark: #F4E8DA; --onDark: #2A211C; --hero1: #3B2A2B; --hero2: #5E3B34; "
-            "--mapgrid: #3E3330; --maplbl: #8C7869; --day: #4A3229; --leaf: #E8604E; --leaf2: #6A96DA; --leaftint: #4A2A24; --stay: rgba(247, 178, 103, .13); color-scheme: dark;")
+            "--mapgrid: #3E3330; --maplbl: #8C7869; --day: #4A3229; --leaf: #E8604E; --leaf2: #6A96DA; --leaftint: #4A2A24; --booked: #5DBB84; --bookedtint: #1F3A2A; --stay: rgba(247, 178, 103, .13); color-scheme: dark;")
     HEROES = (".hero-shirahama {{ background: linear-gradient(170deg, #3A2A30, #5B3A3A 60%, #6A4038); }} "
               ".hero-kyoto {{ background: linear-gradient(170deg, #3B2A2B, #5E3934 60%, #6E3F35); }} "
               ".hero-shiga {{ background: linear-gradient(170deg, #2F2E26, #4A3F30 60%, #5A4733); }} "
