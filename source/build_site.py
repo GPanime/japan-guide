@@ -184,8 +184,7 @@ def leaves_panel(city):
     return f'''<section class="leaves" id="jp-{k}-leaves">
     <div class="lvtxt"><div class="lvjp">紅葉</div><h2>Autumn leaves forecast</h2>
       <p class="lvverdict">{esc(LV.VERDICT[k])}</p>
-      <p class="lvnote">A couple of spots for the overall picture, from two forecasters. Places that peak much earlier or later say so on their card.
-        Checked {LV.CHECKED}; dates can still move by a week.</p>
+      <p class="lvnote">Places that peak much earlier or later say so on their card. Checked {LV.CHECKED}.</p>
       <p class="lvsrc">Sources: {srcs}</p></div>
     <div class="lvwrap"><div class="lvchart">
       <div class="lvbands" aria-hidden="true">{grid}{bands}</div>
@@ -402,9 +401,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.9"
+VERSION = "1.9.1"
 VDATE = "Nov 2, 2026"
 CHANGELOG = [
+    ("1.9.1", "Nov 2, 2026", "Leaves forecast trimmed again: two spots per stop and one-line summaries."),
     ("1.9", "Nov 2, 2026", "Shorter leaves forecast: two or three spots per stop. A forecast note now shows only on cards whose timing stands out."),
     ("1.8", "Nov 1, 2026", "Kyoto: 17 more places (Arashiyama and Saga, Shimogamo, Ichijoji) with photos and two more videos. Leaves forecast refreshed for every stop, now with tenki.jp next to Weathernews."),
     ("1.7", "Nov 1, 2026", "Kyoto: Uji added (10 places with photos from the Uji video, linked in a new videos box) and Uji spots in the leaves forecast."),

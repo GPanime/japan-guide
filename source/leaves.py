@@ -24,11 +24,11 @@ CHECKED = "Nov 1, 2026"
 START, END = "11/1", "12/20"          # the chart's date range
 
 SOURCES = [
-    ("Weathernews spot forecasts", "https://weathernews.jp/koyo/area/kinki/"),
-    ("tenki.jp forecast, 3rd update (Oct 28)", "https://tenki.jp/kouyou/expectation.html"),
-    ("tenki.jp spot forecasts (Kinki)", "https://tenki.jp/kouyou/6/"),
-    ("Nippon Kisho city forecast", "https://www.nippon.com/ja/japan-data/h02888/"),
-    ("Japan Meteorological Agency: usual dates", "https://www.data.jma.go.jp/sakura/data/phn_014.html"),
+    ("Weathernews", "https://weathernews.jp/koyo/area/kinki/"),
+    ("tenki.jp", "https://tenki.jp/kouyou/expectation.html"),
+    ("tenki.jp spots", "https://tenki.jp/kouyou/6/"),
+    ("Nippon Kisho", "https://www.nippon.com/ja/japan-data/h02888/"),
+    ("JMA", "https://www.data.jma.go.jp/sakura/data/phn_014.html"),
 ]
 # One line on the city-level forecasts, shown under the sources.
 CONTEXT = ("City-level forecasts for when the maples are fully red: Kyoto Dec 11, Osaka Dec 4, Wakayama Dec 11 (Nippon Kisho). "
@@ -45,12 +45,12 @@ STAYS = {
 }
 
 VERDICT = {
-    "osaka": "A bit early. The city peaks around Nov 19-20, our last days here. The hills to the north (Minoo, Katsuo-ji) start a little earlier.",
-    "wakayama": "Too early in the city: the castle garden peaks from about Dec 2. Koyasan, up in the mountains, is earlier and ends around Nov 19.",
-    "shirahama": "Not a leaves stop. The coast stays green, and the nearest forecast spots inland peak after we leave.",
-    "kyoto": "The best timing of the trip. Most temples peak from about Nov 21-25, and tenki.jp is a little later, so both stays should be good. Mount Hiei is earlier; Uji and Shimogamo are later.",
-    "nara": "Nara Park peaks from about Nov 18 and should last into early December, so any of the possible days works.",
-    "shiga": "Good timing. Genkyū-en and the temples up north peak from late November to early December. The Genkyū-en evening light-up runs until Nov 29.",
+    "osaka": "A bit early: the city peaks around Nov 19-20, our last days here.",
+    "wakayama": "Too early in the city (from about Dec 2). Koyasan is earlier and ends around Nov 19.",
+    "shirahama": "Not a leaves stop: the nearest spots inland peak after we leave.",
+    "kyoto": "The best timing of the trip. Most temples peak from about Nov 21-25, so both stays should be good.",
+    "nara": "Nara Park peaks from about Nov 18 into early December, so any of the possible days works.",
+    "shiga": "Good timing: late November to early December. The Genkyū-en evening light-up runs until Nov 29.",
 }
 
 SPOTS = {
@@ -79,9 +79,9 @@ SHOW = {
     "osaka": ["Osaka Castle Park", "Minoo Park"],
     "wakayama": ["Momijidani garden, Wakayama Castle", "Koyasan"],
     "shirahama": ["Kozagawa gorge"],
-    "kyoto": ["Tōfuku-ji", "Eikandō", "Arashiyama"],
+    "kyoto": ["Tōfuku-ji", "Arashiyama"],
     "nara": ["Nara Park", "Shōryaku-ji"],
-    "shiga": ["Genkyū-en, Hikone Castle", "Kyorinbo", "Keisokuji"],
+    "shiga": ["Genkyū-en, Hikone Castle", "Keisokuji"],
 }
 
 # Shown on a card when its timing is very different from the rest of the area.

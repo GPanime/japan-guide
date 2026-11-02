@@ -34,9 +34,10 @@ html[data-theme="dark"] #jp26 { --bg: #1C1613; --surface: #28201C; --surface2: #
 #jp26 .map a.sel .mpin { stroke: var(--ink); stroke-width: 1.2; }
 </style>
 </head><body>
-<!-- Japan trip guide · VERSION 1.9 · Nov 2, 2026
+<!-- Japan trip guide · VERSION 1.9.1 · Nov 2, 2026
   GitHub Pages version (japan.zhunior.com), with dark mode and Google maps.
 Changes:
+  v1.9.1 (Nov 2, 2026): Leaves forecast trimmed again: two spots per stop and one-line summaries.
   v1.9 (Nov 2, 2026): Shorter leaves forecast: two or three spots per stop. A forecast note now shows only on cards whose timing stands out.
   v1.8 (Nov 1, 2026): Kyoto: 17 more places (Arashiyama and Saga, Shimogamo, Ichijoji) with photos and two more videos. Leaves forecast refreshed for every stop, now with tenki.jp next to Weathernews.
   v1.7 (Nov 1, 2026): Kyoto: Uji added (10 places with photos from the Uji video, linked in a new videos box) and Uji spots in the leaves forecast.
@@ -1152,10 +1153,9 @@ Changes:
   </div>
   <div class="leaves" id="jp-osaka-leaves">
     <div class="lvtxt"><div class="lvjp">紅葉</div><h2>Autumn leaves forecast</h2>
-      <p class="lvverdict">A bit early. The city peaks around Nov 19-20, our last days here. The hills to the north (Minoo, Katsuo-ji) start a little earlier.</p>
-      <p class="lvnote">A couple of spots for the overall picture, from two forecasters. Places that peak much earlier or later say so on their card.
-        Checked Nov 1, 2026; dates can still move by a week.</p>
-      <p class="lvsrc">Sources: <a href="https://weathernews.jp/koyo/area/kinki/" target="_blank" rel="noopener">Weathernews spot forecasts</a> · <a href="https://tenki.jp/kouyou/expectation.html" target="_blank" rel="noopener">tenki.jp forecast, 3rd update (Oct 28)</a> · <a href="https://tenki.jp/kouyou/6/" target="_blank" rel="noopener">tenki.jp spot forecasts (Kinki)</a> · <a href="https://www.nippon.com/ja/japan-data/h02888/" target="_blank" rel="noopener">Nippon Kisho city forecast</a> · <a href="https://www.data.jma.go.jp/sakura/data/phn_014.html" target="_blank" rel="noopener">Japan Meteorological Agency: usual dates</a></p></div>
+      <p class="lvverdict">A bit early: the city peaks around Nov 19-20, our last days here.</p>
+      <p class="lvnote">Places that peak much earlier or later say so on their card. Checked Nov 1, 2026.</p>
+      <p class="lvsrc">Sources: <a href="https://weathernews.jp/koyo/area/kinki/" target="_blank" rel="noopener">Weathernews</a> · <a href="https://tenki.jp/kouyou/expectation.html" target="_blank" rel="noopener">tenki.jp</a> · <a href="https://tenki.jp/kouyou/6/" target="_blank" rel="noopener">tenki.jp spots</a> · <a href="https://www.nippon.com/ja/japan-data/h02888/" target="_blank" rel="noopener">Nippon Kisho</a> · <a href="https://www.data.jma.go.jp/sakura/data/phn_014.html" target="_blank" rel="noopener">JMA</a></p></div>
     <div class="lvwrap"><div class="lvchart">
       <div class="lvbands" aria-hidden="true"><i class="lvgrid" style="left:18.00%"></i><i class="lvgrid" style="left:38.00%"></i><i class="lvgrid" style="left:58.00%"></i><i class="lvgrid" style="left:78.00%"></i><i class="lvband" style="left:30.00%;width:10.00%"></i></div>
       <div class="lvhead" aria-hidden="true"><span></span><div class="lvtrack"><span class="lvbl" style="left:35.00%;top:0px">Our stay</span></div></div>
@@ -1985,10 +1985,9 @@ Changes:
   </div>
   <div class="leaves" id="jp-wakayama-leaves">
     <div class="lvtxt"><div class="lvjp">紅葉</div><h2>Autumn leaves forecast</h2>
-      <p class="lvverdict">Too early in the city: the castle garden peaks from about Dec 2. Koyasan, up in the mountains, is earlier and ends around Nov 19.</p>
-      <p class="lvnote">A couple of spots for the overall picture, from two forecasters. Places that peak much earlier or later say so on their card.
-        Checked Nov 1, 2026; dates can still move by a week.</p>
-      <p class="lvsrc">Sources: <a href="https://weathernews.jp/koyo/area/kinki/" target="_blank" rel="noopener">Weathernews spot forecasts</a> · <a href="https://tenki.jp/kouyou/expectation.html" target="_blank" rel="noopener">tenki.jp forecast, 3rd update (Oct 28)</a> · <a href="https://tenki.jp/kouyou/6/" target="_blank" rel="noopener">tenki.jp spot forecasts (Kinki)</a> · <a href="https://www.nippon.com/ja/japan-data/h02888/" target="_blank" rel="noopener">Nippon Kisho city forecast</a> · <a href="https://www.data.jma.go.jp/sakura/data/phn_014.html" target="_blank" rel="noopener">Japan Meteorological Agency: usual dates</a></p></div>
+      <p class="lvverdict">Too early in the city (from about Dec 2). Koyasan is earlier and ends around Nov 19.</p>
+      <p class="lvnote">Places that peak much earlier or later say so on their card. Checked Nov 1, 2026.</p>
+      <p class="lvsrc">Sources: <a href="https://weathernews.jp/koyo/area/kinki/" target="_blank" rel="noopener">Weathernews</a> · <a href="https://tenki.jp/kouyou/expectation.html" target="_blank" rel="noopener">tenki.jp</a> · <a href="https://tenki.jp/kouyou/6/" target="_blank" rel="noopener">tenki.jp spots</a> · <a href="https://www.nippon.com/ja/japan-data/h02888/" target="_blank" rel="noopener">Nippon Kisho</a> · <a href="https://www.data.jma.go.jp/sakura/data/phn_014.html" target="_blank" rel="noopener">JMA</a></p></div>
     <div class="lvwrap"><div class="lvchart">
       <div class="lvbands" aria-hidden="true"><i class="lvgrid" style="left:18.00%"></i><i class="lvgrid" style="left:38.00%"></i><i class="lvgrid" style="left:58.00%"></i><i class="lvgrid" style="left:78.00%"></i><i class="lvband" style="left:38.00%;width:2.00%"></i></div>
       <div class="lvhead" aria-hidden="true"><span></span><div class="lvtrack"><span class="lvbl" style="left:39.00%;top:0px">Our stop</span></div></div>
@@ -2250,10 +2249,9 @@ Changes:
   </div>
   <div class="leaves" id="jp-shirahama-leaves">
     <div class="lvtxt"><div class="lvjp">紅葉</div><h2>Autumn leaves forecast</h2>
-      <p class="lvverdict">Not a leaves stop. The coast stays green, and the nearest forecast spots inland peak after we leave.</p>
-      <p class="lvnote">A couple of spots for the overall picture, from two forecasters. Places that peak much earlier or later say so on their card.
-        Checked Nov 1, 2026; dates can still move by a week.</p>
-      <p class="lvsrc">Sources: <a href="https://weathernews.jp/koyo/area/kinki/" target="_blank" rel="noopener">Weathernews spot forecasts</a> · <a href="https://tenki.jp/kouyou/expectation.html" target="_blank" rel="noopener">tenki.jp forecast, 3rd update (Oct 28)</a> · <a href="https://tenki.jp/kouyou/6/" target="_blank" rel="noopener">tenki.jp spot forecasts (Kinki)</a> · <a href="https://www.nippon.com/ja/japan-data/h02888/" target="_blank" rel="noopener">Nippon Kisho city forecast</a> · <a href="https://www.data.jma.go.jp/sakura/data/phn_014.html" target="_blank" rel="noopener">Japan Meteorological Agency: usual dates</a></p></div>
+      <p class="lvverdict">Not a leaves stop: the nearest spots inland peak after we leave.</p>
+      <p class="lvnote">Places that peak much earlier or later say so on their card. Checked Nov 1, 2026.</p>
+      <p class="lvsrc">Sources: <a href="https://weathernews.jp/koyo/area/kinki/" target="_blank" rel="noopener">Weathernews</a> · <a href="https://tenki.jp/kouyou/expectation.html" target="_blank" rel="noopener">tenki.jp</a> · <a href="https://tenki.jp/kouyou/6/" target="_blank" rel="noopener">tenki.jp spots</a> · <a href="https://www.nippon.com/ja/japan-data/h02888/" target="_blank" rel="noopener">Nippon Kisho</a> · <a href="https://www.data.jma.go.jp/sakura/data/phn_014.html" target="_blank" rel="noopener">JMA</a></p></div>
     <div class="lvwrap"><div class="lvchart">
       <div class="lvbands" aria-hidden="true"><i class="lvgrid" style="left:18.00%"></i><i class="lvgrid" style="left:38.00%"></i><i class="lvgrid" style="left:58.00%"></i><i class="lvgrid" style="left:78.00%"></i><i class="lvband" style="left:38.00%;width:8.00%"></i></div>
       <div class="lvhead" aria-hidden="true"><span></span><div class="lvtrack"><span class="lvbl" style="left:42.00%;top:0px">Our stay</span></div></div>
@@ -2566,14 +2564,13 @@ Changes:
   </div>
   <div class="leaves" id="jp-kyoto-leaves">
     <div class="lvtxt"><div class="lvjp">紅葉</div><h2>Autumn leaves forecast</h2>
-      <p class="lvverdict">The best timing of the trip. Most temples peak from about Nov 21-25, and tenki.jp is a little later, so both stays should be good. Mount Hiei is earlier; Uji and Shimogamo are later.</p>
-      <p class="lvnote">A couple of spots for the overall picture, from two forecasters. Places that peak much earlier or later say so on their card.
-        Checked Nov 1, 2026; dates can still move by a week.</p>
-      <p class="lvsrc">Sources: <a href="https://weathernews.jp/koyo/area/kinki/" target="_blank" rel="noopener">Weathernews spot forecasts</a> · <a href="https://tenki.jp/kouyou/expectation.html" target="_blank" rel="noopener">tenki.jp forecast, 3rd update (Oct 28)</a> · <a href="https://tenki.jp/kouyou/6/" target="_blank" rel="noopener">tenki.jp spot forecasts (Kinki)</a> · <a href="https://www.nippon.com/ja/japan-data/h02888/" target="_blank" rel="noopener">Nippon Kisho city forecast</a> · <a href="https://www.data.jma.go.jp/sakura/data/phn_014.html" target="_blank" rel="noopener">Japan Meteorological Agency: usual dates</a></p></div>
+      <p class="lvverdict">The best timing of the trip. Most temples peak from about Nov 21-25, so both stays should be good.</p>
+      <p class="lvnote">Places that peak much earlier or later say so on their card. Checked Nov 1, 2026.</p>
+      <p class="lvsrc">Sources: <a href="https://weathernews.jp/koyo/area/kinki/" target="_blank" rel="noopener">Weathernews</a> · <a href="https://tenki.jp/kouyou/expectation.html" target="_blank" rel="noopener">tenki.jp</a> · <a href="https://tenki.jp/kouyou/6/" target="_blank" rel="noopener">tenki.jp spots</a> · <a href="https://www.nippon.com/ja/japan-data/h02888/" target="_blank" rel="noopener">Nippon Kisho</a> · <a href="https://www.data.jma.go.jp/sakura/data/phn_014.html" target="_blank" rel="noopener">JMA</a></p></div>
     <div class="lvwrap"><div class="lvchart">
       <div class="lvbands" aria-hidden="true"><i class="lvgrid" style="left:18.00%"></i><i class="lvgrid" style="left:38.00%"></i><i class="lvgrid" style="left:58.00%"></i><i class="lvgrid" style="left:78.00%"></i><i class="lvband" style="left:44.00%;width:10.00%"></i><i class="lvband" style="left:56.00%;width:8.00%"></i></div>
       <div class="lvhead" aria-hidden="true"><span></span><div class="lvtrack"><span class="lvbl" style="left:49.00%;top:0px">Stay 1</span><span class="lvbl" style="left:60.00%;top:14px">Stay 2</span></div></div>
-      <div class="lvrows" role="list" aria-label="Forecast by spot"><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Tōfuku-ji</b><small>Nov 22-Dec 9 · tenki.jp late Nov-early Dec</small></div><div class="lvtrack"><i class="lvbar" style="left:42.00%;width:34.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Tōfuku-ji: peak from Nov 22, falling from Dec 9 (Weathernews); tenki.jp: late Nov-early Dec. Stay 1: at peak. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Eikandō</b><small>Nov 23-Dec 5 · tenki.jp late Nov-early Dec</small></div><div class="lvtrack"><i class="lvbar" style="left:44.00%;width:24.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Eikandō: peak from Nov 23, falling from Dec 5 (Weathernews); tenki.jp: late Nov-early Dec. Stay 1: at peak. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Arashiyama</b><small>Nov 23-Dec 9 · tenki.jp from Nov 13</small></div><div class="lvtrack"><i class="lvbar" style="left:44.00%;width:32.00%"></i><i class="lvtk" style="left:24.00%;width:20.00%"></i><span class="lvtip">Arashiyama: peak from Nov 23, falling from Dec 9 (Weathernews); tenki.jp: from Nov 13. Stay 1: at peak. Stay 2: at peak.</span></div></div></div>
+      <div class="lvrows" role="list" aria-label="Forecast by spot"><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Tōfuku-ji</b><small>Nov 22-Dec 9 · tenki.jp late Nov-early Dec</small></div><div class="lvtrack"><i class="lvbar" style="left:42.00%;width:34.00%"></i><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Tōfuku-ji: peak from Nov 22, falling from Dec 9 (Weathernews); tenki.jp: late Nov-early Dec. Stay 1: at peak. Stay 2: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Arashiyama</b><small>Nov 23-Dec 9 · tenki.jp from Nov 13</small></div><div class="lvtrack"><i class="lvbar" style="left:44.00%;width:32.00%"></i><i class="lvtk" style="left:24.00%;width:20.00%"></i><span class="lvtip">Arashiyama: peak from Nov 23, falling from Dec 9 (Weathernews); tenki.jp: from Nov 13. Stay 1: at peak. Stay 2: at peak.</span></div></div></div>
       <div class="lvaxis" aria-hidden="true"><span></span><div class="lvtrack"><span style="left:18.00%">Nov 10</span><span style="left:38.00%">Nov 20</span><span style="left:58.00%">Nov 30</span><span style="left:78.00%">Dec 10</span></div></div></div>
       <div class="lvlegend"><span><i class="sw sw-bar"></i>Weathernews: peak until leaves start to fall</span><span><i class="sw sw-tk"></i>tenki.jp: peak period</span>
         <span><i class="sw sw-stay"></i>Stay 1: Nov 23-27 · Stay 2: Nov 29-Dec 2</span></div></div>
@@ -3427,10 +3424,9 @@ Changes:
   </div>
   <div class="leaves" id="jp-nara-leaves">
     <div class="lvtxt"><div class="lvjp">紅葉</div><h2>Autumn leaves forecast</h2>
-      <p class="lvverdict">Nara Park peaks from about Nov 18 and should last into early December, so any of the possible days works.</p>
-      <p class="lvnote">A couple of spots for the overall picture, from two forecasters. Places that peak much earlier or later say so on their card.
-        Checked Nov 1, 2026; dates can still move by a week.</p>
-      <p class="lvsrc">Sources: <a href="https://weathernews.jp/koyo/area/kinki/" target="_blank" rel="noopener">Weathernews spot forecasts</a> · <a href="https://tenki.jp/kouyou/expectation.html" target="_blank" rel="noopener">tenki.jp forecast, 3rd update (Oct 28)</a> · <a href="https://tenki.jp/kouyou/6/" target="_blank" rel="noopener">tenki.jp spot forecasts (Kinki)</a> · <a href="https://www.nippon.com/ja/japan-data/h02888/" target="_blank" rel="noopener">Nippon Kisho city forecast</a> · <a href="https://www.data.jma.go.jp/sakura/data/phn_014.html" target="_blank" rel="noopener">Japan Meteorological Agency: usual dates</a></p></div>
+      <p class="lvverdict">Nara Park peaks from about Nov 18 into early December, so any of the possible days works.</p>
+      <p class="lvnote">Places that peak much earlier or later say so on their card. Checked Nov 1, 2026.</p>
+      <p class="lvsrc">Sources: <a href="https://weathernews.jp/koyo/area/kinki/" target="_blank" rel="noopener">Weathernews</a> · <a href="https://tenki.jp/kouyou/expectation.html" target="_blank" rel="noopener">tenki.jp</a> · <a href="https://tenki.jp/kouyou/6/" target="_blank" rel="noopener">tenki.jp spots</a> · <a href="https://www.nippon.com/ja/japan-data/h02888/" target="_blank" rel="noopener">Nippon Kisho</a> · <a href="https://www.data.jma.go.jp/sakura/data/phn_014.html" target="_blank" rel="noopener">JMA</a></p></div>
     <div class="lvwrap"><div class="lvchart">
       <div class="lvbands" aria-hidden="true"><i class="lvgrid" style="left:18.00%"></i><i class="lvgrid" style="left:38.00%"></i><i class="lvgrid" style="left:58.00%"></i><i class="lvgrid" style="left:78.00%"></i><i class="lvband" style="left:32.00%;width:6.00%"></i><i class="lvband" style="left:46.00%;width:6.00%"></i><i class="lvband" style="left:58.00%;width:4.00%"></i></div>
       <div class="lvhead" aria-hidden="true"><span></span><div class="lvtrack"><span class="lvbl" style="left:35.00%;top:0px">Osaka</span><span class="lvbl" style="left:49.00%;top:14px">Kyoto 1</span><span class="lvbl" style="left:60.00%;top:0px">Kyoto 2</span></div></div>
@@ -3496,14 +3492,13 @@ Changes:
   </div>
   <div class="leaves" id="jp-shiga-leaves">
     <div class="lvtxt"><div class="lvjp">紅葉</div><h2>Autumn leaves forecast</h2>
-      <p class="lvverdict">Good timing. Genkyū-en and the temples up north peak from late November to early December. The Genkyū-en evening light-up runs until Nov 29.</p>
-      <p class="lvnote">A couple of spots for the overall picture, from two forecasters. Places that peak much earlier or later say so on their card.
-        Checked Nov 1, 2026; dates can still move by a week.</p>
-      <p class="lvsrc">Sources: <a href="https://weathernews.jp/koyo/area/kinki/" target="_blank" rel="noopener">Weathernews spot forecasts</a> · <a href="https://tenki.jp/kouyou/expectation.html" target="_blank" rel="noopener">tenki.jp forecast, 3rd update (Oct 28)</a> · <a href="https://tenki.jp/kouyou/6/" target="_blank" rel="noopener">tenki.jp spot forecasts (Kinki)</a> · <a href="https://www.nippon.com/ja/japan-data/h02888/" target="_blank" rel="noopener">Nippon Kisho city forecast</a> · <a href="https://www.data.jma.go.jp/sakura/data/phn_014.html" target="_blank" rel="noopener">Japan Meteorological Agency: usual dates</a></p></div>
+      <p class="lvverdict">Good timing: late November to early December. The Genkyū-en evening light-up runs until Nov 29.</p>
+      <p class="lvnote">Places that peak much earlier or later say so on their card. Checked Nov 1, 2026.</p>
+      <p class="lvsrc">Sources: <a href="https://weathernews.jp/koyo/area/kinki/" target="_blank" rel="noopener">Weathernews</a> · <a href="https://tenki.jp/kouyou/expectation.html" target="_blank" rel="noopener">tenki.jp</a> · <a href="https://tenki.jp/kouyou/6/" target="_blank" rel="noopener">tenki.jp spots</a> · <a href="https://www.nippon.com/ja/japan-data/h02888/" target="_blank" rel="noopener">Nippon Kisho</a> · <a href="https://www.data.jma.go.jp/sakura/data/phn_014.html" target="_blank" rel="noopener">JMA</a></p></div>
     <div class="lvwrap"><div class="lvchart">
       <div class="lvbands" aria-hidden="true"><i class="lvgrid" style="left:18.00%"></i><i class="lvgrid" style="left:38.00%"></i><i class="lvgrid" style="left:58.00%"></i><i class="lvgrid" style="left:78.00%"></i><i class="lvband" style="left:52.00%;width:6.00%"></i></div>
       <div class="lvhead" aria-hidden="true"><span></span><div class="lvtrack"><span class="lvbl" style="left:55.00%;top:0px">Our stay</span></div></div>
-      <div class="lvrows" role="list" aria-label="Forecast by spot"><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Genkyū-en, Hikone Castle</b><small>Nov 28-Dec 11 · tenki.jp early Dec</small></div><div class="lvtrack"><i class="lvbar" style="left:54.00%;width:26.00%"></i><i class="lvtk" style="left:60.00%;width:20.00%"></i><span class="lvtip">Genkyū-en, Hikone Castle: peak from Nov 28, falling from Dec 11 (Weathernews); tenki.jp: early Dec. Our stay: peak from Nov 28.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Kyorinbo</b><small>Nov 25-Dec 9</small></div><div class="lvtrack"><i class="lvbar" style="left:48.00%;width:28.00%"></i><span class="lvtip">Kyorinbo: peak from Nov 25, falling from Dec 9 (Weathernews). Our stay: at peak.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Keisokuji</b><small>tenki.jp late Nov-early Dec</small></div><div class="lvtrack"><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Keisokuji: tenki.jp: late Nov-early Dec. Our stay: at peak.</span></div></div></div>
+      <div class="lvrows" role="list" aria-label="Forecast by spot"><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Genkyū-en, Hikone Castle</b><small>Nov 28-Dec 11 · tenki.jp early Dec</small></div><div class="lvtrack"><i class="lvbar" style="left:54.00%;width:26.00%"></i><i class="lvtk" style="left:60.00%;width:20.00%"></i><span class="lvtip">Genkyū-en, Hikone Castle: peak from Nov 28, falling from Dec 11 (Weathernews); tenki.jp: early Dec. Our stay: peak from Nov 28.</span></div></div><div class="lvrow" role="listitem" tabindex="0"><div class="lvname"><b>Keisokuji</b><small>tenki.jp late Nov-early Dec</small></div><div class="lvtrack"><i class="lvtk" style="left:40.00%;width:40.00%"></i><span class="lvtip">Keisokuji: tenki.jp: late Nov-early Dec. Our stay: at peak.</span></div></div></div>
       <div class="lvaxis" aria-hidden="true"><span></span><div class="lvtrack"><span style="left:18.00%">Nov 10</span><span style="left:38.00%">Nov 20</span><span style="left:58.00%">Nov 30</span><span style="left:78.00%">Dec 10</span></div></div></div>
       <div class="lvlegend"><span><i class="sw sw-bar"></i>Weathernews: peak until leaves start to fall</span><span><i class="sw sw-tk"></i>tenki.jp: peak period</span>
         <span><i class="sw sw-stay"></i>Our stay: Nov 27-29</span></div></div>
@@ -3918,7 +3913,7 @@ Changes:
     <p>Options for the rest of the trip are on the way.</p>
     <div class="latgrid"></div>
   </div>
-  <div class="foot">Japan trip guide · Version 1.9 · updated Nov 2, 2026</div>
+  <div class="foot">Japan trip guide · Version 1.9.1 · updated Nov 2, 2026</div>
 </div></div>
 
 <script>
