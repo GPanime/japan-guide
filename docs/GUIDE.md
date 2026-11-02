@@ -121,6 +121,9 @@ Filters switch on automatically once a stop has 8 or more places (`FILTER_MIN` i
 
 **A placeholder stop** (like Nara) can have `places=[]` and `areas=[]`. The tab, header, starting point, leaves forecast, drawn map (just the ★) and Google map all still work, and the planner shows the `soon` note. Don't put an empty stop last in `CITIES`: the phone test opens place 1 of the last tab.
 
+### Reservations (`BOOKED` in data.py)
+`BOOKED = {stop: {card name: "Tue Nov 24, dinner at 21:00"}}`. A booked card gets a green outline and a "Reserved · <when>" line under its name (its "Book ahead" tag is hidden), and the tab shows an "Our reservations" box at the top listing them, each linking to its card. Add a line when the user says they've booked somewhere; remove it if they cancel.
+
 ### Card photos (`PHOTOS` in data.py, `photos/`)
 Only photos the user sends. Never pick or copy photos from elsewhere yourself.
 1. `python3 source/add_photo.py <image file> <stop key> <slug>` writes `photos/<stop>/<slug>-800.webp` (card) and `-1600.webp` (enlarged), and removes all metadata, including the GPS location that phone photos carry.
@@ -268,3 +271,4 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 - **v1.8:** 17 more Kyoto places (Arashiyama and Saga, Shimogamo, Ichijoji) with photos and two more videos; leaves forecast refreshed with tenki.jp alongside Weathernews.
 - **v1.9:** shorter leaves forecast (two or three spots per stop); forecast notes only on cards whose timing stands out.
 - **v1.9.1:** leaves forecast trimmed to two spots per stop and one-line summaries.
+- **v1.10:** 38 Kyoto food places from the Kyoto FOOD list, three more must-eats, and reservations shown on cards and in a list at the top of the tab.

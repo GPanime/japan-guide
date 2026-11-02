@@ -415,9 +415,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.9.1"
+VERSION = "1.10"
 VDATE = "Nov 2, 2026"
 CHANGELOG = [
+    ("1.10", "Nov 2, 2026", "Kyoto: 38 food places from the Kyoto FOOD list, three new must-eats, and our three reservations marked on their cards and listed at the top of the tab."),
     ("1.9.1", "Nov 2, 2026", "Leaves forecast trimmed again: two spots per stop and one-line summaries."),
     ("1.9", "Nov 2, 2026", "Shorter leaves forecast: two or three spots per stop. A forecast note now shows only on cards whose timing stands out."),
     ("1.8", "Nov 1, 2026", "Kyoto: 17 more places (Arashiyama and Saga, Shimogamo, Ichijoji) with photos and two more videos. Leaves forecast refreshed for every stop, now with tenki.jp next to Weathernews."),
