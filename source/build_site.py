@@ -415,9 +415,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.21"
+VERSION = "1.22"
 VDATE = "Nov 6, 2026"
 CHANGELOG = [
+    ("1.22", "Nov 6, 2026", "Kyoto: Arashiyama Yusai-Tei reserved for Wed Nov 25, entry 12:00-12:30."),
     ("1.21", "Nov 6, 2026", "Kyoto: photos for 71 more places (all but Hanamichi), each linking its source."),
     ("1.20", "Nov 6, 2026", "Password screen: 7 wrong passwords in a row lock it for 15 minutes, with a countdown."),
     ("1.19.1", "Nov 6, 2026", "Fixes: the build now catches photo entries that match no card and unused photo files; the lock screen says so plainly on browsers too old to open the guide, and starts connecting to the font server sooner."),

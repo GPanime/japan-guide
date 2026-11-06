@@ -1205,6 +1205,6 @@ PHOTOS["kyoto"].update({
 # Reservations we've made: {stop: {card name: "when, details"}}. The card gets a green "Reserved" line,
 # and the tab lists them at the top.
 BOOKED = {
-    "kyoto": {"Rokkaku Ace": "Tue Nov 24, dinner at 21:00", "Kaneko": "Wed Nov 25, dinner at 20:30", "To.": "Fri Nov 27, breakfast at 8:00"},
+    "kyoto": {"Rokkaku Ace": "Tue Nov 24, dinner at 21:00", "Arashiyama Yusai-Tei": "Wed Nov 25, entry 12:00-12:30", "Kaneko": "Wed Nov 25, dinner at 20:30", "To.": "Fri Nov 27, breakfast at 8:00"},
 }
 LATER = []
