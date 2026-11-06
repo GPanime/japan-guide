@@ -995,11 +995,12 @@ PHOTOS = {
     }.items()},
     "osaka": {
         "aoma coffee": ("aoma-coffee", "Photo: YouTube video", "https://www.youtube.com/watch?v=RGqhSRTqsr8"),
-        # Freely licensed photos from Wikimedia Commons: the credit names the author and licence and links the file page.
-        "Go Go Curry Tsutenkaku": ("go-go-curry", "Photo: Akihabara branch, 多摩に暇人, CC BY 3.0",
-                                   "https://commons.wikimedia.org/wiki/File:Go!Go!Curry.jpg"),
-        "Shubodai": ("shubodai-view", "Photo: view from Mount Satsuki, Mti, CC BY-SA 3.0",
-                     "https://commons.wikimedia.org/wiki/File:Mount_Satsuki_view_in_2014-4-6_No,1.JPG"),
+        # Photos found on the web at the user's request: each credit links the page the photo comes from.
+        "Go Go Curry Tsutenkaku": ("go-go-curry", "Photo: the shop's own page", "https://kepj700.gorp.jp/"),
+        "MENSTYLE TANIMOTOKE": ("menstyle-tanimotoke", "Photo: hedonisthk food blog",
+                                "https://hedonisthk.blogspot.com/2025/08/men-style-tanimoto-ke-honmachi-osaka-by-ramen-champion-master-hayashi-takao-amazing-best-chicken-shellfish-shoyu-clear-broth-ramen-noodles.html"),
+        "Shubodai": ("shubodai", "Photo: Enjoy Osaka Kyoto Kobe", "https://enjoy-osaka-kyoto-kobe.com/ja/article/a/shubodai-guide/"),
+        # Freely licensed photo from Wikimedia Commons: the credit names the author and licence and links the file page.
         "LUCUA Osaka": ("lucua", "Photo: Tokumeigakarinoaoshima, CC BY-SA 4.0",
                         "https://commons.wikimedia.org/wiki/File:LUCUA_1100_on_13th_April_2020.jpg"),
     },

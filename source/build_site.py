@@ -415,9 +415,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.12"
+VERSION = "1.13"
 VDATE = "Nov 6, 2026"
 CHANGELOG = [
+    ("1.13", "Nov 6, 2026", "Osaka: photos of the actual places for Go Go Curry Tsutenkaku, MENSTYLE TANIMOTOKE and Shubodai, found on the web, each linking its source."),
     ("1.12", "Nov 6, 2026", "Osaka: photos for three must-go places (Go Go Curry, Shubodai, LUCUA), freely licensed from Wikimedia Commons, each with its author and licence."),
     ("1.11", "Nov 6, 2026", "Password lock: the page opens with a password, and a device can be remembered for 30 days."),
     ("1.10", "Nov 2, 2026", "Kyoto: 38 food places from the Kyoto FOOD list, three new must-eats, and our three reservations marked on their cards and listed at the top of the tab."),

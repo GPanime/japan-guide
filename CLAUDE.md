@@ -16,7 +16,7 @@ This repo is a travel guide web page, live at **https://japan.zhunior.com** (Git
 - No personal names on the page (the build checks this).
 - Get coordinates from the Maps link's `!3d<lat>!4d<lon>`, not from `@lat,lon`.
 - Check practical facts before publishing (closures, closing days, reservations, seasonal hours) and give the user sources.
-- Card photos are ones the user sends, or, when the user asks you to find one, a freely licensed photo (CC0, CC BY, CC BY-SA) from Wikimedia Commons. Never copy arbitrary Google Images results: most are copyrighted. Prepare every photo with `python3 source/add_photo.py <file> <stop> <slug>` (strips location data) and list it in `PHOTOS` in data.py. A photo that isn't the user's own must carry its source link; a Commons photo's credit names the author and licence and links the file page, and says so when it shows another branch or a nearby view rather than the place itself. The "Photos" button stays a Google image search link.
+- Card photos are ones the user sends, or, when the user asks you to find one, a photo of the actual place found on the web (Google Images style: the shop's own page, a blog, a travel guide; the user accepts this for the private guide) or a freely licensed one from Wikimedia Commons. Prepare every photo with `python3 source/add_photo.py <file> <stop> <slug>` (strips metadata) and list it in `PHOTOS` in data.py. A photo that isn't the user's own must carry its source link: the page it comes from, or for Commons the file page with author and licence. Say so in the credit when it shows another branch or a nearby view. The "Photos" button stays a Google image search link.
 - Shared Google Maps lists: `python3 source/read_gmaps_list.py <link> <hotel lat> <hotel lon>`.
 
 ## Don't break
