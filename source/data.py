@@ -1058,6 +1058,7 @@ PHOTOS = {
         'Spectacle Kitahama': ('spectacle-kitahama', "Photo: Tabelog", "https://tabelog.com/osaka/A2701/A270102/27102455/dtlphotolst/"),
         'Rivoli': ('rivoli', "Photo: Tabelog", "https://tabelog.com/osaka/A2701/A270102/27039063/dtlphotolst/"),
         'Mansarde': ('mansarde', "Photo: Tabelog", "https://tabelog.com/osaka/A2701/A270101/27156983/dtlphotolst/"),
+        "2nd Street Umeda": ("2nd-street-umeda", "Photo: 2nd STREET", "https://www.2ndstreet.jp/shop/details?shopsId=31382"),
         # Freely licensed photo from Wikimedia Commons: the credit names the author and licence and links the file page.
         "LUCUA Osaka": ("lucua", "Photo: Tokumeigakarinoaoshima, CC BY-SA 4.0",
                         "https://commons.wikimedia.org/wiki/File:LUCUA_1100_on_13th_April_2020.jpg"),

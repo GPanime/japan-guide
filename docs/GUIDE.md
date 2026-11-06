@@ -285,3 +285,4 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 - **v1.14:** shop photos (storefront or inside) for seven Osaka shopping cards.
 - **v1.15:** photos for all Osaka drinks and sights cards.
 - **v1.16:** photos for all Osaka food and coffee cards, from Tabelog.
+- **v1.17:** 2nd Street Umeda photo; every Osaka card now has one.
