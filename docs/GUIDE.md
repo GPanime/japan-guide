@@ -284,3 +284,4 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 - **v1.13:** web photos of the actual places (Google Images style, with source links) for three Osaka must-go cards.
 - **v1.14:** shop photos (storefront or inside) for seven Osaka shopping cards.
 - **v1.15:** photos for all Osaka drinks and sights cards.
+- **v1.16:** photos for all Osaka food and coffee cards, from Tabelog.
