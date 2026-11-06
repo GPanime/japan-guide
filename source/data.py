@@ -993,7 +993,16 @@ PHOTOS = {
         "Keihan Uji Station": "uji-station", "Momiji-dani trail": "momiji-dani", "Hakusan Shrine": "hakusan-shrine",
         "Amagase Bridge": "amagase-bridge", "matcha roastery": "matcha-roastery", "Ramen Tanaka Kyu Shoten": "ramen-tanaka",
     }.items()},
-    "osaka": {"aoma coffee": ("aoma-coffee", "Photo: YouTube video", "https://www.youtube.com/watch?v=RGqhSRTqsr8")},
+    "osaka": {
+        "aoma coffee": ("aoma-coffee", "Photo: YouTube video", "https://www.youtube.com/watch?v=RGqhSRTqsr8"),
+        # Freely licensed photos from Wikimedia Commons: the credit names the author and licence and links the file page.
+        "Go Go Curry Tsutenkaku": ("go-go-curry", "Photo: Akihabara branch, 多摩に暇人, CC BY 3.0",
+                                   "https://commons.wikimedia.org/wiki/File:Go!Go!Curry.jpg"),
+        "Shubodai": ("shubodai-view", "Photo: view from Mount Satsuki, Mti, CC BY-SA 3.0",
+                     "https://commons.wikimedia.org/wiki/File:Mount_Satsuki_view_in_2014-4-6_No,1.JPG"),
+        "LUCUA Osaka": ("lucua", "Photo: Tokumeigakarinoaoshima, CC BY-SA 4.0",
+                        "https://commons.wikimedia.org/wiki/File:LUCUA_1100_on_13th_April_2020.jpg"),
+    },
     # Shiga photos are frames from the two videos linked in the tab; one credit on each card points to the videos box.
     "shiga": {k: (v, "Photo: from the videos", "#jp-shiga-videos") for k, v in {
         "Seiganji": ["seiganji-1", "seiganji-2"],
