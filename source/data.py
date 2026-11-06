@@ -1000,6 +1000,14 @@ PHOTOS = {
         "MENSTYLE TANIMOTOKE": ("menstyle-tanimotoke", "Photo: hedonisthk food blog",
                                 "https://hedonisthk.blogspot.com/2025/08/men-style-tanimoto-ke-honmachi-osaka-by-ramen-champion-master-hayashi-takao-amazing-best-chicken-shellfish-shoyu-clear-broth-ramen-noodles.html"),
         "Shubodai": ("shubodai", "Photo: Enjoy Osaka Kyoto Kobe", "https://enjoy-osaka-kyoto-kobe.com/ja/article/a/shubodai-guide/"),
+        # Shops: storefront or inside, from each shop's own page where possible.
+        "Top of the Hill": ("top-of-the-hill", "Photo: LUCUA shop guide", "https://www.lucua.jp/shopguide/id1174.html"),
+        "FREAK'S STORE": ("freaks-store", "Photo: Yahoo! Maps", "https://map.yahoo.co.jp/v3/place/KHzMUF_WTjA"),
+        "B-Shop Grand Front": ("bshop-grand-front", "Photo: the shop's own page", "https://bshop-inc.com/company/shop/grandfront-osaka"),
+        "B-Shop Namba Parks": ("bshop-namba-parks", "Photo: the shop's own page", "https://bshop-inc.com/company/shop/nambaparks"),
+        "BEAMS Namba": ("beams-namba", "Photo: the shop's own page", "https://www.beams.co.jp/shop/nmb/"),
+        "ichimaruni": ("ichimaruni", "Photo: Nakazakicho guide", "https://nakazakicho.net/archives/81"),
+        "kindal Umeda": ("kindal-umeda", "Photo: the shop's own page", "https://www.kind.co.jp/umeda/"),
         # Freely licensed photo from Wikimedia Commons: the credit names the author and licence and links the file page.
         "LUCUA Osaka": ("lucua", "Photo: Tokumeigakarinoaoshima, CC BY-SA 4.0",
                         "https://commons.wikimedia.org/wiki/File:LUCUA_1100_on_13th_April_2020.jpg"),
