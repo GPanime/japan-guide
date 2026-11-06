@@ -1092,6 +1092,25 @@ PHOTOS = {
         "Ikkyu soba": "ikkyu-soba",
     }.items()},
 }
+# Shirahama: food from each place's Tabelog photo page (address checked against the Maps pin); sights and onsen from official pages.
+PHOTOS["shirahama"] = {
+    'Dakishimetai': ('dakishimetai', 'Photo: Tabelog', 'https://tabelog.com/wakayama/A3004/A300401/30011107/dtlphotolst/'),
+    'Yakiniku Man': ('yakiniku-man', 'Photo: Tabelog', 'https://tabelog.com/wakayama/A3004/A300401/30008215/dtlphotolst/'),
+    'Toretore Market': ('toretore-market', 'Photo: THE GATE', 'https://thegate12.com/jp/article/274'),
+    'Tsumugi Cafe': ('tsumugi-cafe', 'Photo: Tabelog', 'https://tabelog.com/wakayama/A3004/A300401/30007315/dtlphotolst/'),
+    'Miyuki Sushi': ('miyuki-sushi', 'Photo: Tabelog', 'https://tabelog.com/wakayama/A3004/A300401/30004898/dtlphotolst/'),
+    'Ikesu Warouda / Sushi Yata': ('ikesu-warouda', 'Photo: Tabelog', 'https://tabelog.com/wakayama/A3004/A300401/30008764/dtlphotolst/'),
+    'Ban-ya': ('ban-ya', 'Photo: Tabelog', 'https://tabelog.com/wakayama/A3004/A300401/30006623/dtlphotolst/'),
+    'Sumibi Dining Hayate': ('sumibi-hayate', 'Photo: Tabelog', 'https://tabelog.com/wakayama/A3004/A300401/30009856/dtlphotolst/'),
+    'Mame no Yu': ('mame-no-yu', 'Photo: Tabelog', 'https://tabelog.com/wakayama/A3004/A300401/30008889/dtlphotolst/'),
+    'Popular Bar Chokyu': ('chokyu', 'Photo: Tabelog', 'https://tabelog.com/wakayama/A3004/A300401/30000368/dtlphotolst/'),
+    'Saki-no-Yu': ('saki-no-yu', 'Photo: Nanki-Shirahama tourism', 'https://www.nankishirahama.jp/spot/546/'),
+    'Hamachidori-no-yu Kaishu': ('kaishu', "Photo: the hotel's own page", 'https://dormy-hotels.com/resort/hotels/shirahama_kaisyu/hotspring/'),
+    'Senjojiki Rock Plateau': ('senjojiki', 'Photo: Nanki-Shirahama tourism', 'https://www.nankishirahama.jp/spot/531/'),
+    'Ura-Senjojiki': ('ura-senjojiki', 'Photo: Hajimete Lab blog', 'https://note.com/hajimete_lab/n/ne3d61f45fdf4'),
+    'Kumano Sansho Shrine': ('kumano-sansho', 'Photo: Nanki-Shirahama tourism', 'https://www.nankishirahama.jp/spot/571/'),
+    'Kumano Kodo Nakahechi': ('kumano-kodo', 'Photo: Tanabe Kumano Tourism Bureau', 'https://www.tb-kumano.jp/kumano-kodo/nakahechi/'),
+}
 # Reservations we've made: {stop: {card name: "when, details"}}. The card gets a green "Reserved" line,
 # and the tab lists them at the top.
 BOOKED = {
