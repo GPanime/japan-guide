@@ -2,7 +2,9 @@
 
 build_site.py builds the full page, then lock() turns it into a small password screen holding the page encrypted
 (AES-GCM, key from the password with PBKDF2-SHA256, page gzip-compressed first). Typing the password decrypts it in
-the browser. "Remember this device" keeps the derived key in the browser's localStorage for 30 days, so the page opens
+the browser. After MAX_TRIES wrong passwords in a row the form locks for LOCKOUT_MINUTES (a speed bump for guessing on the
+screen; the ciphertext itself is public, so the real protection is the password and the slow PBKDF2 key).
+"Remember this device" keeps the derived key in the browser's localStorage for 30 days, so the page opens
 straight away on that device until then. The password itself is never stored in the page or in the repo.
 
 The password comes from the GUIDE_PASSWORD environment variable, or from source/.guide_password (git-ignored).
@@ -15,6 +17,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SALT = b"japan.zhunior.com guide v1"   # fixed, so a remembered device stays unlocked across updates
 ITER = 250_000
 REMEMBER_DAYS = 30
+MAX_TRIES = 7          # wrong passwords in a row before the screen locks
+LOCKOUT_MINUTES = 15   # how long it stays locked (kept in localStorage, so it survives a reload)
 
 
 def password():
@@ -35,7 +39,8 @@ def lock(html, pw, head_meta):
     iv = os.urandom(12)
     ct = AESGCM(key).encrypt(iv, gzip.compress(html.encode(), 9), None)
     return SHELL.replace("__META__", head_meta).replace("__SALT__", _b64(SALT)).replace("__ITER__", str(ITER)) \
-        .replace("__IV__", _b64(iv)).replace("__CT__", _b64(ct)).replace("__DAYS__", str(REMEMBER_DAYS))
+        .replace("__IV__", _b64(iv)).replace("__CT__", _b64(ct)).replace("__DAYS__", str(REMEMBER_DAYS)) \
+        .replace("__TRIES__", str(MAX_TRIES)).replace("__LOCKMIN__", str(LOCKOUT_MINUTES))
 
 
 SHELL = """<!doctype html>
@@ -77,11 +82,16 @@ button:disabled { opacity: .6; cursor: wait; }
 <script>
 (function () {
   var SALT = "__SALT__", ITER = __ITER__, IV = "__IV__", CT = "__CT__", DAYS = __DAYS__, STORE = "jpguide-key";
+  var TRIES = __TRIES__, LOCKMS = __LOCKMIN__ * 60e3, TSTORE = "jpguide-tries", mem = { n: 0, until: 0 }, timer;
   function bytes(b64) { var s = atob(b64), a = new Uint8Array(s.length); for (var i = 0; i < s.length; i++) a[i] = s.charCodeAt(i); return a; }
   function b64(a) { var s = ""; for (var i = 0; i < a.length; i++) s += String.fromCharCode(a[i]); return btoa(s); }
   function saved() { try { var v = JSON.parse(localStorage.getItem(STORE) || "null"); return v && v.until > Date.now() ? v.key : null; } catch (e) { return null; } }
   function save(key) { try { localStorage.setItem(STORE, JSON.stringify({ key: key, until: Date.now() + DAYS * 864e5 })); } catch (e) {} }
   function forget() { try { localStorage.removeItem(STORE); } catch (e) {} }
+  // Wrong-password counter: after TRIES misses in a row the form locks for LOCKMS (falls back to memory without storage).
+  function tries() { try { return JSON.parse(localStorage.getItem(TSTORE) || "null") || mem; } catch (e) { return mem; } }
+  function setTries(t) { mem = t; try { localStorage.setItem(TSTORE, JSON.stringify(t)); } catch (e) {} }
+  function clearTries() { mem = { n: 0, until: 0 }; try { localStorage.removeItem(TSTORE); } catch (e) {} }
   async function derive(pw) {
     var base = await crypto.subtle.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveBits"]);
     var bits = await crypto.subtle.deriveBits({ name: "PBKDF2", salt: bytes(SALT), iterations: ITER, hash: "SHA-256" }, base, 256);
@@ -99,13 +109,36 @@ button:disabled { opacity: .6; cursor: wait; }
     err.textContent = "This browser is too old to open the guide. Please update it, or try Chrome or Safari.";
     go.disabled = true; return;
   }
+  function lockedOut() {
+    var left = tries().until - Date.now();
+    if (left <= 0) { clearInterval(timer); timer = null; pwin.disabled = go.disabled = false; return false; }
+    var m = Math.floor(left / 60e3), sec = Math.ceil(left / 1e3) % 60;
+    pwin.disabled = go.disabled = true;
+    err.textContent = "Too many wrong passwords. Try again in " + (m ? m + " min " : "") + sec + " s.";
+    return true;
+  }
+  function startLockout() {
+    if (!lockedOut()) return;
+    timer = timer || setInterval(function () { if (!lockedOut()) { err.textContent = ""; pwin.focus(); } }, 1000);
+  }
   var k = saved();
   if (k) { form.hidden = true; unlock(bytes(k)).catch(function () { forget(); form.hidden = false; }); }
+  startLockout();
   form.addEventListener("submit", async function (e) {
-    e.preventDefault(); err.textContent = ""; go.disabled = true;
+    e.preventDefault();
+    if (lockedOut()) return;
+    err.textContent = ""; go.disabled = true;
     var keep = rem.checked, raw;
     try { raw = await derive(pwin.value); await unlock(raw); }
-    catch (x) { err.textContent = "That password didn't work. Try again."; go.disabled = false; return; }
+    catch (x) {
+      var t = tries(), n = (t.n || 0) + 1;
+      if (n >= TRIES) { setTries({ n: 0, until: Date.now() + LOCKMS }); pwin.value = ""; startLockout(); return; }
+      setTries({ n: n, until: 0 });
+      var left = TRIES - n;
+      err.textContent = "That password didn't work." + (left <= 3 ? " " + left + (left == 1 ? " try" : " tries") + " left." : " Try again.");
+      go.disabled = false; return;
+    }
+    clearTries();
     if (keep) save(b64(raw)); else forget();
   });
 })();
