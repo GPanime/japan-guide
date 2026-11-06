@@ -1111,6 +1111,23 @@ PHOTOS["shirahama"] = {
     'Kumano Sansho Shrine': ('kumano-sansho', 'Photo: Nanki-Shirahama tourism', 'https://www.nankishirahama.jp/spot/571/'),
     'Kumano Kodo Nakahechi': ('kumano-kodo', 'Photo: Tanabe Kumano Tourism Bureau', 'https://www.tb-kumano.jp/kumano-kodo/nakahechi/'),
 }
+# Wakayama: food from each place's Tabelog photo page (address checked against the Maps pin); sights from the official Wakayama tourism site.
+PHOTOS["wakayama"] = {
+    'Katto': ('katto', 'Photo: Tabelog', 'https://tabelog.com/wakayama/A3001/A300101/30011125/dtlphotolst/'),
+    'Niyoro': ('niyoro', 'Photo: Tabelog', 'https://tabelog.com/wakayama/A3001/A300101/30009046/dtlphotolst/'),
+    'Kalbi 1cho': ('kalbi-1cho', 'Photo: Tabelog', 'https://tabelog.com/wakayama/A3001/A300101/30003884/dtlphotolst/'),
+    'Yakitori Kairo': ('yakitori-kairo', 'Photo: Tabelog', 'https://tabelog.com/wakayama/A3001/A300101/30010284/dtlphotolst/'),
+    'BRIDGE': ('bridge-yakitori', 'Photo: Tabelog', 'https://tabelog.com/wakayama/A3001/A300101/30008379/dtlphotolst/'),
+    'Ichidai': ('ichidai', 'Photo: Tabelog', 'https://tabelog.com/wakayama/A3001/A300101/30000554/dtlphotolst/'),
+    'Maruman Ramen': ('maruman-ramen', 'Photo: Tabelog', 'https://tabelog.com/wakayama/A3001/A300101/30010092/dtlphotolst/'),
+    'Umimachi Shokudo Urara': ('urara', 'Photo: Tabelog', 'https://tabelog.com/wakayama/A3001/A300101/30011203/dtlphotolst/'),
+    'Goen': ('goen', 'Photo: Tabelog', 'https://tabelog.com/wakayama/A3001/A300101/30005552/dtlphotolst/'),
+    'Bandoko Garden': ('bandoko-garden', 'Photo: Wakayama tourism', 'https://www.wakayama-kanko.or.jp/spots/detail_574.html'),
+    'Wakayama Castle': ('wakayama-castle', 'Photo: Wakayama tourism', 'https://www.wakayama-kanko.or.jp/spots/detail_661.html'),
+    'Kishi Station': ('kishi-station', 'Photo: Wakayama Electric Railway', 'https://wakayama-dentetsu.co.jp/cat-stationmaster/'),
+    'Awashima Shrine': ('awashima-shrine', 'Photo: Wakayama tourism', 'https://www.wakayama-kanko.or.jp/spots/detail_217.html'),
+    'Koyasan': ('koyasan', 'Photo: Wakayama tourism', 'https://www.wakayama-kanko.or.jp/spots/detail_515.html'),
+}
 # Reservations we've made: {stop: {card name: "when, details"}}. The card gets a green "Reserved" line,
 # and the tab lists them at the top.
 BOOKED = {

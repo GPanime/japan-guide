@@ -415,9 +415,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.18"
+VERSION = "1.19"
 VDATE = "Nov 6, 2026"
 CHANGELOG = [
+    ("1.19", "Nov 6, 2026", "Wakayama: photos for all 14 places, each linking its source."),
     ("1.18", "Nov 6, 2026", "Shirahama: photos for all 16 places, each linking its source."),
     ("1.17", "Nov 6, 2026", "Osaka: a storefront photo for 2nd Street Umeda, so every Osaka card now has a photo."),
     ("1.16", "Nov 6, 2026", "Osaka: photos for all the food and coffee places (a dish, a drink or the inside), each linking its Tabelog photo page."),
