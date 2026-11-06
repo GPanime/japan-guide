@@ -288,3 +288,4 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 - **v1.17:** 2nd Street Umeda photo; every Osaka card now has one.
 - **v1.18:** photos for all Shirahama cards.
 - **v1.19:** photos for all Wakayama cards.
+- **v1.19.1:** build checks that every `PHOTOS` name matches a card and every photo file is used; clearer lock-screen message on old browsers; font preconnect.

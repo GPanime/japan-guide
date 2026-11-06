@@ -415,9 +415,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.19"
+VERSION = "1.19.1"
 VDATE = "Nov 6, 2026"
 CHANGELOG = [
+    ("1.19.1", "Nov 6, 2026", "Fixes: the build now catches photo entries that match no card and unused photo files; the lock screen says so plainly on browsers too old to open the guide, and starts connecting to the font server sooner."),
     ("1.19", "Nov 6, 2026", "Wakayama: photos for all 14 places, each linking its source."),
     ("1.18", "Nov 6, 2026", "Shirahama: photos for all 16 places, each linking its source."),
     ("1.17", "Nov 6, 2026", "Osaka: a storefront photo for 2nd Street Umeda, so every Osaka card now has a photo."),
@@ -445,7 +446,25 @@ CHANGELOG = [
 ]
 
 
+def check_photos():
+    """Every PHOTOS entry must name a real card (a typo would silently hide the photo), and every photo file must be used."""
+    import glob
+    cards = {c["key"]: {p[1] for p in c["places"]} for c in CITIES}
+    used = set()
+    for key, entries in PHOTOS.items():
+        for name, v in entries.items():
+            assert name in cards.get(key, ()), f"PHOTOS[{key!r}] has {name!r}, which matches no card"
+            slug = v if isinstance(v, (str, list)) else v[0]
+            used.update(f"photos/{key}/{s}" for s in (slug if isinstance(slug, list) else [slug]))
+            if not isinstance(v, (str, list)):
+                assert v[2] and v[2].startswith(("https://", "#")), f"photo for {name!r} needs a source link"
+    files = {os.path.relpath(f, REPO).rsplit("-", 1)[0] for f in glob.glob(os.path.join(REPO, "photos", "*", "*.webp"))}
+    unused = sorted(files - used)
+    assert not unused, f"photo files not used by any card (delete them or add them to PHOTOS): {unused}"
+
+
 def build():
+    check_photos()
     panels, city_css = [], []
     for i, city in enumerate(CITIES):
         nxt = CITIES[i + 1] if i + 1 < len(CITIES) else None

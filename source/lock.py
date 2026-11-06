@@ -41,6 +41,8 @@ def lock(html, pw, head_meta):
 SHELL = """<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 __META__
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
 :root { --bg: #FFF8EE; --card: #FFFFFF; --ink: #2B211C; --muted: #7A6A60; --line: #EADBCB; --accent: #D9483B; --field: #FFFDF8; }
 @media (prefers-color-scheme: dark) { :root { --bg: #1C1613; --card: #28201C; --ink: #F4E8DA; --muted: #B9A595; --line: #3E3330; --accent: #E8604E; --field: #1F1916; } }
@@ -93,6 +95,10 @@ button:disabled { opacity: .6; cursor: wait; }
   }
   var form = document.getElementById("lock"), err = document.getElementById("err"), go = document.getElementById("go"),
       pwin = document.getElementById("pw"), rem = document.getElementById("rem");
+  if (!window.crypto || !crypto.subtle || typeof DecompressionStream === "undefined") {
+    err.textContent = "This browser is too old to open the guide. Please update it, or try Chrome or Safari.";
+    go.disabled = true; return;
+  }
   var k = saved();
   if (k) { form.hidden = true; unlock(bytes(k)).catch(function () { forget(); form.hidden = false; }); }
   form.addEventListener("submit", async function (e) {
