@@ -5,7 +5,7 @@ This repo is a travel guide web page, live at **https://japan.zhunior.com** (Git
 ## The loop for every change
 1. Edit content in `source/data.py` (places, stops, hotels), or the page in `source/build_site.py` / `source/common.py` / `source/styles.py`.
 2. Bump `VERSION`, `VDATE` and `CHANGELOG` in `source/build_site.py`: x.y for content or features, x.y.z for fixes.
-3. `python3 source/build_site.py`, which regenerates `index.html`. Never edit `index.html` by hand.
+3. `python3 source/build_site.py`, which regenerates `index.html`. Never edit `index.html` by hand. The build needs the page password (it locks the page): put it in `source/.guide_password` (git-ignored) or `GUIDE_PASSWORD`. The password is in the Claude Project doc `claude/guide-handbook.md`; ask the user if you can't find it. Never commit it.
 4. `python3 source/test_site.py`. Everything must pass. Look at `source/out/test/*.png`, and check the drawn map whenever places change.
 5. Commit the source and `index.html` together, then push to `main`. Then verify the live footer shows the new version: `python3 source/test_site.py https://japan.zhunior.com/`.
 6. Tell the user the new version number and what changed.
@@ -22,5 +22,5 @@ This repo is a travel guide web page, live at **https://japan.zhunior.com** (Git
 ## Don't break
 - `CNAME` (custom domain) and `.nojekyll` must stay.
 - The noindex meta tags must stay, and don't add a robots.txt Disallow.
-- Tabs and filters must keep working without JavaScript (the test checks this).
+- Tabs and filters must keep working without JavaScript on the unlocked page (`index-plain.html`, the test checks this). The published `index.html` is the password-locked version and needs JavaScript only to unlock.
 - The Squarespace variant (`source/out/squarespace-*.html`) is frozen. Don't spend effort on it unless asked.

@@ -4,6 +4,7 @@
     python3 source/test_site.py https://japan.zhunior.com/   # tests the live site
 
 Checks, on a desktop and a phone-sized window:
+  * the password lock: locked on arrival, wrong password refused, right one opens the linked tab, device remembered
   * every stop's tab opens its own section and only that one
   * filters work without JavaScript (category and mood chips change the card count)
   * card photos open full screen and close again
@@ -20,7 +21,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from data import CITIES
 
-URL = sys.argv[1] if len(sys.argv) > 1 else "file://" + os.path.join(os.path.dirname(HERE), "index.html")
+import lock
+URL = sys.argv[1] if len(sys.argv) > 1 else "file://" + os.path.join(os.path.dirname(HERE), "index.html")   # the locked page
+PLAIN = "file://" + os.path.join(os.path.dirname(HERE), "index-plain.html")   # the same page before locking (built locally)
+PW = lock.password()
 SHOTS = os.path.join(HERE, "out", "test")
 os.makedirs(SHOTS, exist_ok=True)
 KEYS = [c["key"] for c in CITIES]
@@ -37,6 +41,14 @@ def shown(pg):
     return [k for k in KEYS if pg.evaluate(f"getComputedStyle(document.querySelector('#jp-city-{k}')).display") == "block"]
 
 
+def open_page(pg, url, wait):
+    """Open the locked page and type the password (the page then shows the linked tab)."""
+    pg.goto(url, wait_until="domcontentloaded"); pg.wait_for_timeout(500)
+    if pg.query_selector("#lock"):
+        pg.fill("#pw", PW); pg.click("#go")
+    pg.wait_for_timeout(wait)
+
+
 def visible_cards(pg, k):
     return pg.evaluate(f"[...document.querySelectorAll('#jp-city-{k} .jp-bytype .card')].filter(c => c.offsetParent).length")
 
@@ -44,11 +56,24 @@ def visible_cards(pg, k):
 with sync_playwright() as pw:
     b = pw.chromium.launch()
 
-    print("Without JavaScript (tabs and filters must still work):")
+    print("Password lock:")
+    ctx = b.new_context(viewport={"width": 1280, "height": 900})
+    pg = ctx.new_page()
+    pg.goto(URL + "#jp-city-kyoto", wait_until="domcontentloaded"); pg.wait_for_timeout(500)
+    check(pg.query_selector("#lock") is not None and pg.query_selector("#jp26") is None, "the page opens on the password screen, with no guide content")
+    pg.fill("#pw", "not-the-password"); pg.click("#go"); pg.wait_for_timeout(2500)
+    check(pg.query_selector("#jp26") is None and "didn't work" in pg.inner_text("#err"), "a wrong password is refused")
+    pg.fill("#pw", PW); pg.click("#go"); pg.wait_for_timeout(3000)
+    check(pg.query_selector("#jp26") is not None and shown(pg) == ["kyoto"], "the right password opens the guide on the linked tab")
+    pg.goto(URL + "#jp-city-osaka", wait_until="domcontentloaded"); pg.wait_for_timeout(2500)
+    check(pg.query_selector("#jp26") is not None and shown(pg) == ["osaka"], "a remembered device opens straight away")
+    ctx.close()
+
+    print("Without JavaScript (tabs and filters must still work, checked on the page before locking):")
     pg = b.new_context(viewport={"width": 1280, "height": 900}, java_script_enabled=False).new_page()
     for c in CITIES:
         k = c["key"]
-        pg.goto(URL + f"#jp-city-{k}"); pg.wait_for_timeout(300)
+        pg.goto(PLAIN + f"#jp-city-{k}"); pg.wait_for_timeout(300)
         check(shown(pg) == [k], f"{k}: tab shows only its own section")
         check(visible_cards(pg, k) == len(c["places"]), f"{k}: all {len(c['places'])} cards visible")
         cat = pg.query_selector(f"#jp-city-{k} label[for^='{k}-jc-']:not([for='{k}-jc-all'])")
@@ -68,7 +93,7 @@ with sync_playwright() as pw:
     ph = pg.query_selector(".card.hasph")
     if ph:   # a card photo opens full screen and closes again, without JavaScript, keeping its tab open
         k = ph.evaluate("e => e.closest('.city').id.replace('jp-city-', '')")
-        pg.goto(URL + f"#jp-city-{k}"); pg.wait_for_timeout(300)
+        pg.goto(PLAIN + f"#jp-city-{k}"); pg.wait_for_timeout(300)
         pg.click(".card.hasph .ph > a"); pg.wait_for_timeout(300)
         box = pg.query_selector(".phbox:target")
         ok = box is not None and box.evaluate("b => { const i = b.querySelector('img'); return i.complete && i.naturalWidth > 0; }")
@@ -81,7 +106,7 @@ with sync_playwright() as pw:
     pg = b.new_page(viewport={"width": 1280, "height": 900}, color_scheme="dark")
     pg.on("pageerror", lambda e: errors.append(str(e)))
     k = KEYS[0]
-    pg.goto(URL + f"#jp-city-{k}", wait_until="domcontentloaded"); pg.wait_for_timeout(2500)
+    open_page(pg, URL + f"#jp-city-{k}", 3500)
     bg = pg.evaluate("getComputedStyle(document.querySelector('#jp26')).backgroundColor")
     check(bg == "rgb(28, 22, 19)", f"dark background follows the system setting ({bg})")
     src = pg.query_selector(f"#jp-city-{k} .gmap iframe").get_attribute("src") or ""
@@ -96,7 +121,7 @@ with sync_playwright() as pw:
     p2 = b.new_page(viewport={"width": 390, "height": 844})
     p2.on("pageerror", lambda e: errors.append(str(e)))
     k = KEYS[-1]
-    p2.goto(URL + f"#jp-city-{k}", wait_until="domcontentloaded"); p2.wait_for_timeout(1500)
+    open_page(p2, URL + f"#jp-city-{k}", 3000)
     p2.click(f"#jp-city-{k} .onmap[data-onmap='1']"); p2.wait_for_timeout(1200)
     check(p2.evaluate(f"document.querySelector('#{k}-maptog').checked"), "'Show on map' opens the folded map on a phone")
     check(p2.evaluate("document.documentElement.scrollWidth") <= 390, "no sideways scroll on a phone")

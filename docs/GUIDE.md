@@ -121,6 +121,13 @@ Filters switch on automatically once a stop has 8 or more places (`FILTER_MIN` i
 
 **A placeholder stop** (like Nara) can have `places=[]` and `areas=[]`. The tab, header, starting point, leaves forecast, drawn map (just the ★) and Google map all still work, and the planner shows the `soon` note. Don't put an empty stop last in `CITIES`: the phone test opens place 1 of the last tab.
 
+### Password lock (`source/lock.py`)
+The published `index.html` is a small password screen holding the real page encrypted (AES-GCM; key from the password with PBKDF2-SHA256, 250,000 rounds; the page is gzip-compressed first). The browser decrypts it when the right password is typed, then shows the page as normal, including the tab named in the link. "Remember this device for 30 days" keeps the derived key in localStorage, so that device opens straight away until then. The salt is fixed, so remembered devices stay unlocked across updates; changing the password (or the salt) logs everyone out.
+- The build reads the password from `GUIDE_PASSWORD` or `source/.guide_password` (git-ignored) and refuses to build without it. It's never written to the repo.
+- The unlocked page is also written to `index-plain.html` (git-ignored) for the no-JavaScript tests.
+- It's a casual lock: the public GitHub repo (data.py, photos) is still readable. To hide that too, the repo must be private, which needs GitHub Pro for Pages.
+- The noindex meta tags are copied onto the password screen.
+
 ### Reservations (`BOOKED` in data.py)
 `BOOKED = {stop: {card name: "Tue Nov 24, dinner at 21:00"}}`. A booked card gets a green outline and a "Reserved · <when>" line under its name (its "Book ahead" tag is hidden), and the tab shows an "Our reservations" box at the top listing them, each linking to its card. Add a line when the user says they've booked somewhere; remove it if they cancel.
 
@@ -272,3 +279,4 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 - **v1.9:** shorter leaves forecast (two or three spots per stop); forecast notes only on cards whose timing stands out.
 - **v1.9.1:** leaves forecast trimmed to two spots per stop and one-line summaries.
 - **v1.10:** 38 Kyoto food places from the Kyoto FOOD list, three more must-eats, and reservations shown on cards and in a list at the top of the tab.
+- **v1.11:** password lock (encrypted page, device remembered for 30 days).

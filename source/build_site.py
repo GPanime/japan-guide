@@ -415,9 +415,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.10"
-VDATE = "Nov 2, 2026"
+VERSION = "1.11"
+VDATE = "Nov 6, 2026"
 CHANGELOG = [
+    ("1.11", "Nov 6, 2026", "Password lock: the page opens with a password, and a device can be remembered for 30 days."),
     ("1.10", "Nov 2, 2026", "Kyoto: 38 food places from the Kyoto FOOD list, three new must-eats, and our three reservations marked on their cards and listed at the top of the tab."),
     ("1.9.1", "Nov 2, 2026", "Leaves forecast trimmed again: two spots per stop and one-line summaries."),
     ("1.9", "Nov 2, 2026", "Shorter leaves forecast: two or three spots per stop. A forecast note now shows only on cards whose timing stands out."),
@@ -782,8 +783,15 @@ html, body {{ margin: 0; background: #FFF8EE; }}
 ''')
     for f in ("favicon.svg", "favicon-32.png", "apple-touch-icon.png"):
         assert os.path.exists(os.path.join(REPO, f)), f"missing {f} (run source/build_icons.py)"
-    open(os.path.join(REPO, "index.html"), "w").write(gh_page)
-    print(f"index.html v{VERSION}: {len(gh_page):,} characters")
+    # The open page goes to index-plain.html (git-ignored, for tests); the published index.html is the locked version.
+    open(os.path.join(REPO, "index-plain.html"), "w").write(gh_page)
+    import lock
+    pw = lock.password()
+    assert pw, "No password: set GUIDE_PASSWORD or write it to source/.guide_password (see source/lock.py)"
+    head_meta = "\n".join(l for l in gh_page.split("</head>")[0].splitlines() if l.startswith(("<meta name=", "<meta name=\"", "<link rel=", "<title>")))
+    locked = lock.lock(gh_page, pw, head_meta)
+    open(os.path.join(REPO, "index.html"), "w").write(locked)
+    print(f"index.html v{VERSION}: {len(gh_page):,} characters, {len(locked):,} once locked")
     print(f"squarespace variant: {len(snippet):,} characters (Squarespace Code Block limit is about 300,000)")
 
 
