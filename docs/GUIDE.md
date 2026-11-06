@@ -283,3 +283,4 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 - **v1.12:** freely licensed Wikimedia Commons photos for three Osaka must-go cards, credited with author and licence.
 - **v1.13:** web photos of the actual places (Google Images style, with source links) for three Osaka must-go cards.
 - **v1.14:** shop photos (storefront or inside) for seven Osaka shopping cards.
+- **v1.15:** photos for all Osaka drinks and sights cards.
