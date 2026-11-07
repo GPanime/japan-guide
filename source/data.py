@@ -959,17 +959,88 @@ SHIGA = dict(
 NR_START = {"name": "Kintetsu Nara Station", "lat": 34.6842485, "lon": 135.8275275,
             "maps": "https://www.google.com/maps/search/?api=1&query=Kintetsu+Nara+Station"}
 
+def ndist(lat, lon):
+    d = km((NR_START["lat"], NR_START["lon"]), (lat, lon))
+    return f"{d:.1f} km" + (" · walk" if d < 1.2 else "")
+
+# ---- Nara, from the shared "Nara" Google Maps list (v1.24); hours checked on Tabelog, Google Maps and official pages, Nov 7 ----
+NR_RAW = [
+ ("coffee", "Cafe Zuccu", "Takabatake", ["Low energy"],
+  "A charming cafe inside a 160-year-old house. It has an incredible egg sandwich, a 10/10 option for breakfast, and a really good latte. "
+  "Breakfast is 8:00-10:00. Closed on Thursdays, and closes at 17:00 on Wednesdays.",
+  "https://maps.google.com/?cid=8193504433603555405", "cafe zuccu 奈良 高畑", 34.6769211, 135.8400808),
+ ("coffee", "MIA'S BREAD", "Takabatake", ["Quick bite"],
+  "A small cafe with a tasty bagel. Open Thursday to Sunday only (8:00-16:30), so of the days we could go, only Nov 19 or Nov 26 work.",
+  "https://maps.google.com/?cid=6844849676414528133", "MIA'S BREAD 奈良", 34.677824, 135.8407663),
+ ("food", "Garagaradon", "Near Nara Park", ["Low energy"],
+  "A nice small cozy restaurant (Cafeと食事 ガラガラドン). Morning set 9:30-11:30, open until about 20:00. It closes on some days without a fixed pattern, posted on its Facebook.",
+  "https://maps.google.com/?cid=16119101317835769482", "ガラガラドン 奈良", 34.6773662, 135.8327305),
+ ("sights", "Yugayama Enchi", "Takabatake", ["Outdoors", "Photo spot"],
+  "A nice peaceful park with a bamboo grove, in the old Yamaguchi house garden. Free, open 9:00-22:00.",
+  "https://maps.google.com/?cid=9629461773190623402", "瑜伽山園地 奈良", 34.6793408, 135.8388951),
+ ("sights", "Shiga Naoya's Old Residence", "Takabatake", ["Low energy"],
+  "The former house of a famous novelist, with a nice traditional interior and garden views. 9:30-17:30 (to 16:30 from December), 350 yen. Closed on Mondays.",
+  "https://maps.google.com/?cid=7986683260588920552", "志賀直哉旧居 奈良", 34.6780292, 135.8436097),
+ ("sights", "Kaminonegi-michi Trail", "Kasugayama hike", ["Outdoors", "Autumn leaves"],
+  "A nice hiking trail with a lot of maple trees. It's a real hiking place, so only if we have the time.",
+  "https://maps.google.com/?cid=13153735707005340411", "Kasugayama primeval forest trail Nara", 34.6781023, 135.8487109),
+ ("sights", "Myokengu", "Kasugayama hike", ["Outdoors", "Photo spot"],
+  "A really nice forest shrine. If we do the hike, we have to go here.",
+  "https://maps.google.com/?cid=15896621828083928824", "妙見宮 春日山 奈良", 34.679994, 135.85958),
+ ("sights", "Asahi Kannon", "Kasugayama hike", ["Outdoors"],
+  "Stone carvings on the hiking path.",
+  "https://maps.google.com/?cid=11499083086600253609", "朝日観音 奈良 滝坂の道", 34.6734181, 135.8674186),
+ ("food", "Hash Croquette", "Yamato-Koriyama", ["Quick bite"],
+  "Apparently an amazing croquette, with tasty chicken and potato. 11:00-19:00, closed on Sundays.",
+  "https://maps.google.com/?cid=8917708952146064583", "ハッシュコロッケ 大和郡山", 34.6468523, 135.7812641),
+ ("sweets", "Honke Kikuya", "Yamato-Koriyama", ["Low energy"],
+  "The oldest sweets shop in Nara. Good for sitting outside and enjoying a snack with tea. Open 9:00-18:30.",
+  "https://maps.google.com/?cid=7918551101163325121", "本家菊屋 本店 大和郡山", 34.648793, 135.783247),
+ ("sights", "Koriyama Castle Park", "Yamato-Koriyama", ["Outdoors", "Photo spot"],
+  "A nice park with a ruined castle. Mainly good for cherry blossoms, but it still looks nice.",
+  "https://maps.google.com/?cid=15287312997441176059", "郡山城跡 大和郡山", 34.6514546, 135.7797074),
+ ("coffee", "Unomachi Coffee", "Imai-cho, Kashihara", ["Low energy"],
+  "A cafe in the old merchant area, with tasty curry rice. Open 11:30-17:00.",
+  "https://maps.google.com/?cid=6412342802463371543", "うのまち珈琲店 奈良今井", 34.5075424, 135.7869617),
+ ("sights", "Junmyo-ji", "Imai-cho, Kashihara", ["Photo spot"],
+  "A cute small temple in a merchant street.",
+  "https://maps.google.com/?cid=6735723849680076634", "順明寺 今井町", 34.5081247, 135.7856123),
+ ("sights", "Ofusa Kannon", "Kashihara", ["Photo spot"],
+  "A nice temple with a lantern festival in autumn. The lanterns are up from Oct 7 until next June, so they're there in the daytime. "
+  "The evening light-ups this November are on Nov 7, 14 and 22, none of the days we could go.",
+  "https://maps.google.com/?cid=10682106370900499442", "おふさ観音 橿原", 34.5032458, 135.7971197),
+ ("sights", "Fujiwara Palace Site", "Kashihara", ["Outdoors", "Photo spot"],
+  "A beautiful flower field. The autumn flowers here are cosmos, which peak in October, so by late November there may be little in bloom.",
+  "https://maps.google.com/?cid=2260617405362744586", "藤原宮跡 橿原", 34.5009525, 135.8074096),
+]
+NR_P = [(c, n, a, ndist(la, lo), t, d, m, q, la, lo) for c, n, a, t, d, m, q, la, lo in NR_RAW]
+
 NARA = dict(
     key="nara", name="Nara", jp="奈良", stop=0, optional=True, dates="Day trip", tabdates="Optional day trip", nights="optional",
-    sub="a day trip from<br>Osaka or Kyoto", art="nara",
-    hotel=NR_START, hotel_name="Kintetsu Nara Station", hotel_note="the closest station to Nara Park",
+    sub="old-house cafés, a forest hike &amp;<br>a merchant town", art="nara",
+    hotel=NR_START, hotel_name="Kintetsu Nara Station", hotel_note="the closest station to Nara Park and Takabatake",
     hotel_box_title="Starting point", hotel_label="station", pill="Maybe · a day trip", maybe_label="Maybe a day trip",
     kicker="Optional day trip · from Osaka or Kyoto",
-    day1=("How to fit it in", "Not decided yet. Nara is about 40 minutes from Osaka-Namba, or 35-45 minutes from Kyoto Station, on the Kintetsu line to Kintetsu Nara Station. For autumn leaves, earlier is better, see the forecast below."),
-    planner="Options", places=[], areas=[], leads={}, icons={},
-    soon="No list yet. Places will be added here once we have one.",
-    map=dict(k=15.0, W=100.0, H=70.0, scale_km=0.5, scale_lbl="500 m", ycenter_shift=0,
-             labels=[("NARA PARK →", 34.6880, 135.8380, "start")], outliers=[]),
+    day1=("How to fit it in", "Not decided yet. Nara is about 40 minutes from Osaka-Namba, or 35-45 minutes from Kyoto Station, on the Kintetsu line. "
+          "The list has three parts: cafés, a garden and a forest hike behind Nara Park, Yamato-Koriyama to the southwest, and the old merchant town of Imai-cho "
+          "in Kashihara, about 20 km south. Yamato-Koriyama and Kashihara are on the Kintetsu Kashihara Line, so they can go on the way in or out. "
+          "Distances are from Kintetsu Nara Station."),
+    planner="Options", places=NR_P,
+    areas=[("Near Nara Park & Takabatake", "0.9-1.6 km", ["Garagaradon", "Yugayama Enchi", "Cafe Zuccu", "MIA'S BREAD", "Shiga Naoya's Old Residence"]),
+           ("Kasugayama hike", "2-4 km", ["Kaminonegi-michi Trail", "Myokengu", "Asahi Kannon"]),
+           ("Yamato-Koriyama", "6 km", ["Koriyama Castle Park", "Honke Kikuya", "Hash Croquette"]),
+           ("Kashihara · Imai-cho", "20-21 km", ["Unomachi Coffee", "Junmyo-ji", "Ofusa Kannon", "Fujiwara Palace Site"])],
+    leads={"food": "A cozy restaurant near Nara Park and a croquette shop in Yamato-Koriyama.",
+           "sweets": "The oldest sweets shop in Nara.",
+           "coffee": "Cafés in old houses, a bagel spot and curry rice in Imai-cho.",
+           "sights": "A bamboo garden, a novelist's house, a forest hike, a castle park, and temples and old streets down south."},
+    icons={},
+    videos=[("Behind Nara Deer Park", "Cafés and old houses in Takabatake, then the forest walk to Myokengu and the stone carvings on the Takisaka path.", "F8qnptkH2Ao"),
+            ("Spring in Rural Nara", "Spring: Yamato-Koriyama, the merchant streets of Imai-cho, Ofusa Kannon and the Fujiwara Palace site.", "-BqjW45mKKo")],
+    map=dict(k=20.0, W=100.0, H=74.0, scale_km=1.0, scale_lbl="1 km", ycenter_shift=-6,
+             labels=[("NARA PARK", 34.6855, 135.8420, "middle"), ("TAKABATAKE", 34.6722, 135.8420, "middle"), ("KASUGAYAMA", 34.6830, 135.8620, "middle")],
+             outliers=[(["Koriyama Castle Park", "Honke Kikuya", "Hash Croquette"], 52, "↙ Yamato-Koriyama · 6 km", "left"),
+                       (["Unomachi Coffee", "Junmyo-ji", "Ofusa Kannon", "Fujiwara Palace Site"], 62, "↓ Kashihara · 20 km", "left")]),
 )
 
 CITIES = [OSAKA, WAKAYAMA, SHIRAHAMA, KYOTO, NARA, SHIGA]
@@ -1212,6 +1283,14 @@ PHOTOS["shiga"].update({
     "Shirahige Shrine": ("shirahige-shrine", "Photo: Shiga tourism (Biwako Visitors)", "https://www.biwako-visitors.jp/spot/detail/390"),
     "Yogo Station": ("yogo-station", "Photo: Nagahama tourism (Lake Yogo)", "https://kitabiwako.jp/spot/spot_805"),
 })
+# Nara (v1.24): frames from the two videos, sent by us.
+PHOTOS["nara"] = {k: (v, "Photo: from the videos", "#jp-nara-videos") for k, v in {
+    "Cafe Zuccu": ["cafe-zuccu-2", "cafe-zuccu"], "MIA'S BREAD": "mias-bread", "Garagaradon": "garagaradon",
+    "Yugayama Enchi": "yugayama-enchi", "Shiga Naoya's Old Residence": "shiga-naoya-house", "Kaminonegi-michi Trail": "kasuga-forest",
+    "Myokengu": "myokengu", "Asahi Kannon": "asahi-kannon", "Hash Croquette": "hash-croquette",
+    "Honke Kikuya": ["honke-kikuya", "honke-kikuya-2"], "Koriyama Castle Park": "koriyama-castle", "Unomachi Coffee": "unomachi-coffee",
+    "Junmyo-ji": "junmyoji", "Ofusa Kannon": "ofusa-kannon", "Fujiwara Palace Site": "fujiwara-palace",
+}.items()}
 # Reservations we've made: {stop: {card name: "when, details"}}. The card gets a green "Reserved" line,
 # and the tab lists them at the top.
 BOOKED = {

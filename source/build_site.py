@@ -417,9 +417,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.23"
+VERSION = "1.24"
 VDATE = "Nov 7, 2026"
 CHANGELOG = [
+    ("1.24", "Nov 7, 2026", "Nara: the list is in, 15 places from our Google Maps list with photos from the two videos that inspired it, a map and opening days checked. Autumn leaves forecast refreshed (Nov 7): Koyasan and Mount Hiei now end a few days earlier."),
     ("1.23", "Nov 7, 2026", "Osaka: three inspiration videos (Nakatsu, hidden spots, coffee shops). Shiga: photos for the last four places, so every Shiga card has one."),
     ("1.22", "Nov 6, 2026", "Kyoto: Arashiyama Yusai-Tei reserved for Wed Nov 25, entry 12:00-12:30."),
     ("1.21", "Nov 6, 2026", "Kyoto: photos for 71 more places (all but Hanamichi), each linking its source."),
