@@ -272,6 +272,9 @@ OSAKA = dict(
            "sights": "Nightlife, a castle, a museum garden, and half-day trips into the hills.",
            "shop": "Clothes, vintage and second-hand shops, mostly around Umeda and Namba. LUCUA is the big one."},
     icons={},
+    videos=[("Osaka's Retro Neighborhood: Nakatsu", "Nakatsu, a 10-minute walk from Osaka Station: 42195 Coffee, the old shopping street, Tomishima Shrine and sunset by the Yodo River.", "59F4FJU6gBE"),
+            ("2 days exploring Osaka's hidden spots", "Quiet corners outside the centre: Hirakata, Kayashima Station, the old temple town of Tondabayashi and the PL Tower.", "qeWiAHSG5E4"),
+            ("Osaka Coffee Shops", "Cafes and old buildings: Aoma Coffee, the Shibakawa Building, Roji Cafe, the Ohatsu Tenjin flea market and Keitakuen Garden.", "RGqhSRTqsr8")],
     map=dict(k=17.0, W=100.0, H=158.0, scale_km=1.0, scale_lbl="1 km", ycenter_shift=10,
              labels=[("UMEDA · TENMA", 34.7142, 135.4975, "middle"), ("KITAHAMA", 34.6935, 135.5130, "start"),
                      ("HONMACHI", 34.6830, 135.4925, "end"), ("HORIE", 34.6745, 135.4915, "end"), ("FUKUSHIMA", 34.6918, 135.4871, "middle"),
@@ -1201,6 +1204,13 @@ PHOTOS["kyoto"].update({
     'GEAR non-verbal theatre': ('gear-non-verbal-theatre', "Photo: the show's own page", 'https://www.gear.ac/'),
     'Naniwa Camera': ('naniwa-camera', "Photo: the shop's own page", 'https://www.cameranonaniwa.co.jp/store/kyoto/'),
     'Nishiki Market': ('nishiki-market', 'Photo: KYOTO Design', 'https://kyoto-design.jp/spot/2815'),
+})
+# Shiga (v1.23): the last four places, from the Shiga and Omihachiman tourism sites.
+PHOTOS["shiga"].update({
+    "Kyorinbo": ("kyorinbo", "Photo: Omihachiman tourism", "https://www.omi8.com/spot/detail_1063.html"),
+    "Omihachiman": ("omihachiman", "Photo: Omihachiman tourism", "https://www.omi8.com/spot/detail_1030.html"),
+    "Shirahige Shrine": ("shirahige-shrine", "Photo: Shiga tourism (Biwako Visitors)", "https://www.biwako-visitors.jp/spot/detail/390"),
+    "Yogo Station": ("yogo-station", "Photo: Nagahama tourism (Lake Yogo)", "https://kitabiwako.jp/spot/spot_805"),
 })
 # Reservations we've made: {stop: {card name: "when, details"}}. The card gets a green "Reserved" line,
 # and the tab lists them at the top.

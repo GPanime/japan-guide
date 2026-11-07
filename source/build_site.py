@@ -77,10 +77,12 @@ def videos_box(city):
     vids = city.get("videos")
     if not vids: return ""
     k = city["key"]
+    # Only say the card photos come from the videos when some of this stop's photos really do.
+    fromvids = " · the photos on the cards come from them" if any(not isinstance(v, (str, list)) and v[2] == f"#jp-{k}-videos" for v in PHOTOS.get(k, {}).values()) else ""
     items = "".join(f'<a class="vid" href="https://www.youtube.com/watch?v={vid}" {EXT}><img src="https://i.ytimg.com/vi/{vid}/mqdefault.jpg" alt="" loading="lazy">'
                     f'<span><b>{esc(title)} ↗</b><small>{esc(note)}</small></span></a>' for title, note, vid in vids)
     return (f'<section class="vids" id="jp-{k}-videos"><div class="vidhead"><h2>Videos that inspired this list</h2>'
-            f'<span>handy to watch before a day out · the photos on the cards come from them</span></div><div class="vidgrid">{items}</div></section>')
+            f'<span>handy to watch before a day out{fromvids}</span></div><div class="vidgrid">{items}</div></section>')
 
 
 def reservations_box(city):
@@ -415,9 +417,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.22"
-VDATE = "Nov 6, 2026"
+VERSION = "1.23"
+VDATE = "Nov 7, 2026"
 CHANGELOG = [
+    ("1.23", "Nov 7, 2026", "Osaka: three inspiration videos (Nakatsu, hidden spots, coffee shops). Shiga: photos for the last four places, so every Shiga card has one."),
     ("1.22", "Nov 6, 2026", "Kyoto: Arashiyama Yusai-Tei reserved for Wed Nov 25, entry 12:00-12:30."),
     ("1.21", "Nov 6, 2026", "Kyoto: photos for 71 more places (all but Hanamichi), each linking its source."),
     ("1.20", "Nov 6, 2026", "Password screen: 7 wrong passwords in a row lock it for 15 minutes, with a countdown."),

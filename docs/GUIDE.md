@@ -288,6 +288,7 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 - **v1.17:** 2nd Street Umeda photo; every Osaka card now has one.
 - **v1.18:** photos for all Shirahama cards.
 - **v1.19:** photos for all Wakayama cards.
+- **v1.23:** Osaka videos box; last four Shiga photos.
 - **v1.22:** Yusai-Tei reservation added to Kyoto.
 - **v1.21:** photos for 71 more Kyoto cards.
 - **v1.20:** 7 wrong passwords in a row lock the password screen for 15 minutes (`MAX_TRIES`, `LOCKOUT_MINUTES` in `source/lock.py`).
