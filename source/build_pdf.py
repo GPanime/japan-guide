@@ -6,6 +6,7 @@ Needs Playwright with Chromium, and the Fredoka and Nunito font files in ~/.font
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import *
+if len(sys.argv) < 2: sys.exit("usage: python3 source/build_pdf.py <output.pdf>   (older printable guide, Osaka and Shirahama only)")
 OUT = sys.argv[1]
 
 # ---------- html ----------

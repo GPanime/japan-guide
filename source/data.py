@@ -146,7 +146,7 @@ def km(a, b):
     d = 2 * 6371 * math.asin(math.sqrt(math.sin((la2 - la1) / 2) ** 2 + math.cos(la1) * math.cos(la2) * math.sin((lo2 - lo1) / 2) ** 2))
     return d
 
-# ---- Osaka, from the shared "Osaka" Google Maps list (notes by Lilian), added in v1.5 ----
+# ---- Osaka, from the shared "Osaka" Google Maps list (with its notes), added in v1.5 ----
 def odist(lat, lon):
     d = km((HOTEL["lat"], HOTEL["lon"]), (lat, lon))
     if d > 8: return f"{d:.0f} km · half-day trip"
@@ -492,7 +492,7 @@ KY_RAW += [
   "A camera shop, handy for gear or a browse.",
   "https://maps.google.com/?cid=9608848783477973023", "Naniwa Camera Kyoto", 35.0039, 135.7662, ""),
 ]
-KY_RAW += [   # Uji, from the "Kyoto - Phil" Google Maps list (v1.7); photos are frames from the Uji video in the videos box
+KY_RAW += [   # Uji, from our second Kyoto Google Maps list (v1.7); photos are frames from the Uji video in the videos box
  ("sights", "Kōshō-ji", "Uji", ["Outdoors", "Photo spot"],
   "Next to other temples, with really nice colours. A short walk from it is a great spot to see the Uji River. Open 10:00-16:00.",
   "https://maps.google.com/?cid=78672279002019378", "Koshoji Uji autumn", 34.89003, 135.81369, ""),
@@ -524,7 +524,7 @@ KY_RAW += [   # Uji, from the "Kyoto - Phil" Google Maps list (v1.7); photos are
   "A place that serves matcha ramen. Closes at 17:30.",
   "https://maps.google.com/?cid=7061983568755731367", "Ramen Tanaka Uji matcha ramen", 34.89138, 135.80642, ""),
 ]
-KY_RAW += [   # Arashiyama, Shimogamo and Ichijoji, from the "Kyoto - Phil" list (v1.8); photos are frames from the videos in the videos box
+KY_RAW += [   # Arashiyama, Shimogamo and Ichijoji, from our second Kyoto list (v1.8); photos are frames from the videos in the videos box
  ("sights", "Togetsukyō Bridge", "Arashiyama", ["Outdoors", "Photo spot"],
   "A huge, popular bridge. It's worth walking around the river area next to it.",
   "https://maps.google.com/?cid=17011495368415127613", "Togetsukyo Bridge autumn", 35.01288, 135.67777, ""),

@@ -49,6 +49,13 @@ def photo_of(city, name):
     return bases, label, url
 
 
+def big(base):
+    """The enlarged-view file: the 1600 px version, or the card's 800 px one when the original was too small to make a bigger copy."""
+    from PIL import Image
+    w = lambda s: Image.open(os.path.join(REPO, f"{base}-{s}.webp")).width
+    return f"{base}-1600.webp" if w(1600) > w(800) else f"{base}-800.webp"
+
+
 def photo_src(label, url, cls):
     if not url: return ""
     if url.startswith("#"):   # points to the videos box on the same page, so no new tab
@@ -65,7 +72,7 @@ def photo_box(city, i, p):
     k = city["key"]; back = f"#jp-{k}-p-{i}"
     src = f" · {photo_src(label, url, 'phsrc')}" if url else ""
     n = len(bases)
-    imgs = "".join(f'<img src="{b}-1600.webp" alt="{esc(p[1])}{f", photo {j + 1} of {n}" if n > 1 else ""}" loading="lazy">' for j, b in enumerate(bases))
+    imgs = "".join(f'<img src="{big(b)}" alt="{esc(p[1])}{f", photo {j + 1} of {n}" if n > 1 else ""}" loading="lazy">' for j, b in enumerate(bases))
     more = f" · {n} photos" if n > 1 else ""
     return (f'<div class="phbox{" multi" if n > 1 else ""}" id="jp-{k}-ph-{i}"><a class="phclose" href="{back}" aria-label="Close photo"></a>'
             f'<div class="phstrip">{imgs}</div>'
@@ -162,7 +169,6 @@ def leaves_panel(city):
     k = city["key"]
     if k not in LV.SPOTS: return ""
     stays = lv_stays(k)
-    cards = LV.CARDS.get(k, {})
     one = timedelta(days=1)
     grid = "".join(f'<i class="lvgrid" style="left:{lv_pct(LV.day(t)):.2f}%"></i>' for t in ("11/10", "11/20", "11/30", "12/10"))
     bands = "".join(f'<i class="lvband" style="left:{lv_pct(a):.2f}%;width:{lv_pct(b + one) - lv_pct(a):.2f}%"></i>' for _, a, b in stays)
@@ -417,9 +423,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.24"
+VERSION = "1.24.1"
 VDATE = "Nov 7, 2026"
 CHANGELOG = [
+    ("1.24.1", "Nov 7, 2026", "Fixes from a code check: tapping a small photo no longer downloads a second copy of the same size, names removed from comments in the public source, dead code tidied."),
     ("1.24", "Nov 7, 2026", "Nara: the list is in, 15 places from our Google Maps list with photos from the two videos that inspired it, a map and opening days checked. Autumn leaves forecast refreshed (Nov 7): Koyasan and Mount Hiei now end a few days earlier."),
     ("1.23", "Nov 7, 2026", "Osaka: three inspiration videos (Nakatsu, hidden spots, coffee shops). Shiga: photos for the last four places, so every Shiga card has one."),
     ("1.22", "Nov 6, 2026", "Kyoto: Arashiyama Yusai-Tei reserved for Wed Nov 25, entry 12:00-12:30."),
@@ -697,7 +704,7 @@ Changes:
 '''
     assert "<script" not in snippet
     visible = re.sub(r"<style>.*?</style>", "", snippet, flags=re.S)
-    for bad in (r"\bPhil\b", "Sicong", "—", "–"):
+    for bad in (r"\bPhil\b", "Sicong", "Lilian", "—", "–"):
         assert not re.search(bad, visible), bad
     open(os.path.join(OUTDIR, f"squarespace-v{VERSION}.html"), "w").write(snippet)
     # ---------- GitHub Pages version: same page + dark mode + Google map (needs JavaScript) ----------
@@ -718,8 +725,6 @@ Changes:
               ".hero-wakayama {{ background: linear-gradient(170deg, #3A2E2A, #5A4234 60%, #684A38); border-color: #8A6A50; }} "
               ".hero-nara {{ background: linear-gradient(170deg, #3A2B2C, #5A3D36 60%, #6A4539); border-color: #8A6A50; }}").replace("{{", "{").replace("}}", "}")
     def dark_block(pre):
-        heroes = " ".join(f"{pre} #jp26 {h.strip()}" for h in HEROES.split("} ") if h.strip())
-        heroes = heroes.replace("#jp26 .hero", "#jp26 .hero").replace(")", ")").rstrip("}") + "}"
         return f"{pre} #jp26 {{ {DARK} }} {pre}, {pre} body {{ background: #1C1613; }} " + " ".join(
             f"{pre} #jp26 {x.strip()}{'' if x.strip().endswith('}') else '}'}" for x in HEROES.split("} ") if x.strip())
     GH_CSS = f'''
@@ -792,8 +797,7 @@ html, body {{ margin: 0; background: #FFF8EE; }}
   lazy(); window.addEventListener("load", lazy);
 })();
 """.replace("__DATA__", _json.dumps(jpdata, ensure_ascii=False))
-    gh_body = snippet.replace('<nav class="tabs"', '<nav class="tabs"', 1)
-    gh_body = re.sub(r'(<div class="tabs" aria-label="Trip stops">.*?</div>)', r'\1<button type="button" class="themebtn" hidden aria-label="Switch light or dark theme">Theme · Auto</button>', gh_body, count=1, flags=re.S)
+    gh_body = re.sub(r'(<div class="tabs" aria-label="Trip stops">.*?</div>)', r'\1<button type="button" class="themebtn" hidden aria-label="Switch light or dark theme">Theme · Auto</button>', snippet, count=1, flags=re.S)
     gh_body = gh_body.replace("Paste everything into a Squarespace Code Block (HTML mode). No JavaScript needed.", "GitHub Pages version (japan.zhunior.com), with dark mode and Google maps.")
     gh_page = (f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8">

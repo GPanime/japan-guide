@@ -288,6 +288,7 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 - **v1.17:** 2nd Street Umeda photo; every Osaka card now has one.
 - **v1.18:** photos for all Shirahama cards.
 - **v1.19:** photos for all Wakayama cards.
+- **v1.24.1:** code check fixes (enlarged view reuses small photos, names out of source comments).
 - **v1.24:** Nara list (15 places, video photos, map); leaves forecast refreshed Nov 7.
 - **v1.23:** Osaka videos box; last four Shiga photos.
 - **v1.22:** Yusai-Tei reservation added to Kyoto.
