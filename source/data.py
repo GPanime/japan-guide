@@ -1070,7 +1070,7 @@ PHOTOS = {
     "osaka": {
         "aoma coffee": ("aoma-coffee", "Photo: YouTube video", "https://www.youtube.com/watch?v=RGqhSRTqsr8"),
         # Photos found on the web at the user's request: each credit links the page the photo comes from.
-        "Go Go Curry Tsutenkaku": ("go-go-curry", "Photo: the shop's own page", "https://kepj700.gorp.jp/"),
+        "Go Go Curry Tsutenkaku": ("go-go-curry", "Photo: Tabelog", "https://tabelog.com/osaka/A2701/A270206/27139695/dtlphotolst/"),
         "MENSTYLE TANIMOTOKE": ("menstyle-tanimotoke", "Photo: hedonisthk food blog",
                                 "https://hedonisthk.blogspot.com/2025/08/men-style-tanimoto-ke-honmachi-osaka-by-ramen-champion-master-hayashi-takao-amazing-best-chicken-shellfish-shoyu-clear-broth-ramen-noodles.html"),
         "Shubodai": ("shubodai", "Photo: Enjoy Osaka Kyoto Kobe", "https://enjoy-osaka-kyoto-kobe.com/ja/article/a/shubodai-guide/"),
