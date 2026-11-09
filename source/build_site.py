@@ -423,9 +423,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.27"
+VERSION = "1.27.1"
 VDATE = "Nov 9, 2026"
 CHANGELOG = [
+    ("1.27.1", "Nov 9, 2026", "Leaves forecast: a second Weathernews update today moved eight spots by 1-6 days (Katsuo-ji Nov 20, Arashiyama Nov 23, Nara Park Nov 20)."),
     ("1.27", "Nov 9, 2026", "Osaka: 33 new places from our updated list, with photos and opening days checked. Chains with several branches get one card that names them."),
     ("1.26", "Nov 9, 2026", "Autumn leaves forecast refreshed (Nov 9): Weathernews moved most spots 1-4 days later. Osaka city parks now peak just after we leave, Kyoto peaks around Nov 24-26, Genkyū-en from Nov 30."),
     ("1.25", "Nov 7, 2026", "Sharper photos: 18 cards whose web photos were small now use full-size ones from the same place. Our own photos are unchanged."),

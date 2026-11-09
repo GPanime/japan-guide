@@ -45,32 +45,32 @@ STAYS = {
 }
 
 VERDICT = {
-    "osaka": "A bit early: Katsuo-ji in Minoh peaks from about Nov 18, but the city parks only from about Nov 22, just after we leave.",
+    "osaka": "A bit early: Katsuo-ji in Minoh peaks from about Nov 20, our last day, and the city parks only from about Nov 22, just after we leave.",
     "wakayama": "Too early in the city (from about Nov 30). Koyasan is earlier: its leaves start falling around Nov 16, before Nov 20.",
     "shirahama": "Not a leaves stop: the nearest spots inland peak after we leave.",
-    "kyoto": "The best timing of the trip. Most temples now peak from about Nov 24-26: the first stay catches the start, and the second stay should be at its best.",
-    "nara": "Nara Park peaks from about Nov 19 into early December, so any day from Nov 19 works. The Kasugayama hike is right behind the park.",
-    "shiga": "Good timing for the temples near Hikone: Koto Sanzan and Eigen-ji peak from about Nov 17-18. Genkyū-en in Hikone itself peaks from about Nov 30, just after we leave; its evening light-up runs until Nov 29.",
+    "kyoto": "The best timing of the trip. Most temples now peak from about Nov 23-26: the first stay catches the start, and the second stay should be at its best.",
+    "nara": "Nara Park peaks from about Nov 20 into early December, so any day from Nov 20 works. The Kasugayama hike is right behind the park.",
+    "shiga": "Good timing for the temples near Hikone: Koto Sanzan and Eigen-ji peak from about Nov 16-20. Genkyū-en in Hikone itself peaks from about Nov 30, just after we leave; its evening light-up runs until Nov 29.",
 }
 
 SPOTS = {
-    "osaka": [("Katsuo-ji, Minoh", "11/18", "12/6", "11月下旬～12月上旬"), ("Expo '70 Commemorative Park", "11/22", "12/11", "11月中旬～12月上旬"),
+    "osaka": [("Katsuo-ji, Minoh", "11/20", "12/8", "11月下旬～12月上旬"), ("Expo '70 Commemorative Park", "11/22", "12/11", "11月中旬～12月上旬"),
               ("Osaka Castle Park", "11/22", "12/12", ""), ("Minoo Park", "11/22", "12/7", "11月下旬～12月上旬")],
     "wakayama": [("Koyasan", "11/7", "11/16", "10月下旬～11月上旬"), ("Momijidani garden, Wakayama Castle", "11/30", "12/17", "12月上旬"),
                  ("Negoro-ji", "12/1", "12/12", "11月下旬～12月上旬")],
     "shirahama": [("Kozagawa gorge", "11/27", "12/7", "11月下旬～12月上旬"), ("Kumano Nachi Taisha", "11/28", "12/8", "")],
-    "kyoto": [("Enryaku-ji, Mount Hiei", "11/9", "11/23", "11月上旬～11月中旬"), ("Ōhara Sanzen-in", "11/22", "12/10", "11月下旬～12月上旬"),
+    "kyoto": [("Enryaku-ji, Mount Hiei", "11/9", "11/23", "11月上旬～11月中旬"), ("Ōhara Sanzen-in", "11/20", "12/8", "11月下旬～12月上旬"),
               ("Jōjakkō-ji", "11/25", "12/12", "11月下旬～12月上旬"), ("Hiyoshi Taisha, Sakamoto", "11/25", "12/8", "11月下旬～12月上旬"),
               ("Enkōji", "11/24", "12/9", "11月下旬～12月上旬"), ("Tōfuku-ji", "11/24", "12/11", "11月下旬～12月上旬"),
               ("Nanzen-ji", "11/25", "12/9", ""), ("Eikandō", "11/24", "12/6", "11月下旬～12月上旬"),
-              ("Arashiyama", "11/26", "12/12", "11/13～"), ("Kiyomizu-dera", "11/25", "12/10", "12月上旬"),
+              ("Arashiyama", "11/23", "12/9", "11/13～"), ("Kiyomizu-dera", "11/25", "12/10", "12月上旬"),
               ("Kyoto Gyoen ginkgo trees", "11/26", "12/6", ""), ("Byōdō-in, Uji", "11/25", "12/8", "11月下旬～12月上旬"),
               ("Uji River gorge", "11/25", "12/13", ""), ("Ryōan-ji", "11/28", "12/15", "12月上旬"),
               ("Kōshō-ji, Uji", "11/30", "12/9", "12月上旬"), ("Shimogamo Shrine", None, None, "12月上旬～12月中旬")],
-    "nara": [("Murō-ji", "11/11", "11/26", "11月下旬～12月上旬"), ("Hase-dera", "11/14", "12/1", "11月上旬～11月下旬"),
-             ("Chōgaku-ji", "11/25", "12/11", "12月上旬"), ("Nara Park", "11/19", "12/8", "10月下旬～12月上旬"),
+    "nara": [("Murō-ji", "11/12", "11/27", "11月下旬～12月上旬"), ("Hase-dera", "11/20", "12/7", "11月上旬～11月下旬"),
+             ("Chōgaku-ji", "11/25", "12/11", "12月上旬"), ("Nara Park", "11/20", "12/9", "10月下旬～12月上旬"),
              ("Shōryaku-ji", "11/25", "12/13", "11月中旬～12月上旬")],
-    "shiga": [("Koto Sanzan (Hyakusai-ji)", "11/17", "12/7", "11月上旬～11月下旬"), ("Eigen-ji", "11/18", "12/6", "11月下旬～12月上旬"),
+    "shiga": [("Koto Sanzan (Hyakusai-ji)", "11/16", "12/6", "11月上旬～11月下旬"), ("Eigen-ji", "11/20", "12/8", "11月下旬～12月上旬"),
               ("Kyorinbo", "11/27", "12/11", ""), ("Genkyū-en, Hikone Castle", "11/30", "12/13", "12月上旬"),
               ("Keisokuji", None, None, "11月下旬～12月上旬")],
 }

@@ -288,6 +288,7 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 - **v1.17:** 2nd Street Umeda photo; every Osaka card now has one.
 - **v1.18:** photos for all Shirahama cards.
 - **v1.19:** photos for all Wakayama cards.
+- **v1.27.1:** second leaves update on Nov 9.
 - **v1.27:** 33 new Osaka places from the updated list.
 - **v1.26:** leaves forecast refreshed Nov 9 (most spots 1-4 days later).
 - **v1.25:** sharper photos for 18 cards (small web photos swapped for full-size ones of the same place).
