@@ -423,9 +423,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.25"
-VDATE = "Nov 7, 2026"
+VERSION = "1.26"
+VDATE = "Nov 9, 2026"
 CHANGELOG = [
+    ("1.26", "Nov 9, 2026", "Autumn leaves forecast refreshed (Nov 9): Weathernews moved most spots 1-4 days later. Osaka city parks now peak just after we leave, Kyoto peaks around Nov 24-26, Genkyū-en from Nov 30."),
     ("1.25", "Nov 7, 2026", "Sharper photos: 18 cards whose web photos were small now use full-size ones from the same place. Our own photos are unchanged."),
     ("1.24.1", "Nov 7, 2026", "Fixes from a code check: tapping a small photo no longer downloads a second copy of the same size, names removed from comments in the public source, dead code tidied."),
     ("1.24", "Nov 7, 2026", "Nara: the list is in, 15 places from our Google Maps list with photos from the two videos that inspired it, a map and opening days checked. Autumn leaves forecast refreshed (Nov 7): Koyasan and Mount Hiei now end a few days earlier."),
