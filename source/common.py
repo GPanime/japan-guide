@@ -280,8 +280,12 @@ def build_map(city, pin_href=None, pin_class=None):
             parts.append(f'<a href="{esc(pin_href(o))}" data-pin="{o}" class="{pin_class(o)}"><g transform="translate({x0:g} {y})"><circle r="3" class="mpin" fill="{c}" stroke="#fff" stroke-width=".6"/>'
                          f'<text y="1.05" text-anchor="middle" class="pinnum">{o}</text></g></a>')
         n = len(names)
-        tx, anc = ((W - 8 - (n - 1) * step - 4.6), "end") if side == "right" else ((8 + (n - 1) * step + 4.6), "start")
-        parts.append(f'<text x="{tx:g}" y="{y + 1.2:g}" text-anchor="{anc}" class="far">{lbl}</text>')
+        if len(spec) > 4 and spec[4] == "above":   # label over the row, flush with the edge, when the space beside it is busy
+            tx, ty, anc = (W - 5, y - 4.6, "end") if side == "right" else (5, y - 4.6, "start")
+        else:
+            tx, anc = ((W - 8 - (n - 1) * step - 4.6), "end") if side == "right" else ((8 + (n - 1) * step + 4.6), "start")
+            ty = y + 1.2
+        parts.append(f'<text x="{tx:g}" y="{ty:g}" text-anchor="{anc}" class="far">{lbl}</text>')
     sk = k * m["scale_km"]
     parts.append(f'<g transform="translate({W - 17 - sk:g} {H - 6:g})"><line x1="0" y1="0" x2="{sk:g}" y2="0" class="mscale" stroke="{INK}" stroke-width=".6"/>'
                  f'<line x1="0" y1="-1" x2="0" y2="1" class="mscale" stroke="{INK}" stroke-width=".6"/><line x1="{sk:g}" y1="-1" x2="{sk:g}" y2="1" class="mscale" stroke="{INK}" stroke-width=".6"/>'
