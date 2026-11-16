@@ -20,7 +20,7 @@ import datetime as _dt
 import re as _re
 
 YEAR = 2026
-CHECKED = "Nov 9, 2026"
+CHECKED = "Nov 16, 2026"
 START, END = "11/1", "12/20"          # the chart's date range
 
 SOURCES = [
@@ -45,33 +45,33 @@ STAYS = {
 }
 
 VERDICT = {
-    "osaka": "A bit early: Katsuo-ji in Minoh peaks from about Nov 20, our last day, and the city parks only from about Nov 22, just after we leave.",
+    "osaka": "Better than expected: Osaka Castle Park is already at its peak (Nov 16), and Expo Park is about half coloured. Katsuo-ji and Minoo Park peak from about Nov 22, just after we leave.",
     "wakayama": "Too early in the city (from about Nov 30). Koyasan is earlier: its leaves start falling around Nov 16, before Nov 20.",
     "shirahama": "Not a leaves stop: the nearest spots inland peak after we leave.",
-    "kyoto": "The best timing of the trip. Most temples now peak from about Nov 23-26: the first stay catches the start, and the second stay should be at its best.",
+    "kyoto": "The best timing of the trip. Most temples now peak from about Nov 21-24, so the first stay should be at the peak and the second still good. Arashiyama is best in the first stay (leaves start falling around Nov 30), Tōfuku-ji in the second (from about Nov 27).",
     "nara": "Nara Park peaks from about Nov 20 into early December, so any day from Nov 20 works. The Kasugayama hike is right behind the park.",
-    "shiga": "Good timing for the temples near Hikone: Koto Sanzan and Eigen-ji peak from about Nov 16-20. Genkyū-en in Hikone itself peaks from about Nov 30, just after we leave; its evening light-up runs until Nov 29.",
+    "shiga": "Good timing: Genkyū-en at Hikone Castle now peaks from about Nov 26, right for our stay, and its evening light-up runs until Nov 29. Koto Sanzan and Eigen-ji peak from about Nov 20.",
 }
 
 SPOTS = {
-    "osaka": [("Katsuo-ji, Minoh", "11/20", "12/8", "11月下旬～12月上旬"), ("Expo '70 Commemorative Park", "11/22", "12/11", "11月中旬～12月上旬"),
-              ("Osaka Castle Park", "11/22", "12/12", ""), ("Minoo Park", "11/22", "12/7", "11月下旬～12月上旬")],
+    "osaka": [("Katsuo-ji, Minoh", "11/22", "12/10", "11月下旬～12月上旬"), ("Expo '70 Commemorative Park", "11/21", "12/10", "11月中旬～12月上旬"),
+              ("Osaka Castle Park", "11/22", "12/2", ""), ("Minoo Park", "11/23", "12/8", "11月下旬～12月上旬")],
     "wakayama": [("Koyasan", "11/7", "11/16", "10月下旬～11月上旬"), ("Momijidani garden, Wakayama Castle", "11/30", "12/17", "12月上旬"),
                  ("Negoro-ji", "12/1", "12/12", "11月下旬～12月上旬")],
-    "shirahama": [("Kozagawa gorge", "11/27", "12/7", "11月下旬～12月上旬"), ("Kumano Nachi Taisha", "11/28", "12/8", "")],
-    "kyoto": [("Enryaku-ji, Mount Hiei", "11/9", "11/23", "11月上旬～11月中旬"), ("Ōhara Sanzen-in", "11/20", "12/8", "11月下旬～12月上旬"),
-              ("Jōjakkō-ji", "11/25", "12/12", "11月下旬～12月上旬"), ("Hiyoshi Taisha, Sakamoto", "11/25", "12/8", "11月下旬～12月上旬"),
-              ("Enkōji", "11/24", "12/9", "11月下旬～12月上旬"), ("Tōfuku-ji", "11/24", "12/11", "11月下旬～12月上旬"),
-              ("Nanzen-ji", "11/25", "12/9", ""), ("Eikandō", "11/24", "12/6", "11月下旬～12月上旬"),
-              ("Arashiyama", "11/23", "12/9", "11/13～"), ("Kiyomizu-dera", "11/25", "12/10", "12月上旬"),
-              ("Kyoto Gyoen ginkgo trees", "11/26", "12/6", ""), ("Byōdō-in, Uji", "11/25", "12/8", "11月下旬～12月上旬"),
-              ("Uji River gorge", "11/25", "12/13", ""), ("Ryōan-ji", "11/28", "12/15", "12月上旬"),
-              ("Kōshō-ji, Uji", "11/30", "12/9", "12月上旬"), ("Shimogamo Shrine", None, None, "12月上旬～12月中旬")],
-    "nara": [("Murō-ji", "11/12", "11/27", "11月下旬～12月上旬"), ("Hase-dera", "11/20", "12/7", "11月上旬～11月下旬"),
-             ("Chōgaku-ji", "11/25", "12/11", "12月上旬"), ("Nara Park", "11/20", "12/9", "10月下旬～12月上旬"),
-             ("Shōryaku-ji", "11/25", "12/13", "11月中旬～12月上旬")],
-    "shiga": [("Koto Sanzan (Hyakusai-ji)", "11/16", "12/6", "11月上旬～11月下旬"), ("Eigen-ji", "11/20", "12/8", "11月下旬～12月上旬"),
-              ("Kyorinbo", "11/27", "12/11", ""), ("Genkyū-en, Hikone Castle", "11/30", "12/13", "12月上旬"),
+    "shirahama": [("Kozagawa gorge", "11/27", "12/7", "11月下旬～12月上旬"), ("Kumano Nachi Taisha", "11/26", "12/6", "")],
+    "kyoto": [("Enryaku-ji, Mount Hiei", "11/9", "11/23", "11月上旬～11月中旬"), ("Ōhara Sanzen-in", "11/20", "12/3", "11月下旬～12月上旬"),
+              ("Jōjakkō-ji", "11/23", "12/10", "11月下旬～12月上旬"), ("Hiyoshi Taisha, Sakamoto", "11/24", "12/7", "11月下旬～12月上旬"),
+              ("Enkōji", "11/21", "12/6", "11月下旬～12月上旬"), ("Tōfuku-ji", "11/27", "12/14", "11月下旬～12月上旬"),
+              ("Nanzen-ji", "11/21", "12/5", ""), ("Eikandō", "11/23", "12/5", "11月下旬～12月上旬"),
+              ("Arashiyama", "11/23", "11/30", "11/17～"), ("Kiyomizu-dera", "11/22", "12/7", "12月上旬"),
+              ("Kyoto Gyoen ginkgo trees", "11/21", "12/1", ""), ("Byōdō-in, Uji", "11/23", "12/6", "11月下旬～12月上旬"),
+              ("Uji River gorge", "11/21", "12/9", ""), ("Ryōan-ji", "11/24", "12/11", "12月上旬"),
+              ("Kōshō-ji, Uji", "11/25", "12/4", "12月上旬"), ("Shimogamo Shrine", None, None, "12月上旬～12月中旬")],
+    "nara": [("Murō-ji", "11/17", "12/2", "11月下旬～12月上旬"), ("Hase-dera", "11/20", "11/30", "11月上旬～11月下旬"),
+             ("Chōgaku-ji", "11/20", "12/6", "12月上旬"), ("Nara Park", "11/20", "12/9", "10月下旬～12月上旬"),
+             ("Shōryaku-ji", "11/22", "12/10", "11月中旬～12月上旬")],
+    "shiga": [("Koto Sanzan (Hyakusai-ji)", "11/20", "12/10", "11月上旬～11月下旬"), ("Eigen-ji", "11/20", "12/3", "11月下旬～12月上旬"),
+              ("Kyorinbo", "11/22", "12/6", ""), ("Genkyū-en, Hikone Castle", "11/26", "12/9", "12月上旬"),
               ("Keisokuji", None, None, "11月下旬～12月上旬")],
 }
 # The spots drawn in each tab's panel: a couple that show the area's overall timing.
@@ -89,9 +89,9 @@ NOTES = {
     "wakayama": {"Koyasan": "Earlier than the city, up in the mountains: at its peak now, and leaves start falling around Nov 16 (Weathernews). By Nov 20 it will be past its best."},
     "kyoto": {
         "Mount Hiei": "Earlier than the city: at its peak now, and leaves start falling around Nov 23 (Weathernews). Only worth it on the first day or two of the first stay.",
-        "Kōshō-ji": "Later than most of Kyoto: peak from about Nov 30 (Weathernews), early December on tenki.jp. Best in the second stay.",
+        "Kōshō-ji": "A bit later than most of Kyoto: peak from about Nov 25 (Weathernews), early December on tenki.jp. Good at the end of the first stay or in the second.",
         "Shimogamo Shrine": "One of the latest in Kyoto: tenki.jp expects the peak in early to mid December, so the second stay is better. Same for Tadasu-no-Mori, Kawai Shrine and the Mitsui Villa next to it.",
-        "Kinkaku-ji": "A bit later than most: nearby Ryōan-ji peaks from about Nov 28 (Weathernews), early December on tenki.jp. Better in the second stay.",
+        "Kinkaku-ji": "Nearby Ryōan-ji peaks from about Nov 24 (Weathernews), early December on tenki.jp, so either stay works.",
     },
 }
 
