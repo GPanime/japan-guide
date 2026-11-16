@@ -288,6 +288,7 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 - **v1.17:** 2nd Street Umeda photo; every Osaka card now has one.
 - **v1.18:** photos for all Shirahama cards.
 - **v1.19:** photos for all Wakayama cards.
+- **v1.29:** Kyoto to-do box (HARUKA ticket link); stops can have a `todo` list of (text, button label, url).
 - **v1.28:** leaves forecast refreshed Nov 16.
 - **v1.27.1:** second leaves update on Nov 9.
 - **v1.27:** 33 new Osaka places from the updated list.

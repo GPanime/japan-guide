@@ -321,7 +321,9 @@ def city_panel(city, nxt):
 
     day1 = ""
     if city["day1"]:
-        day1 = f'<div class="box dark"><h3>{city["day1"][0]}</h3><p>{esc(city["day1"][1])}</p></div>'
+        todo = "".join(f'<p class="todo"><b>To do:</b> {esc(t)}</p><a class="btn" style="--c:#D9483B" href="{esc(u)}" {EXT}>{esc(lbl)} →</a>'
+                       for t, lbl, u in city.get("todo", []))   # reminders with a link, e.g. a ticket to buy before a travel day
+        day1 = f'<div class="box dark"><h3>{city["day1"][0]}</h3><p>{esc(city["day1"][1])}</p>{todo}</div>'
     how = ""
     if city["stop"] == 1:
         how = ('<div class="box how"><h3>How this works</h3><p>Nothing here is planned by the hour. Each day, pick from the options by mood, '
@@ -423,9 +425,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.28"
+VERSION = "1.29"
 VDATE = "Nov 16, 2026"
 CHANGELOG = [
+    ("1.29", "Nov 16, 2026", "Kyoto: a reminder to buy the discounted HARUKA one-way ticket to Kansai Airport for Dec 2, with a link to buy it."),
     ("1.28", "Nov 16, 2026", "Autumn leaves forecast refreshed (Nov 16): Osaka Castle Park is at its peak now, most of Kyoto peaks from about Nov 21-24, and Genkyū-en in Hikone now peaks during our stay."),
     ("1.27.1", "Nov 9, 2026", "Leaves forecast: a second Weathernews update today moved eight spots by 1-6 days (Katsuo-ji Nov 20, Arashiyama Nov 23, Nara Park Nov 20)."),
     ("1.27", "Nov 9, 2026", "Osaka: 33 new places from our updated list, with photos and opening days checked. Chains with several branches get one card that names them."),
@@ -564,6 +567,8 @@ def build():
 {R} .empty {{ display: none; }}
 {R} .latgrid {{ grid-template-columns: repeat(3, minmax(0, 1fr)); }}
 @media (max-width: 680px) {{ {R} .latgrid {{ grid-template-columns: minmax(0, 1fr); }} }}
+{R} .box p.todo {{ margin-top: 12px; }}
+{R} .box p.todo + .btn {{ margin-top: 2px; }}
 {R} .soonnote {{ color: var(--muted); font-weight: 700; font-size: 14px; margin-top: 6px; }}
 {R} .basics.two {{ grid-template-columns: 1fr 1fr; }}
 {R} .tab {{ color: var(--ink); }}

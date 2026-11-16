@@ -809,6 +809,9 @@ KYOTO = dict(
     hotel2=KY_HOTEL2, hotel2_name="Kyoto Plaza Hotel Kintetsu Jujo", hotel2_note="by Kintetsu Jujo station, south of Kyoto Station",
     hotel2_dates="Nov 29-Dec 2", hotel2_nights="3 nights",
     day1=("Two stays in Kyoto", "Nov 23-27 at Hotel ZIZI, then Nov 29-Dec 2 at Kyoto Plaza Hotel Kintetsu Jujo, after Hikone. Each place shows two distances: from hotel 1 / from hotel 2."),
+    todo=[("Buy the discounted HARUKA ticket for the flight day, Dec 2: Kyoto to Kansai Airport for ¥2,700 instead of about ¥3,590, reserved seat included. "
+           "Only for foreign passports on a Temporary Visitor stay. It's sold online, not at the station, and works as a QR code on the phone.",
+           "Buy on Klook", "https://www.klook.com/en-US/activity/18400-jr-haruka-airport-express-train-tickets-osaka/")],
     planner="Options", places=KY_P,
     areas=[("By hotel 1 · Gojo, Shijo Karasuma", "0.3-1 km / 3-3.7 km", ["Kaneko", "Sushidokoro Susabiyu", "Miyakoyasai Kamo", "Bajitofu", "Nippon Ramen Rin", "Muro"]),
            ("Downtown · Shijo / Teramachi", "1-2 km / 3.8-5 km", ["Ramen Mugyu Vol. 2", "Second House Cake Works", "Kitchen Gon Rokkaku", "Rokkaku Ace",
