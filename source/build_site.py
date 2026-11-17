@@ -425,9 +425,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.29"
-VDATE = "Nov 16, 2026"
+VERSION = "1.30"
+VDATE = "Nov 17, 2026"
 CHANGELOG = [
+    ("1.30", "Nov 17, 2026", "Osaka: nine more places from our list, with photos: Saru no Suke, Hokkyokusei, Hotaru, Ginza Kagari, Kappa Ramen, Dynamic Kitchen SUN, Hyomasa, Doguyasuji and HOLBEIN ART SPACE."),
     ("1.29", "Nov 16, 2026", "Kyoto: a reminder to buy the discounted HARUKA one-way ticket to Kansai Airport for Dec 2, with a link to buy it."),
     ("1.28", "Nov 16, 2026", "Autumn leaves forecast refreshed (Nov 16): Osaka Castle Park is at its peak now, most of Kyoto peaks from about Nov 21-24, and Genkyū-en in Hikone now peaks during our stay."),
     ("1.27.1", "Nov 9, 2026", "Leaves forecast: a second Weathernews update today moved eight spots by 1-6 days (Katsuo-ji Nov 20, Arashiyama Nov 23, Nara Park Nov 20)."),

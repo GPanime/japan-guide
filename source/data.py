@@ -111,18 +111,19 @@ AREAS = [
  ("Dōjima / Kitashinchi", "1-1.4 km · walk", ["NICO CAFE", "Kagawa-udon Kitashinchi", "CRAFTROOM"]),
  ("Honmachi / Semba", "0.6-1.4 km · walk", ["MENSTYLE TANIMOTOKE", "aoma coffee", "Notequal Coffee", "Melbourne Coffee Senba", "TWO SAM'S UP", "Ramen Daisenso", "Jigri"]),
  ("Umeda · Osaka Station", "1.2-2.1 km", ["LUCUA Osaka", "Top of the Hill", "FREAK'S STORE", "B-Shop Grand Front", "Hakuundai Grand Front", "Nikai no Oasis KITTE Osaka",
-                                         "grenier", "Takocha", "kindal Umeda", "2nd Street Umeda", "Kindai Fisheries Lab", "Miyakoyasai Kamo Osaka Station", "Rojiura Curry SAMURAI", "Tempura Makino", "New Sushi Center", "Aburiya Hankyu Umeda", "Sukiyaki Tsukada", "Yakiniku Rikimaru", "SAPPORO THE BAR OSAKA", "Truffle mini", "Manneken"]),
+                                         "grenier", "Takocha", "kindal Umeda", "2nd Street Umeda", "Kindai Fisheries Lab", "Miyakoyasai Kamo Osaka Station", "Rojiura Curry SAMURAI", "Tempura Makino", "New Sushi Center", "Aburiya Hankyu Umeda", "Sukiyaki Tsukada", "Yakiniku Rikimaru", "SAPPORO THE BAR OSAKA", "Truffle mini", "Manneken", "Ginza Kagari LUCUA"]),
  ("Tenma / Nakazakichō", "1.8-2.1 km", ["Ie Shige", "Onigiri Gorichan", "Roji Cafe", "Takoyaki Umaiya", "Mansarde", "ichimaruni"]),
- ("Osaka Castle & Fujita Museum", "1.8 km", ["Osaka Castle", "Fujita Museum"]),
+ ("Osaka Castle & Fujita Museum", "1.8-2.3 km", ["Osaka Castle", "Fujita Museum", "Dynamic Kitchen & Bar SUN"]),
  ("Fukushima", "2 km", ["Hanakujira honten"]),
- ("Horie / Shinsaibashi", "1.4-2.1 km", ["Craft Burger co.", "Saturdays NYC", "Uoshin Sushi Shinsaibashi", "Yakiniku Mitsuru", "Uma Yotsubashi", "Sushi Kazenogi", "Hakata Kushiyaki Battenyokato"]),
- ("Namba / Dotonbori", "2.4-3.3 km", ["Ebisu Bridge & Dotonbori", "Manmanki", "Bar Seven", "Luv Wine Namba", "OYASUMI ICE & HOTEL", "Akagakiya Namba",
-                                     "BEAMS Namba", "B-Shop Namba Parks", "Ishibashi Shokuhin", "Shudon Ario", "Niku Gekijo", "On-yasai", "Kyushu Ramen Kio", "Tempura Tarojiro", "298 Wagyu buffet", "Wagyu-en", "Sumiyaki Shoten Yo", "Smoke Parlour Fumo", "SMALL LIGHT", "Strawberry Mania"]),
+ ("Horie / Shinsaibashi", "1.4-2.4 km", ["Craft Burger co.", "Saturdays NYC", "Uoshin Sushi Shinsaibashi", "Yakiniku Mitsuru", "Uma Yotsubashi", "Sushi Kazenogi", "Hakata Kushiyaki Battenyokato", "Saru no Suke", "Hokkyokusei", "Hotaru"]),
+ ("Namba / Dotonbori", "2.4-3.4 km", ["Ebisu Bridge & Dotonbori", "Manmanki", "Bar Seven", "Luv Wine Namba", "OYASUMI ICE & HOTEL", "Akagakiya Namba",
+                                     "BEAMS Namba", "B-Shop Namba Parks", "Ishibashi Shokuhin", "Shudon Ario", "Niku Gekijo", "On-yasai", "Kyushu Ramen Kio", "Tempura Tarojiro", "298 Wagyu buffet", "Wagyu-en", "Sumiyaki Shoten Yo", "Smoke Parlour Fumo", "SMALL LIGHT", "Strawberry Mania", "Kappa Ramen Hompo", "Sennichimae Doguyasuji"]),
  ("Tsuruhashi", "3.5 km", ["Hakuundai Tsuruhashi"]),
  ("Morinomiya", "2.5 km", ["Tokumasa Udon Morinomiya"]),
+ ("Uehommachi", "2.7 km", ["HOLBEIN ART SPACE"]),
  ("West · Ashiharabashi, Taisho", "3.7-5.1 km", ["Yakiniku Gen", "Wankarubi Plus Taisho"]),
  ("Shinsekai / Tennōji", "4-6 km", ["Shitennō-ji", "Go Go Curry Tsutenkaku", "Kushikatsu Shinsekai", "Rokusen Sushi Tsutenkaku", "Daiko Sushi honten",
-                                    "SHIMATONERIKO", "Nabeya", "Marukome", "Third Eye", "Sakura (Pabitra)"]),
+                                    "SHIMATONERIKO", "Nabeya", "Marukome", "Third Eye", "Sakura (Pabitra)", "Hyomasa"]),
  ("Half-day trips", "13-17 km", ["Shubodai", "Ishikiri Tsurugiya Jinja", "Hiraoka Park", "Nukatayama viewpoint", "Ishikiri Sando", "Higashi Ishikiri Park"]),
 ]
 OUTLIERS = ["Shubodai", "Ishikiri Tsurugiya Jinja", "Ishikiri Sando", "Higashi Ishikiri Park", "Hiraoka Park", "Nukatayama viewpoint", "Yakiniku Gen", "Wankarubi Plus Taisho"]
@@ -364,6 +365,38 @@ OS_NEW2 = [
 ]
 P += [(c, n, a, odist(la, lo), t, d, m, photos_q, la, lo) for c, n, a, t, d, m, photos_q, la, lo in OS_NEW2]
 
+# ---- Osaka, nine more from the shared list (v1.30, Nov 17). Hours from Tabelog, Google Maps and official pages. ----
+OS_NEW3 = [
+ ("food", "Saru no Suke", "Higashi-Shinsaibashi", ["Late night"],
+  "One of the best ramen in Osaka, ranked number 6. Chicken paitan ramen, open 10:00-4:00. Called 麺屋 猿のすけ on the map.",
+  "https://maps.google.com/?cid=13281775811265676538", "麺屋 猿のすけ", 34.6703509, 135.5041068),
+ ("food", "Hokkyokusei", "Nishi-Shinsaibashi", [],
+  "Tasty omurice. Said to be where omurice was invented, in an old wooden house. Open 11:30-21:30, no reservations for a normal meal.",
+  "https://maps.google.com/?cid=7101572526531839344", "北極星 心斎橋本店", 34.6696344, 135.4987265),
+ ("food", "Hotaru", "Higashi-Shinsaibashi", [],
+  "Been here before with colleagues. Shabu-shabu with Korean dishes, about ¥2,000-3,000. Open 17:00-23:00, and it takes reservations.",
+  "https://maps.google.com/?cid=905124244817767096", "ほたる 東心斎橋 しゃぶしゃぶ", 34.6715834, 135.505952),
+ ("food", "Ginza Kagari LUCUA", "Umeda, LUCUA B2", ["Quick bite"],
+  "Chicken ramen, a creamy chicken paitan. In the Barchika food floor under LUCUA, open 11:00-23:00. Called 銀座 篝 on the map.",
+  "https://maps.google.com/?cid=16030997222809018892", "銀座 篝 ルクア大阪", 34.7030364, 135.4959757),
+ ("food", "Kappa Ramen Hompo", "Namba Parks", ["Quick bite", "Late night"],
+  "Ramen recommended by a friend. In Namba Parks South, open 10:00-24:00. Called 河童ラーメン本舗 on the map.",
+  "https://maps.google.com/?cid=9752395152343320808", "河童ラーメン本舗 なんばパークス", 34.6596867, 135.5018665),
+ ("food", "Dynamic Kitchen & Bar SUN", "OBP, Twin 21 tower", ["Pricier"],
+  "A fancy Japanese place, on the 38th floor of the Twin 21 tower in OBP, by Osaka Castle. Lunch 11:00-14:00 and dinner from 17:30 on weekdays. It takes reservations. Called 燦 on the map.",
+  "https://maps.google.com/?cid=16607187488572098340", "ダイナミックキッチン&バー 燦 OBP", 34.6929543, 135.5313147),
+ ("food", "Hyomasa", "Tengachaya", [],
+  "A place recommended by a friend. A local diner with curry udon sets, under ¥1,000. Lunch only, 11:00-15:00, and closed on Mondays. Called 瓢正 on the map.",
+  "https://maps.google.com/?cid=17542622510401960096", "瓢正 天下茶屋", 34.6369777, 135.4997483),
+ ("shop", "Sennichimae Doguyasuji", "Namba", [],
+  "Saved without a note. Osaka's kitchen-tool street: knives, pots, tableware and food samples. Most shops open about 10:00-18:00.",
+  "https://maps.google.com/?cid=17351108576031900875", "千日前道具屋筋商店街", 34.6640141, 135.5035063),
+ ("shop", "HOLBEIN ART SPACE", "Uehommachi", [],
+  "Saved without a note. An art-supplies shop and gallery by the paint maker Holbein, open 11:00-18:00.",
+  "https://maps.google.com/?cid=2484247879371500556", "ホルベイン アートスペース 上本町", 34.6678242, 135.5177901),
+]
+P += [(c, n, a, odist(la, lo), t, d, m, photos_q, la, lo) for c, n, a, t, d, m, photos_q, la, lo in OS_NEW3]
+
 OSAKA = dict(
     key="osaka", name="Osaka", jp="大阪", stop=1, dates="Nov 16-20", nights="4 nights",
     sub="curry, coffee, takoyaki &amp;<br>a torii with a view", art="osaka",
@@ -381,12 +414,12 @@ OSAKA = dict(
     videos=[("Osaka's Retro Neighborhood: Nakatsu", "Nakatsu, a 10-minute walk from Osaka Station: 42195 Coffee, the old shopping street, Tomishima Shrine and sunset by the Yodo River.", "59F4FJU6gBE"),
             ("2 days exploring Osaka's hidden spots", "Quiet corners outside the centre: Hirakata, Kayashima Station, the old temple town of Tondabayashi and the PL Tower.", "qeWiAHSG5E4"),
             ("Osaka Coffee Shops", "Cafes and old buildings: Aoma Coffee, the Shibakawa Building, Roji Cafe, the Ohatsu Tenjin flea market and Keitakuen Garden.", "RGqhSRTqsr8")],
-    map=dict(k=17.0, W=100.0, H=158.0, scale_km=1.0, scale_lbl="1 km", ycenter_shift=10,
+    map=dict(k=17.0, W=100.0, H=166.0, scale_km=1.0, scale_lbl="1 km", ycenter_shift=6,
              labels=[("UMEDA · TENMA", 34.7142, 135.4975, "middle"), ("KITAHAMA", 34.6935, 135.5130, "start"),
                      ("HONMACHI", 34.6830, 135.4925, "end"), ("HORIE", 34.6745, 135.4888, "end"), ("FUKUSHIMA", 34.6918, 135.4871, "middle"),
                      ("TSURUHASHI", 34.6628, 135.5300, "middle"),
                      ("NAMBA", 34.6640, 135.4920, "end"), ("SHINSEKAI", 34.6505, 135.5000, "end"),
-                     ("TENNŌJI", 34.6430, 135.5195, "start"), ("KISHINOSATO", 34.6370, 135.4990, "start"),
+                     ("TENNŌJI", 34.6430, 135.5195, "start"), ("KISHINOSATO", 34.6338, 135.4945, "end"),
                      ("CASTLE", 34.6905, 135.5262, "middle")],
              outliers=[("Shubodai", 7, "↑ Shubodai · 17 km north"), (["Ishikiri Tsurugiya Jinja", "Ishikiri Sando", "Higashi Ishikiri Park", "Hiraoka Park", "Nukatayama viewpoint"], 86, "East hills · 13-14 km →", "right", "above"),
                        (["Yakiniku Gen", "Wankarubi Plus Taisho"], 121, "← 4-5 km west", "left")]),
@@ -1436,6 +1469,18 @@ PHOTOS["osaka"].update({
     'Manneken': ('manneken', 'Photo: Tabelog', 'https://tabelog.com/osaka/A2701/A270101/27015132/dtlphotolst/'),
     'Ishikiri Sando': ('ishikiri-sando', 'Photo: Osaka shopping streets site', 'https://osaka-shotengai-info.com/ss/isikiri/'),
     'Higashi Ishikiri Park': ('higashi-ishikiri-park', 'Photo: Higashiosaka tourism', 'https://pikahiga.jp/enjoy/4572/'),
+})
+# Osaka (v1.30): photos for the nine places added on Nov 17.
+PHOTOS["osaka"].update({
+    'Saru no Suke': ('saru-no-suke', 'Photo: Tabelog', 'https://tabelog.com/osaka/A2701/A270202/27122723/dtlphotolst/'),
+    'Hokkyokusei': ('hokkyokusei', 'Photo: Tabelog', 'https://tabelog.com/osaka/A2701/A270202/27001274/dtlphotolst/'),
+    'Hotaru': ('hotaru', 'Photo: Tabelog', 'https://tabelog.com/osaka/A2701/A270201/27106425/dtlphotolst/'),
+    'Ginza Kagari LUCUA': ('ginza-kagari', 'Photo: Tabelog', 'https://tabelog.com/osaka/A2701/A270101/27102306/dtlphotolst/'),
+    'Kappa Ramen Hompo': ('kappa-ramen', 'Photo: Tabelog', 'https://tabelog.com/osaka/A2701/A270202/27137108/dtlphotolst/'),
+    'Dynamic Kitchen & Bar SUN': ('dynamic-kitchen-sun', 'Photo: Tabelog', 'https://tabelog.com/osaka/A2701/A270107/27002146/dtlphotolst/'),
+    'Hyomasa': ('hyomasa', 'Photo: Tabelog', 'https://tabelog.com/osaka/A2701/A270406/27118924/dtlphotolst/'),
+    'Sennichimae Doguyasuji': ('doguyasuji', 'Photo: OSAKA-INFO', 'https://osaka-info.jp/spot/sennichimae-doguyasuji-shopping-street/'),
+    'HOLBEIN ART SPACE': ('holbein-art-space', 'Photo: PR TIMES (Holbein)', 'https://prtimes.jp/main/html/rd/p/000000003.000158689.html'),
 })
 # Reservations we've made: {stop: {card name: "when, details"}}. The card gets a green "Reserved" line,
 # and the tab lists them at the top.
