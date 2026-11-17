@@ -833,6 +833,23 @@ KY_RAW += [   # from the "Kyoto FOOD" Google Maps list (v1.10); descriptions fro
   'An old, well-known izakaya, saved without a note. 17:00-23:00, closed Sundays.',
   'https://maps.google.com/?cid=15755540826425964427', '赤垣屋 京都 居酒屋', 35.01283, 135.77257, ""),
 ]
+KY_RAW += [   # added from the updated Kyoto list (v1.31, Nov 17); hours from Google Maps, Kansai Kaiten and Rurikō-in guides
+ ('shop', 'Utsuwa Monotsuki', 'Mibu, by Ōmiya Station', [],
+  'A pottery shop recommended by a friend: tableware by makers from all over Japan. It moved here in May 2026. Open 11:00-17:00, closed on Saturdays.',
+  'https://maps.google.com/?cid=3227511925249127888', 'utsuwa monotsuki 京都 壬生', 35.004449, 135.746939, ""),
+ ('coffee', 'AMBER COFFEE', "Philosopher's Path, by Hōnen-in", [],
+  "Saved without a note. A café open 9:00-18:00. Its Maps listing gives an address near Kōdai-ji in Higashiyama, not this pin, so check the map before going.",
+  'https://maps.google.com/?cid=14979000992654642796', 'AMBER COFFEE 京都', 35.021954, 135.794608, ""),
+ ('sights', 'Hōnen-in Bridge on the canal', "Philosopher's Path, by Hōnen-in", ['Outdoors', 'Photo spot'],
+  "Saved without a note. A small bridge over the canal on the Philosopher's Path, where the path turns up to Hōnen-in. Called 法然院橋 on the map.",
+  'https://maps.google.com/?cid=8287200800357889877', '法然院橋 哲学の道', 35.022583, 135.795158, ""),
+ ('sights', 'Kamogawa Delta', 'Demachiyanagi', ['Outdoors', 'Low energy'],
+  'A nice river spot, where the Kamo and Takano rivers meet, with turtle-shaped stepping stones. Free, any time.',
+  'https://maps.google.com/?cid=16834291125497996009', '鴨川デルタ 飛び石', 35.029858, 135.771764, ""),
+ ('sights', 'Rurikō-in', 'Yase, northeast', ['Book ahead', 'Autumn leaves'],
+  'A nice temple with a garden view, famous for maple leaves reflected in a lacquered desk. Open only in the special season (Oct 1 - Dec 13 this year), and from Nov 13 to Dec 6 only with a booking on its official site: 20-minute slots, 2 people per booking. 10:00-17:00, ¥2,000 each, cash on the day.',
+  'https://maps.google.com/?cid=14438288919483822920', '瑠璃光院 秋', 35.063579, 135.808542, ""),
+]
 KY_P = [(c, n, a, kdist(la, lo, note), t, d, m, q, la, lo) for c, n, a, t, d, m, q, la, lo, note in KY_RAW]
 
 KYOTO = dict(
@@ -844,9 +861,11 @@ KYOTO = dict(
     day1=("Two stays in Kyoto", "Nov 23-27 at Hotel ZIZI, then Nov 29-Dec 2 at Kyoto Plaza Hotel Kintetsu Jujo, after Hikone. Each place shows two distances: from hotel 1 / from hotel 2."),
     todo=[("Buy the discounted HARUKA ticket for the flight day, Dec 2: Kyoto to Kansai Airport for ¥2,700 instead of about ¥3,590, reserved seat included. "
            "Only for foreign passports on a Temporary Visitor stay. It's sold online, not at the station, and works as a QR code on the phone.",
-           "Buy on Klook", "https://www.klook.com/en-US/activity/18400-jr-haruka-airport-express-train-tickets-osaka/")],
+           "Buy on Klook", "https://www.klook.com/en-US/activity/18400-jr-haruka-airport-express-train-tickets-osaka/"),
+          ("If we want Rurikō-in: from Nov 13 to Dec 6 it's by booking only, on the temple's official site (20-minute slots, ¥2,000 each, paid on the day).",
+           "Book Rurikō-in", "https://rurikoin.komyoji.com/")],
     planner="Options", places=KY_P,
-    areas=[("By hotel 1 · Gojo, Shijo Karasuma", "0.3-1 km / 3-3.7 km", ["Kaneko", "Sushidokoro Susabiyu", "Miyakoyasai Kamo", "Bajitofu", "Nippon Ramen Rin", "Muro"]),
+    areas=[("By hotel 1 · Gojo, Shijo Karasuma", "0.3-1 km / 3-3.7 km", ["Kaneko", "Sushidokoro Susabiyu", "Miyakoyasai Kamo", "Bajitofu", "Nippon Ramen Rin", "Muro", "Utsuwa Monotsuki"]),
            ("Downtown · Shijo / Teramachi", "1-2 km / 3.8-5 km", ["Ramen Mugyu Vol. 2", "Second House Cake Works", "Kitchen Gon Rokkaku", "Rokkaku Ace",
                                                     "Nishiki Market", "Naniwa Camera", "Kunton Akutagawa", "Micasadeco & Cafe", "Gyukatsu Kyoto Katsugyu",
                                                     "GEAR non-verbal theatre", "Kyogoku Kaneyo", "Honnō-ji", "Kyo-Motsunabe Kamehachi", "Cafe Bibliotic Hello!",
@@ -856,15 +875,15 @@ KYOTO = dict(
            ("Gion & Higashiyama", "2-3 km / 4-4.5 km", ["Itoh Kyuemon Sabo", "Ten no Meshi Gion", "Hikiniku to Come", "Yasaka Shrine", "Rokudō Chinnō-ji", "Kiyomizu-dera",
                                                    "Izuju Sushi", "Sapporo Kaniya", "Gyoza Hohei", "Ramen Nishiki", "Hanamichi", "MIZUIRO-TEI", "Akoya-chaya", "Akebonotei"]),
            ("Kyoto Station & south", "0.5-3 km / 1-3 km", ["Ginjo Ramen Kubota", "Kaidashi Menkitada", "Itoh Kyuemon Kyoto Station", "Kyoto Tower", "Warajiya", "Tōfuku-ji"]),
-           ("East · Okazaki & Philosopher's Path", "3-5 km / 5-7 km", ["Kyo Unawa", "Yamamoto Menzou", "Nanzen-ji", "Anraku-ji", "Ginkaku-ji"]),
+           ("East · Okazaki & Philosopher's Path", "3-5 km / 5-7 km", ["Kyo Unawa", "Yamamoto Menzou", "Nanzen-ji", "Anraku-ji", "Ginkaku-ji", "AMBER COFFEE", "Hōnen-in Bridge on the canal"]),
            ("Northwest", "5 km / 8 km", ["Kinkaku-ji"]),
-           ("North · Shimogamo", "4-5 km / 7 km", ["Saito", "Old Mitsui Family Villa", "Kawai Shrine", "Tadasu-no-Mori Forest", "Shimogamo Shrine", "Kamo Mitarashi Chaya"]),
+           ("North · Shimogamo", "4-5 km / 6.7-7 km", ["Saito", "Old Mitsui Family Villa", "Kawai Shrine", "Tadasu-no-Mori Forest", "Shimogamo Shrine", "Kamo Mitarashi Chaya", "Kamogawa Delta"]),
            ("Northeast · Ichijōji", "6-7 km / 8-9 km", ["Keibunsha Ichijoji", "Pan nochi Hare", "Ichijoji Nakatani", "Enkōji"]),
            ("West · Arashiyama & Matsuo", "6-8 km / 7-9 km", ["Saihō-ji (Kokedera)", "Tofu Matsugae", "Togetsukyō Bridge", "Arashiyama Park Nakanoshima", "Arashiyama Monkey Park",
                                                           "Arashiyama Yusai-Tei", "Jōjakkō-ji", "Daihikaku Senkō-ji"]),
            ("West · Saga, north of Arashiyama", "8-9 km / 9-10 km", ["Azasino", "Enrian", "Seiryōji (Saga Shakadō)", "Saga Toriimoto Tea and Coffee Hijiri",
                                                                     "Gohodo Benzaiten", "Ayuchaya Hiranoya"]),
-           ("Out of town · Hiei, Sakamoto, Kurama, Takao", "10-14 km / 12-16 km", ["Mount Hiei", "Former Chikurin-in", "Hiyoshi Soba", "Kurama Onsen", "√2 Riverside Takao"]),
+           ("Out of town · Hiei, Sakamoto, Kurama, Takao", "9-14 km / 11.5-16 km", ["Mount Hiei", "Former Chikurin-in", "Hiyoshi Soba", "Kurama Onsen", "√2 Riverside Takao", "Rurikō-in"]),
            ("Uji · south, by train", "12.5-14 km / 10-12 km", ["Keihan Uji Station", "Uji Bridge", "Ramen Tanaka Kyu Shoten", "matcha roastery", "Uji Shrine",
                                                            "Ujikami Shrine", "Kōshō-ji", "Momiji-dani trail", "Hakusan Shrine", "Amagase Bridge"])],
     leads={"must": "The places we're planning the days around, three of them booked.",
@@ -889,7 +908,7 @@ KYOTO = dict(
                        ("Saihō-ji (Kokedera)", 32, "← Saihō-ji 6 km", "left"),
                        ("√2 Riverside Takao", 40, "↖ Takao 10 km", "left"),
                        ("Kurama Onsen", 8, "Kurama 14 km ↑", "right"),
-                       (["Former Chikurin-in", "Hiyoshi Soba", "Mount Hiei"], 32, "Hiei ↗", "right"),
+                       (["Rurikō-in", "Former Chikurin-in", "Hiyoshi Soba", "Mount Hiei"], 32, "Hiei, Yase ↗", "right"),
                        (["Keihan Uji Station", "Uji Bridge", "Ramen Tanaka Kyu Shoten", "matcha roastery", "Uji Shrine"], 140, "Uji ↓ 13 km", "right"),
                        (["Ujikami Shrine", "Kōshō-ji", "Momiji-dani trail", "Hakusan Shrine", "Amagase Bridge"], 148, "", "right")]),
 )
@@ -1481,6 +1500,14 @@ PHOTOS["osaka"].update({
     'Hyomasa': ('hyomasa', 'Photo: Tabelog', 'https://tabelog.com/osaka/A2701/A270406/27118924/dtlphotolst/'),
     'Sennichimae Doguyasuji': ('doguyasuji', 'Photo: OSAKA-INFO', 'https://osaka-info.jp/spot/sennichimae-doguyasuji-shopping-street/'),
     'HOLBEIN ART SPACE': ('holbein-art-space', 'Photo: PR TIMES (Holbein)', 'https://prtimes.jp/main/html/rd/p/000000003.000158689.html'),
+})
+# Kyoto (v1.31): photos for the five places added on Nov 17.
+PHOTOS["kyoto"].update({
+    'Utsuwa Monotsuki': ('utsuwa-monotsuki', 'Photo: Tennen Seikatsu (its earlier shop)', 'https://tennenseikatsu.jp/_ct/17526006'),
+    'AMBER COFFEE': ('amber-coffee', 'Photo: Google Maps', 'https://maps.google.com/?cid=14979000992654642796'),
+    'Hōnen-in Bridge on the canal': ('honen-in-bridge', 'Photo: Kyoto Walks (the canal path nearby)', 'https://www.kyoto-walks.com/deta/sakyo/tetsugaku.html'),
+    'Kamogawa Delta': ('kamogawa-delta', 'Photo: Kyoto guide blog (kyoto-inf)', 'https://www.kyoto-inf.com/2017/06/11/posted-kamogawaderuta/'),
+    'Rurikō-in': ('rurikoin', 'Photo: Souda Kyoto', 'https://souda-kyoto.jp/blog/00579.html'),
 })
 # Reservations we've made: {stop: {card name: "when, details"}}. The card gets a green "Reserved" line,
 # and the tab lists them at the top.
