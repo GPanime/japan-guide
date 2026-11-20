@@ -425,9 +425,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.32"
-VDATE = "Nov 17, 2026"
+VERSION = "1.33"
+VDATE = "Nov 21, 2026"
 CHANGELOG = [
+    ("1.33", "Nov 21, 2026", "Shirahama: ten more places from our updated list, with photos (two public baths, a day spa, wood-fired pizza, lobster, a bakery, a cafe, a rock arch, a clothing shop). Saki-no-Yu has no fixed closing day, and Kaishu's bath-only visits skip weekends."),
     ("1.32", "Nov 17, 2026", "Kyoto: nine more places from our second list, with photos (yakitori, a salmon breakfast, a stew izakaya, tea rice, waffles, mazemen, shabu-shabu, fugu sushi, an eel restaurant on Ninenzaka), and breakfast details for Miyakoyasai Kamo."),
     ("1.31", "Nov 17, 2026", "Kyoto: five more places from our list, with photos (Utsuwa Monotsuki, AMBER COFFEE, the Hōnen-in canal bridge, Kamogawa Delta, Rurikō-in), and a reminder to book Rurikō-in."),
     ("1.30", "Nov 17, 2026", "Osaka: nine more places from our list, with photos: Saru no Suke, Hokkyokusei, Hotaru, Ginza Kagari, Kappa Ramen, Dynamic Kitchen SUN, Hyomasa, Doguyasuji and HOLBEIN ART SPACE."),

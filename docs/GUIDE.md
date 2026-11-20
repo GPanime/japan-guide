@@ -290,6 +290,7 @@ Keep the shared parts shared: `styles.py` (design), `common.py` (map drawing and
 - **v1.19:** photos for all Wakayama cards.
 - **v1.31:** five more Kyoto places; Rurikō-in booking reminder.
 - **v1.32:** nine more Kyoto places from the second list; Miyakoyasai Kamo breakfast details.
+- **v1.33:** ten more Shirahama places from the updated list; Saki-no-Yu and Kaishu hours fixed.
 - **v1.30:** nine more Osaka places.
 - **v1.29:** Kyoto to-do box (HARUKA ticket link); stops can have a `todo` list of (text, button label, url).
 - **v1.28:** leaves forecast refreshed Nov 16.
