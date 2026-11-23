@@ -627,7 +627,7 @@ KY_RAW += [
   "A popular cafe with walls of books. A calm place to sit for a while.",
   "https://maps.google.com/?cid=9811042860654385097", "Cafe Bibliotic Hello Kyoto", 35.0137, 135.7642, ""),
  ("sights", "Kiyomizu-dera", "Higashiyama", ["Photo spot", "Late night"],
-  "The temple with the famous wooden stage over the hillside. It usually opens in the evening in autumn for a light-up (in 2025 it ran Nov 22-Dec 7). The 2026 dates are not announced yet.",
+  "The temple with the famous wooden stage over the hillside. Its autumn light-up runs Nov 21-30: open until 21:30 (last entry 21:00), no booking needed, with the normal ¥500 ticket.",
   "https://maps.google.com/?cid=7111013964196361402", "Kiyomizudera autumn illumination", 34.9947, 135.7847, ""),
  ("sights", "Ginkaku-ji", "Sakyo, east Kyoto", ["Outdoors", "Photo spot"],
   "The Silver Pavilion and its garden. The Philosopher's Path starts here and runs south past Anraku-ji towards Nanzen-ji, so they make a good walk together.",
