@@ -425,9 +425,10 @@ def city_panel(city, nxt):
     return html, "\n".join(css)
 
 
-VERSION = "1.33.1"
+VERSION = "1.34"
 VDATE = "Nov 23, 2026"
 CHANGELOG = [
+    ("1.34", "Nov 23, 2026", "Autumn leaves forecast checked again on Nov 23 for Kyoto, Shiga and Nara: Kyoto is at its peak now, Tōfuku-ji included."),
     ("1.33.1", "Nov 23, 2026", "Kyoto: Kiyomizu-dera's autumn light-up dates and hours (Nov 21-30)."),
     ("1.33", "Nov 21, 2026", "Shirahama: ten more places from our updated list, with photos (two public baths, a day spa, wood-fired pizza, lobster, a bakery, a cafe, a rock arch, a clothing shop). Saki-no-Yu has no fixed closing day, and Kaishu's bath-only visits skip weekends."),
     ("1.32", "Nov 17, 2026", "Kyoto: nine more places from our second list, with photos (yakitori, a salmon breakfast, a stew izakaya, tea rice, waffles, mazemen, shabu-shabu, fugu sushi, an eel restaurant on Ninenzaka), and breakfast details for Miyakoyasai Kamo."),
